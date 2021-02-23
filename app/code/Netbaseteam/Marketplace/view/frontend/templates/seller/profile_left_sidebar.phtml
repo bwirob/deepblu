@@ -1,0 +1,210 @@
+<?php
+/** @var $block Netbaseteam\Marketplace\Block\Seller\Profile */
+
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$shopData = $block->getShopData();
+$currentPage = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+$shopID = $this->getRequest()->getParam('shop');
+$radKey = 'ref=page_internal';
+$ratingAverage = $block->getRatingAverage();
+$countRating =  $block->getRatingCount();
+
+$products = $block->getProductCollection();
+$priceArr = array();
+
+if (count($products)) {
+    foreach ($products as $product) {
+        $specialPrice = $product->getSpecialPrice();
+        $finalPrice = $product->getFinalPrice();
+        if ($specialPrice) {
+            $priceArr[] = $specialPrice;
+        }
+        if($product->getPrice()) {
+            $priceArr[] = $product->getPrice();
+        }
+        if ($finalPrice) {
+            $priceArr[] = $finalPrice;
+        }
+    }
+}
+
+$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+$priceReq = $this->getRequest()->getParam('price');
+if ($priceReq) {
+    $priceReq = explode("-",$priceReq);
+    $minPrice = $priceReq[0];
+    $maxPrice = $priceReq[1];
+} else {
+    $minPrice = count($priceArr) ? min($priceArr) : '0';
+    $maxPrice = count($priceArr) ?max($priceArr) : '0';
+}
+
+$allRequest = $this->getRequest()->getParams();
+unset($allRequest['shop']);
+unset($allRequest['product']);
+unset($allRequest['isAjax']);
+
+$categoryCollection = $block->getCategoryCollection();
+$attributes = $block->getAttributeFilter();
+
+?>
+<div class="mp-sidebar">
+    <div class="sidebar_left" id="entity_sidebar">
+        <div class="thumbnail">
+            <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>" rel="theater">
+                <img height="170"
+                     src="<?php echo $helper->getMediaUrl().'marketplace/'.(isset($shopData['shop_logo']) ? $shopData['shop_logo'] : 'no-images.png'); ?>"
+                     width="170" alt="shop_logo">
+            </a>
+        </div>
+        <div class="store_name">
+            <b>@<?php echo $shopData['shop_title'] ? $shopData['shop_title'] : 'No Name'?></b>
+        </div>
+        <?php if($ratingAverage): ?>
+            <div class="seller-reviews-summary short">
+                <div class="rating-summary">
+                    <div title="<?php echo (int)$ratingAverage; ?>%" class="rating-result">
+                        <span style="width:<?php echo (int)$ratingAverage; ?>%"><span><?php echo (int)$ratingAverage; ?>%</span></span>
+                    </div>
+                </div>
+                <span>(<?php echo (int)$countRating?> total ratings)</span>
+            </div>
+        <?php endif; ?>
+        <nav class="profile-nav">
+            <ul class="nav items">
+                <li class="nav item <?php echo count($this->getRequest()->getParams()) == 1 ? 'current' : ''?>">                   
+                    <?php if (count($this->getRequest()->getParams()) == 1) : ?>
+                        <strong><?php echo __('Home') ?></strong>
+                    <?php else : ?>
+                        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>">
+                            <?php echo __('Home') ?>
+                        </a>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </nav>
+
+        <nav class="profile-nav">
+            <ul class="nav items">
+                <li class="nav item <?php echo $this->getRequest()->getParam('about') ? 'current' : ''?>">
+                    <?php if ($this->getRequest()->getParam('about')) : ?>
+                        <strong><?php echo __('About') ?></strong>
+                    <?php else : ?>
+                        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/about/$radKey", ['_secure' => $this->getRequest()->isSecure()]); ?>">
+                            <?php echo __('About') ?>
+                        </a>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </nav>
+
+        <nav class="profile-nav">
+            <ul class="nav items">
+                <li class="nav item <?php echo $this->getRequest()->getParam('product') ? 'current' : ''?>">
+                    <?php if ($this->getRequest()->getParam('product')) : ?>
+                        <strong><?php echo __('Products') ?></strong>
+                    <?php else : ?>
+                        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey", ['_secure' => $this->getRequest()->isSecure()]); ?>">
+                            <?php echo __('Products') ?>
+                        </a>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </nav>
+
+        <nav class="profile-nav">
+            <ul class="nav items">
+                <li class="nav item <?php echo $this->getRequest()->getParam('event') ? 'current' : ''?>">
+                    <?php if ($this->getRequest()->getParam('event')) : ?>
+                        <strong><?php echo __('Events') ?></strong>
+                    <?php else : ?>
+                        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/event/$radKey", ['_secure' => $this->getRequest()->isSecure()]); ?>">
+                            <?php echo __('Events') ?>
+                        </a>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="contact-us">
+        <button id="mp-form-contact-us">Contact US</button>
+    </div>
+</div>
+<div class="loading_overlay"></div>
+<!-- use Ajax -->
+<!-- <script type="text/x-magento-init">
+    {
+        "*": {
+            "sellerProfile": {}
+        }
+    }
+</script> -->
+<div id="mp-contact-popup-modal" style="display:none;">
+    <form class="form contact" action="<?php echo $this->getUrl("marketplace/seller/contactPost/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>" id="contact-form" method="post" data-hasrequired="* Required Fields" data-mage-init='{"validation": {}}' novalidate="novalidate">
+        <fieldset class="fieldset">
+            <legend class="legend"><span>Write Us</span></legend><br>
+            <div class="field note no-label">Jot us a note and we’ll get back to you as quickly as possible.</div>
+            <div class="field name required">
+                <label class="label" for="name"><span>Name</span></label>
+                <div class="control">
+                    <input name="name" id="name" title="Name" value="<?php echo $block->getCustomer()->getName();?>" class="input-text" type="text" data-validate="{required:true}" aria-required="true">
+                </div>
+            </div>
+            <div class="field email required">
+                <label class="label" for="email"><span>Email</span></label>
+                <div class="control">
+                    <input name="email" id="buyer_email" title="Email" value="<?php echo $block->getCustomer()->getEmail();?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}" aria-required="true">
+                </div>
+            </div>
+            <div class="field telephone">
+                <label class="label" for="telephone"><span>Phone Number</span></label>
+                <div class="control">
+                    <input name="telephone" id="telephone" title="Phone Number" value="" class="input-text" type="text">
+                </div>
+            </div>
+            <div class="field comment required">
+                <label class="label" for="comment"><span>What’s on your mind?</span></label>
+                <div class="control">
+                    <textarea name="comment" id="comment" title="What’s on your mind?" class="input-text" cols="5" rows="3" data-validate="{required:true}" aria-required="true"></textarea>
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value="">
+                <button type="submit" title="Submit" class="action submit primary">
+                    <span>Submit</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function ($, modal) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                buttons: false
+            };
+
+            var popup = modal(options, $('#mp-contact-popup-modal'));
+
+            $('#mp-form-contact-us').on('click', function () {
+                $('#mp-contact-popup-modal').modal('openModal');
+            });
+        }
+    );
+</script>
+
+<?php if($this->getRequest()->getParam('product')):?>
+    <?php echo $block->getChildHtml();?>
+<?php endif;?>

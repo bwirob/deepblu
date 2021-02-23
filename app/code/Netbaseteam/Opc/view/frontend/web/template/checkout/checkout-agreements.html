@@ -1,0 +1,41 @@
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form data-role="checkout-agreements" method="post" class="cmsmart-checkout-form-wrapper" id="cmsmart-checkout-agreements-form">
+    <div class="checkout-agreements cmsmart-checkout-agreements-wrapper" data-bind="visible: isVisible">
+        <!-- ko foreach: agreements -->
+            <!-- ko if: ($parent.isAgreementRequired($data)) -->
+            <div class="checkout-agreement cmsmart-checkout-agreement">
+                <input class="cmsmart-terms-input" type="checkbox"
+                       data-bind="attr: {
+                                    'id': 'agreement_' + agreementId,
+                                    'name': 'agreement[' + agreementId + ']',
+                                    'value': agreementId
+                                    }"
+                       data-validate="{required:true}"
+                        >
+                <label data-bind="attr: {'for': 'agreement_' + agreementId}" class="cmsmart-terms-input-label">
+                    <button type="button" class="action action-show cmsmart-terms-label-button" data-bind="click: function(data, event) { return $parent.showContent(data, event) }">
+                        <span class="cmsmart-terms-label-text" data-bind="html: checkboxText"></span>
+                    </button>
+                </label>
+            </div>
+            <!-- /ko -->
+            <!-- ko ifnot: ($parent.isAgreementRequired($data)) -->
+            <div class="checkout-agreement">
+                <button type="button" class="action action-show cmsmart-terms-button"
+                        data-bind="click: function(data, event) { return $parent.showContent(data, event) }">
+                    <span data-bind="html: checkboxText"></span>
+                </button>
+            </div>
+            <!-- /ko -->
+        <!-- /ko -->
+        <div class="cmsmart-checkout-agreements-modal" id="checkout-agreements-modal" data-bind="afterRender: initModal" style="display: none">
+            <div class="cmsmart-checkout-agreements-item-title checkout-agreements-item-title" data-bind="html: modalTitle"></div>
+            <div class="cmsmart-checkout-agreements-item-content checkout-agreements-item-content" data-bind="html: modalContent"></div>
+        </div>
+    </div>
+</form>

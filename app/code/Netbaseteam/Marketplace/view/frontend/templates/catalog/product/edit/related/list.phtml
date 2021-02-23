@@ -1,0 +1,12 @@
+
+<div id="relate-to-product-list" style="display:none">
+    <?= $block->getChildHtml(); ?>
+    <script>
+        require(["jquery","mage/mage"],function($) {
+            $(function(){
+                $('#relate-to-product-list').mage('newRelatedProductDialog');
+            });
+        });
+    </script>
+</div>
+

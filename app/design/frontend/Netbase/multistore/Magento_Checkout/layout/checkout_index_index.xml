@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+	<referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">My Shopping Cart</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">My Shopping Cart</item>
+                    <item name="label" xsi:type="string">My Shopping Cart</item>
+                </argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="page.messages" remove="true"/>
+         <move element="logo" destination="checkout.header.wrapper"/>
+
+		 <referenceContainer name="page.wrapper">
+            <container name="wrap-product.info.main" htmlTag="footer" htmlClass="page-footer">
+                <block class="Netbase\Sun\Block\Template" name="footer_block" template="html/footer.phtml">
+                    <block class="Magento\Store\Block\Switcher" name="footer.store_switcher" template="switch/stores.phtml"/>
+                    <block class="Magento\Newsletter\Block\Subscribe" name="footer.newsletter" template="subscribe_footer.phtml"/>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

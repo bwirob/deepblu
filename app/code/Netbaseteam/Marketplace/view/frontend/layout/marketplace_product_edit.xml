@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="empty" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="marketplace_vendor_index"/>
+    <head>
+        <css src="Netbaseteam_Marketplace::css/product.css"/>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <body>
+        <referenceContainer name="vendor.panel.wrapper">
+            <block class="Netbaseteam\Marketplace\Block\Vendor" name="marketplace.vendor.admin" template="Netbaseteam_Marketplace::vendor/index.phtml" >
+                <block class="Netbaseteam\Marketplace\Block\Catalog\Product\EditProductForm" name="marketplace_product_edit" template="catalog/product/edit_product_form.phtml"/>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="marketplace_product_edit">
+            <!-- <block class="Magento\Framework\View\Element\Template" name="marketplace_product_add_attribute" template="Netbaseteam_Marketplace::catalog/product/edit/attribute.phtml" /> -->
+            <!-- <block class="Magento\Framework\View\Element\Template" name="marketplace_product_add_option" template="Netbaseteam_Marketplace::catalog/product/edit/option.phtml" /> -->
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Helper\Form\Gallery\Content" name="marketplace_product_add_gallery" template="catalog/product/helper/gallery.phtml" />
+            <container name="product-types"></container>
+            <container name="associated_products"></container>
+        </referenceContainer>
+
+        <referenceBlock name="marketplace_product_add_option">
+            <block class="Magento\Framework\View\Element\Template" name="new-option" template="Netbaseteam_Marketplace::catalog/product/edit/option/import.phtml" />
+        </referenceBlock>
+
+        <referenceBlock name="marketplace_product_add_attribute">
+            <block class="Magento\Framework\View\Element\Template" name="new-attribute" template="Netbaseteam_Marketplace::catalog/product/edit/attribute/list.phtml" />
+        </referenceBlock>
+
+        <referenceBlock name="marketplace_product_add_gallery">
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\NewVideo" name="new-video" template="catalog/product/edit/video.phtml" />
+        </referenceBlock>
+
+        <referenceBlock name="marketplace_product_add_configurable">
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Variations\Config\Matrix" name="sellermatrix" template="catalog/product/edit/configurable/matrix.phtml" />
+        </referenceBlock>
+        
+        <referenceBlock name="sellermatrix">
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Component\StepsWizard" name="variation-steps-wizard">
+                <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Steps\SelectAttributes" name="step1" template="catalog/product/edit/attribute/steps/select_attributes.phtml">
+                    <uiComponent name="marketplace_product_attributes_listing"/>
+                </block>
+                <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Steps\AttributeValues" name="step2" template="catalog/product/edit/attribute/steps/attributes_values.phtml"/>
+                <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Steps\Bulk" name="step3" template="catalog/product/edit/attribute/steps/bulk.phtml"/>
+                <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Steps\Summary" name="step4" template="catalog/product/edit/attribute/steps/summary.phtml"/>
+            </block>
+        </referenceBlock>
+
+        <referenceBlock name="new-option">
+            <uiComponent name="product_attribute_listing"/>
+        </referenceBlock>
+
+        <referenceBlock name="new-attribute">
+            <!-- <uiComponent name="product_attribute_listing"/> -->
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\Attribute" name="product_attribute_listing" template="catalog/product/edit/tab/attribute.phtml"/>
+        </referenceBlock>
+
+        <referenceContainer name="product-types">
+            <block name="mk_downloadable_items" class="Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\Downloadable">
+                <block name="mk.catalog.product.edit.tab.downloadable.links" class="Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\Downloadable\Links" />
+                <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\Downloadable\Samples" />
+            </block>
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Variations\Config" name="marketplace_product_add_configurable" template="catalog/product/edit/configurable.phtml" />
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\EditProductForm" name="marketplace_product_add_grouped" template="Netbaseteam_Marketplace::catalog/product/edit/grouped.phtml" />
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\Bundle" name="marketplace_product_bundle_container" />
+        </referenceContainer>
+
+        <referenceContainer name="associated_products">
+            <block class="Magento\Framework\View\Element\Template" name="associated_product_group" template="Netbaseteam_Marketplace::catalog/product/edit/associated/group.phtml">
+                <block class="Netbaseteam\Marketplace\Block\Catalog\Product\EditProductForm" name="marketplace_product_add_related" template="Netbaseteam_Marketplace::catalog/product/edit/related.phtml" />
+                <block class="Netbaseteam\Marketplace\Block\Catalog\Product\EditProductForm" name="marketplace_product_add_upsell" template="Netbaseteam_Marketplace::catalog/product/edit/upsell.phtml" />
+                <block class="Netbaseteam\Marketplace\Block\Catalog\Product\EditProductForm" name="marketplace_product_add_crosssell" template="Netbaseteam_Marketplace::catalog/product/edit/crosssell.phtml" />
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="marketplace_product_add_grouped">
+            <block class="Magento\Framework\View\Element\Template" name="grouped_product_list" template="Netbaseteam_Marketplace::catalog/product/edit/grouped/list.phtml" />
+        </referenceBlock>
+        <referenceBlock name="grouped_product_list">
+            <uiComponent name="marketplace_groupedproduct_listing"/>
+        </referenceBlock>
+
+        <referenceBlock name="marketplace_product_add_related">
+            <block class="Magento\Framework\View\Element\Template" name="related_product_list" template="Netbaseteam_Marketplace::catalog/product/edit/related/list.phtml" />
+        </referenceBlock>
+        <referenceBlock name="marketplace_product_add_upsell">
+            <block class="Magento\Framework\View\Element\Template" name="upsell_product_list" template="Netbaseteam_Marketplace::catalog/product/edit/upsell/list.phtml" />
+        </referenceBlock>
+        <referenceBlock name="marketplace_product_add_crosssell">
+            <block class="Magento\Framework\View\Element\Template" name="crosssell_product_list" template="Netbaseteam_Marketplace::catalog/product/edit/crosssell/list.phtml" />
+        </referenceBlock>
+
+        <referenceContainer name="related_product_list">
+            <uiComponent name="marketplace_relatedproduct_listing"/>
+        </referenceContainer>
+        <referenceContainer name="upsell_product_list">
+            <uiComponent name="marketplace_upsellproduct_listing"/>
+        </referenceContainer>
+        <referenceContainer name="crosssell_product_list">
+            <uiComponent name="marketplace_crosssellproduct_listing"/>
+        </referenceContainer>
+    </body>
+</page>

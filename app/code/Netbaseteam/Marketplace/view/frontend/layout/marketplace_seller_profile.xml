@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="3columns"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Netbaseteam_Marketplace::css/font-awesome.css"/>
+        <css src="Netbaseteam_Marketplace::css/owl.carousel.css"/>
+        <css src="Netbaseteam_Marketplace::css/text-animate.css"/>
+        <css src="Netbaseteam_Marketplace::css/TimeCircles.css"/>
+        <css src="Netbaseteam_Marketplace::css/seller-profile.css"/>
+    </head>
+    <body>
+        <referenceBlock name="page.messages">
+            <block class="Netbaseteam\Marketplace\Block\Seller\Profile\Vacation" name="marketplace_vacation_notifi"
+                   template="vacation/notification.phtml" />
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Marketplace\Block\Seller\Profile" name="marketplace_sellerprofilehead"
+                   template="seller/profile_top_sidebar.phtml" />
+            <block class="Netbaseteam\Marketplace\Block\Seller\Profile" name="marketplace_sellerprofile"
+                   template="seller/profile.phtml"  after="marketplace_sellerprofilehead"/>
+        </referenceContainer>
+
+        <referenceContainer name="sidebar.main">
+            <block class="Netbaseteam\Marketplace\Block\Seller\Profile" name="marketplace_sellerprofileleft"
+                   template="seller/profile_left_sidebar.phtml"  before="-">
+                   <block class="Netbaseteam\Marketplace\Block\Seller\Profile" name="seller.navigation"
+                   template="seller/navigation.phtml"  before="-"/>
+            </block>       
+        </referenceContainer>
+
+        <referenceContainer name="sidebar.additional">
+            <block class="Netbaseteam\Marketplace\Block\Seller\Profile" name="marketplace_sellerprofileright"
+                   template="seller/profile_right_sidebar.phtml"  before="-"/>
+        </referenceContainer>
+    </body>
+</page>

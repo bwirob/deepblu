@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Netbaseteam_Marketplace::marketplace" title="Marketplace Management" sortOrder="10" >
+                    <resource id="Netbaseteam_Marketplace::marketplacee" title="Marketplace" sortOrder="10">
+                        <resource id="Netbaseteam_Marketplace::marketplace_seller" title="Manage Sellers" sortOrder="10" />
+                        <resource id="Netbaseteam_Marketplace::marketplace_product" title="Manage Products" sortOrder="11" />
+                        <resource id="Netbaseteam_Marketplace::marketplace_order" title="Manage Orders" sortOrder="12" />
+                        <resource id="Netbaseteam_Marketplace::marketplace_transaction" title="Manage Transactions" sortOrder="13" />
+                        <resource id="Netbaseteam_Marketplace::marketplace_vacation" title="Manage Vacations" sortOrder="14" />
+                        <resource id="Netbaseteam_Marketplace::marketplace_locator" title="Manage Seller Locator" sortOrder="15" />
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Netbaseteam_Marketplace::marketplace_setting" title="Marketplace Settings" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

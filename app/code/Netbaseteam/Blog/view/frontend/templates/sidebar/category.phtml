@@ -1,0 +1,25 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+	$categoryData = $block->getCategoryData();
+?>
+<?php if ($block->hasCategory()): ?>
+	<div class="category sidebar-item">
+		<div class="category-content">
+			<div class="block-title">
+				<strong>Category</strong>
+			</div>
+			
+			<div class="block-content">
+				<ul class="category-list">
+					<?php foreach ($categoryData as $category): ?>
+						<li class="item">
+							<a href="<?php echo $helper->getPreBlogUrl().'/'.$category['identifier']?>">
+								<?php echo __($category['name']); ?>
+							</a>
+						</li>
+					<?php endforeach ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+<?php endif ?>

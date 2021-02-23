@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="blog_default"/>
+	<head>
+        <css src="Netbaseteam_Blog::css/post-list.css" />
+    </head>
+    <body>
+        <referenceContainer name="columns.top">
+            <block class="Netbaseteam\Blog\Block\Newpost" name="blog.new" template="new_post.phtml" />
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Blog\Block\Postlist" name="blog.postlist" template="post_list.phtml" />
+            <referenceBlock name="brand_sidebar" remove="true"/>
+        </referenceContainer>
+    </body>
+</page>

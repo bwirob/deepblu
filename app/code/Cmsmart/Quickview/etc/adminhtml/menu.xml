@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Cmsmart_Quickview::quickview" title="Quick View" module="Cmsmart_Quickview" sortOrder="30" parent="Netbase_Sun::nb_all" resource="Cmsmart_Quickview::quickview"/>
+        <add id="Cmsmart_Quickview::quickview_manage" title="Quick View" module="Cmsmart_Quickview" parent="Cmsmart_Quickview::quickview" action="adminhtml/system_config/edit/section/cmsmart_quickview/" sortOrder="60" resource="Cmsmart_Quickview::quickview_manage"/>
+    </menu>
+</config>

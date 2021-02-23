@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Netbaseteam_Blog::css/default.css" />
+    </head>
+    <body>
+    	<referenceContainer name="sidebar.additional">
+            <block class="Netbaseteam\Blog\Block\Sidebar" name="blog.sidebar" template="sidebar.phtml" before="-"
+                cacheable="false">
+                <block class="Netbaseteam\Blog\Block\Sidebar\Search" name="blog.sidebar.search" template="sidebar/search.phtml" />
+                <block class="Netbaseteam\Blog\Block\Sidebar\Recent" name="blog.sidebar.recent" template="sidebar/recent.phtml" ifconfig="blog/blog_page/show_recent_post" />
+                <block class="Netbaseteam\Blog\Block\Sidebar\Category" name="blog.sidebar.category" template="sidebar/category.phtml" ifconfig="blog/blog_page/show_category_post" cacheable="false" />
+                <block class="Netbaseteam\Blog\Block\Sidebar\Recentcomment" name="blog.sidebar.recentcomment" template="sidebar/recent_comment.phtml" ifconfig="blog/blog_page/show_comment_recent" />
+                <block class="Netbaseteam\Blog\Block\Sidebar\Tag" name="blog.sidebar.tag" template="sidebar/tag.phtml" ifconfig="blog/blog_page/show_tag_post" />
+            </block>
+        </referenceContainer>
+    </body>
+</page>

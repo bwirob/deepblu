@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="netbaseteam" translate="label" sortOrder="9000">
+            <label>Netbaseteam</label>
+        </tab>
+        <section id="cmsmart_navigation" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Navigation</label>
+            <tab>netbaseteam</tab>
+            <resource>Netbaseteam_Navigation::cmsmart_navigation</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="display_mode" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Mode</label>
+                    <source_model>Netbaseteam\Navigation\Model\Config\Source\DisplayMode</source_model>
+                </field>
+                <field id="type_of_show" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Filter Display</label>
+                    <depends>
+                        <field id="display_mode">1</field>
+                    </depends>
+                    <source_model>Netbaseteam\Navigation\Model\Config\Source\FilterDisplay</source_model>
+                </field>
+                <field id="show_all_attribute" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show All Attributes Filter</label>
+                    <comment>Attribute Filter will disable if it have product count equal 0</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="stock_filter" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Stock Filter</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Please configure: Stores->Configuration->Catalog->Inventory->Stock Options->Display Out of Stock Products to show out of stock products.</comment>
+                </field>
+                <!--<field id="position" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                    <!--<label>Position</label>-->
+                    <!--<depends>-->
+                        <!--<field id="enable">1</field>-->
+                    <!--</depends>-->
+                <!--</field>-->
+            </group>
+            <!--<group id="rating_filter" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                <!--<label>Rating Filter</label>-->
+                <!--<field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                    <!--<label>Active</label>-->
+                    <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+                <!--</field>-->
+                <!--<field id="label" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                    <!--<label>Rating Label</label>-->
+                <!--</field>-->
+            <!--</group>-->
+        </section>
+    </system>
+</config>

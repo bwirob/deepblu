@@ -1,1 +1,0 @@
-The Codazon Slideshow module allows creating, editing and managing banner slider with different content type.

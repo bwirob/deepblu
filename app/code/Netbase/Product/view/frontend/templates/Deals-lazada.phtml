@@ -1,0 +1,277 @@
+<?php
+/**
+* Copyright © 2016 SW-THEMES. All rights reserved.
+*/
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+	$showWishlist = true;
+    $showCompare = true;
+	$_helper = $this->helper('Netbase\Product\Helper\Data');
+	$config = $_helper->getConfig("pro_deal/general");
+	$categories = explode(',', $config['categories']);
+	$title = $_helper->getTitle('pro_deal/general/title');
+	$backgroundUrl = $_helper->getBanner('pro_deal/general/banner'); 
+	$currentSymbol = $_helper->getCurrencySymbol(); 
+	$start_date = $block->getStartDate();
+	$end_date = $block->getEndDate();
+	$tabs = $_helper->getAllTabs('pro_deal/general/categories','deal-tab-');  
+?>
+<section class="deal-product home-product-tab-lazada flashsale-product-lazada home-product-tab animation-element slide-left">  
+	<div class="inner-block container">
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+				<div class="home-product-title">
+					<div class="row">
+						<div class="title-left col-md-3 col-xs-3">
+							<h3><?php echo $title; ?></h3> 
+						</div>
+						<div class="home-product-tab-title col-md-9 col-xs-9"> 
+							<div class="countdown-outer">
+								<div class="countdown-inner">
+									<div class="deal-countdown" data-date="<?php echo $end_date; ?>" data-options="{&quot;time&quot;: { &quot;Hours&quot;: { &quot;show&quot;: true }, &quot;Minutes&quot;: { &quot;show&quot;: true }, &quot;Seconds&quot;: { &quot;show&quot;: true }}}"></div> 
+								</div>
+							</div>  
+						</div> 
+					</div>
+				</div>
+			</div>
+			<div class="home-product-content">
+				<div class="col-md-3 col-xs-12 banner-image-sale">
+					<a href="#">
+						<img src="<?php echo $backgroundUrl; ?>" alt="">
+					</a>
+				</div>
+				<div class="col-md-9 col-xs-12  home-product-tab-content">  
+					<?php
+						$j = 1; foreach($categories as $categoryId): 
+						$productCollection = $block->getDealsProducts($categoryId);
+					?>
+					<?php if ($j == 3): ?>
+						<div id="deal-tab-<?php echo $j; ?>" class="tab-content <?php if($j == 3){ echo 'show';} ?>"> 
+							<div class="navslider">
+								<a class="prev" href="#"><i class='icon-angle-circled-left'></i></a>
+								<a class="next" href="#"><i class='icon-angle-circled-right'></i></a>
+							</div>
+							<div class="home-product-slider products-grid nb-list">
+								<?php
+									$i=0; foreach($productCollection as $_product):
+								?>
+									<div class="item item<?php echo $i?>">
+										<div class="product-item-info" data-container="product-grid">
+											<?php      
+												$originalPrice = $_product->getPrice();  //200 
+												$specialPrice = $_product->getSpecialPrice();  
+											?>
+											<?php if(($specialPrice)&&($specialPrice <= $originalPrice)){?>	
+												<div class="sale">
+													<span> 
+														<?php
+															$saleof= abs(($specialPrice/($originalPrice))*100-100);
+															echo '- ';    
+															print_r(floor($saleof));
+															echo '%'; 
+														?>									 
+													</span> 
+												</div>
+											<?php } ?>
+								            <?php
+											    $image = 'category_page_grid' or 'category_page_list';
+											    $_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+											    $productImage = $_imagehelper->init($_product, $image)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(160)->getUrl();
+											?>
+								 			<div class="item-top">
+									 			<a href="<?php echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+													<img alt="" src="<?php echo $productImage; ?>" />
+												</a> 
+												<div class="actions"> 
+													<div class="quickview actions-all">
+														<?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")
+															->setData('pid', $_product->getId())
+															->setTemplate("Cmsmart_Quickview::quickview.phtml")->toHtml();?>
+													</div>
+
+													<?php
+														$compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');
+													?>
+													<div class="tocompare-div actions-all">
+														<a href="#"
+														   class="action tocompare"
+														   title="<?php echo __('Add To Compare'); ?>"
+														   aria-label="<?php echo $block->escapeHtml(__('Add to Compare')); ?>"
+														   data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($_product); ?>'
+														   role="button">
+														   <i class="fa fa-refresh" aria-hidden="true"></i>
+														</a>
+													</div>
+													<?php if ($showWishlist || $showCompare): ?>
+														<?php
+														$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+														$objBlock = $objectManagerr->get('\Magento\CatalogWidget\Block\Product\ProductsList');
+														?>
+														<div class="actions-secondary actions-all" data-role="add-to-links">
+															<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
+																<a href="#"
+																   data-post='<?php /* @escapeNotVerified */ echo $objBlock->getAddToWishlistParams($_product); ?>'
+																   class="action towishlist" data-action="add-to-wishlist"
+																   title="<?php /* @escapeNotVerified */ echo __('Add to Wish List') ?>">
+																	<span><i class='icon-heart-1'></i></span>
+																</a>
+															<?php endif; ?> 
+														</div>
+													<?php endif; ?> 
+
+												</div>
+				                            </div>
+											<div class="product details product-item-details">
+												<div class="inner-product">
+													<?php
+														$originalPrice = $_product->getData('price')+0;
+														$finalPrice = $_product->getData('special_price')+0; 
+													?>
+													<a title="<?php echo $_product->getName(); ?>" href="<?php echo $_product->getProductUrl() ?>" class="product-item-link">
+										                <?php echo $_product->getName(); ?>
+										            </a> 
+													<?php $ratingSummary = $this->getRatingSummary($_product);  ?>
+													<div class="product-reviews-summary">
+													    <div class="rating-summary">
+													        <span class="label"><span><?php /* @escapeNotVerified */ echo __('Rating') ?>:</span></span>
+													        <div class="rating-result" title="<?php /* @escapeNotVerified */ echo $ratingSummary; ?>%">
+													            <span style="width:<?php /* @escapeNotVerified */ echo $ratingSummary ? $ratingSummary: '0'; ; ?>%"></span>
+													        </div>
+													    </div>
+													</div> 
+													<div class="price-home <?php if($finalPrice){ echo 'price-sale'; } ?>">
+														<?php 
+															if ($originalPrice) {
+																echo "<span class='normal'>".$currentSymbol.$originalPrice.'.00'."</span>";
+															}; 
+															if ($finalPrice) {
+																echo "<span class='special'>".$currentSymbol.$finalPrice.'.00'."</span>";
+															};
+															
+														?>
+													</div>
+													<div class="actions-primary">
+		                                                <?php if ($_product->isSaleable()): ?>
+		                                                    <?php if ($_product->getTypeInstance()->hasRequiredOptions($_product)): ?>
+		                                                        <button class="action tocart primary one"
+		                                                                data-mage-init='{"redirectUrl":{"url":"<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($_product) ?>"}}'
+		                                                                type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+		                                                            <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+		                                                        </button>
+		                                                    <?php else: ?>
+		                                                        <?php
+		                                                            $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+		                                                            
+		                                                            $postDatas = $_helper->getAddToCartPostParams($_product);
+		                                                            $postData = json_encode($postDatas);
+		                                                        ?>
+		                                                        <button class="action tocart primary two"
+		                                                                data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
+		                                                                type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+		                                                            <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+		                                                        </button>
+		                                                    <?php endif; ?>
+		                                                <?php else: ?>
+		                                                    <?php if ($_product->getIsSalable()): ?>
+		                                                        <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+		                                                    <?php else: ?>
+		                                                        <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+		                                                    <?php endif; ?>
+		                                                <?php endif; ?>
+		                                            </div>
+									            </div>
+									        </div>
+								        </div> 
+								    </div>
+								<?php
+									if ($i == 12) {
+										break;
+									}
+									$i++; endforeach;
+								?>
+							</div>
+						</div>
+					<?php endif; ?>
+					<?php $j++; endforeach; ?>
+				</div>
+			</div>
+		</div>
+	 </div>
+</section>
+
+<script type="text/javascript">
+    //Product owl carousel slider
+    require(['jquery','owlCarousel','TimeCircles'], function($) { 
+		jQuery(document).ready(function() {		
+			$('.deal-product div.products-grid').owlCarousel({
+				items: 4,
+				itemsCustom: [ 
+					[0, 1], 
+					[568, 2], 
+					[768, 3], 
+					[992, 3], 
+					[1200, 3] 
+				],
+				pagination: false,
+				slideSpeed : 800,
+				addClassActive: true,
+				scrollPerPage: false,
+				touchDrag: false,
+				afterAction: function (e) {
+					if(this.$owlItems.length > this.options.items){
+						$('.deal-product .navslider').show();
+					}else{
+						$('.deal-product .navslider').hide();
+					}
+				}
+				//scrollPerPage: true,
+			});
+			$('.deal-product .navslider .prev').on('click', function(e){
+				e.preventDefault();
+				$('.deal-product div.products-grid').trigger('owl.prev');
+			});
+			$('.deal-product .navslider .next').on('click', function(e){
+				e.preventDefault();
+				$('.deal-product div.products-grid').trigger('owl.next');
+			});
+		}); 
+		$(".deal-countdown").TimeCircles({
+			circle_bg_color: "rgba(0,0,0.0)",
+			fg_width: 0,
+			bg_width: 10,
+			use_background: false,
+			text_size: 1,
+			number_size: 1,
+			total_duration: "Auto",
+			direction: "Counter-clockwise",
+			use_top_frame: false,
+			start_angle: 0,
+			time: {
+				Days: {
+					show: true,
+					text: "D",
+					color: "#000"
+				},
+				Hours: {
+					show: true,
+					text: "H",
+					color: "#000"
+				},
+				Minutes: {
+					show: true,
+					text: "M",
+					color: "#000"
+				},
+				Seconds: {
+					show: true,
+					text: "S",
+					color: "#000"
+				}
+			}
+		});
+    });    
+</script>

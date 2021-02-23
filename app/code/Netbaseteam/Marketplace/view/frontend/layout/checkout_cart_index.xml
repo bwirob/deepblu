@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance dc" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceBlock name="checkout.cart.form">
+        <action method="setTemplate">
+            <argument name="template" xsi:type="string">Netbaseteam_Marketplace::cart/form.phtml</argument>
+        </action>
+    </referenceBlock>
+    <referenceBlock name="checkout.cart.methods.bottom">
+        <action method="setTemplate">
+            <argument name="template" xsi:type="string">Netbaseteam_Marketplace::cart/methods.phtml</argument>
+        </action>
+    </referenceBlock>
+    <referenceBlock name="checkout.cart.methods.onepage.bottom">
+        <action method="setTemplate">
+            <argument name="template" xsi:type="string">Netbaseteam_Marketplace::onepage/link.phtml</argument>
+        </action>
+    </referenceBlock>
+    <referenceBlock name="checkout.cart.totals">
+        <arguments>
+            <argument name="jsLayout" xsi:type="array">
+                <item name="components" xsi:type="array">
+                    <item name="block-totals" xsi:type="array">
+                        <item name="children" xsi:type="array">
+                            <item name="customfee" xsi:type="array">
+                                <item name="component"  xsi:type="string">Netbaseteam_Marketplace/js/view/checkout/cart/totals/customfee</item>
+                                <item name="sortOrder" xsi:type="string">20</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">Netbaseteam_Marketplace/checkout/cart/totals/customfee</item>
+                                    <item name="title" xsi:type="string" translate="true">Subtotal Selected</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </referenceBlock>
+</page>

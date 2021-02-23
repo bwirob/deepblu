@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="context" xsi:type="configurableObject">
+        <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\Context</argument>
+        <argument name="namespace" xsi:type="string">marketplace_report_listing</argument>
+    </argument>
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">marketplace_report_listing.marketplace_report_listing_data_source</item>
+            <item name="deps" xsi:type="string">marketplace_report_listing.marketplace_report_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">marketplace_report_listing_columns</item>
+    </argument>
+    <dataSource name="marketplace_report_listing">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">SalesReportDataProvider</argument>
+            <argument name="name" xsi:type="string">marketplace_report_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="marketplace/sales/report"/>
+                    <!-- <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item> -->
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="marketplace_report_listing_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="childDefaults" xsi:type="array">
+                    <item name="fieldAction" xsi:type="array">
+                        <item name="provider" xsi:type="string">marketplace_report_listing.marketplace_report_listing.marketplace_report_listing_columns_editor</item>
+                        <item name="target" xsi:type="string">startEdit</item>
+                        <item name="params" xsi:type="array">
+                            <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                            <item name="1" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <column name="increment_id" class="Netbaseteam\Marketplace\Ui\Component\Listing\Columns\Order\Increment">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortable" xsi:type="string">false</item>
+                    <item name="indexField" xsi:type="string">order_id</item>
+                    <item name="label" xsi:type="string" translate="true">Order#</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="product_name" class="Netbaseteam\Marketplace\Ui\Component\Listing\Columns\Frontend\Productname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="indexField" xsi:type="string">product_id</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </actionsColumn>
+        <column name="price" class="Magento\Catalog\Ui\Component\Listing\Columns\Price" sortOrder="30">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Price</label>
+            </settings>
+        </column>
+        <column name="qty" sortOrder="40">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Qty</label>
+            </settings>
+        </column>
+        <column name="earning" class="Magento\Catalog\Ui\Component\Listing\Columns\Price" sortOrder="50">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Earning</label>
+            </settings>
+        </column>
+        <column name="created_at" class="Netbaseteam\Marketplace\Ui\Component\Listing\Columns\Order\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Date</item>
+                    <item name="dateFormat" xsi:type="string">MMM dd, YYYY</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                </item>
+            </argument>
+        </column>
+        <column name="status" class="Netbaseteam\Marketplace\Ui\Component\Listing\Columns\Order\Status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

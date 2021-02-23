@@ -1,0 +1,91 @@
+<?php
+
+
+namespace Cmsmart\Megamenu\Setup;
+
+use Magento\Framework\Setup\UpgradeSchemaInterface;
+use Magento\Framework\Setup\ModuleContextInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
+
+/**
+ * @codeCoverageIgnore
+ */
+class UpgradeSchema implements UpgradeSchemaInterface
+{
+    public function upgrade(SchemaSetupInterface $setup,
+                            ModuleContextInterface $context){
+        $setup->startSetup();
+        if (version_compare($context->getVersion(), '1.0.1') < 0) {
+            /** @var EavSetup $eavSetup */
+			$eavSetup = $this->eavSetupFactory->create();
+			 
+			$eavSetup->addAttribute(
+				\Magento\Catalog\Model\Category::ENTITY,
+				'custom_attribute',
+				[
+					'type'         => 'varchar',
+					'label'        => 'Custom Attribute',
+					'group'        => 'Example',
+					'input'        => 'test',
+					'global'       => Attribute::SCOPE_GLOBAL,
+					'visible'      => true,
+					'required'     => false,
+					'user_defined' => false,
+					'sort_order'   => 300
+				]
+			);
+        }
+		
+		if (version_compare($context->getVersion(), '1.0.2') < 0) {
+			$eavSetup->addAttribute('catalog_category', 'thumbnail', array(
+				'input'   => 'image',
+				'type'    => 'varchar',
+				'backend' => 'catalog/category_attribute_backend_image',
+				'group'   => 'Example',
+				'label'         => 'Thumbnail Image',
+				'visible'       => 1,
+				'required'      => 0,
+				'user_defined' => 1,
+				'frontend_input' =>'',
+				'global'        => \Magento\Catalog\Model\ResourceModel\Eav\Attribute::SCOPE_GLOBAL,
+				'visible_on_front'  => 1,
+			));
+		}
+		
+		
+		if (version_compare($context->getVersion(), '1.0.3') < 0) {
+			/* $eavSetup->addAttribute(
+				\Magento\Catalog\Model\Category::ENTITY,
+				'thumb1',
+				[
+					'input'   => 'image',
+					'type'    => 'varchar',
+					'label'   => 'Thumbnail',
+					'backend' => 'catalog/category_attribute_backend_image',
+					'required' => false,
+					'sort_order' => 30,
+					'global'     => \Magento\Catalog\Model\ResourceModel\Eav\Attribute::SCOPE_GLOBAL,
+					'group' => 'Thumbnail',
+					'required'      => 0,
+					'visible'       => 1,
+				]
+			); */
+			
+			$eavSetup->addAttribute('catalog_category', 'thumb1', array(
+				'input'   => 'image',
+				'type'    => 'varchar',
+				'backend' => 'catalog/category_attribute_backend_image',
+				'group'   => 'Example',
+				'label'         => 'Thumbnail Image',
+				'visible'       => 1,
+				'required'      => false,
+				'user_defined' => 1,
+				'frontend_input' =>'',
+				'global'        => \Magento\Catalog\Model\ResourceModel\Eav\Attribute::SCOPE_GLOBAL,
+				'visible_on_front'  => 1,
+			));
+		}
+
+        $setup->endSetup();
+    }
+}

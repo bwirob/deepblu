@@ -1,0 +1,112 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php $_order = $block->getOrder() ?>
+<?php $productIds = $block->getProductIds();?>
+<?php foreach ($_order->getInvoiceCollection() as $_invoice): ?>
+    <?php if(!$_invoice->getId()):?>
+        <div id="marketplace-invoice">
+            <div class="order-title">
+                <strong><?php /* @escapeNotVerified */ echo __('New Invoice') ?></strong>
+            </div>
+            <form name="new-invoice" id="new-invoice"
+                        action="<?php echo $this->getUrl('marketplace/order_invoice/save', ['order_id' => $_order->getId()]); ?>"
+                        method="post"
+                        novalidate="novalidate">
+                <div class="table-wrapper table-order-items invoice">
+                    <table class="data table table-order-items invoice" id="my-invoice-table-<?php /* @escapeNotVerified */ echo $_invoice->getId(); ?>">
+                        <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Items Invoiced') ?></caption>
+                        <thead>
+                        <tr>
+                            <th class="col name"><?php /* @escapeNotVerified */ echo __('Product Name') ?></th>
+                            <th class="col sku"><?php /* @escapeNotVerified */ echo __('SKU') ?></th>
+                            <th class="col price"><?php /* @escapeNotVerified */ echo __('Price') ?></th>
+                            <th class="col qty"><?php /* @escapeNotVerified */ echo __('Qty to Invoice') ?></th>
+                            <th class="col subtotal"><?php /* @escapeNotVerified */ echo __('Subtotal') ?></th>
+                        </tr>
+                        </thead>
+                        <?php $_items = $_invoice->getAllItems(); ?>
+                        <?php $_count = count($_items) ?>
+                        <?php foreach ($_items as $_item): ?>
+                            <?php if(in_array($_item->getOrderItem()->getProductId(), $productIds)):?>
+                                <?php if ($_item->getOrderItem()->getParentItem()) {
+                                    continue;
+                                } ?>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong class="product name product-item-name"><?php echo $_item->getName()?></strong>
+                                            <?php if(isset($_item->getOrderItem()->getData('product_options')['attributes_info'])):?>
+                                                <dl class="item-options">
+                                                    <dt><?php echo $_item->getOrderItem()->getData('product_options')['attributes_info'][0]['label']?></dt>
+                                                    <dd><?php echo $_item->getOrderItem()->getData('product_options')['attributes_info'][0]['value']?></dd>
+                                                </dl>
+                                            <?php endif;?>
+                                        </td>
+                                        </td>
+                                        <td><?php echo $_item->getSku()?></td>
+                                        <td>
+                                            <span class="price-excluding-tax" data-label="Excl. Tax">
+                                                <span class="cart-price">
+                                                    <span class="price"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($_item->getPrice(), true, false); ?></span>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td><input type="text" class="input-text" name="invoice[items][<?php echo $_item->getOrderItem()->getItemId()?>]" value="<?php echo (int)$_item->getQty()?>"></td>
+                                        <td>
+                                            <span class="price-excluding-tax" data-label="Excl. Tax">
+                                                <span class="cart-price">
+                                                    <span class="price"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($_item->getRowTotal(), true, false); ?></span> 
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            <?php endif;?>
+                        <?php endforeach; ?>
+                        <tfoot>
+                        <?php echo $block->getInvoiceTotalsHtml($_invoice)?>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="field">
+                    <label for="invoice_comment_text">
+                        <span>Invoice Comments</span>
+                    </label>
+                    <div class="field-control">
+                        <textarea id="invoice_comment_text" name="invoice[comment_text]" rows="3" cols="5"></textarea>
+                    </div>
+                </div>
+                <div class="field-append">
+                    <input id="notify_customer" name="invoice[comment_customer_notify]" value="1" type="checkbox" disabled="">
+                    <label for="notify_customer">Append Comments</label>
+                </div>
+                <div class="field-email">
+                    <input id="send_email" name="invoice[send_email]" value="1" type="checkbox">
+                    <label for="send_email">Email Copy of Invoice</label>
+                </div>
+                <div class="primary">
+                    <button type="submit" class="action submit primary"><span>Submit</span></button>
+                </div>
+            </form>        
+        </div> 
+    <?php endif;?>
+    <?php echo $block->getInvoiceCommentsHtml($_invoice)?>
+<?php endforeach; ?>
+<script>
+    require(['jquery', 'jquery/ui'], function($){ 
+        $("table.invoice:not(:has(>tbody>tr))").parent().parent().remove();
+        $("#send_email").change(function() {
+            if(this.checked) {
+                $("#notify_customer").removeAttr("disabled"); 
+            } else {
+                $("#notify_customer").attr("disabled","disabled");
+            }
+        });
+    });
+</script>

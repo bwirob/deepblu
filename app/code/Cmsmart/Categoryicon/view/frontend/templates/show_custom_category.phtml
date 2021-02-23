@@ -1,0 +1,69 @@
+<?php // @{{block class="Cmsmart\Categoryicon\Block\Categoryicon" template="Cmsmart_Categoryicon::show_custom_category.phtml"}} ?>
+<?php
+$subCats = $this->getCategories();
+$count_cats = sizeof($subCats);
+if($count_cats) {
+	//\zend_debug::dump($subCats[0]["name"]);
+	if($count_cats >= 4)$count_cats = 4;
+?>
+
+<div class="men-category">
+	<div class="animation-element banner-nb-bottom">
+	<?php
+		echo $this->getLayout()->createBlock('Netbase\Product\Block\Deals')
+			->setData('category_id', $this->getCurrentCategoryId())
+			->setTemplate('Netbase_Product::Deals_cate.phtml')->toHtml(); 
+	?>
+	</div>
+
+	<div class="men-category-all row">
+		<?php 
+			for($i=0; $i<$count_cats; $i++){ 
+				$cat_id = $subCats[$i]["cat_id"];
+				$category = $this->_loadCat($cat_id);
+		?>
+		<div class="col-xs-12 col-md-6 each-mca animation-element scroll-zoom-out">
+			<a class="zoom-nb" href="<?php echo $this->_getCatUrl($category) ?>"><img src="<?php echo $category->getImageUrl(); ?>" alt="" /> </a>
+			<div class="each-mca-text">
+				<strong><?php echo $subCats[$i]["name"]; ?></strong>
+				
+				<ul>
+					<?php 
+					$subCats1 = $this->getCategories($cat_id);
+					$count_cats1 = sizeof($subCats1);
+					if($count_cats1) {
+						if($count_cats1 >= 4)$count_cats1 = 4;
+						for($j=0; $j<$count_cats1; $j++){ 
+						$category1 = $this->_loadCat($subCats1[$j]["cat_id"]);
+					?>
+						<li><a href="<?php echo $this->_getCatUrl($category1) ?>"><i class="fa fa-angle-right"></i><?php echo $subCats1[$j]["name"]; ?></a></li>
+					<?php }
+					}
+					?>
+				</ul>
+				
+				<a href="<?php echo $this->_getCatUrl($category) ?>"><?php echo __('VIEW ALL') ?></a>
+			</div>
+		</div>
+		<?php } ?>
+	</div>
+	<div class="animation-element banner-nb-bottom">
+	<?php
+		echo $this->getLayout()->createBlock('Netbase\Product\Block\Bestseller')
+				->setData('category_id', $this->getCurrentCategoryId())
+				->setTemplate('Netbase_Product::Bestseller_cate.phtml')->toHtml();
+	?>  
+	</div>
+	<?php		
+		echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block-banner-category')->toHtml();
+	?>
+	<div class="animation-element banner-nb-bottom">
+	<?php
+		echo $this->getLayout()->createBlock('Netbase\Product\Block\Featurerequest')
+				->setData('category_id', $this->getCurrentCategoryId())
+				->setTemplate('Netbase_Product::Featured_cate.phtml')->toHtml();
+	?>
+	</div>
+</div>
+
+<?php } ?>

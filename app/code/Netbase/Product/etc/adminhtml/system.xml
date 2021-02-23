@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="netbase_product" translate="label" sortOrder="60">
+            <label>Home Products Tab</label>
+        </tab>
+        <!-- <section id="product" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Product</label>
+            <tab>general</tab>
+            <resource>Netbase_Product::config_product</resource>
+            <group id="view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product View Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Product On Frontend</label>
+                    <source_model>Magento\Backend\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section> -->
+        <section id="pro_bestseller" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Bestseller Products</label>
+            <tab>netbase_product</tab>
+            <resource>Netbase_Product::config</resource>
+            <group id="general" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="title" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Title</label>
+                </field>
+                <field id="categories" translate="label comment" type="multiselect" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select category</label>
+                    <source_model>Netbase\Product\Model\Config\Featured\Categories</source_model>
+                    <comment>Please select category you want to show products.</comment>
+                </field>
+                <field id="banner" translate="label" type="image" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Banner Left</label>
+                    <comment>Allowed file types:PNG, GIF, JPG, JPEG.</comment>
+                    <backend_model>Netbase\Product\Model\Config\Backend\Image\Banner</backend_model>
+                    <base_url type="media" scope_info="1">sun/banner</base_url>
+                </field>
+            </group> 
+        </section>
+
+        <section id="pro_deal" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Deal Products</label>
+            <tab>netbase_product</tab>
+            <resource>Netbase_Product::config</resource>
+            <group id="general" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Title</label>
+                </field>
+                <field id="categories" translate="label comment" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select category</label>
+                    <source_model>Netbase\Product\Model\Config\Featured\Categories</source_model>
+                    <comment>Please select category you want to show products.</comment>
+                </field>
+                <field id="start_date" translate="label comment" sortOrder="40" type="text" showInDefault="1" showInStore="1" >
+                    <label>Start Date</label>
+                    <frontend_model>Netbase\Product\Block\DatePicker</frontend_model>
+                </field>
+                <field id="end_date" translate="label comment" sortOrder="50" type="text" showInDefault="1" showInStore="1" >
+                    <label>End Date</label>
+                    <frontend_model>Netbase\Product\Block\DatePicker</frontend_model>
+                </field>
+                  <field id="banner" translate="label" type="image" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Left</label>
+                    <comment>Allowed file types:PNG, GIF, JPG, JPEG.</comment>
+                    <backend_model>Netbase\Product\Model\Config\Backend\Image\Banner</backend_model>
+                    <base_url type="media" scope_info="1">sun/banner</base_url>
+                </field>
+            </group>
+        </section>
+
+        <section id="pro_new" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>New Products</label>
+            <tab>netbase_product</tab>
+            <resource>Netbase_Product::config</resource>
+            <group id="general" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="title" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Title</label>
+                </field>
+                <field id="attribute_code" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Attribute Code</label>
+                </field>
+                <field id="categories" translate="label comment" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select category</label>
+                    <source_model>Netbase\Product\Model\Config\Featured\Categories</source_model>
+                    <comment>Please select category you want to show products.</comment>
+                </field>
+                <field id="banner" translate="label" type="image" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Banner Left</label>
+                    <comment>Allowed file types:PNG, GIF, JPG, JPEG.</comment>
+                    <backend_model>Netbase\Product\Model\Config\Backend\Image\Banner</backend_model>
+                    <base_url type="media" scope_info="1">sun/banner</base_url>
+                </field>
+            </group> 
+        </section>
+
+        <section id="pro_featured" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Featured Products</label>
+            <tab>netbase_product</tab>
+            <resource>Netbase_Product::config</resource>
+            <group id="general" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="title" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Title</label>
+                </field>
+                <field id="attribute_code" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Attribute Code</label>
+                </field>
+                <field id="categories" translate="label comment" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select category</label>
+                    <source_model>Netbase\Product\Model\Config\Featured\Categories</source_model>
+                    <comment>Please select category you want to show products.</comment>
+                </field>
+                <field id="banner" translate="label" type="image" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Banner Left</label>
+                    <comment>Allowed file types:PNG, GIF, JPG, JPEG.</comment>
+                    <backend_model>Netbase\Product\Model\Config\Backend\Image\Banner</backend_model>
+                    <base_url type="media" scope_info="1">sun/banner</base_url>
+                </field>
+            </group>
+        </section>
+
+    </system>
+</config>

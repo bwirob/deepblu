@@ -1,0 +1,5 @@
+<?php echo $block->getBeforeHtml(); ?>
+<button <?php /* @escapeNotVerified */ echo $block->getButtonAttributesHtml(), $block->getUiId(); ?>>
+    <span><?php /* @escapeNotVerified */ echo $block->getLabel(); ?></span>
+</button>
+<?php echo $block->getAfterHtml(); ?>

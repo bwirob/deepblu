@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Netbaseteam_Marketplace::vendors/bootstrap/css/bootstrap.min.css"/>
+        <css src="Netbaseteam_Marketplace::css/group-item.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\MainItem" name="marketplace.seller.main.item"
+                   template="seller/main-item.phtml" />
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\GroupItem" name="marketplace.seller.group.item"
+            template="seller/group-item.phtml" after="marketplace.seller.main.item" />
+        </referenceContainer>
+    </body>
+</page>

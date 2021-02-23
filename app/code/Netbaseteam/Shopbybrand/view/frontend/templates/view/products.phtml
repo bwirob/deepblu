@@ -1,0 +1,88 @@
+<?php 
+    $_shopbybrand = $this->getCollection(); 
+    $imagewidth = '200';
+    $imageheight = '200';
+    $mode = 'grid';
+    $image = 'brand_products_content_widget_grid';
+    $type = 'widget-new-grid';
+    $id = $this->getRequest()->getParam('id');
+    $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+    $currentStore = $storeManager->getStore();
+    $mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);  
+?>
+<h2> Products </h2>
+    <div>
+        <?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+            <div class="items">
+                <?php if ($shopbybrandItem->getbrand_id() == $id): ?>
+                    
+                    <?php 
+                        $product = explode("&", $shopbybrandItem->getproduct_ids());       
+                    ?>
+                    <?php foreach ($product as $item): ?>
+                        <div class="items-box">
+                            <?php
+                                $products=$this->getLoadProduct($item);
+                                $image_url = $block->imageHelperObj()->init($products, 'product_page_image_small')->setImageFile($products->getFile())->resize($imagewidth, $imageheight)->getUrl();
+                            ?>
+                            <a href="<?php /* @ */echo $products->getProductUrl() ?>" class="product-item-photo">
+                                <img src="<?php echo $image_url; ?>" alt="<?php echo $this->escapeHtml($products->getBrand_title()) ?>" />
+                            </a>
+                            <div class="product-item-details">
+                                <strong class="product-item-name">
+                                    <a title="<?php echo $block->escapeHtml($products->getBrand_title()) ?>" href="<?php /* @ */echo $products->getProductUrl() ?>" class="product-item-link">
+                                        <?php echo $block->escapeHtml($products->getName()) ?>
+                                     </a>
+                                </strong><?php echo $this->getProductPricetoHtml($products, $type);?>
+                                <div>
+                                     <?php echo '$'.number_format($products->getPrice('final_price'), 2); ?>
+                                </div>
+                                <div class="product-item-actions">
+                                    <div class="actions-primary">
+                                        <?php if ($products->isSaleable()): ?>
+                                            <?php if ($products->getTypeInstance()->hasRequiredOptions($products)): ?>
+                                                <button class="action tocart primary" data-mage-init='{"redirectUrl":{"url":"<?php /* @ */echo $block->getAddToCartUrl($products) ?>"}}' type="button" title="<?php /* @ */echo __('Add to Cart') ?>">
+                                                    <span>
+                                                        <?php /* @ */echo __('Add to Cart') ?>
+                                                    </span>
+                                                </button>
+                                            <?php else: ?>
+                                                <?php
+                                                    $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+                                                    $postData = $postDataHelper->getPostData($block->getAddToCartUrl($products) , ['product' => $products->getId() ]);
+                                                ?>
+                                                <button class="action tocart primary" data-post='<?php echo $postData; ?>' type="button" title="<?php echo __('Add to Cart') ?>">
+                                                    <span><?php echo __('Add to Cart') ?></span>
+                                                </button>
+                           
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <?php if ($products->getIsSalable()): ?>
+                                                <div class="stock available">
+                                                    <span>
+                                                        <?php echo __('In stock') ?>
+                                                    </span>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="stock unavailable">
+                                                    <span><?php /* @ */
+                                                        echo __('Out of stock') ?>
+                                                    </span>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    <?php endforeach; ?> 
+                <?php endif ?>
+            </div>
+        <?php endforeach; ?> 
+        <div class="toolbar-bottom">
+             <div class="toolbar bottom">
+                <?php echo $block->getChildHtml('shopbybrand.index.view.products');  ?>
+             </div>
+      </div>
+    </div>

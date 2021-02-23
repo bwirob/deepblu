@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="productvideo" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Productvideo</label>
+            <tab>general</tab>
+            <resource>Netbaseteam_Productvideo::config_productvideo</resource>
+            <group id="view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Productvideo View Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Productvideo On Frontend</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				
+				<field id="show_rate_video" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Rating Video</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+						<field id="productvideo/view/enabled">1</field>
+					</depends>
+				</field>
+				
+				<field id="show_upload_video" translate="label" type="select" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow Upload Video on Front-end</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+						<field id="productvideo/view/enabled">1</field>
+					</depends>
+				</field>
+				
+				<field id="max_file_size" translate="label" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max File Size</label>
+					<comment>Set maximum file size for videos upload from frontend. Default: 10Mb. Note: Video file size upload less than video file size upload configuration on sever.</comment>
+					<depends>
+						<field id="productvideo/view/enabled">1</field>
+						<field id="productvideo/view/show_upload_video">1</field>
+					</depends>
+				</field>
+				
+				<field id="allowed_groups" translate="label comment" sortOrder="400" type="multiselect" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Frontend Uploads</label>
+					<source_model>Netbaseteam\Productvideo\Model\Source\Customergroup</source_model>
+					<depends>
+						<field id="productvideo/view/enabled">1</field>
+						<field id="productvideo/view/show_upload_video">1</field>
+					</depends>
+				</field>
+            </group>
+        </section>
+    </system>
+</config>

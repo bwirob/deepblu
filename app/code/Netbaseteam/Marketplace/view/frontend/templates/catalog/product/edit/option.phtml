@@ -1,0 +1,23 @@
+<?php
+// @codingStandardsIgnoreFile
+
+?>
+<li class="field">
+  <label class="label"><?php echo __('Customizable Options') ?>:</label>
+    <div class="row">
+        <div class="add-option-button-container">
+            <button id="add_option_button"
+                    title="<?php echo $block->escapeHtml(__('Import Options'));?>"
+                    data-role="add-option-button"
+                    type="button"
+                    class="action-secondary"
+                    data-mage-init='{"openOptionModal" : {}}'
+                    data-ui-id="widget-button-1">
+                <span><?php /* @escapeNotVerified */ echo __('Import Options') ?></span>
+            </button>
+        </div>
+    </div>
+  
+    <?php echo $block->getChildHtml('new-option'); ?>
+    </div>
+</li>

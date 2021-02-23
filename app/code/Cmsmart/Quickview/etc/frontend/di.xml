@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Result\Page">
+        <plugin name="cmsmart-quickview-resultpage"
+                type="Cmsmart\Quickview\Plugin\ResultPage" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\View">
+        <plugin name="cmsmart-quickview-block-product-view"
+                type="Cmsmart\Quickview\Plugin\BlockProductView" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="cmsmart-quickview-block-product-list"
+                type="Cmsmart\Quickview\Plugin\BlockProductList" sortOrder="10"/>
+    </type>
+</config>

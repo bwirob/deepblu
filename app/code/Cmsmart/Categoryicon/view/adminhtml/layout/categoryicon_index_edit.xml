@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Cmsmart\Categoryicon\Block\Adminhtml\Categoryicon\Edit" name="categoryicon_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Cmsmart\Categoryicon\Block\Adminhtml\Categoryicon\Edit\Tabs" name="categoryicon_edit_tabs">
+                <block class="Cmsmart\Categoryicon\Block\Adminhtml\Categoryicon\Edit\Tab\Main" name="categoryicon_edit_tab_main"/>
+                <block class="Cmsmart\Categoryicon\Block\Adminhtml\Categoryicon\Edit\Tab\Content" name="categoryicon_edit_tab_content"/>
+                <block class="Cmsmart\Categoryicon\Block\Adminhtml\Categoryicon\Edit\Tab\Image" name="categoryicon_edit_tab_image"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">categoryicon_edit_tab_main</argument>
+                </action>
+                <!-- <action method="addTab">
+                    <argument name="name" xsi:type="string">content_section</argument>
+                    <argument name="block" xsi:type="string">categoryicon_edit_tab_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">image_section</argument>
+                    <argument name="block" xsi:type="string">categoryicon_edit_tab_image</argument>
+                </action> -->
+            </block>
+        </referenceContainer>
+    </body>
+</page>

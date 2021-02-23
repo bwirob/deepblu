@@ -1,0 +1,47 @@
+<?php
+/** @var $block Netbaseteam\Marketplace\Block\Seller\Profile */
+
+$_helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$isPartner = $_helper->getSellerId();
+$isVacation = $_helper->isVacation();
+$currentPage = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+$shopID = $block->currentShopID();
+?>
+<div class="netbaseteam-marketplace block block-collapsible-nav">
+    <div class="mp-title">
+        <strong><?php /* @escapeNotVerified */
+            echo __('Marketplace'); ?></strong>
+    </div>
+    <div class="title block-collapsible-nav-title" data-mage-init='{"toggleAdvanced": {"toggleContainers": "#block-collapsible-nav-seller", "selectorsToggleClass": "active"}}'>
+        <strong><?php /* @escapeNotVerified */ echo __('Marketplace'); ?></strong>
+    </div>
+    <div class="content block-collapsible-nav-content" id="block-collapsible-nav-seller">
+        <nav class="account-nav">
+            <ul class="nav items">
+                <?php if ($isPartner): ?>
+                    <li class="nav item">
+                        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>">
+                            <?php echo __('Profile') ?>
+                        </a>
+                    </li>
+                    <li class="nav item">
+                        <a href="<?php echo $this->getUrl("marketplace/vendor/", ['_secure' => $this->getRequest()->isSecure()]); ?>">
+                            <?php echo __('Vendor Panel') ?>
+                        </a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav item <?php echo strpos($currentPage, 'marketplace/account/registry') ? "current" : ""; ?>">
+                        <?php if (strpos($currentPage, 'marketplace/account/registry') !== false) : ?>
+                            <strong><?php echo __('Become a Seller') ?></strong>
+                        <?php else : ?>
+                            <a href="<?php echo $this->getUrl('marketplace/account/registry', ['_secure' => $this->getRequest()->isSecure()]); ?>">
+                                <?php echo __('Become a Seller') ?>
+                            </a>
+                        <?php endif; ?>
+                    </li>
+                <?php endif; ?>
+                <?php echo $block->getChildHtml(); ?>
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<!--@subject {{trans "%template_subject" template_subject=$templateSubject}} @-->
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td>
+            <p class="greeting">Hi {{trans "%seller_name," seller_name=$admin}}</p>
+        </td>
+    </tr>
+    <tr class="email-summary">
+        <td>
+            <p>{{trans "Thank you for trusting and become a seller on DemoShop }}</p>
+        </td>
+    </tr>
+    <tr class="email-information">
+        <td>
+            <table class="query-details">
+                <tr>
+                    <td>
+                        <p>
+                            We want to inform that your information submit to become seller on DemoShop has been {{trans "%seller_status" seller_status=$seller_status}}.
+                        </p>
+                        <p>{{trans "%profile_url" profile_url=$profile_url}}</p>
+                        <p>{{trans "%email-footer" email-footer=$email-footer}}</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr class="email-footer">
+        <td>
+            <p class="greeting">{{trans "Best Regards,"}}</p>
+            <p class="greeting">{{trans "DemoShop"}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

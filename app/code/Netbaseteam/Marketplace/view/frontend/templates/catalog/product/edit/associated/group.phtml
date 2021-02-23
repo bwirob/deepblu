@@ -1,0 +1,20 @@
+<li class="field">
+    <div>
+        <label>Related Products, Up-Sells, and Cross-Sells</label>
+        <div style="float: right;">
+            <button id="toggle_associated_product_group" title="Show/Hide" type="button" class="action-secondary">
+                <span>Show/Hide</span>
+            </button>
+        </div>
+    </div>
+    <div class="associated_product_list" style="display: none">
+        <ul><?php echo $block->getChildHtml(); ?></ul>
+    </div>        
+</div>
+<script type="text/javascript">
+    require(['jquery'], function($){ 
+        $('#toggle_associated_product_group').click(function() {
+            $( ".associated_product_list" ).toggle();
+        });
+    });
+</script>

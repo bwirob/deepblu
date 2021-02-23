@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Netbaseteam_Ajaxcart::ajaxcart" title="Ajaxcart" module="Netbaseteam_Ajaxcart" sortOrder="40" parent="Netbase_Sun::nb_all" resource="Netbaseteam_Ajaxcart::ajaxcart"/>
+        <add id="Netbaseteam_Ajaxcart::ajaxcart_manage" title="Ajaxcart" module="Netbaseteam_Ajaxcart" sortOrder="30" 
+			 action="adminhtml/system_config/edit/section/ajaxcart"
+			resource="Netbaseteam_Ajaxcart::ajaxcart_manage" parent="Netbaseteam_Ajaxcart::ajaxcart"/>
+    </menu>
+</config>

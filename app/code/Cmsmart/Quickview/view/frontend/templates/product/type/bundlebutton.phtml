@@ -1,0 +1,22 @@
+<?php
+$helper = $this->helper('Cmsmart\Quickview\Helper\Data');
+$showAddtocart = $helper->showAddtocart();
+?>
+<?php if($showAddtocart) {
+    echo $this->getLayout()
+        ->createBlock("Magento\Catalog\Block\Product\View")
+        ->setTemplate("Magento_Bundle::catalog/product/view/customize.phtml")->toHtml();
+}
+?>
+<style>
+    .action.primary {
+        background:<?php echo $helper->getConfig('cmsmart_quickview/add_to_cart_style/add_to_cart_color')?> ;
+        color: <?php echo $helper->getConfig('cmsmart_quickview/add_to_cart_style/add_to_cart_textcolor')?> ;
+        border: 1px solid <?php echo $helper->getConfig('cmsmart_quickview/add_to_cart_style/add_to_cart_color')?> ;
+    }
+    .action.primary:hover {
+        background: <?php echo $helper->getConfig('cmsmart_quickview/add_to_cart_style/add_to_cart_hovercolor')?> ;
+        color: <?php echo $helper->getConfig('cmsmart_quickview/add_to_cart_style/add_to_cart_texthovercolor')?> ;
+        border: 1px solid <?php echo $helper->getConfig('cmsmart_quickview/add_to_cart_style/add_to_cart_hovercolor')?> ;
+    }
+</style>

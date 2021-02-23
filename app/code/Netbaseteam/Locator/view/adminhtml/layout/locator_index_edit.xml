@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Netbaseteam_Locator::css/custom_map.css" />
+    </head>
+    <update handle="editor"/>
+    <body>
+         <referenceContainer name="before.body.end">
+            <block class="Netbaseteam\Locator\Block\Adminhtml\Locator\Renderer\Geomap" name="googlemaps.api" template="Netbaseteam_Locator::geomap.phtml" />
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Locator\Block\Adminhtml\Locator\Edit" name="localtor_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Netbaseteam\Locator\Block\Adminhtml\Locator\Edit\Tabs" name="localtor_edit_tabs">
+                <block class="Netbaseteam\Locator\Block\Adminhtml\Locator\Edit\Tab\Main" name="localtor_edit_tab_main"/>
+                <block class="Netbaseteam\Locator\Block\Adminhtml\Locator\Edit\Tab\Contact" name="localtor_edit_tab_contact"/>
+                <block class="Netbaseteam\Locator\Block\Adminhtml\Locator\Edit\Tab\Map" name="localtor_edit_tab_map"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">map_section</argument>
+                    <argument name="block" xsi:type="string">localtor_edit_tab_map</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">localtor_edit_tab_main</argument>
+                </action>
+                
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">contact_section</argument>
+                    <argument name="block" xsi:type="string">localtor_edit_tab_contact</argument>
+                </action>
+                
+            </block>
+        </referenceContainer>
+    </body>
+</page>

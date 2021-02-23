@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ajaxcart>
+            <view>
+                <enabled>1</enabled>
+                <show_product_image>1</show_product_image>
+                <animate_image_fly>1</animate_image_fly>
+            </view>
+
+            <display_popup>
+            	<time_mess_pop>10</time_mess_pop>
+                <popsucess_title>Confirmable Information</popsucess_title>
+                <popup_background>#FFFFFF</popup_background>
+                <title_background>#F0F0F0</title_background>
+                <color_text>#1979c3</color_text>
+            </display_popup>
+        </ajaxcart>
+    </default>
+</config>

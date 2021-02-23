@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Cmsmart\Quickview\Block\Initialize" name="cmsmart.quickview.initialize" template="Cmsmart_Quickview::initialize.phtml" />
+        </referenceContainer>
+    </body>
+</page>

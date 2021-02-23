@@ -1,0 +1,36 @@
+<root>
+    <config>  
+        <sun_settings>
+            <header>
+                <header_type>ten</header_type>
+                <header_top>1</header_top>
+                <header_top_layout_left>6</header_top_layout_left>
+                <element_header_top_left>0,1</element_header_top_left>
+                <header_top_layout_center>0</header_top_layout_center>
+                <header_top_layout_right>6</header_top_layout_right>
+                <element_header_top_right>4</element_header_top_right> 
+                <layout_search_header>two</layout_search_header>
+                <layout_cart_header>two</layout_cart_header>
+                <layout_user_header>two</layout_user_header> 
+                <header_middle>1</header_middle> 
+                <header_middle_layout_left>2</header_middle_layout_left> 
+                <element_header_middle_left>5</element_header_middle_left> 
+                <header_middle_layout_center>8</header_middle_layout_center> 
+                <element_header_middle_center>6</element_header_middle_center>  
+                <header_middle_layout_right>2</header_middle_layout_right> 
+                <element_header_middle_right>2,3</element_header_middle_right>  
+                <header_bottom>0</header_bottom>
+				<custom_search_border_radius>0</custom_search_border_radius>  
+                <fontsize_icon_search>18px</fontsize_icon_search>
+				<upload_image_id></upload_image_id>
+				<upload_image_cart_id>default/ic-cart9.png</upload_image_cart_id>
+				<upload_logo_id>default/logotype9.png</upload_logo_id>				
+            </header>
+        </sun_settings>
+		<megamenu>
+			<mainmenu>
+				<menu_type>1</menu_type>
+			</mainmenu>
+		</megamenu>
+    </config>
+</root>

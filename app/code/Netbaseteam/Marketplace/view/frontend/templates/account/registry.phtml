@@ -1,0 +1,86 @@
+<?php $helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');?>
+<?php $isRequest = $this->isRequest()?>
+<?php if ($isRequest != ''):?>
+    <span style="padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    margin-bottom: 15px;"><strong>Success!</strong> You have been sent request</span>
+<?php else:?>
+    <div class="col-main">
+        <div class="my-account">
+            <div class="box-account box-info"><p>Demo Netbaseteam Multivendor</p>
+
+                <p>Click the button to become a Seller</p>
+
+                <form name="buyer-seller" id="become-a-seller"
+                      action="<?php echo $this->getUrl('marketplace/account/save', ['_secure' => $this->getRequest()->isSecure()]); ?>"
+                      method="post"
+                      novalidate="novalidate">
+                    <fieldset class="fieldset info netbaseteam-mp-fieldset">
+                        <div class="field required">
+                            <div class="input-box required"><input type="checkbox" id="privacy_policy" name="is_seller"
+                                                                   class="required-entry"
+                                                                   value="1"
+                                                                   title="I agree the Terms and Condition"
+                                                                   data-validate="{required:true}"><label
+                                    for="privacy_policy">
+                                    I agree the
+                                    <a id="check-term-and-condition" href="javascript:void(0)"> Terms and
+                                        Conditions</a></label>
+                            </div>
+                        </div>
+                        <div class="actions-toolbar">
+                            <div class="primary">
+                                <button type="submit" class="action submit primary"><span>Submit</span></button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endif;?>
+
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function ($) {
+        var dataForm = $('#become-a-seller');
+        dataForm.mage('validation', {});
+    });
+</script>
+
+<div id="popup-modal" style="display:none;">
+    <p><?php echo $helper->getTermandCondition();?></p>
+</div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function ($, modal) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Terms and Condition',
+                buttons: [{
+                    text: $.mage.__('Continue'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#popup-modal'));
+
+            $('#check-term-and-condition').on('click', function () {
+                $('#popup-modal').modal('openModal');
+            });
+        }
+    );
+</script>

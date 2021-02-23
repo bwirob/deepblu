@@ -1,0 +1,34 @@
+<?php
+	$relatedPosts = $block->getRelatedData();
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+?>
+<?php if ($block->hasRelated()): ?>
+	<div class="realted-title">
+		<h2><strong>RELATED ARTICLES</strong></h2>
+	</div>
+	<div class="realted-content">
+		<ul class="related-list">
+			<?php foreach ($relatedPosts as $related): ?>
+				<li class="item">
+					<?php if (!empty($related['image'])): ?>
+						<div class="post-image">
+							<a href="<?php echo $helper->getPreBlogUrl().'/'.$related['identifier']?>" title="<?php echo __($related['title']); ?>">
+								<span class="fa overlay-icon"></span>
+								<img src="<?php echo $helper->getPrePostImageUrl().'/'.$related['image']; ?>" />
+							</a>
+						</div>
+					<?php endif ?>
+					<div class="post-meta">
+						<div class="post-title">
+							<a href="<?php echo $helper->getPreBlogUrl().'/'.$related['identifier'];?>" title="<?php echo __($related['title']); ?>">
+								<?php echo __($related['title']);?>
+							</a>
+						</div>
+						
+					</div>
+				</li>
+			<?php endforeach ?>
+		</ul>
+		
+	</div>
+<?php endif ?>

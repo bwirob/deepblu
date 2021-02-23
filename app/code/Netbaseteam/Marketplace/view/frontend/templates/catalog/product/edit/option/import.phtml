@@ -1,0 +1,15 @@
+<?php
+/* @var $block Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\NewVideo */
+?>
+
+<div id="new-option" style="display:none">
+    <?= $block->getChildHtml(); ?>
+    <script>
+        require(["jquery","mage/mage"],function($) {
+            $(function(){
+                $('#new-option').mage('newOptionDialog');
+            });
+        });
+    </script>
+</div>
+

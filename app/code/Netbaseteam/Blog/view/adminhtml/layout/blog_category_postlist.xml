@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+        <block class="Netbaseteam\Blog\Block\Adminhtml\Category\Edit\Tab\Postlist" name="category.edit.tab.postlist"/>
+        <block class="Magento\Backend\Block\Widget\Grid\Serializer" name="post_grid_serializer">
+            <arguments>
+                <argument name="grid_block" xsi:type="string">category.edit.tab.postlist</argument>
+                <argument name="callback" xsi:type="string">getSelectedPost</argument>
+                <argument name="input_element_name" xsi:type="string">post_ids</argument>
+                <argument name="reload_param_name" xsi:type="string">post_ids</argument>
+            </arguments>
+        </block>
+    </container>
+</layout>

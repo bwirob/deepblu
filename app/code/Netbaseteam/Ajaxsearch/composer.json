@@ -1,0 +1,27 @@
+{
+    "name": "netbaseteam/ajaxsearch",
+    "description": "Netbaseteam Magento 2 Ajaxsearch Extension",
+    
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+       "OSL-3.0"
+    ],
+    
+    "authors": [
+        {
+          "name": "NetBase-Magento",
+          "email": "support@cmsmart.net",
+          "homepage": "https://cmsmart.net/",
+          "role": "Leader"
+        }
+    ],
+
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Netbaseteam\\Ajaxsearch\\": ""
+        }
+    }
+}
+

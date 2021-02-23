@@ -1,0 +1,26 @@
+<?php $_categoryicon = $this->getCollection(); ?>
+<?php if ($_categoryicon->getSize()): ?>
+<div class="categoryicon_list_view">
+    <?php foreach ($_categoryicon as $categoryiconItem): ?>
+        <div id="item_<?php echo $categoryiconItem->getId() ?>" class="categoryicon_list_item">
+            <h2>
+                <a href="<?php echo $this->getItemUrl($categoryiconItem) ?>">
+                    <?php echo $this->escapeHtml($categoryiconItem->getTitle()) ?>
+                </a>
+            </h2>
+
+            <div class="categoryicon_item_subtitle">
+                <?php echo $this->formatDate($categoryiconItem->getPublishedAt()) ?> |
+                <?php echo $this->escapeHtml($categoryiconItem->getAuthor()) ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($categoryiconItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($categoryiconItem->getTitle()); ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php echo $this->getPager() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Categoryicon.'); ?></span></div>
+<?php endif ?>

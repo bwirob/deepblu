@@ -1,0 +1,18 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+	$next = $block->getNextPost();
+	$prev = $block->getPrevPost();
+?>
+
+<?php if ($prev): ?>
+	<div class="prev-post post">
+		<p class="btn-cta">Previous article</p>
+		<a class="title" href="<?php echo $helper->getPreBlogUrl().'/'.$prev[0]['identifier'];?>"><?php echo $prev[0]['title']; ?></a>
+	</div>
+<?php endif ?>
+<?php if ($next): ?>
+	<div class="next-post post">
+		<p class="btn-cta">Next article</p>
+		<a class="title" href="<?php echo $helper->getPreBlogUrl().'/'.$next[0]['identifier'];?>"><?php echo $next[0]['title']; ?></a>
+	</div>
+<?php endif ?>

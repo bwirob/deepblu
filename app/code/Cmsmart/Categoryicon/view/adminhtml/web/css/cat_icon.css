@@ -1,0 +1,14 @@
+#caticon_main_div {
+	width: 100%;
+}
+
+#top_sidetree {
+    border-right: 1px dotted #ccc;
+    float: left;
+    width: 27%;
+}
+
+#category_info_tabs_my_custom_tab_content {
+	float: right;
+	width: 70%;
+}

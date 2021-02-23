@@ -1,0 +1,18 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Faq\Helper\Data');
+	$categoryData = $block->getCategoryData();
+?>
+<?php if ($block->hasFaqCategory()): ?>
+	<div id="faq_category">
+		<div class="block-title"><?php echo __('Category');?></div>
+		<ul class="category-list">
+			<?php foreach ($categoryData as $category): ?>
+				<li class="item">
+					<a class="category-name require-category" href="<?php echo $block->getCategoryUrl().'/category/'.$category['faq_category_id']; ?>" title="<?php echo __($category['name']);?>"><?php echo __($category['name']);?></a>
+
+				</li>
+			<?php endforeach ?>
+		</ul>
+	</div>
+<?php endif ?>
+

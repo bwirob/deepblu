@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <blog>
+            <view>
+                <enabled>1</enabled>
+            </view>
+            <blog_page>
+                <show_recent_post>1</show_recent_post>
+            	<max_recent_post>8</max_recent_post>
+                <show_category_post>1</show_category_post>
+            	<max_category_sidebar>8</max_category_sidebar>
+                <show_tag_post>1</show_tag_post>
+            	<max_number_tag>8</max_number_tag>
+                <show_comment_recent>1</show_comment_recent>
+            	<max_comment_recent>8</max_comment_recent>
+                <post_list_style>grid-2</post_list_style>
+                <number_post_page>10</number_post_page>
+            </blog_page>
+            
+            <blog_post_view>
+                <comment_by_acount>1</comment_by_acount>
+                <captcha_validate>1</captcha_validate>
+            </blog_post_view>
+        </blog>
+
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <blog_comment_form>1</blog_comment_form>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <blog_comment_form>1</blog_comment_form>
+                </always_for>
+            </captcha>
+        </customer>
+
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <blog_comment_form>
+                        <label>Blog Post Comment Form</label>
+                    </blog_comment_form>
+                </areas>
+            </frontend>
+        </captcha>
+
+    </default>
+</config>

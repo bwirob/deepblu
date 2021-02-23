@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Netbaseteam_Opc::opc_setting" title="One Step Checkout" module="Netbaseteam_Opc" sortOrder="50" parent="Netbase_Sun::nb_all" resource="Netbaseteam_Opc::opc_setting"/>
+        <add id="Netbaseteam_Opc::opc_setting_manage" title="Settings" parent="Netbaseteam_Opc::opc_setting" module="Netbaseteam_Opc" sortOrder="30" action="adminhtml/system_config/edit/section/cmsmart_opc" resource="Netbaseteam_Opc::opc_setting"/>
+    </menu>
+</config>

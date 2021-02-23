@@ -1,0 +1,170 @@
+<?php
+    $footer = $this->getConfig('sun_settings/footer');
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$request = $objectManager->get('Magento\Framework\App\Action\Context')->getRequest();
+?>
+<div class="footer">
+    <?php
+        if( $footer['footer_top'] ){
+    ?>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <?php
+                        for( $i = 1; $i <= 4; $i++ ){
+                            $area = 'footer_top_column_'.$i;
+                            $type = $footer[$area];
+                            if( $type ){
+                                echo '<div class="col-sm-12 col-sm-'.$footer[$area.'_size'].'">';
+                            }
+                            if( $type == 'custom' && $footer[$area.'_custom'] ){
+                                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+                                if($block) {
+                                    $block->setBlockId($footer[$area.'_custom']);
+                                }
+                                if($block){
+                                    echo $block->toHtml();
+                                }
+                            }
+                            if( $type == 'newsletter' ){
+                                echo $this->getChildHtml('footer.newsletter');
+                            }
+                            if( $type ){
+                                echo '</div>';
+                            }
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <hr>
+    <?php
+        }
+        if( $footer['footer_middle'] ){
+    ?>
+        <div class="footer-middle">
+            <div class="container">
+                <div class="row">
+                    
+                    <?php
+                    if($footer['footer_logo_src']){
+                        $url = $this->getFooterLogoSrc();
+                    ?>
+
+                    <?php if ($this->isHomePage()):?>
+                        <strong class="logo-nb col-md-12">
+                    <?php else: ?>
+                        <a class="logo-nb" href="<?php echo $this->getUrl(''); ?>" title="">
+                    <?php endif; ?>
+                        <img src="<?php echo $url ?>" alt=""/>
+                    <?php if ($this->isHomePage()):?>
+                        </strong>
+                    <?php else:?>
+                        </a>
+                    <?php endif?>
+                    
+                    <?php
+                    }
+                    ?>
+
+                    <?php
+                        for( $i = 1; $i <= 4; $i++ ){
+                            $area = 'footer_middle_column_'.$i;
+                            $type = $footer[$area];
+                            if( $type ){
+                                echo '<div class="col-sm-'.$footer[$area.'_size'].'">';
+                            }
+                            if( $type == 'custom' && $footer[$area.'_custom'] ){
+                                $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+                                if($block) {
+                                    $block->setBlockId($footer[$area.'_custom']);
+                                }
+                                if($block){
+                                    echo $block->toHtml();
+                                }
+                            }
+                            if( $type == 'newsletter' ){
+                                echo $this->getChildHtml('footer.newsletter');
+                            }
+                            if( $type ){
+                                echo '</div>';
+                            }
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
+    <?php
+        }else{
+    ?>
+        <style type="text/css">
+            .page-footer hr{
+                display: none;
+            }
+            .page-footer .footer-top {
+                padding-bottom: 25px;
+            }
+        </style>
+    <?php
+        }
+        if( $footer['footer_bottom'] ){
+    ?>  
+        <div class="footer-bottom-wrp">
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <?php
+                            for( $i = 1; $i <= 4; $i++ ){
+                                $area = 'footer_bottom_column_'.$i;
+                                $type = $footer[$area];
+                                if( $type ){
+                                    echo '<div class="col-sm-'.$footer[$area.'_size'].'">';
+                                }
+                                if( $type == 'custom' && $footer[$area.'_custom'] ){
+                                    $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+                                    if($block) {
+                                        $block->setBlockId($footer[$area.'_custom']);
+                                    }
+                                    if($block){
+                                        echo $block->toHtml();
+                                    }
+                                }
+                                if( $type == 'newsletter' ){
+                                    echo $this->getChildHtml('footer.newsletter');
+                                }
+                                if( $type ){
+                                    echo '</div>';
+                                }
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+        }
+        if( $footer['footer_payment'] ){
+    ?>  
+        <div class="footer-payment-wrp">
+            <div class="footer-bottom-payment container">
+                <div class="row">
+                    <?php
+                        $area = 'footer_bottom_column_payment';
+                        $type = $footer[$area];
+                        if( $type == 'custom' && $footer[$area.'_custom'] ){
+                            $block = $this->getLayout()->createBlock('Magento\Cms\Block\Block');
+                            if($block) {
+                                $block->setBlockId($footer[$area.'_custom']);
+                            }
+                            if($block){
+                                echo $block->toHtml();
+                            }
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <?php
+        }
+        ?>
+</div>

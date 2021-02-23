@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sales\Block\Adminhtml\Items\Column\Name" type="Netbaseteam\Marketplace\Block\Adminhtml\Order\Items\Column\Name" />
+
+    <type name="\Magento\Catalog\Model\Product">
+        <plugin name="afterSaveProduct" type="Netbaseteam\Marketplace\Plugin\Model\SaveProduct" sortOrder="1"/>
+    </type>
+
+    <preference for="Magento\Catalog\Controller\Adminhtml\Product\MassDelete" type="Netbaseteam\Marketplace\Controller\Adminhtml\Product\Admin\MassDelete" />
+    <preference for="Magento\Catalog\Controller\Adminhtml\Product\MassStatus" type="Netbaseteam\Marketplace\Controller\Adminhtml\Product\Admin\MassStatus" />
+    <preference for="Magento\Catalog\Controller\Adminhtml\Product\Set\Save" type="Netbaseteam\Marketplace\Controller\Adminhtml\Product\Set\Save" />
+</config>

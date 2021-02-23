@@ -1,0 +1,101 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Locator\Helper\Data');
+	$storesData = $block->getStoresData();
+	
+?>
+<?php if ($block->hasStore()): ?>
+	<div class="list-store-box col-sm-4 col-xs-12 pull-left">
+		<div class="list-title">
+			<h2>
+				<span><?php echo __('Store List'); ?></span>
+				<span class="number-store pull-right">
+					<?php echo __($block->countStore().' Stores');  ?>
+				</span>
+			</h2>
+		</div>
+
+		<div class="list-store col-xs-12">
+			<ul class="list-store-container disable-ul">
+				<?php foreach ($storesData as $key => $store): ?>
+					<li class="show-tag-li store-item" item-number ="<?php echo $key; ?>" title="<?php echo __($store['store_name']); ?>" data-position='<?php echo $block->toPositionJson($store); ?>' data-info='<?php echo $block->toStoreJsonData($store); ?>' data-zoom='<?php echo $block->toZoonLevelJsonData($store); ?>' >
+						<div class="store-content">
+							<?php if ($store['store_image']): ?>
+								<div class="col-sm-4 col-xs-4 store-thumb">
+									<img src="<?php echo $block->getStoreImgDir($store['store_image']) ?>" />
+								</div>
+							<?php endif ?>
+							<div class="col-sm-8 col-xs-8 store-info">
+								<h4>
+									<a href="<?php echo $block->getStoreUrl($store); ?>" target="_blank" class="store-name" title="<?php echo __($store['store_name']); ?>">
+										<?php echo __($store['store_name']); ?>
+									</a>
+									<?php if ($store['address']): ?>
+										<p><?php echo __($store['address']); ?></p>
+									<?php endif ?>
+									<?php if ($store['phone_number']): ?>
+										<p><?php echo __($store['phone_number']); ?></p>
+									<?php endif ?>
+
+
+									<?php if ($store['store_link']): ?>
+										<p>
+										<a href="<?php echo $block->getHiperlinkUrl($store['store_link']); ?>" title="<?php echo __($store['store_link']); ?>" class="store-web" target="blank" ><?php echo __($store['store_link']); ?></a>
+										</p>
+									<?php endif ?>
+
+
+									<p>
+										<span class="street-view store-link" item-number ="<?php echo $key; ?>"><?php echo __('Street View') ?></span>
+										<span class="direction store-link"><?php echo __('Direction') ?></span>
+									</p>
+								</h4>
+							</div>
+						</div>
+						<div class="option-direction custom-popup col-xs-12">
+							<ul class="vertical text-center travel-list" number-box="<?php
+							echo $key; ?>" >
+								<li class="travel car travel-active" travel-data="DRIVING" title="<?php echo __('Driving'); ?>">
+									<i class="fa fa-car" aria-hidden="true"></i>
+								</li>
+								<li class="travel bus" travel-data="TRANSIT"
+								title="<?php echo __('Transit'); ?>">
+									<i class="fa fa-subway" aria-hidden="true"></i>
+								</li>
+								<li class="travel walk" travel-data="WALKING" title="<?php echo __('Walking'); ?>">
+									<i class="fa fa-male" aria-hidden="true"></i>
+								</li>
+								<li class="travel bicycle" travel-data="BICYCLING" title="<?php echo __('Bicycle'); ?>">
+									<i class="fa fa-bicycle"  aria-hidden="true"></i>
+								</li>
+							</ul>
+							<div class="directions-box">
+								<div class="widget-directions-searchbox-handle">
+									<div class="widget-directions-icon waypoint-handle"></div>
+									<div class="widget-directions-icon waypoint-to"></div>
+									<div class="widget-directions-icon waypoint-bullet"></div>
+								</div>
+								<div class="form-inputs">
+									<input class="form-control origin originA start" type="text" name="originA" isstart="true" autocomplete="off" placeholder="Enter a location" id="<?php echo 'director-'.$key; ?>">
+									<input class="form-control origin originB end" readonly="true" type="text" name="originB" autocomplete="off" value="<?php echo __($store['address']);?>">
+								</div>
+								<div class="widget-directions-right-overlay">
+									<button type="button" onclick="" class="swap-locations" title="Swap locations A-B"><?php echo __('Swap locations A-B') ?></button>
+								</div>
+								<div id="<?php echo 'directions-panel-'.$key; ?>"></div>
+							</div>
+							
+							<div class="box-input col-xs-12">
+						        <button class="get-direction action primary pull-right"  title="Get Directions" type="submit">
+						            <span><?php echo __('Go') ?></span>
+						        </button>
+						    </div>
+						</div>
+					</li>
+				<?php endforeach ?>
+				
+			</ul>
+		</div>
+	</div>
+<?php endif ?>
+
+

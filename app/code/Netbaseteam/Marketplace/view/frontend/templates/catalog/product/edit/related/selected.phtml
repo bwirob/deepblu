@@ -1,0 +1,138 @@
+<?php
+$productIds = $this->getRequest()->getParam('data') ? $this->getRequest()->getParam('data') : $this->getData('child_related_ids');
+if (!$productIds) return;
+?>
+
+<?php $position = $this->getRequest()->getParam('position') ? $this->getRequest()->getParam('position') + 1 : 0;?>
+<?php foreach($productIds as $id) :?>
+	<?php $product = $this->getProduct($id);?>
+    <tr class="data-row">
+        <td class="data-grid-draggable-row-cell">
+            <div class="draggable-handle"></div>
+        </td>
+
+        <td class="_fit _no-header">
+            <div class="admin__field _fit _no-header">
+                <div class="admin__field-label" style="display: none;">
+                    <label>
+                        <span>ID</span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <div class="control-table-text">
+                        <span><?=$id?></span>
+                    </div>
+                </div>
+				<input type="hidden" name="links[related][][id]" value="<?=$id?>">
+            </div>
+        </td>
+
+        <td class="_fit _no-header">
+            <div class="admin__field _fit _no-header">
+                <div class="admin__field-label" style="display: none;">
+                    <label>
+                        <span>Thumbnail</span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <?php echo $this->getThumbnail($product); ?>
+                </div>
+            </div>
+        </td>
+
+        <td class="_no-header">
+            <div class="admin__field _no-header">
+                <div class="admin__field-label" style="display: none;">
+                    <label>
+                        <span>Name</span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <div class="control-table-text">
+                        <span><?=$product->getName();?></span>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td class="_no-header">
+            <div class="admin__field _no-header">
+                <div class="admin__field-label" style="display: none;">
+                    <label>
+                        <span>Attribute Set</span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <div class="control-table-text">
+                        <span><?=$this->getAttributeSet($product->getAttributeSetId())?></span>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td class="_fit _no-header">
+            <div class="admin__field _fit _no-header">
+                <div class="admin__field-label" style="display: none;">
+                    <label>
+                        <span>Status</span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <div class="control-table-text">
+                        <span><?=$this->getStatusLabel($product->getStatus())?></span>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td class="_no-header">
+            <div class="admin__field _no-header">
+                <div class="admin__field-label" style="display: none;">
+                    <label>
+                        <span>SKU</span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <div class="control-table-text">
+                        <span><?=$product->getSku()?></span>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td class="_fit _no-header">
+            <div class="admin__field _fit _no-header">
+                <div class="admin__field-label"style="display: none;">
+                    <label>
+                        <span>Price</span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <div class="control-table-text">
+                        <span><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($product->getPrice(), true, false); ?></span>
+                    </div>
+                </div>
+            </div>
+        </td>
+
+        <td class="admin__field-small _fit _no-header">
+            <div class="admin__field admin__field-small _fit _no-header">
+                <div class="admin__field-label" style="display: none;">
+                    <label>
+                        <span>Position</span>
+                    </label>
+                </div>
+                <div class="admin__field-control">
+                    <input type="text" readonly name="related_position" class="position-widget-input" value="<?=$position?>">
+                </div>
+            </div>
+        </td>
+
+        <td class="data-grid-relatedproduct data-grid-actions-cell _fit _no-header">
+            <button class="action-delete">
+                <span>Remove</span>
+            </button>
+        </td>
+    </tr>
+    <?php $position++;?>
+<?php endforeach;?>

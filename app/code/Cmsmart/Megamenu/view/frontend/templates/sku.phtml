@@ -1,0 +1,42 @@
+<?php
+$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+$objBlock = $objectManagerr->get('\Cmsmart\Megamenu\Block\Navigation');
+$block_data = $this->getData('block_data');
+$p = $objBlock->_getProductData($block_data[0]);
+/* \zend_debug::dump($block_data[0]); */
+$helper = $objectManagerr->get('\Cmsmart\Megamenu\Helper\Data');
+?>
+<div class="product-info-left-right">
+	<h2><?php echo $block_data[1] ?></h2>
+	<a class="product-image" href="<?php echo $p->getProductUrl() ?>">
+	<img alt="" src="<?php echo $objectManagerr->get('\Magento\Catalog\Helper\Image')->init($p, 'product_small_image')->resize(250, 250)->getUrl(); ?>" width="250" height="250" />
+	</a>
+	<h2 class="product-name"><a title="<?php echo $p->getName() ?>" href="<?php echo $p->getProductUrl() ?>"><?php echo $p->getName() ?></a></h2>
+
+	<?php
+		$formattedPrice = $objBlock->showPrice($p->getPrice());
+	?>
+	<div class="price-box">											
+		<p class="old-price"> 
+			<span class="price">
+			<?php echo $formattedPrice ?>   
+			</span>
+		</p>
+
+		<button class="action tocart primary"
+				data-post='<?php echo $objBlock->_getAddToCartUrl($p); ?>'
+				type="button" title="<?php echo __('Add to Cart') ?>">
+			<span><?php echo __('Add to Cart') ?></span>
+		</button>		
+	</div>
+	<div class="actions">
+		<?php 
+			if($p->getShortDescription() == ""){
+				$_mydesc = $helper->limit_text($p->getDescription(), 7);
+			} else {
+				$_mydesc = $helper->limit_text($p->getShortDescription(), 7); 
+			}
+		?>
+		<p><?php echo $_mydesc ?><a href="<?php echo $p->getProductUrl() ?>"><?php echo __('read more') ?></a></p>
+	</div>
+</div>

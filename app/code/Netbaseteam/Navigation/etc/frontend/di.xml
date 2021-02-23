@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Controller\Category\View">
+        <plugin name="layer_navigation_ajax_update" type="Netbaseteam\Navigation\Controller\Category\View"
+                sortOrder="1"/>
+    </type>
+    <!--<type name="Magento\Catalog\Model\Layer\FilterList">-->
+    <!--<plugin name="cmsmart-navigation-rating-filter-category"-->
+    <!--type="Cmsmart\Navigation\Plugin\Model\Layer\FilterByRating" sortOrder="1"/>-->
+    <!--</type>-->
+    <type name="Magento\Catalog\Model\Layer\FilterList">
+        <plugin name="cmsmart-navigation-stock-filter-category"
+                type="Netbaseteam\Navigation\Plugin\Model\Layer\FilterByStock"
+                sortOrder="100"/>
+    </type>
+    <type name="Magento\Catalog\Model\Config">
+        <plugin name="cmsmart-navigation-sortby-filter-category" type="Netbaseteam\Navigation\Plugin\Model\Config"
+                sortOrder="1"/>
+    </type>
+</config>

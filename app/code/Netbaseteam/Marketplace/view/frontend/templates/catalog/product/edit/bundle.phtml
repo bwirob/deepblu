@@ -1,0 +1,66 @@
+<?php 
+$productType = $this->getRequest()->getParam('type');
+
+$product = $block->getProduct();
+if ($product) {
+    $productType = $product->getTypeId();
+}
+if ($productType != 'bundle') return;
+?>
+<li>
+	<label>Bundle Items</label>
+	<script>
+		if(typeof Bundle=='undefined') {
+		    Bundle = {};
+		}
+	</script>
+	<div class="field bundle-product">
+		<label class="label"><span><?php /* @escapeNotVerified */ echo __('Bundle Items ') ?></span></label>
+		<div class="control">
+			<div id="bundle_product_container" class="entry-edit form-inline netbaseteam__scope-old">
+				<fieldset class="fieldset">
+					<div class="field field-ship-bundle-items">
+						<label for="shipment_type" class="bundle-label label"><?php /* @escapeNotVerified */ echo __('Ship Bundle Items') ?></label>
+						<div class="control">
+							<select <?php if ($block->isReadonly()): ?>disabled="disabled" <?php endif;?>
+									id="shipment_type"
+									name="<?php /* @escapeNotVerified */ echo $block->getFieldSuffix() ?>[shipment_type]"
+									class="select">
+								<option value="1"><?php /* @escapeNotVerified */ echo __('Separately') ?></option>
+								<option value="0"<?php if ($block->getProduct() && $block->getProduct()->getShipmentType() == 0): ?> selected="selected"<?php endif; ?>><?php /* @escapeNotVerified */ echo __('Together') ?></option>
+							</select>
+						</div>
+					</div>
+
+					<div
+						id="product_bundle_container"
+						class="entry-edit custom-options bundle sortable-wrapper" style="clear:both;padding-top:5px;">
+						<?php echo $block->getOptionsBoxHtml() ?>
+					</div>
+					<div style="clear:both;padding-top:5px;">
+					<?php echo $block->getAddButtonHtml() ?>
+					</div>
+				</fieldset>
+			</div>
+
+			<input type="hidden" name="affect_bundle_product_selections" value="1" />
+		</div>
+	</div>
+
+	<script>
+	require(["prototype", "mage/adminhtml/form"], function(){
+	    // re-bind form elements onchange
+	    varienWindowOnload(true);
+
+	    <?php if ($block->isReadonly()):?>
+	    $('product_bundle_container').select('input', 'select', 'textarea', 'button').each(function(input){
+	        input.disabled = true;
+	        if (input.tagName.toLowerCase() == 'button') {
+	            input.addClassName('disabled');
+	        }
+	    });
+	    <?php endif; ?>
+	});
+	</script>
+
+</li>

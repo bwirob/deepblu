@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head> 
+        <css src="Netbaseteam_Faq::css/contact-form.css"/>
+    </head>
+    <body>
+        <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">FAQ</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">FAQ</item>
+                    <item name="label" xsi:type="string">FAQ</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}faq</item>
+                </argument>
+            </action>
+        </referenceBlock>
+
+        <referenceContainer name="content">
+        	<referenceContainer name="sidebar.additional">
+        		<block class="Netbaseteam\Faq\Block\Faqcategory" name="category.faq.list" template="Netbaseteam_Faq::sidebar/faq_category.phtml" before="catalog.compare.sidebar" />
+                <block class="Netbaseteam\Faq\Block\Sidebarfaq" name="faq.sidebar.faq" template="Netbaseteam_Faq::sidebar/sidebar_faq.phtml" before="category.faq.list" ifconfig="faq/faq_page/sidebar_faq"/>
+                <block class="Netbaseteam\Faq\Block\Tagname" name="faq.sidebar.tagname" template="Netbaseteam_Faq::sidebar/tags.phtml" after="category.faq.list" ifconfig="faq/faq_page/faq_tag_list"/>
+                <referenceBlock name="brand_sidebar" remove="true"/>
+        	</referenceContainer>
+            <block class="Netbaseteam\Faq\Block\Faq" name="faq.list" template="faq.phtml">
+            	<block class="Netbaseteam\Faq\Block\Faq\Search" name="faq.form.search" template="Netbaseteam_Faq::faq/form_search.phtml"/>
+
+                <block class="Netbaseteam\Faq\Block\Faq\Contactform" name="faq.form.contact" template="Netbaseteam_Faq::faq/contact_form.phtml">
+                    <container name="product.faq.captcha" label="Captcha">
+                        <block class="Magento\Captcha\Block\Captcha" name="captcha" after="-" cacheable="false">
+                            <action method="setFormId">
+                                <argument name="formId" xsi:type="string">product_faq_form</argument>
+                            </action>
+                            <action method="setImgWidth">
+                                <argument name="width" xsi:type="string">400</argument>
+                            </action>
+                            <action method="setImgHeight">
+                                <argument name="width" xsi:type="string">50</argument>
+                            </action>
+                        </block>
+                    </container>
+                </block>
+
+            	<block class="Netbaseteam\Faq\Block\Faq\Mostfaq" name="faq.list.mostfaq" template="Netbaseteam_Faq::faq/most_faq.phtml" ifconfig="faq/faq_page/faq_main_most_faq"/>
+                <block class="Netbaseteam\Faq\Block\Faq\Categorylist" name="faq.category.list" template="Netbaseteam_Faq::faq/category_list.phtml"/>   	
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,17 @@
+<?php /* @var $block \Cmsmart\Quickview\Block\Product\ExtraView */?>
+<?php $helper = $this->helper('Cmsmart\Quickview\Helper\Data');?>
+<?php $_product = $block->getProduct() ?>
+<?php $showProductLink = $helper->getConfig('cmsmart_quickview/product_extra_link/show_productlink');?>
+<?php if($showProductLink) :?>
+<div>
+    <a class="goto-catalog-product-page" href="<?php echo $_product->getProductUrl();?>">Go to Product Page </a>
+</div>
+<?php endif;?>
+<style>
+    a.goto-catalog-product-page {
+        color :<?php echo $helper->getConfig('cmsmart_quickview/product_extra_link/product_link_color')?> ;
+    }
+    a.goto-catalog-product-page:hover {
+        color :<?php echo $helper->getConfig('cmsmart_quickview/product_extra_link/product_link_hovercolor')?> ;
+    }
+</style>

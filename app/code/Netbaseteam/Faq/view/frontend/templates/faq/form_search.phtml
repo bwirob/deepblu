@@ -1,0 +1,8 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Faq\Helper\Data');
+
+?>
+<form id="faq-search-form" class="faq-search" method="post" action="<?php echo $block->getFormAction(); ?>">
+	<input type="text" name="q" class="search-box"/>
+	<button type="submit" name="sbm" class="search-button"><?php echo __('Search');?></button>
+</form>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    
+    <update handle="editor"/>
+
+    <body>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Blog\Block\Adminhtml\Post\Edit" name="blog_post_edit"/>
+        </referenceContainer>
+
+        <referenceContainer name="left">
+            <block class="Netbaseteam\Blog\Block\Adminhtml\Post\Edit\Tabs" name="blog_post_edit_tabs">
+                <block class="Netbaseteam\Blog\Block\Adminhtml\Post\Edit\Tab\Main" name="blog_post_edit_tab_main"/>
+                <block class="Netbaseteam\Blog\Block\Adminhtml\Post\Edit\Tab\Author" name="blog_post_edit_tab_author"/>
+                <block class="Netbaseteam\Blog\Block\Adminhtml\Post\Edit\Tab\Content" name="blog_post_edit_tab_content"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">blog_post_edit_tab_main</argument>
+
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">author_section</argument>
+                    <argument name="block" xsi:type="string">blog_post_edit_tab_author</argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">content_section</argument>
+                    <argument name="block" xsi:type="string">blog_post_edit_tab_content</argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">related_post</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Related Post</item>
+                        <item name="title" xsi:type="string">Related Post</item>
+                        <item name="url" xsi:type="helper" helper="Netbaseteam\Blog\Helper\Data::getRelatedPostUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">attachment_products</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Related Product</item>
+                        <item name="title" xsi:type="string">Related Product</item>
+                        <item name="url" xsi:type="helper" helper="Netbaseteam\Blog\Helper\Data::getProductsGridUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">comment_list</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Comments</item>
+                        <item name="title" xsi:type="string">Comments</item>
+                        <item name="url" xsi:type="helper" helper="Netbaseteam\Blog\Helper\Data::getCommentListUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action>
+
+            </block>
+        </referenceContainer>
+    </body>
+</page>

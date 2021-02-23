@@ -1,0 +1,130 @@
+<?php
+$helper  = $this->helper('Netbaseteam\Opc\Helper\Data');
+// @codingStandardsIgnoreFile
+?>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+?>
+<?php if($customerSession->isLoggedIn()) :?>
+    <style>
+        .cmsmart-authentication-wrapper {
+            display: none;
+        }
+    </style>
+<?php else:?>
+    <style>
+        .cmsmart-opc-link-logout {
+            display: none;
+        }
+    </style>
+<?php endif;?>
+<!-- <div class="breadcrumbs">
+    <ul class="items">
+        <li class="item Home">
+            <a href="<?php echo $this->getBaseUrl();?>" title="Home">Home</a>
+        </li>
+        <li class="item One_Step_Checkout">
+            <a href="<?php echo $this->getUrl('market_amazon/checkout');?>" title="One Step Checkout">One Step Checkout</a>
+        </li>
+    </ul>
+</div> -->
+<div id="cmsmart-opc-meta-title">
+    <h1><?php echo $helper->getMetaTitle();?></h1>
+</div>
+<div class="cmsmart-opc-link-logout"><a href="<?php echo $this->getUrl('onepage/account/logout', array('_current'=>true))?>">Logout</a></div>
+<div id="checkout" data-bind="scope:'checkout'" class="cmsmart-onepage-checkout-container checkout-container">
+    <div id="checkout-loader" data-role="checkout-loader" class="loading-mask" data-mage-init='{"checkoutLoader": {}}'>
+        <div class="loader">
+            <img src="<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+                 alt="<?php /* @escapeNotVerified */ echo __('Loading...'); ?>"
+                 style="position: absolute;">
+        </div>
+    </div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#checkout": {
+                "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
+            }
+        }
+    </script>
+    <script>
+        window.checkoutConfig = <?php /* @escapeNotVerified */ echo \Zend_Json::encode($block->getCheckoutConfig()); ?>;
+        // Create aliases for customer.js model from customer module
+        window.isCustomerLoggedIn = window.checkoutConfig.isCustomerLoggedIn;
+        window.customerData = window.checkoutConfig.customerData;
+        var giftwrap_url = "<?php echo $this->getUrl('onepage/giftwrap/process', array('_current'=>true))?>";
+        var updateQuote_url = "<?php echo $this->getUrl('onepage/quote/update', array('_current'=>true))?>";
+    </script>
+    <script>
+        require([
+            'mage/url',
+            'Magento_Ui/js/block-loader'
+        ], function(url, blockLoader) {
+            blockLoader("<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>");
+            return url.setBaseUrl('<?php /* @escapeNotVerified */ echo $block->getBaseUrl();?>');
+        })
+    </script>
+
+</div>
+<style>
+    .cmsmart-checkout-shipping-address .action-show-popup {
+        background-color: <?php echo $helper->getFontColor()?>;
+    }
+    .cmsmart-checkout-shipping-address .action-show-popup:hover {
+        background-color: <?php echo $helper->getHoverColor()?>;
+    }
+    .cmsmart-shipping-address-item.shipping-address-item.cmsmart-selected-item label:before {
+        color: <?php echo $helper->getFontColor()?>;
+    }
+    .actions-toolbar button.checkout {
+        background-color: <?php echo $helper->getFontColor()?>;
+    }
+    .actions-toolbar button.checkout:hover {
+        background-color: <?php echo $helper->getHoverColor()?>;
+    }
+    .cmsmart-one-page-checkout-sidebar .cmsmart-opc-block-summary {
+        background-color: <?php echo $helper->getFontColor()?>;
+    }
+    .cmsmart-summary-cart {
+        background-color: <?php echo $helper->getFontColor()?>;
+    }
+    .cmsmart-summary-cart:hover {
+        background-color: <?php echo $helper->getHoverColor()?>;
+    }
+    .cmsmart-summary-cart-arrow:before {
+        border-top: 11px solid <?php echo $helper->getFontColor()?>;
+    }
+    .step-title:before {
+        background-color: <?php echo $helper->getFontColor()?>;
+    }
+    input[type="radio"]:checked:before {
+        color: <?php echo $helper->getFontColor()?>;
+    }
+    input[type="checkbox"]:checked + label::before {
+        color: <?php echo $helper->getFontColor()?>;
+    }
+    button.action.cmsmart-action-code-button {
+        border: 1px solid <?php echo $helper->getFontColor()?>;
+        color: <?php echo $helper->getFontColor()?>;
+    }
+    .cmsmart-checkout-step-shipping form.form-login fieldset.hidden-fields div.actions-toolbar > div.secondary a {
+        color: <?php echo $helper->getFontColor()?>;
+    }
+
+    .cmsmart-checkout-step-shipping form.form-login fieldset.hidden-fields div.actions-toolbar > div.primary button {
+        background-color: <?php echo $helper->getFontColor()?>;
+        border-left: 1px solid <?php echo $helper->getFontColor()?>;
+    }
+    .cmsmart-onepage-checkout .modal-popup.modal-slide .modal-footer .action-save-address {
+        background-color: <?php echo $helper->getFontColor()?>;
+    }
+    .cmsmart-checkout-agreement input[type="checkbox"]:checked + label::before {
+        color:<?php echo $helper->getFontColor()?>;
+    }
+    .cmsmart-opc-link-logout a{
+        background-color:<?php echo $helper->getFontColor()?>;
+    }
+</style>
+

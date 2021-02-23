@@ -1,0 +1,163 @@
+<?php
+// @codingStandardsIgnoreFile
+/**
+ * @var $block \Netbaseteam\Marketplace\Block\Catalog\Product\EditProductForm
+ */
+
+?>
+<li class="field">
+  <label><?php echo __('Cross-Sell Products') ?>:</label>
+    <div class="row">
+        <div style="float: left;width: 60%" class="note">
+            These "impulse-buy" products appear next to the shopping cart as cross-sells to the items already in the shopping cart.
+        </div>
+        <div style="float: right;" class="add-product-to-crosssell-button-container">
+            <button id="add_product_to_crosssell_button"
+                    title="<?php echo $block->escapeHtml(__('Add Cross-Sell Products'));?>"
+                    data-role="add-product-to-crosssell"
+                    type="button"
+                    class="action-secondary"
+                    data-mage-init='{"openCrosssellProductDialog" : {}}'
+                    data-ui-id="widget-button-1">
+                <span><?php /* @escapeNotVerified */ echo __('Add Cross-Sell Products') ?></span>
+            </button>
+        </div>
+    </div>
+    <?php echo $block->getChildHtml('crosssell_product_list'); ?>
+    <?php 
+        $childCrosssellIds = '';
+        $currentProductId = '';
+        if ($block->getProductModel()) {
+            $currentProductId = $block->getProductModel()->getId();
+            $childCrosssellIds = $block->getChildCrosssellIds();
+        }
+    ?>
+    <?php if($childCrosssellIds):?>
+        <div class="crosssell_products">
+            <table class="admin__dynamic-rows data-grid" data-role="grid">
+                <thead>
+                    <tr>
+                        <th class="data-grid-draggable-row-cell"></th>
+
+                        <th class="data-grid-th">
+                            <span>ID</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Thumbnail</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Name</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Attribute Set</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Status</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>SKU</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Price</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Position</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Action</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php echo $this->getLayout()->createBlock("Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\Associated")->setData('child_crosssell_ids',$childCrosssellIds)->setTemplate("Netbaseteam_Marketplace::catalog/product/edit/crosssell/selected.phtml")->toHtml();?>
+                </tbody>
+            </table>
+        </div>
+    <?php else:?>
+        <div class="crosssell_products" style="display: none;">
+            <table class="admin__dynamic-rows data-grid" data-role="grid">
+                <thead>
+                    <tr>
+                        <th class="data-grid-draggable-row-cell"></th>
+
+                        <th class="data-grid-th">
+                            <span>ID</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Thumbnail</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Name</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Attribute Set</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Status</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>SKU</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Price</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Position</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Action</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    <?php endif;?>
+</li>
+
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui', 'reloadGrid', 'uiRegistry'], function($, ui, reloadGrid, registry){
+        $(function() {
+            $('.crosssell_products tbody').sortable({
+                placeholder: 'sort-placeholder',
+                forcePlaceholderSize: true,
+                start: function(e, ui) {
+                    ui.item.data('start-pos', ui.item.index() + 1);
+                },
+                change: function(e, ui) {
+                    var seq, startPos = ui.item.data('start-pos'),
+                        $index, correction;
+
+                    correction = startPos <= ui.placeholder.index() ? 0 : 1;
+
+                    ui.item.parent().find('tr.data-row').each(function(idx, el) {
+                        var $this = $(el),
+                            $index = $this.index();
+
+                        if (($index + 1 >= startPos && correction === 0) || ($index + 1 <= startPos && correction === 1)) {
+                            $index = $index + correction;
+                            $this.find('input[name="crosssell_position"]').val($index - 1);
+                        }
+
+                    });
+
+                    seq = ui.item.parent().find('tr.sort-placeholder').index() + correction;
+                    ui.item.find('input[name="crosssell_position"]').val(seq - 1);
+                }
+            });
+            $(document).on('click', '.data-grid-crosssellproduct .action-delete', function() {
+                $(this).parents('tr').remove();
+                if($('.crosssell_products table tr').length == 1) {
+                    $('.crosssell_products').append('<input id="empty_crosssell_product" type="hidden" name="links[crosssell][][id]" value="">');
+                }
+            });
+        });
+        $('#add_product_to_crosssell_button').click(function(){
+            var crosssellProducts = [<?=$currentProductId?>];
+            $('input[name="links[crosssell][][id]"]').each(function() {
+                crosssellProducts.push($(this).val());
+            });
+            reloadGrid.reloadUIComponent("marketplace_crosssellproduct_listing.marketplace_crosssellproduct_listing_grid_data_source",crosssellProducts, "crosssellproduct_ids");
+        });
+    });
+</script>

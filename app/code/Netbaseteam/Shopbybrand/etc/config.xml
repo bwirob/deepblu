@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <shopbybrand>
+            <general>
+                <Enabled>1</Enabled>
+            </general>
+        </shopbybrand>
+
+        <shopbybrand>
+            <list_page_settings>
+                <Page_Title>Shop By Brand</Page_Title>
+                <Show_Brand_Name>1</Show_Brand_Name>
+                <Show_Product_Count>1</Show_Product_Count>
+                <Show_Featured_Brands>1</Show_Featured_Brands>
+            </list_page_settings>
+        </shopbybrand>
+
+        <shopbybrand>
+            <Product_Page_Settings>
+                <Show_Brand>1</Show_Brand>
+                <Show_Brand_Name>1</Show_Brand_Name>
+                <Show_Related_Products_By_Brand>1</Show_Related_Products_By_Brand>
+                <Number_Of_Related_Products_By_Brand_Will_Display>5</Number_Of_Related_Products_By_Brand_Will_Display>
+                <Show_Product_Count>1</Show_Product_Count>
+            </Product_Page_Settings>
+        </shopbybrand>
+
+        <shopbybrand>
+            <Sidebar_Settings>
+                <Enabled>1</Enabled>
+                <Show_Brand_Name>1</Show_Brand_Name>
+                <Show_Product_Count>1</Show_Product_Count>
+                <Default_Number_Of_Brands_Will_Display>5</Default_Number_Of_Brands_Will_Display>
+            </Sidebar_Settings>
+        </shopbybrand>
+    </default>
+</config>

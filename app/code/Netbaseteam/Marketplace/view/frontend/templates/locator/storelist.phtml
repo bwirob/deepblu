@@ -1,0 +1,114 @@
+<?php
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$storesData = $block->getStoresData();
+$yourShopID = '';
+?>
+
+<div class="list-store-box col-sm-4 col-xs-12 pull-left">
+    <div class="list-title">
+        <h2>
+            <span><?php echo __('Store List'); ?></span>
+				<span class="number-store pull-right">
+					<?php echo __(count($storesData) . ' Stores'); ?>
+				</span>
+        </h2>
+    </div>
+
+    <div class="list-store col-xs-12">
+        <?php if (count($storesData)): ?>
+            <ul class="list-store-container disable-ul">
+                <?php foreach ($storesData as $key => $store): ?>
+                    <?php $sellerId = $store['seller_id']; ?>
+                    <li class="show-tag-li store-item" item-number="<?php echo $key; ?>"
+                        title="<?php echo isset($this->getSellerData($sellerId)[0]['shop_title']) ? $this->getSellerData($sellerId)[0]['shop_title'] : ''; ?>"
+                        data-position='<?php echo $block->toPositionJson($store); ?>'
+                        data-info='<?php echo $block->toStoreJsonData($store['id']); ?>'>
+                        <div class="store-content">
+                            <?php if(isset($this->getSellerData($sellerId)[0]['shop_logo'])):?>
+                            <div class="col-sm-4 col-xs-4 store-thumb">
+                                <img
+                                    src="<?php echo $helper->getMediaUrl() . 'marketplace/' . ($this->getSellerData($sellerId)[0]['shop_logo']); ?>"/>
+                            </div>
+                            <?php endif;?>
+                            <div class="col-sm-8 col-xs-8 store-info">
+                                <h4>
+                                    <?php if (isset($this->getSellerData($sellerId)[0]['shop_id'])) $yourShopID = $this->getSellerData($sellerId)[0]['shop_id']; ?>
+                                    <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$yourShopID", ['_secure' => $this->getRequest()->isSecure()]); ?>"
+                                       target="_blank" class="shop_title"
+                                       title="<?php echo isset($this->getSellerData($sellerId)[0]['shop_title']) ? $this->getSellerData($sellerId)[0]['shop_title'] : ''; ?>">
+                                        <?php echo isset($this->getSellerData($sellerId)[0]['shop_title']) ? $this->getSellerData($sellerId)[0]['shop_title'] : ''; ?>
+                                    </a>
+                                    <?php if ($store['shop_location']): ?>
+                                        <p><?php echo __($store['shop_location']); ?></p>
+                                    <?php endif ?>
+                                    <?php if (isset($this->getSellerData($sellerId)[0]['contact_number'])): ?>
+                                        <p><?php echo __($this->getSellerData($sellerId)[0]['contact_number']); ?></p>
+                                    <?php endif ?>
+                                    <p>
+                                        <span class="street-view store-link"
+                                              item-number="<?php echo $key; ?>"><?php echo __('Street View') ?></span>
+                                        <span class="direction store-link"><?php echo __('Direction') ?></span>
+                                    </p>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="option-direction custom-popup col-xs-12">
+                            <ul class="vertical text-center travel-list" number-box="<?php
+                            echo $key; ?>">
+                                <li class="travel car travel-active" travel-data="DRIVING"
+                                    title="<?php echo __('Driving'); ?>">
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                </li>
+                                <li class="travel bus" travel-data="TRANSIT"
+                                    title="<?php echo __('Transit'); ?>">
+                                    <i class="fa fa-subway" aria-hidden="true"></i>
+                                </li>
+                                <li class="travel walk" travel-data="WALKING" title="<?php echo __('Walking'); ?>">
+                                    <i class="fa fa-male" aria-hidden="true"></i>
+                                </li>
+                                <li class="travel bicycle" travel-data="BICYCLING" title="<?php echo __('Bicycle'); ?>">
+                                    <i class="fa fa-bicycle" aria-hidden="true"></i>
+                                </li>
+                            </ul>
+                            <div class="directions-box">
+                                <div class="widget-directions-searchbox-handle">
+                                    <div class="widget-directions-icon waypoint-handle"></div>
+                                    <div class="widget-directions-icon waypoint-to"></div>
+                                    <div class="widget-directions-icon waypoint-bullet"></div>
+                                </div>
+                                <div class="form-inputs">
+                                    <input class="form-control origin originA start" type="text" name="originA"
+                                           isstart="true" autocomplete="off" placeholder="Enter a location"
+                                           id="<?php echo 'director-' . $key; ?>">
+                                    <input class="form-control origin originB end" readonly="true" type="text"
+                                           name="originB" autocomplete="off"
+                                           value="<?php echo __($store['shop_location']); ?>">
+                                </div>
+                                <div class="widget-directions-right-overlay">
+                                    <button type="button" onclick="" class="swap-locations"
+                                            title="Swap locations A-B"><?php echo __('Swap locations A-B') ?></button>
+                                </div>
+                                <div id="<?php echo 'directions-panel-' . $key; ?>"></div>
+                            </div>
+
+                            <div class="box-input col-xs-12">
+                                <button class="get-direction action primary pull-right" title="Get Directions"
+                                        type="submit">
+                                    <span><?php echo __('Go') ?></span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                <?php endforeach ?>
+            </ul>
+        <?php else: ?>
+            <div class="message info empty">
+                <span><?php echo __('Not found the search result!'); ?></span>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+
+
+

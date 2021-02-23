@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.Netbaseteam.net
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="netbaseteam" translate="label" sortOrder="9000">
+            <label>Netbaseteam</label>
+        </tab>
+        <section id="netbaseteam_license" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>License Marketplace</label>
+            <tab>netbaseteam</tab>
+            <resource>Netbaseteam_Core::marketplace_setting</resource>
+
+            <group id="license" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>License</label>
+                <field id="license_code" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>License key</label>
+                </field>
+                <field id="build_indexes" translate="label comment tooltip" type="button" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="2">
+                    <frontend_model>Netbaseteam\Marketplace\Block\Adminhtml\Upgrade\Button</frontend_model>
+                </field>
+            </group>
+            <group id="get_license" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Get Free license key</label>
+                <field id="get_license_code_email" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email</label>
+                    <validate>required-entry validate-email</validate>
+                    <comment>Please fill correct email,License key will be send to your email.</comment>
+                </field>
+                <field id="get_license_code_user" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Fullname</label>
+                </field>
+                <field id="build_indexesx" translate="label comment tooltip" type="button" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="2">
+                    <frontend_model>Netbaseteam\Marketplace\Block\Adminhtml\Upgrade\FormLicense</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

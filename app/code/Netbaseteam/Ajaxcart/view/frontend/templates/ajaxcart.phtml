@@ -1,0 +1,53 @@
+<!-- For popup success message -->
+<?php 
+	$helper = $this->helper('Netbaseteam\Ajaxcart\Helper\Data'); 
+	$popupBackground = $helper->getPopupBackground();
+
+?>
+
+<?php if ($helper->getConfigEnabled()): ?>
+	<div id="nb_popupmess" class="block ajax-cart-popup-none" style="background:<?php 
+	echo $popupBackground; ?> "></div>
+
+	<!-- For please wait -->
+	<div id="nb-ajax-cart-loading" class="block ajax-cart-popup-none"></div>
+
+	<!-- For show product options -->
+	<div id="ajaxcart_content_option_product" class="block ajax-cart-popup-none" style="background:<?php echo $popupBackground; ?>" >
+		<div class="option_title">
+			<p><?php echo __('You need to choose options for your item'); ?></p>
+			<a class="close_x" href="#" >x</a>
+		</div>
+		<div class="option_content"></div>
+	</div>
+
+	<div class=" ajax-cart-popup-none" id="nb_shadow" style="z-index:9998;"></div>
+
+	<script type="text/javascript">
+
+	 require([
+        'jquery'
+    ], function ($) {
+	        'use strict';
+
+			$('.close_x').click(function(){
+	            $('#ajaxcart_content_option_product').hide();
+	            $('#ajaxcart_content_option_product .option_content').empty();
+	            $('#nb_shadow').hide();
+	            return false;
+	            
+	        });
+
+       });
+	
+
+	var enableModule = '<?php echo $helper->getConfigEnabled(); ?>';
+	var showProductImage = '<?php echo $helper->getShowImageProduct(); ?>';
+	var baseUrl = '<?php echo $helper->getBaseUrl(); ?>';
+	var getImageFlyEffect = '<?php echo $helper->getImageFlyEffect(); ?>';
+	var config =[];
+	config['timeShowMesPop'] = '<?php echo $helper->getTimeMessPop(); ?>';
+	config['addToCartAfter'] = '<?php echo $helper->getAddCartAfter(); ?>';
+
+	</script>
+<?php endif ?>

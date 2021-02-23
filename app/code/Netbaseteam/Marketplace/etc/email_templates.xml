@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="netbaseteammp_email_setting_product_email_template" label="Seller Product Information Email Template" file="product_email_template.html" type="html" module="Netbaseteam_Marketplace" area="frontend"/>
+    <template id="netbaseteammp_email_setting_account_email_template" label="Seller Registration Email Template" file="account_email_template.html" type="html" module="Netbaseteam_Marketplace" area="frontend"/>
+    <template id="netbaseteammp_email_setting_contact_email_template" label="Seller Communication Email Template" file="contact_email_template.html" type="html" module="Netbaseteam_Marketplace" area="frontend"/>
+    <template id="netbaseteammp_email_setting_seller_email_template" label="Seller Confirmation Email Template" file="seller_email_template.html" type="html" module="Netbaseteam_Marketplace" area="frontend"/>
+    <template id="netbaseteammp_email_setting_admin_product_email_template" label="Seller Product Confirmation Email Template" file="admin_product_email_template.html" type="html" module="Netbaseteam_Marketplace" area="frontend"/>
+    <template id="netbaseteammp_email_setting_pay_seller_email_template" label="Seller Payment Email Template" file="payseller_email_template.html" type="html" module="Netbaseteam_Marketplace" area="frontend"/>
+</config>

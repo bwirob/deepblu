@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.Netbaseteam.net
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <netbaseteammp>
+            <landing_page>
+                <layout_type>3</layout_type>
+            </landing_page>
+            <product_settings>
+                <uploadimagetype><![CDATA[jpeg,png,gif,jpg]]></uploadimagetype>
+                <attributesetid>4</attributesetid>
+                <allow_product_type>simple,virtual,configurable,downloadable,grouped,bundle</allow_product_type>
+            </product_settings>
+            <commission>
+                <amount>5</amount>
+                <fixed_or_percentage>1</fixed_or_percentage>
+            </commission>
+            <email_setting>
+                <product_email_template>netbaseteammp_email_setting_product_email_template</product_email_template>
+                <pay_seller_email_template>netbaseteammp_email_setting_pay_seller_email_template</pay_seller_email_template>
+                <account_email_template>netbaseteammp_email_setting_account_email_template</account_email_template>
+                <contact_email_template>netbaseteammp_email_setting_contact_email_template</contact_email_template>
+                <seller_email_template>netbaseteammp_email_setting_seller_email_template</seller_email_template>
+                <admin_product_email_template>netbaseteammp_email_setting_admin_product_email_template</admin_product_email_template>
+            </email_setting>
+            <locator>
+                <enable>1</enable>
+                <distance_unit>0</distance_unit>
+            </locator>
+            <vacation>
+                <enable>1</enable>
+            </vacation>
+        </netbaseteammp>
+        <carriers>
+            <vendorshippingmethods>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>Netbaseteam\Marketplace\Model\Carrier\Shipping</model>
+                <name>Multi Shipping</name>
+                <price>5.00</price>
+                <title>Multi Vendor</title>
+                <type>I</type>
+                <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
+            </vendorshippingmethods>
+        </carriers>
+    </default>
+</config>

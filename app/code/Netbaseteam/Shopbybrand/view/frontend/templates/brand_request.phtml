@@ -1,0 +1,124 @@
+<?php 
+	$checkhome = $block->getHomeName();
+	$cateid = $block->getCategoryId();
+?>
+<?php if($checkhome == "amazon"): ?>
+<div class="home-product-slider nb-list products-grid">
+	<?php
+		$count11 = 0;
+		$objectManager =  \Magento\Framework\App\ObjectManager::getInstance(); 
+		$branddisplay = []; 
+		$storeManager = $objectManager->get('Magento\Store\Model\StoreManagerInterface');
+		$cateinstance = $objectManager->create('Magento\Catalog\Model\CategoryFactory');
+		$_shopbybrand = $block->getCollection(); 
+		$cateid = $block->getCategoryId();
+		$allcategoryproduct = $cateinstance->create()->load($cateid)->getProductCollection()->addAttributeToSelect('*');
+		$currentStore = $storeManager->getStore(); 
+		$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA); 
+		foreach ($allcategoryproduct as $product) {
+			foreach ($_shopbybrand as $shopbybrandItem){
+				$path = $mediaUrl.'//Shopbybrand'.'//'.$shopbybrandItem->getLogo(); 
+				$productbrand= explode("&", $shopbybrandItem->getproduct_ids());
+				$brandid = $shopbybrandItem->getBrandId();
+				foreach ($productbrand as $item){
+					if ($item == $product->getId() ) { ?> 
+						<?php if (in_array($brandid,$branddisplay)): ?>
+							
+						<?php else: ?>
+							<?php if ($count11<8): ?>
+								<div class="item">
+									<a href=""><img src=" <?php echo $path ?>"/></a>
+								</div>
+								<?php 
+									array_push($branddisplay,$brandid);
+									$count11++;
+								?>
+							<?php endif ?>
+						<?php endif ?>
+						<?php  
+					}
+				}
+			}
+		}
+	?>
+</div>
+<?php elseif ($checkhome == "lazada") : ?>
+	<div class="home-product-slider nb-list products-grid" id="brand-require-view-<?php echo $cateid; ?>">
+	<?php
+		$count11 = 0;
+		$objectManager =  \Magento\Framework\App\ObjectManager::getInstance(); 
+		$branddisplay = [];
+
+		$storeManager = $objectManager->get('Magento\Store\Model\StoreManagerInterface');
+		$cateinstance = $objectManager->create('Magento\Catalog\Model\CategoryFactory');
+		$_shopbybrand = $block->getCollection();  
+		$allcategoryproduct = $cateinstance->create()->load($cateid)->getProductCollection()->addAttributeToSelect('*');
+		$currentStore = $storeManager->getStore(); 
+		$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA); 
+		foreach ($allcategoryproduct as $product) {
+			foreach ($_shopbybrand as $shopbybrandItem){
+				$path = $mediaUrl.'//Shopbybrand'.'//'.$shopbybrandItem->getLogo(); 
+				$productbrand= explode("&", $shopbybrandItem->getproduct_ids());
+				$brandid = $shopbybrandItem->getBrandId();
+				foreach ($productbrand as $item){
+					if ($item == $product->getId() ) { ?> 
+						<?php if (in_array($brandid,$branddisplay)): ?>
+							
+						<?php else: ?>
+							<?php if ($count11<10): ?>
+								<div class="item">
+									<a href=""><img src=" <?php echo $path ?>"/></a>
+								</div>
+								<?php 
+									array_push($branddisplay,$brandid);
+									$count11++;
+								?>
+							<?php endif ?>
+						<?php endif ?>
+						<?php  
+					}
+				}
+			}
+		}
+	?>
+</div>
+<script type="text/javascript">
+	//Home product tab 
+    require(['jquery','owlCarousel'], function($) {
+		$('#brand-require-view-<?php echo $cateid; ?>').owlCarousel({
+			items: 4,
+			itemsCustom: [ 
+				[0, 1], 
+				[480, 2], 
+				[768, 3], 
+				[800, 3], 
+				[992, 3],
+				[1024, 4],  
+				[1200, 4],
+				[1900, 6] 
+			],
+			pagination: false,
+			slideSpeed : 800,
+			addClassActive: true,
+			scrollPerPage: false,
+			touchDrag: false,
+			afterAction: function (e) {
+				if(this.$owlItems.length > this.options.items){
+					$('#brand-require-view-<?php echo $cateid; ?> .navslider').show();
+				}else{
+					$('#brand-require-view-<?php echo $cateid; ?> .navslider').hide();
+				}
+			}
+		//scrollPerPage: true,
+		});
+		$('#brand-require-view-<?php echo $cateid; ?> .navslider .prev').on('click', function(e){
+			e.preventDefault();
+			$('#brandhome-tab div.products-grid').trigger('owl.prev');
+		});
+		$('#brandhome-tab .navslider .next').on('click', function(e){
+			e.preventDefault();
+			$('#brandhome-tab div.products-grid').trigger('owl.next');
+		}); 
+	});
+</script>
+<?php endif; ?>

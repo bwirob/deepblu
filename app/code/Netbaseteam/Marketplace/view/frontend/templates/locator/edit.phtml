@@ -1,0 +1,118 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$locator = $block->getLocator();
+?>
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3><?php echo $locator ? 'Edit Locator' : 'New Locator'?></h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <form action="<?php echo $this->getUrl('marketplace/locator/save', ['_secure' => $this->getRequest()->isSecure()]) ?>" method="post"  id="form-locator-edit" data-mage-init='{"validation":{}}'>
+            <div class="netbaseteam-mp-locator">
+                <fieldset class="info fieldset" id="seller-locator">
+                    <button class="action submit primary" type="reset">
+                        <span><?php echo __('Reset') ?></span>
+                    </button>
+                    <button class="action submit primary" title="<?php echo __('Save') ?>" type="submit" id="save-btn">
+                        <span><?php echo __('Save') ?></span>
+                    </button>
+                    <?php if(isset($locator['id'])):?>
+                        <input type="hidden" name="id" value="<?php echo $locator['id'];?>"/>
+                    <?php endif;?>
+                    <?php echo $block->getBlockHtml('formkey')?>
+
+                    <fieldset class="fieldset info netbaseteam-mp-fieldset">
+                        <legend class="legend"></legend>
+
+                        <div class="field">
+                            <label><?php echo __('Status') ?> : </label>
+                            <div class="control">
+                                <select id="locator_status" title="<?php echo __('Status') ?>" name="status">
+                                    <option <?php echo ($locator['status'] == 0) ? ('selected') : ('')?> value="0"><?php echo __("Disable"); ?></option>
+                                    <option <?php echo ($locator['status'] == 1) ? ('selected') : ('')?> value="1"><?php echo __("Enable"); ?></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field required">
+                            <label><?php echo __('Address') ?> : </label>
+                            <div class="control">
+                                <input type="text" class="required-entry input-text" name="shop_location" value="<?php echo isset($locator['shop_location']) ? $locator['shop_location'] : ''?>"/>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label><?php echo __('Country Code') ?> : </label>
+                            <div class="control">
+                                <input type="text" class="input-text" name="country_code" value="<?php echo isset($locator['country_code']) ? $locator['country_code'] : ''?>"/>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label><?php echo __('Zip Code') ?> : </label>
+                            <div class="control">
+                                <input type="text" class="input-text" name="shop_zipcode" value="<?php echo isset($locator['shop_zipcode']) ? $locator['shop_zipcode'] : ''?>"/>
+                            </div>
+                        </div>
+
+                        <div class="field required">
+                            <label><?php echo __('Latitude') ?> : </label>
+                            <div class="control">
+                                <input type="text" class="required-entry input-text" name="shop_latitude" value="<?php echo isset($locator['shop_latitude']) ? $locator['shop_latitude'] : ''?>" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="field required">
+                            <label><?php echo __('Longitude') ?> : </label>
+                            <div class="control">
+                                <input type="text" class="required-entry input-text" name="shop_longitude" value="<?php echo isset($locator['shop_longitude']) ? $locator['shop_longitude'] : ''?>" readonly/>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label><?php echo __('Zoom Level') ?> : </label>
+                            <div class="control">
+                                <input type="text" class="input-text" name="zoom_level" value="<?php echo isset($locator['zoom_level']) ? $locator['zoom_level'] : ''?>" readonly/>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </fieldset>
+            </div>
+        </form>
+
+        <div class="cms-manage-content-actions">
+            <div class="search-box ">
+                <input id="search-auto" class="search-auto" type="text" name="q_str" autocomplete="off"
+                       placeholder="<?php echo __('Enter a Location'); ?>"/>
+                <button class="btn-reset primary"><?php echo __('Reset Map'); ?></button>
+            </div>
+            <div id="map" style="width: 100%;height: 400px"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "locator_map": {
+                "latDefault": "19.31114335506464",
+                "lngDefault": "-10.107421875",
+                "zoomLevelDefault": "2"
+            },
+            "admin_vendor": {}
+        }
+    }
+</script>
+

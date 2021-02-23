@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"> 
+    <body>
+        <referenceBlock name='catalog.topnav' > 
+                <action method='setTemplate' ifconfig="shopbybrand/general/Enabled">
+                        <argument  name='template' xsi:type='string'>Netbaseteam_Shopbybrand::html/topmenu.phtml</argument>
+                </action> 
+        </referenceBlock>
+        <referenceContainer name="content">
+            <referenceContainer name="sidebar.main">
+                <block class="Netbaseteam\Shopbybrand\Block\Sidebar" name="brand_sidebar" template="Netbaseteam_Shopbybrand::cmsmart_shopbybrand/sidebar.phtml" before="-" ifconfig="shopbybrand/general/Enabled"/>
+            </referenceContainer>
+        </referenceContainer>
+    </body>
+</page>

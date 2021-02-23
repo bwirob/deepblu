@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+		<tab id="cmsmart" translate="label" sortOrder="1000">
+			<label>Cms-Mart</label>
+		</tab>
+		
+        <section id="orderupload" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Orderupload</label>
+            <tab>cmsmart</tab>
+            <resource>Netbaseteam_Orderupload::config_orderupload</resource>
+            <group id="view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Orderupload Configuration</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				
+				<field id="file_type" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow File Type</label>
+					<comment>Ex: jpg, jpeg, png, zip, rar, docx, doc, pdf</comment>
+                </field>
+				
+				<field id="max_file_size" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max File Size Upload</label>
+					<comment>Unit: Mb. Limit size for each file to upload</comment>
+                </field>
+				
+				<field id="show_download" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Download File Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				
+				<field id="show_comment" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Update Comment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>For show/hide comment textbox and button comment in view cart page</comment>
+				</field>
+				
+				<field id="allow_multi_file" translate="label" type="select" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Upload Multiple Files At The Same Time</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				
+				<field id="show_on_checkout" translate="label" type="select" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Uploaded Files On View Cart Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				
+				<field id="show_on_viewoder_frontend" translate="label" type="select" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Uploaded Files On The View Order Page Frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

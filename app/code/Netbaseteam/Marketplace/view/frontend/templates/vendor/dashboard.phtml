@@ -1,0 +1,258 @@
+<?php
+
+$orderData = $block->getOrderData();
+$lifeTimeSales = $block->getLifetimeSales();
+$averageOrder = $block->getAverageOrder();
+$commission = $block->getCommission();
+$totalSales = count($block->getOrders());
+$lastOrders = $block->getLastOrders();
+$revenueArr = $block->getTotalRevenue();
+
+$transactions = $block->getTransaction();
+$transactionArr = array();
+if(count($transactions)){
+  $transactionArr = array($block->getReceivedTransaction(), $block->getRemainTransaction());
+}
+
+$totalRevenue = 0;
+
+if (isset($revenueArr)) {
+  foreach ($revenueArr as $item) {
+    $totalRevenue += $item;
+  }
+}
+
+$sessionsArr = array();
+$totalSessions = 0;
+if (isset($orderData)) {
+  foreach ($orderData as $item) {
+    $sessionsArr[] = $item[1];
+    $totalSessions += $item[1];
+  }
+}
+
+?>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="row top_tiles">
+      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-tachometer"></i></div>
+          <div class="count"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($lifeTimeSales, true, false); ?></div>
+          <h3>Lifetime Sales</h3>
+          <p>Definition of lifetime value of a vendor.</p>
+        </div>
+      </div>
+      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-money"></i></div>
+          <div class="count"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($averageOrder, true, false); ?></div>
+          <h3>Average Order</h3>
+          <p>A key component of customer behavior.</p>
+        </div>
+      </div>
+      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-thumbs-o-up"></i></div>
+          <div class="count"><?php echo $commission;?><span style="font-size:30%"><?php echo $block->getCommissionType() ? ' On Per Order' : ' On Per Item'?><span></div>
+
+          <h3>Commission</h3>
+          <p>Definition of sales commission.</p>
+        </div>
+      </div>
+      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-check-square-o"></i></div>
+          <div class="count"><?php echo $totalSales;?></div>
+          <h3>Total Sales</h3>
+          <p>Number of total sales.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Sales Summary <small>Weekly progress</small></h2>
+            <div class="filter">
+              <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div class="col-md-9 col-sm-12 col-xs-12">
+              <div class="demo-container" style="height:280px">
+                <div id="chart_plot" class="demo-placeholder"></div>
+              </div>
+              <div class="tiles">
+                <div class="col-md-4 tile">
+                  <span>Total Sessions</span>
+                  <h2><?php echo $totalSessions?></h2>
+                  <span class="sparkline_session graph" style="height: 160px;">
+                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                  </span>
+                </div>
+                <div class="col-md-4 tile">
+                  <span>Total Revenue</span>
+                  <h2><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($totalRevenue, true, false); ?></h2>
+                  <span class="sparkline_revenue graph" style="height: 160px;">
+                        <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                  </span>
+                </div>
+                <div class="col-md-4 tile">
+                  <span>Total Sessions</span>
+                  <h2><?php echo $totalSessions?></h2>
+                  <span class="sparkline_session graph" style="height: 160px;">
+                         <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-3 col-sm-12 col-xs-12">
+              <div>
+                <div class="x_title">
+                  <h2>Last Orders</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <ul class="list-unstyled top_profiles scroll-view">
+                  <?php if(count($lastOrders)):?>
+                    <?php foreach($lastOrders as $order):?>
+                      <li class="media event">
+                        <a class="pull-left border-aero profile_thumb">
+                          <i class="fa fa-user aero"></i>
+                        </a>
+                        <small>#<?php echo $order->getRealOrderId();?></small>
+                        <div class="media-body">
+                          <a class="title" href="<?php echo $block->getViewUrl($order->getId());?>"><?php echo $order->getShippingAddress() ? $block->escapeHtml($order->getShippingAddress()->getName()) : '&nbsp;' ?></a>
+                          <p><strong><?php /* @escapeNotVerified */ echo $order->formatPrice($order->getGrandTotal()) ?>. </strong> Total Sales </p>
+                          <p> <small><?php echo $formatDate =  date(("F j, Y, g:i a"), strtotime($order->getCreatedAt())); ?></small>
+                          </p>
+                        </div>
+                      </li>
+                    <?php endforeach;?>
+                  <?php else:?>
+                    <li class="media event">
+                    <div class="message info empty"><span><?php /* @escapeNotVerified */ echo __('You have placed no orders.'); ?></span></div>
+                    </li>
+                  <?php endif;?>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>Transaction Summary <small>Activity shares</small></h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Settings 1</a>
+                  </li>
+                  <li><a href="#">Settings 2</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a class="close-link"><i class="fa fa-close"></i></a>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+
+            <div class="row" style="border-bottom: 1px solid #E0E0E0; padding-bottom: 5px; margin-bottom: 5px;">
+              <div class="col-md-6" style="overflow:hidden;">
+                <span class="sparkline_transaction" style="height: 160px; padding: 10px 25px;">
+                              <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
+                          </span>
+                <h4 style="margin:18px">Weekly sales progress</h4>
+              </div>
+
+              <div class="col-md-6">
+                <div class="row" style="text-align: center;">
+                  <div class="col-md-4">
+                    <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
+                    <h4 style="margin:0"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($block->getTotalTransaction(), true, false); ?></h4>
+                  </div>
+                  <div class="col-md-4">
+                    <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
+                    <h4 style="margin:0"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($block->getTotalTransaction(), true, false); ?></h4>
+                  </div>
+                  <div class="col-md-4">
+                    <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
+                    <h4 style="margin:0"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($block->getTotalTransaction(), true, false); ?></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form action="<?php echo $this->getUrl('*/*/*', ['_secure' => $this->getRequest()->isSecure()]) ?>" method="post" id="form-reportrange" style="display: none">
+    <input type="hidden" name="reportrange" value="">
+    <input type="hidden" name="daterangelabel" value="<?php echo $this->getRequest()->getParam('daterangelabel');?>">
+    <button class="action submit primary" type="submit"></button>
+</form>
+
+<?php
+$formData = [
+    'chartPlotData' => $orderData,
+    'sparkLineSession' => $sessionsArr,
+    'sparkLineRevenue' => $revenueArr,
+    'transactionData' => $transactionArr
+];
+$serializedFormData = $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($formData);
+?>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "bootstrap_daterangepicker" : {},
+            "chartJs" : {},
+            "sparkline" : {},
+            "flot": {},
+            "flotPie": {},
+            "flotResize": {},
+            "flotStack": {},
+            "flotTime": {},
+            "dateJs": {},
+            "moment" : {},
+            "admin_vendor": <?php /* @noEscape */ echo $serializedFormData; ?>
+        }
+    }
+</script>

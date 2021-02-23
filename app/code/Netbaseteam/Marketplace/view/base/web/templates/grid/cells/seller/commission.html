@@ -1,0 +1,95 @@
+<form id="ask-form-<%- sellerid %>" method="get" enctype="multipart/form-data" action="<%- formaction %>"
+      class="mp-seller-commission">
+    <div class="modal-body">
+        <div class="bootbox-body">
+            <input type="hidden" name="id" value="<%- sellerid %>">
+            <fieldset class="fieldset admin__fieldset fieldset-wide" id="seller_base_fieldset">
+                <div class="messages">
+                </div>
+                <div class="admin__field field field-commission_amount "
+                     data-ui-id="marketplace-seller-edit-form-fieldset-element-form-field-commission-amount">
+                    <label class="label admin__field-label" for="seller_commission_amount"
+                           data-ui-id="marketplace-seller-edit-form-fieldset-element-text-commission-amount-label"><span>Amount</span></label>
+
+                    <div class="admin__field-control control">
+                        <input id="seller_commission_amount" name="commission_amount"
+                               data-ui-id="marketplace-seller-edit-form-fieldset-element-text-commission-amount"
+                               value="<%- commission_amount %>" title="Amount" type="text"
+                               class=" input-text admin__control-text"></div>
+                </div>
+
+                <div class="admin__field field field-fixed_or_percentage  required _required"
+                     data-ui-id="marketplace-seller-edit-form-fieldset-element-form-field-fixed-or-percentage">
+                    <label class="label admin__field-label" for="seller_fixed_or_percentage"
+                           data-ui-id="marketplace-seller-edit-form-fieldset-element-select-fixed-or-percentage-label"><span>Fixed or Percentage</span></label>
+
+                    <div class="admin__field-control control">
+                        <select id="seller_fixed_or_percentage" name="fixed_or_percentage" title="Fixed or Percentage"
+                                class=" required-entry _required select admin__control-select"
+                                data-ui-id="marketplace-seller-edit-form-fieldset-element-select-fixed-or-percentage"
+                                aria-required="true">
+                            <option value="0">Fixed</option>
+                            <option value="1">Percentage</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="admin__field field field-commission_type  required _required"
+                     data-ui-id="marketplace-seller-edit-form-fieldset-element-form-field-commission-type">
+                    <label class="label admin__field-label" for="seller_commission_type"
+                           data-ui-id="marketplace-seller-edit-form-fieldset-element-select-commission-type-label"><span>Type</span></label>
+
+                    <div class="admin__field-control control">
+                        <select id="seller_commission_type" name="commission_type" title="Type"
+                                class=" required-entry _required select admin__control-select"
+                                data-ui-id="marketplace-seller-edit-form-fieldset-element-select-commission-type"
+                                aria-required="true">
+                            <option value="0">Per Item</option>
+                            <option value="1">Per Order</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <span class="error"></span>
+        <button type="reset" class="btn btn-default"><span><%- cancellabel %></span></button>
+        <button type="submit" class="btn btn-primary"><span><%- submitlabel %></span></button>
+        <span class="clear"></span>
+    </div>
+</form>
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function ($) {
+        $('#ask-form-<%- sellerid %>').mage('validation', {});
+        $("body").delegate('.action-close', "click", function () {
+            console.log($(this).parents('.modals-wrapper').find('form').attr('class'));
+            if ($(this).parents('.modals-wrapper').find('form').attr('class') == 'mp-seller-commission') {
+                $(this).parents('.modals-wrapper').find('.modals-overlay').remove();
+                $(this).parents('.modal-popup').remove();
+                $('body').removeClass('_has-modal');
+            }
+        });
+
+        var commissionOption = '<%- commission_option %>';
+        var commissionType = '<%- commission_type %>';
+
+        $(document).ready(function () {
+            if (commissionOption == '1') {
+                $('#seller_fixed_or_percentage').val("1");
+            } else {
+                $('#seller_fixed_or_percentage').val("0");
+            }
+
+            if (commissionType == '1') {
+                $('#seller_commission_type').val("1");
+            } else {
+                $('#seller_commission_type').val("0");
+            }
+
+        });
+    });
+</script>

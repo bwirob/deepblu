@@ -1,0 +1,21 @@
+{
+    "name": "netbaseteam/orderupload",
+    "description": "Cmsmart Magento 2 extension:Cmsmart Orderupload Pro",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "homepage":"cmsmart.net",
+    "time":"2016-11-25",
+    "license": [
+       "OSL-3.0"
+    ],
+    "support": {
+        "irc": "irc://cmsmart.net/support_ticket/"
+    },
+
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Netbaseteam\\Orderupload\\": ""
+        }
+    }
+}

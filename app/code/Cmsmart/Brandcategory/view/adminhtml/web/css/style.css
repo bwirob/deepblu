@@ -1,0 +1,16 @@
+.field-left_pgrid_cats .admin_field-control > img,.field-top_pgrid_cats .admin_field-control > img{
+	position:absolute;
+	bottom:-2px;
+	right:-20px;
+}
+.field-left_pgrid_cats .admin_field-control,.field-top_pgrid_cats .admin_field-control{
+	position:relative;
+} 
+.field-left_pgrid_products .admin_field-control > img,.field-top_pgrid_products .admin_field-control > img{
+	position:absolute;
+	bottom:-2px;
+	right:-20px;
+}
+.field-left_pgrid_products  .admin_field-control,.field-top_pgrid_products  .admin_field-control{
+	position:relative;
+} 

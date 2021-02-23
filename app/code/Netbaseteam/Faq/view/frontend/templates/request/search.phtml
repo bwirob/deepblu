@@ -1,0 +1,86 @@
+<?php 
+	$faqData = $block->getFaqBySearch();
+	$helper = $this->helper('Netbaseteam\Faq\Helper\Data');
+	$q = $block->getRequireSearchStr();
+?>
+<div class="faq-require">
+	<h3 class="faq-require-title"><?php echo __('Search FAQ for: "'.$q.'"'); ?></h3>
+	<div class="faq-require-main">
+		<?php if ($block->hasFaqBySearch()): ?>
+			<div class="number-search-result">
+				<span><?php echo __($block->countNumberFaq().' FAQ(s) Founded'); ?></span>
+			</div>
+			<?php foreach ($faqData as $faq): ?>
+				
+				<div class="panel">
+					<div class="panel-heading">
+						<h4 class="panel-title" >
+							<i data-icon="fa-plus-square-o" data-icon-active="fa-minus-square-o" class="fa fa-plus-square-o"></i>
+							<a href="javascript:void(0);"><?php echo __(strip_tags($faq['question'])); ?></a>
+						</h4>
+					</div>
+					
+					<div class="panel-body">
+						<div class="panel-content"><?php echo $faq['answer']; ?></div>
+						<div class="more-info">
+								<?php if ($helper->getShowFaqAthor()): ?>
+									<?php if (!empty($faq['author_name'])): ?>
+										<span class="author">
+											<?php echo __('Created by '.$faq['author_name']);?>
+										</span>
+									<?php endif ?>
+								<?php endif ?>
+								<?php if ($helper->getShowFaqCreatedTime()): ?>
+									<?php if (!empty($block->getFormatDate($faq))): ?>
+										<span class="created-time">
+											<?php echo __('on '.$block->getFormatDate($faq));?>
+										</span>
+									<?php endif ?>
+								<?php endif ?>
+						</div>	
+					</div>
+					
+				</div>	
+			<?php endforeach ?>
+			
+		<?php else: ?>
+			<div class="non-result"><?php echo __('No FAQ Founded'); ?></div>
+		<?php endif ?>
+	</div>
+</div>
+<div style="clear: both;"></div>
+<script type="text/javascript">
+	require([
+    'jquery', 
+    'jquery/ui',
+    'Cmsmart_FAQ'
+    ], function($){
+    	var faqHeading = $('.faq-require .panel .panel-heading');
+    	$('.page-title-wrapper h1.page-title').html('<span>FAQ</span>');
+    	$('.messages[data-bind]').eq(1).html('');
+    	window.scrollTo(0,100);
+    	$(faqHeading).click(function(){
+    		var icon = $(this).children().find('i');
+            if($(this).hasClass('panel-active')){
+               $(this).removeClass('panel-active');
+            }else{
+                $(this).addClass('panel-active');
+            }
+            if($(icon).hasClass('fa-plus-square-o')){
+                $(icon).removeClass('fa-plus-square-o');
+                $(icon).addClass('fa-minus-square-o');
+            }else{
+                $(icon).removeClass('fa-minus-square-o');
+                $(icon).addClass('fa-plus-square-o');
+            }   
+            $(this).next().fadeToggle('500',function(){
+                
+            });
+    	});
+    
+    });
+  
+
+
+  
+</script>

@@ -1,0 +1,378 @@
+<?php
+	$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+	$type = $objectManagerr->get('\Netbase\Product\Model\ResourceModel\Product\CollectionFactory');
+	$typevalue = $objectManagerr->get('\Netbase\Product\Model\ResourceModel\Typevalue\CollectionFactory');
+	$staticblockFactory = $objectManagerr->get('\Magento\Cms\Model\BlockFactory');
+	$staticblockCollection = $staticblockFactory->create()->getCollection();
+	
+	$mCollection = $type->create();
+	$tvCollection = $typevalue->create();
+	$helper = $objectManagerr->get('Netbase\Product\Helper\Data');
+
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+	$connection = $resource->getConnection();
+	$tableName = $resource->getTableName('netbase_product_homecontent');
+	
+	$view = "SELECT * FROM " . $tableName . "";
+	$result = $connection->fetchAll($view); 
+	if(count($result) == 0) {
+		$result[0]["identifier"] = "default";
+		$result[0]["mtitle"] = "Default Home Page";
+		$result[0]["page_layout"] = "1column";
+		$result[0]["section"] = "1";
+		$result[0]["alias_id"] = "0";
+		$result[0]["typevalue_id"] = "0";
+	}
+	
+	$static_block_id = \Netbase\Product\Model\Homepagetype::custom_static_block;
+?>
+
+<div id="type_main_div">
+	<div class="button-control button-top">
+		<span id="btn-save-home" class="btn" onClick="save(this); return false;"><?php echo __("Save Content Home"); ?></span>
+		<span id="btn-save-collap" class="btn" onClick="collapse_all(this); return false;"><?php echo __("Collapse All"); ?></span>
+	</div>
+	
+	<div class="type_content admin__fieldset">
+		<div class="admin__field" data-index="title">
+			<label class="admin__field-label" for="identifier">
+        		<span><?php echo __("Identifier: ")?></span>
+    		</label>
+	    	<div class="admin__field-control">
+				<input class="admin__control-text" id="identifier" name="identifier" value="<?php echo $result[0]["identifier"] ?>">
+			</div>
+		</div>
+		<div class="admin__field" data-index="title">
+			<label class="admin__field-label" for="identifier">
+        		<span><?php echo __("Title: ")?></span>
+    		</label>
+	    	<div class="admin__field-control">
+				<input class="admin__control-text" id="mtitle" name="mtitle" value="<?php echo $result[0]["mtitle"] ?>">
+			</div>
+		</div>
+		
+		<p style="display: none;"><?php echo __("Column: ")?></p>
+		<select id="page_layout" name="page_layout" style="display: none;">
+			<option value=""><?php echo __("-- Please select --") ?></option>
+			<option value="1column" <?php if($result[0]["page_layout"] == "1column") {echo 'selected="selected"';}?>><?php echo __("1 column"); ?></option>
+			<option value="2columns-left" <?php if($result[0]["page_layout"] == "2columns-left") {echo 'selected="selected"';}?>><?php echo __("2 columns with left bar"); ?></option>
+			<option value="2columns-right" <?php if($result[0]["page_layout"] == "2columns-right") {echo 'selected="selected"';}?>><?php echo __("2 columns with right bar"); ?></option>
+			<option value="3columns" <?php if($result[0]["page_layout"] == "3columns") {echo 'selected="selected"';}?>><?php echo __("3 columns"); ?></option>
+		</select>
+	</div>
+	
+	<div id="sections" class="row">
+		<div class="col-m-6" id="section-first" style="padding-right: 10px;">
+		<?php for($i=0; $i<count($result); $i++) { ?>
+			<div class="type_value">
+				<input type="hidden" class="value-alias-save" name="value-alias-save" value="<?php echo $result[$i]["section"]."/".$result[$i]["alias_id"]."/".$result[$i]["typevalue_id"] ?>">
+				<p class="section"><?php echo __("Section: ")?><input class="section-numb" value="<?php echo $result[$i]["section"] ?>" style="width: 35px; text-align: center;"></p>
+				<select class = "s-alias" name="alias" onClick="select_option(this); return false;" >
+					<option value=""><?php echo __("-- Please select --") ?></option>
+					<?php 
+					foreach ($mCollection as $cat): 
+						$selected = "";
+						if($cat->getId() == $result[$i]["alias_id"]) {$selected = 'selected="selected"';}
+					?>
+					<option value="<?php echo $cat->getId(); ?>" <?php echo $selected; ?> ><?php echo $cat->getTitle(); ?></option>
+					<?php endforeach; ?>
+				</select>
+				
+				<div class="button-control">
+					<span class="add-more btn" onClick="add_more(this); return false;"><?php echo __("Add More"); ?></span>
+					<span class="remove btn" onClick="delete_more(this); return false;" style="<?php if($i == 0) echo 'display: none;'; ?>"><?php echo __("Delete"); ?></span>
+					<span class="expand btn" onClick="expand(this); return false;" style="display: none;"><?php echo __("Collapse/Expand"); ?></span>
+				</div>
+				
+				<div class="radio-type-value row">
+				<?php foreach ($mCollection as $cat): ?>
+					<?php 
+					foreach ($tvCollection as $tv): 
+						if($tv->getAlias() == $cat->getId()) {
+					?>
+						<div class="radio-type-detail-<?php echo $cat->getId() ?> radio-type-detail col-l-12 col-m-12">
+							<div class="radio-type-content">
+								<?php
+									$check = ""; 
+									if($tv->getId() == $result[$i]["typevalue_id"]) {$check = 'checked="checked"';}
+								?>
+								<p>
+									<input type="radio" <?php echo $check; ?> onchange="set_type_value(this); return false;" name="type-value-<?php echo rand().time(); ?>" value="<?php echo $cat->getId()."/".$tv->getId(); ?>" class="radio-tv" id="<?php echo $tv->getId(); ?>">
+									<label for="<?php echo $tv->getId(); ?>"><?php echo $tv->getTitle(); ?></label>
+								</p>
+								<?php if($tv->getImage() != "" ) { ?>
+								<label for="<?php echo $tv->getId(); ?>">
+									<img for="<?php echo $tv->getId(); ?>" src = "<?php echo $helper->getBaseUrl()."/".$tv->getImage(); ?>" />
+								</label>
+								<?php } ?>
+							</div>
+						</div>
+					<?php 
+						}
+					endforeach; 
+					?>
+				<?php endforeach; ?>
+				
+				<select class = "s-static-block" name="static-block" onClick="set_type_value1(this); return false;" >
+					<option value=""><?php echo __("-- Please select static block --") ?></option>
+					<?php 
+					foreach ($staticblockCollection as $s): 
+						$selected = "";
+						if($s->getIdentifier() == $result[$i]["typevalue_id"]) {$selected = 'selected="selected"';}
+					?>
+					<option value="<?php echo $s->getIdentifier(); ?>" <?php echo $selected; ?> ><?php echo $s->getTitle(); ?></option>
+					<?php endforeach; ?>
+				</select>
+				
+				<div class="clearfix"></div>
+				</div>
+			</div>
+		<?php } ?>
+		</div>
+		<div class="col-m-6" id="live-preview" style="padding-left: 10px;">
+			<div id="preview-home">
+				<h2 id="preview-paragraph">
+					<?php echo __("Homepage Preview"); ?>
+				</h2>
+				
+				<div class="inner-content">
+					<?php 
+					$count_sections = 100; 
+					for($i = 0; $i < $count_sections; $i++) {
+					?>
+					<img id="preview-section-<?php echo ($i+1); ?>" src="">
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type='text/javascript'>
+	function add_more(e) {
+		require([
+			'jquery'
+		], function($){
+			'use strict';
+			var count = $('.type_value').length + 1;
+			var element = jQuery(e);
+			
+			$("#section-first").append(element.parents().filter("div.type_value").clone());
+			element.parents().filter("div.type_value").find(".radio-tv").attr("name", "type-value-" + Math.random());
+			$("div.type_value").last().find(".section-numb").val(count);
+			
+			$("div.type_value").last().find(".s-alias").val('');
+			if($("input:radio[checked='checked']").is(":checked")) { 
+				$("input:radio[checked='checked']").prop('checked', true);
+			}
+			$("div.type_value").last().find(".radio-tv").prop('checked', false);
+			$("div.type_value").last().find(".radio-type-detail").css('display', 'none');
+		
+			$("div.type_value").last().find(".expand").css("display", "none");
+			$("div.type_value").last().find(".remove").css("display", "inline-block");
+			$("div.type_value").last().find(".s-static-block").css("display", "none");
+		});
+	}
+	
+	function delete_more(e) {
+		require([
+			'jquery'
+		], function($){
+			'use strict';
+			var element = jQuery(e);
+			element.text("Deleting");
+			var section = element.parents().filter("div.type_value").find("input.section-numb").val();
+		
+			$.ajax({
+				url: '<?php echo $this->getUrl('product/index/deletecontent', ['_current' => false]);; ?>',
+				type: 'POST',
+				data: {
+					section: section
+				},
+				dataType: 'json',                  
+				success: function(res) { 
+					element.text("Delete");
+					element.parents().filter("div.type_value").remove();
+					$("#preview-section-"+section).attr("src", "");
+				},
+				error: function (response) {
+					console.log(response);
+				}
+			});
+		});
+	}
+
+	function select_option(e) {
+		require([
+			'jquery'
+		], function($){
+			'use strict';
+			var element = jQuery(e);
+			element.parent(".type_value").find(".radio-type-detail").css("display", "none");
+			element.parent(".type_value").find(".radio-type-detail-"+element.val()).css("display", "block");
+			if(element.val()) {
+				element.parent(".type_value").find(".expand").css("display", "inline-block");
+				if(element.parent(".type_value").find(".radio-type-value.row").css('display') == 'none'){
+					element.parent(".type_value").find(".radio-type-value.row").css('display', 'block');
+				}
+				
+				/* static block */
+				if(element.val() == <?php echo $static_block_id; ?>) {
+					element.parent(".type_value").find(".s-static-block").css("display", "block");
+					element.parent(".type_value").find(".radio-type-detail-"+element.val()).css("display", "none");
+				} else {
+					element.parent(".type_value").find(".s-static-block").css("display", "none");
+					element.parent(".type_value").find(".radio-type-detail-"+element.val()).css("display", "block");
+				}
+			}
+		});
+	}
+	
+	function set_type_value(e) {
+		require([
+			'jquery'
+		], function($){
+			'use strict';
+			var element = jQuery(e);
+			
+			element.parents().filter("div.type_value").find(".radio-tv").removeAttr("checked");
+			element.attr("checked", "checked");
+			
+			var vfind = element.val();
+			var section = element.parents().filter("div.type_value").find(".section-numb").val();
+			element.parents().filter("div.type_value").find(".radio-tv").prop('checked', false);
+			if(section == "") {
+				alert("Please enter section number");
+				return false;
+			}
+			
+			var rdImgSrc = element.parents().filter("div.radio-type-content").find("img").attr("src");
+			$("#preview-section-"+section).attr("src", rdImgSrc);
+			
+			element.prop('checked', true);
+			$("#preview-section-"+section).css("display", "inline-block");  
+			element.parents().filter("div.type_value").find(".radio-type-content").removeClass("active"); 
+			element.parents().filter("div.radio-type-content").find(".radio-type-content").removeClass("active");
+			element.parents().filter("div.radio-type-content").addClass("active");
+			element.parents().filter("div.type_value").find(".value-alias-save").val(section+"/"+vfind);
+		});
+	}
+	
+	function set_type_value1(e) {
+		require([
+			'jquery'
+		], function($){
+			'use strict';
+			var element = jQuery(e);
+			
+			var vfind = element.val();
+			var section = element.parents().filter("div.type_value").find(".section-numb").val();
+			var alias_id = element.parents().filter("div.type_value").find(".s-alias").val();
+			if(alias_id == <?php echo $static_block_id; ?>) {
+				element.parents().filter("div.type_value").find(".value-alias-save").val(section+"/"+alias_id+"/"+vfind);
+				$("#preview-section-"+section).attr("src", "<?php echo $this->getViewFileUrl('Netbase_Product/images/default-preview.jpg'); ?>");
+			} 
+			if(alias_id == <?php echo $static_block_id; ?> && vfind == ""){
+				$("#preview-section-"+section).attr("src", "");
+			}
+		});
+	}
+	
+	function save(e) {
+		require([
+			'jquery'
+		], function($){
+			'use strict';
+			
+			$("#btn-save-home").text("Saving Data ...");
+			var _input = "";
+			$("input.value-alias-save").each(function() {
+				_input += $(this).val()+";";
+			});
+
+			$.ajax({
+				url: '<?php echo $this->getUrl('product/index/savehome', ['_current' => false]); ?>',
+				type: 'POST',
+				data: {
+					input_string: _input,
+					identifier: $("#identifier").val(),
+					title: $("#mtitle").val(),
+					page_layout: $("#page_layout").val()
+				},
+				dataType: 'json',                  
+				success: function(res) { 
+					alert(res.message);
+					$("#btn-save-home").text("Save Content Home");			
+				},
+				error: function (response) {
+					console.log(response);
+				}
+			});
+			
+		});	
+	}
+	
+	function collapse_all(e) {
+		require([
+			'jquery'
+		], function($){
+			'use strict';
+			$(".radio-type-value.row").css("display", "none");
+		});	
+	}
+	
+	function expand(e) {
+		require([
+			'jquery'
+		], function($){
+			'use strict';
+			var element = jQuery(e);
+			element.parents().filter("div.type_value").find(".radio-type-value.row").toggle();
+		});	
+	}
+	
+	require([
+		'jquery'
+	], function($){
+		$("document").ready(function() {
+			$('select').trigger("click");
+			$('.radio-tv').each(function(){
+				if($(this).is(":checked")) { 
+					var section = $(this).parents().filter("div.type_value").find(".section-numb").val();
+					var src_radio_checked = $(this).parent().parent().find("img").attr("src");
+					$("#preview-section-"+section).attr("src", src_radio_checked); 
+					$("#preview-section-"+section).css("display", "inline-block");
+				}
+			});
+			$(window).scroll(function(){
+				var height = $('.page-header').outerHeight();
+				if ($(this).scrollTop() > height){  
+				    $('.button-control.button-top').addClass("sticky");
+			  	}else{
+				    $('.button-control.button-top').removeClass("sticky");
+				} 
+				var menu_offset_top = 200;   
+				var scrollTop = $( window ).scrollTop();
+				if ( scrollTop >= menu_offset_top) {           
+					$('#live-preview').addClass('preview-fixed'); 
+				} else if (scrollTop <= menu_offset_top) {         
+					$('#live-preview').removeClass('preview-fixed'); 
+				}				
+			}); 
+			 $('.radio-type-content input').each(function(){ 
+				if($(this).is(":checked")) { 
+					$(this).parents('.radio-type-content').addClass('active');
+				}
+			}); 
+			$('.radio-type-content input').change(function(){ 
+				$('.radio-type-content').removeClass("active")
+				if($(this).is(':checked')) { 
+					$(this).parents('.radio-type-content').addClass('active');
+				}
+				
+			});
+			
+		});
+	});	
+
+</script>

@@ -1,0 +1,16 @@
+<?php
+if ($this->getRequest()->getParam('about')) {
+    echo $this->getLayout()->createBlock("Netbaseteam\Marketplace\Block\Seller\Profile")
+        ->setTemplate("Netbaseteam_Marketplace::seller/about.phtml")->toHtml();
+} elseif ($this->getRequest()->getParam('product')) {
+    echo $this->getLayout()->createBlock("Netbaseteam\Marketplace\Block\Seller\Profile\ListProduct")
+        ->setTemplate("Netbaseteam_Marketplace::seller/product.phtml")->toHtml();
+} elseif ($this->getRequest()->getParam('event')) {
+    echo $this->getLayout()->createBlock("Netbaseteam\Marketplace\Block\Seller\Profile")
+        ->setTemplate("Netbaseteam_Marketplace::seller/event.phtml")->toHtml();
+} else { ?>
+    <?php
+    echo $this->getLayout()->createBlock("Netbaseteam\Marketplace\Block\Seller\Profile\ListProduct")
+        ->setTemplate("Netbaseteam_Marketplace::seller/homepage.phtml")->toHtml();
+    ?>
+<?php } ?>

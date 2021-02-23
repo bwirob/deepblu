@@ -1,0 +1,12 @@
+
+<div id="upsell-to-product-list" style="display:none">
+    <?= $block->getChildHtml(); ?>
+    <script>
+        require(["jquery","mage/mage"],function($) {
+            $(function(){
+                $('#upsell-to-product-list').mage('newUpsellProductDialog');
+            });
+        });
+    </script>
+</div>
+

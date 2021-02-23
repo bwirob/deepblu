@@ -1,0 +1,30 @@
+<?php
+/**
+ * Productvideo template for separate item
+ *
+ */
+
+/**
+ * @var $this Netbaseteam\Productvideo\Block\View
+ * @see Netbaseteam\Productvideo\Block\View
+ */
+?>
+<?php $_productvideoItem = $this->getProductvideo(); ?>
+    <div class="productvideo_item_subtitle">
+        <?php echo $this->formatDate($_productvideoItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_productvideoItem->getAuthor()) ?>
+    </div>
+
+<div class="productvideo_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_productvideoItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_productvideoItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="productvideo_item_content"><?php echo $_productvideoItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

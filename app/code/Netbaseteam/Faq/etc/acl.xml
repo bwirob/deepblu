@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Netbaseteam_Faq::faq" title="Faq" sortOrder="40">
+                    <resource id="Netbaseteam_Faq::manage" title="Faq Module" sortOrder="10">
+						<resource id="Netbaseteam_Faq::save" title="Save Faq" sortOrder="10" />
+                        <resource id="Netbaseteam_Faq::news_delete" title="Delete Faq" sortOrder="20" />
+					</resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Netbaseteam_Faq::config_faq" title="Faq Section" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

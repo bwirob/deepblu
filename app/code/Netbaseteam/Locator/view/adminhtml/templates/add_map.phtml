@@ -1,0 +1,39 @@
+    <?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+
+?>
+<?php 
+	$_element = $block->getElement();
+	$helper = $this->helper('Netbaseteam\Locator\Helper\Data');
+ ?>
+
+ <script type="text/x-magento-init">
+    {
+        "*": {
+        
+            "Cmsmart_Admin_Map": {
+	            "enableModule" : "<?php echo $helper->getConfigEnabled(); ?>",
+	            "latDefault": "<?php echo $helper->getLatibuteDefault(); ?>",
+	            "lngDefault": "<?php echo $helper->getLongibuteDefault(); ?>",
+	            "zoomLevelDefault":"<?php echo $helper->getZoomLevelDefault(); ?>" 
+            }
+        }
+    }
+</script>
+
+<?php if (!$_element->getNoDisplay()): ?>
+<div class="cms-manage-content-actions">
+    <?php echo trim($_element->getElementHtml()) ?>
+    
+    <div class="search-box ">
+    	<input id="search-auto" class="search-auto" type="text" name="q_str" autocomplete="off" placeholder="<?php echo __('Enter a Location'); ?>"/>
+    	<button class="btn-reset primary"><?php echo __('Reset Map'); ?></button>
+    </div>
+    <div id="map" style="width: 100%;height: 400px"></div>
+</div>
+<?php endif; ?>
+

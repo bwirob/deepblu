@@ -1,0 +1,157 @@
+<?php 
+	$helper = $this->helper('Netbaseteam\Faq\Helper\Data');
+	$categoryData = $block->getCategoryData();
+	$category = $categoryData[0];
+
+	$faqList = $block->getFaqByCategory($category['faq_ids']);
+
+?>
+
+<?php $designData = $block->getCategoryDesignData($category);?>
+	<div id="<?php echo 'cate-'.$category['faq_category_id']; ?>" class="faq-require-category" data-design='<?php echo $block->getJsonDesignData($category); ?>'>
+		<div class="category-heading">
+				<h3 class="category-title" >
+					<?php if (!empty($category['icon'])): ?>
+						<i class="line" ></i>
+						<i class="fa <?php echo $category['icon'];?>"></i>
+					<?php endif ?>
+					
+					<span><?php echo __($category['name']); ?></span>
+				</h3>
+			<div class="cate-description">
+				<?php echo __($category['description']); ?>
+			</div>
+		</div>
+
+		<?php if ($block->hasFaqInCategory($category)): ?>
+			<div class="category-body">
+				<?php foreach ($faqList as $faq): ?>
+					<div class="panel">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a href="javascript:void(0);"><?php echo __(strip_tags($faq['question'])); ?></a>
+                                <i data-icon="icon-plus-1" data-icon-active="icon-minus-1" class="icon-plus-1"></i>
+							</h4>
+						</div>
+						
+						<div class="panel-body" >
+							<div class="panel-content"><?php echo __($faq['answer']); ?></div>
+							<div class="more-info">
+								<?php if ($helper->getShowFaqAthor()): ?>
+                                    <?php if (!empty($faq['author_name'])): ?>
+                                        <span class="author">
+                                            <?php echo __('Created by: '.$faq['author_name']);?>
+                                        </span>
+                                    <?php endif ?>
+                                <?php endif ?>
+                                <?php if ($helper->getShowFaqCreatedTime()): ?>
+                                    <?php if (!empty($block->getFormatDate($faq))): ?>
+                                        <span class="created-time">
+                                            <?php echo __('on '.$block->getFormatDate($faq));?>
+                                        </span>
+                                    <?php endif ?>
+                                <?php endif ?>
+							</div>		
+						</div>
+						
+					</div>	
+				<?php endforeach ?>
+			</div>
+		<?php endif ?>
+	</div>
+
+
+<div style="clear: both;"></div>
+<script type="text/javascript">
+	require([
+    'jquery', 
+    'jquery/ui'
+    ], function($){
+    	var faqHeading = $('.faq-require-category .panel .panel-heading');
+        var categoryName = '<?php echo $category['name']; ?>';
+        $('.page-title-wrapper h1.page-title').html('<span>'+categoryName+'</span>');
+        $('.messages[data-bind]').eq(1).html('');
+        window.scrollTo(0,100);
+    	$(faqHeading).click(function(){
+    		var dataDesign = $(this).parents('.faq-require-category').attr('data-design');
+    		var j = $.parseJSON(dataDesign);
+    		var icon = $(this).children().find('i');
+            if($(this).hasClass('panel-active')){
+            	$(this).children().find('a').css({
+                    'color':j.faq.color
+                });
+                $(this).children().find('i').css({
+                    'color':j.faq.color
+                });
+                $(this).css({
+                    'background-color':j.faq.background_color
+                });
+               $(this).removeClass('panel-active');
+            }else{
+                $(this).addClass('panel-active');
+                $(this).css({
+                    'background-color':j.faq.active_background
+                });
+                $('.panel-active').children().find('a').css({
+                    'color':j.faq.active_color
+                });
+                $('.panel-active').children().find('i').css({
+                    'color':j.faq.active_color
+                });
+            }
+
+            if($(icon).hasClass('icon-plus-1')){
+                $(icon).removeClass('icon-plus-1');
+                $(icon).addClass('icon-minus-1');
+            }else{
+                $(icon).removeClass('icon-minus-1');
+                $(icon).addClass('icon-plus-1');
+            }   
+            $(this).next().fadeToggle('500',function(){
+                
+            });
+    	});
+
+    	// var categoryItem = $('.faq-require-category');
+    	// $.each(categoryItem,function(key,item){
+     //        var dataDesign = $(item).attr("data-design");
+     //        var j = $.parseJSON(dataDesign);
+     //        $(item).children().find('h3.category-title').css({
+     //                                                        "color":j.category.color,
+     //                                                        'fontSize':j.category.fontsize+'px'
+     //                                                    });
+
+     //        $(item).children().find('.category-title i.line').css("border",'1px solid '+j.category.color);
+     //        $(item).children().find('.category-title i.line').css("border",'1px solid '+j.category.color);
+     //        $(item).children().find('.cate-description').css('fontSize',j.faq.fontsize);
+     //        $(item).children().find('.panel-heading').css({
+     //                                                        "border":'solid '+j.faq.border_width+'px '+j.faq.border_color,
+     //                                                        'background-color':j.faq.background_color
+                                                            
+     //                                                    });
+     //        $(item).children().find('.panel-heading .panel-title a').css({
+     //                                                        "fontSize":j.faq.fontsize+'px',
+     //                                                        'color':j.faq.color
+                                                            
+     //                                                    });
+     //        $(item).children().find('.panel-heading .panel-title i').css({
+     //                                                        "fontSize":j.faq.fontsize+'px',
+     //                                                        'color':j.faq.color
+                                                            
+     //                                                    });
+
+     //        $(item).children().find('.panel-body .panel-content').css({
+     //                                                        "fontSize":j.faq.fontsize+'px'
+     //                                                    });
+
+     //    });
+
+
+
+    
+    });
+  
+
+
+  
+</script>

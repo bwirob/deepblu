@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="catalog_product_view"/>
+    <body>
+        <referenceBlock name="authentication-popup" remove="true"/>
+
+        <referenceBlock name="header.panel" remove="true"/>
+        <referenceBlock name="footer-container" remove="true"/>
+        <referenceBlock name="page.top" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
+        <referenceBlock name="navigation.sections" remove="true"/>
+        <!--<referenceBlock name="sun_custom_head" remove="true"/>-->
+        <referenceBlock name="sun_header" remove="true"/>
+
+        <referenceBlock name="product.info.addtocart.additional" template="Cmsmart_Quickview::product/addtocart.phtml"/>
+        <referenceBlock name="product.info.addtocart" template="Cmsmart_Quickview::product/addtocart.phtml"/>
+        <referenceBlock name="product.info.addto" template="Cmsmart_Quickview::product/addto.phtml"/>
+        <referenceBlock name="product.info.mailto" template="Cmsmart_Quickview::product/mailto.phtml"/>
+        <referenceBlock name="product.info.description" template="Cmsmart_Quickview::product/attribute.phtml"/>
+        <referenceBlock name="product.attributes" template="Cmsmart_Quickview::product/attributes.phtml"/>
+        <referenceBlock name="catalog.product.related" template="Cmsmart_Quickview::product/related.phtml"/>
+        <referenceBlock name="product.info.upsell" template="Cmsmart_Quickview::product/upsell.phtml"/>
+
+
+        <referenceContainer name="before.body.end"> 
+				<block class="Magento\Framework\View\Element\Template" name="cmsmart.quickview.beforebodyend"
+					   template="Cmsmart_Quickview::beforebodyend.phtml"/>  
+        </referenceContainer>
+
+        <referenceContainer name="product.info.social">
+            <block class="Cmsmart\Quickview\Block\Product\ExtraView"
+                   name="product.view.extra"
+                   template="Cmsmart_Quickview::product/extraview.phtml">
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Review\Block\Product\Review" name="reviews.tab" as="reviews" template="Magento_Review::review.phtml" group="detailed_info">
+                <block class="Magento\Review\Block\Form" name="product.review.form" as="review_form">
+                    <container name="product.review.form.fields.before" as="form_fields_before" label="Review Form Fields Before"/>
+                </block>
+            </block>
+        </referenceBlock>
+		
+        <referenceBlock name="product.info.review" template="Cmsmart_Quickview::product/view/review.phtml"/>
+
+    </body>
+</page>

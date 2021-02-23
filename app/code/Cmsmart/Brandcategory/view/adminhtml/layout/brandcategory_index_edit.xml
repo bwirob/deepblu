@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+        <link src="jquery/fileUploader/bootstrap.js"/> -->
+		<css src="Cmsmart_Brandcategory/css/style.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Cmsmart\Brandcategory\Block\Adminhtml\Brandcategory\Edit" name="brandcategory_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Cmsmart\Brandcategory\Block\Adminhtml\Brandcategory\Edit\Tabs" name="brandcategory_edit_tabs">
+                <block class="Cmsmart\Brandcategory\Block\Adminhtml\Brandcategory\Edit\Tab\Main" name="brandcategory_edit_tab_main"/>
+                <block class="Cmsmart\Brandcategory\Block\Adminhtml\Brandcategory\Edit\Tab\Content" name="brandcategory_edit_tab_content"/>
+                <block class="Cmsmart\Brandcategory\Block\Adminhtml\Brandcategory\Edit\Tab\Image" name="brandcategory_edit_tab_image"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">brandcategory_edit_tab_main</argument>
+                </action>
+                <!-- <action method="addTab">
+                    <argument name="name" xsi:type="string">content_section</argument>
+                    <argument name="block" xsi:type="string">brandcategory_edit_tab_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">image_section</argument>
+                    <argument name="block" xsi:type="string">brandcategory_edit_tab_image</argument>
+                </action> -->
+            </block>
+        </referenceContainer>
+    </body>
+</page>

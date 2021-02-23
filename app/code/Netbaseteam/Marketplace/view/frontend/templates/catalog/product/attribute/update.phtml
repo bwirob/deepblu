@@ -1,0 +1,63 @@
+<?php 
+$attributeIds = $this->getRequest()->getParam('data');
+$product = $this->getProduct();
+?>
+<div id="vendor-attribute-block">
+    <?php foreach($attributeIds as $id):?>
+        <?php $attributeDetail = $this->getListAttributesDetails($id);?>
+        <div class="field">
+            <label class="label <?php echo $attributeDetail->getData()[0]['is_required'] == 1 ? 'required' : ''?>"><?php echo $attributeDetail->getData()[0]['frontend_label']?></label>
+            <?php if($attributeDetail->getData()[0]['frontend_input'] == 'boolean'):?>
+                <select name="product[<?php echo $attributeDetail->getData()[0]['attribute_code']?>]" class="control-select">
+                    <option value="1" <?php echo !empty($product) && $product->getData($attributeDetail->getData()[0]['attribute_code']) ? 'selected' :'';?>>Yes</option>
+                    <option value="0">No</option>
+                </select>
+            <?php elseif($attributeDetail->getData()[0]['frontend_input'] == 'multiselect' || $attributeDetail->getData()[0]['frontend_input'] == 'select'):?>
+                <?php $attributeOptions = $this->getAttibuteOptions($attributeDetail->getData()[0]['attribute_code']);?>
+                <?php if($attributeDetail->getData()[0]['frontend_input'] == 'multiselect'):?>
+                    <select style="height:auto" multiple name="product[<?php echo $attributeDetail->getData()[0]['attribute_code']?>][]">
+                <?php else:?>
+                    <select style="height:auto" name="product[<?php echo $attributeDetail->getData()[0]['attribute_code']?>]">
+                <?php endif;?>    
+                    <?php foreach($attributeOptions as $option):?>
+                        <?php if(!empty($option['value'])):?>
+                            <option value="<?php echo $option['value']?>" <?php echo !empty($product) && in_array($option['value'], explode(",",$product->getData($attributeDetail->getData()[0]['attribute_code']))) ? 'selected' : ''?> ><?php echo $option['label']?></option>
+                        <?php endif;?>
+                    <?php endforeach;?>    
+                </select>
+            <?php elseif($attributeDetail->getData()[0]['frontend_input'] == 'date'):?>
+                <input class="datepicker <?php echo $attributeDetail->getData()[0]['is_required'] == 1 ? 'required-entry' : ''?>" type="text" name="product[<?php echo $attributeDetail->getData()[0]['attribute_code']?>]" value="<?php echo !empty($product) ? $product->getData($attributeDetail->getData()[0]['attribute_code']) : '';?>">
+                <script>
+                    require([
+                            "jquery"
+                    ], function($){
+                        $(document).ready(function () {
+                            var date = $('input[name="product[<?php echo $attributeDetail->getData()[0]['attribute_code']?>]"]').val();
+                            var date = new Date(date);
+                            var new_date = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
+                            $('input[name="product[<?php echo $attributeDetail->getData()[0]['attribute_code']?>]"]').val(new_date);
+                        });
+                    });    
+                </script>
+            <?php else:?>
+                <input class="<?php echo $attributeDetail->getData()[0]['is_required'] == 1 ? 'required-entry' : ''?>" type="<?php echo $attributeDetail->getData()[0]['frontend_input']?>" name="product[<?php echo $attributeDetail->getData()[0]['attribute_code']?>]" value="<?php echo !empty($product) ? $product->getData($attributeDetail->getData()[0]['attribute_code']) : '';?>">
+            <?php endif;?>
+        </div>
+    <?php endforeach;?>
+</div>
+<script>
+require([
+        "jquery",
+        "mage/calendar"
+], function($){
+    $('.datepicker').datepicker({
+            prevText: '&#x3c;zurück', prevStatus: '',
+            prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+            nextText: 'Vor&#x3e;', nextStatus: '',
+            nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+            showMonthAfterYear: false,
+            dateFormat: 'mm/dd/yy'
+        }
+    );
+});    
+</script>

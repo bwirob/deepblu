@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <megamenu>
+            <mainmenu>
+                <enabled>1</enabled>
+                <root_cat_id>2</root_cat_id>
+            </mainmenu>
+			
+			<color_setting>
+				<bcolor_hover>#25bce9</bcolor_hover>
+				<text_color>#333333</text_color>         
+				<text_color_hover>#ffffff</text_color_hover>	
+				<text_product_color>#636363</text_product_color >	
+				<price_color>#3399cc</price_color>
+			</color_setting>
+        </megamenu>
+    </default>
+</config>

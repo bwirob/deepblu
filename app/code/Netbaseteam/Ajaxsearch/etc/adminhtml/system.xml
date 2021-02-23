@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cmsmart" translate="label" sortOrder="1000">
+            <label>NetBase Team</label>
+        </tab>
+        
+        <section id="ajaxsearch" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Ajaxsearch</label>
+            <tab>cmsmart</tab>
+            <resource>Netbaseteam_Ajaxsearch::config_ajaxsearch</resource>
+
+            <group id="setting" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Setting</label>
+
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <comment>Enable/Disable Extension</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="width_popup" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Width box search result</label>
+                    <comment>Unit: px. Width of frame result after search</comment>
+                </field>
+
+                <field id="request_time" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Time To Request</label>
+                    <comment>Unit: ms. The time wait after enter keyword</comment>
+                </field>
+
+                <field id="minchar" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Min char to search</label>
+                    <comment>Minimum number of characters to search by extension</comment>
+                </field>
+
+                <field id="hightlight_color" translate="label" type="text" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Highlight Text Color</label>
+                    <comment><![CDATA[Default: #2222FF]]></comment>
+                    <frontend_model>Netbaseteam\Ajaxsearch\Block\Config\Color</frontend_model> 
+                </field>
+            </group>
+
+            <group id="search_by_cate" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                 <label>Search By Category</label>
+                 <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow select categories to search</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+			
+			<group id="cate_preview" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                 <label>Category Preview</label>
+                 <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow show category search result</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>          
+            </group>
+
+             <group id="product_preview" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                 <label>Product Preview</label>
+
+                 <field id="number_product_show" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number Product Show</label>
+                    
+                </field>
+
+                 <field id="show_product_image" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Image</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+
+                 <field id="show_price" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Price</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="show_description" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Description</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                 <field id="num_char_description" translate="label" type="text" sortOrder="115" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="show_description">1</field>
+                    </depends>
+                    <label>Number character of Product Description</label>
+                </field>
+
+                <field id="show_rating" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Rating</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="show_review" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Count Review</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                 <field id="view_all" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show View All</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+            </group>
+
+        </section>
+    </system>
+</config>

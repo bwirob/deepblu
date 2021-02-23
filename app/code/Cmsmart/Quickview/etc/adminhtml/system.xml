@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cmsmart" translate="label" sortOrder="9000">
+            <label>Extensions</label>
+        </tab>
+        <section id="cmsmart_quickview" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Quick View</label>
+            <tab>cmsmart</tab>
+            <resource>Cmsmart_Quickview::config_quickview</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Quick View</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="quickview_style" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Quick View Button</label>
+                <field id="button_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Text</label>
+                </field>
+                <field id="button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <comment>Default as #373737</comment>
+                    <frontend_model>Cmsmart\Quickview\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+                <field id="background_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <comment><![CDATA[Default as rgba(27, 255, 31, 0.6)]]></comment>
+                    <frontend_model>Cmsmart\Quickview\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+                <field id="label_title" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Quick View Title</label>
+                    <comment>Title of popup Quick View</comment>
+                </field>
+            </group>
+            <group id="product_add_form" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Extra Hint</label>
+                <field id="show_addto" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Add to Wishlist and Compare</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_mailto" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Email To Friend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="add_to_cart_style" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Add To Cart Button</label>
+                <field id="show_addtocart" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Add To Cart Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="add_to_cart_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <depends>
+                        <field id="show_addtocart">1</field>
+                    </depends>
+                    <comment>Default as #1979c3</comment>
+                    <frontend_model>Cmsmart\Quickview\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+                <field id="add_to_cart_hovercolor" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hover Color</label>
+                    <depends>
+                        <field id="show_addtocart">1</field>
+                    </depends>
+                    <comment>Default as #006bb4</comment>
+                    <frontend_model>Cmsmart\Quickview\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+                <field id="add_to_cart_textcolor" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <depends>
+                        <field id="show_addtocart">1</field>
+                    </depends>
+                    <comment>Default as #ffffff</comment>
+                    <frontend_model>Cmsmart\Quickview\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+                <field id="add_to_cart_texthovercolor" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Hover Color</label>
+                    <depends>
+                        <field id="show_addtocart">1</field>
+                    </depends>
+                    <comment>Default as #ffffff</comment>
+                    <frontend_model>Cmsmart\Quickview\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+            </group>
+            <group id="product_extra_link" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Link To Product Detail</label>
+                <field id="show_productlink" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Link</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="product_link_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <depends>
+                        <field id="show_productlink">1</field>
+                    </depends>
+                    <comment>Default as #000000</comment>
+                    <frontend_model>Cmsmart\Quickview\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+                <field id="product_link_hovercolor" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Hover Color</label>
+                    <depends>
+                        <field id="show_productlink">1</field>
+                    </depends>
+                    <comment>Default as #3399CC</comment>
+                    <frontend_model>Cmsmart\Quickview\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+            </group>
+            <group id="product_info_detailed" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Detail Information</label>
+                <field id="show_productdetail" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Details Tab</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_productattributes" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Information Tab</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_productreview" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Reviews Tab</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="product_related_upsell" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Related and Upsell Product</label>
+                <field id="show_productrelated" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Related Products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_productupsell" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Upsell Product Information</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,610 @@
+<div class="content-pv-footer">
+	<div class="pv-header">
+		<div class="pv-header-top">
+			<div class="pv-header-top-1 col-sm-4 change-bg-header">
+				
+			</div>
+			<div class="pv-header-top-2 col-sm-4 change-bg-header">
+				
+			</div>
+			<div class="pv-header-top-3 col-sm-4 change-bg-header">
+				
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="pv-header-middle">
+			 
+			<div class="pv-header-middle-1 col-sm-4 change-bg-header">
+				
+			</div>
+			<div class="pv-header-middle-2 col-sm-4 change-bg-header">
+				
+			</div> 
+			<div class="pv-header-middle-3 col-sm-4 change-bg-header">
+				
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="pv-header-bottom">
+			<div class="pv-header-bottom-1 col-sm-3 change-bg-header">
+				
+			</div>
+			<div class="pv-header-bottom-2 col-sm-3 change-bg-header">
+				
+			</div>
+			<div class="pv-header-bottom-3 col-sm-3 change-bg-header">
+				
+			</div> 
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="clearfix" style="margin-bottom:10px;"></div>
+	<div class="pv-body change-bg">
+		
+	</div>
+	<div class="pv-footer">
+		<div class="pv-footer-top">
+			<div class="pv-footer-top-1 col-sm-3 change-bg">
+				
+			</div>
+			<div class="pv-footer-top-2 col-sm-3 change-bg">
+				
+			</div>
+			<div class="pv-footer-top-3 col-sm-3 change-bg">
+				
+			</div>
+			<div class="pv-footer-top-4 col-sm-3 change-bg">
+				
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="pv-footer-middle">
+			<div class="pv-footer-middle-img col-sm-12 change-bg">
+				
+			</div>
+			<div class="pv-footer-middle-1 col-sm-3 change-bg">
+				
+			</div>
+			<div class="pv-footer-middle-2 col-sm-3 change-bg">
+				
+			</div>
+			<div class="pv-footer-middle-3 col-sm-3 change-bg">
+				
+			</div>
+			<div class="pv-footer-middle-4 col-sm-3 change-bg">
+				
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="pv-footer-bottom">
+			<div class="pv-footer-bottom-1 col-sm-3 change-bg">
+				
+			</div>
+			<div class="pv-footer-bottom-2 col-sm-3 change-bg">
+				
+			</div>
+			<div class="pv-footer-bottom-3 col-sm-3 change-bg">
+				
+			</div>
+			<div class="pv-footer-bottom-4 col-sm-3 change-bg">
+				
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="pv-footer-payment">
+			<div class="pv-footer-payment-div col-sm-12 change-bg">
+				
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {  
+		$('.header-type').each(function(){
+			$('.header-type option').each(function() {
+				if(!this.selected) {
+					$(this).attr('disabled', true);
+				}
+			});
+		});
+		var check_show_top_left = $("#sun_settings_header_header_top_layout_left option:selected").val();
+		var check_show_top_center = $("#sun_settings_header_header_top_layout_center option:selected").val();
+		var check_show_top_right = $("#sun_settings_header_header_top_layout_right option:selected").val();
+		console.log(check_show_top_center);
+		var check_show_midlle_left = $("#sun_settings_header_header_middle_layout_left option:selected").val();
+		var check_show_midlle_center = $("#sun_settings_header_header_middle_layout_center option:selected").val();
+		var check_show_midlle_right = $("#sun_settings_header_header_middle_layout_right option:selected").val();
+		
+		var check_show_bottom_left = $("#sun_settings_header_header_bottom_layout_left option:selected").val();
+		var check_show_bottom_center = $("#sun_settings_header_header_bottom_layout_center option:selected").val();
+		var check_show_bottom_right = $("#sun_settings_header_header_bottom_layout_right option:selected").val();
+		
+		if (check_show_top_left == 0) {
+			    $("#row_sun_settings_header_element_header_top_left").addClass("hidden_block");
+			    $("#row_sun_settings_header_custom_static_block_hearder_left").addClass("hidden_block");
+		} else {
+			$("#row_sun_settings_header_element_header_top_left").addClass("block");
+			$("#row_sun_settings_header_custom_static_block_hearder_left").addClass("block");
+		}
+		if (check_show_top_center == 0) { 
+			    $("#row_sun_settings_header_element_header_top_center").addClass("hidden_block");
+			    $("#row_sun_settings_header_custom_static_block_hearder_center").addClass("hidden_block");; 
+		} else {
+			$("#row_sun_settings_header_element_header_top_center").addClass("block"); 
+			$("#row_sun_settings_header_custom_static_block_hearder_center").addClass("block");
+		}
+		if (check_show_top_right == 0) {
+			    $("#row_sun_settings_header_element_header_top_right").addClass("hidden_block");
+			    $("#row_sun_settings_header_custom_static_block_hearder_right").addClass("hidden_block");
+		} else {
+			$("#row_sun_settings_header_element_header_top_right").addClass("block");
+			$("#row_sun_settings_header_custom_static_block_hearder_right").addClass("block");
+		}
+		
+		if (check_show_midlle_left == 0) {
+			    $("#sun_settings_header_header_middle_layout_left").addClass("hidden_block");
+			    $("#row_sun_settings_header_custom_static_block_hearder_middle_left").addClass("hidden_block");
+		} else {
+			$("#sun_settings_header_header_middle_layout_left").addClass("block");
+			$("#row_sun_settings_header_custom_static_block_hearder_middle_left").addClass("block");
+		}
+		if (check_show_midlle_center == 0) {
+			    $("#row_sun_settings_header_element_header_middle_center").addClass("hidden_block");
+			    $("#row_sun_settings_header_custom_static_block_hearder_middle_center").addClass("hidden_block");
+		} else {
+			$("#row_sun_settings_header_element_header_middle_center").addClass("block");
+			$("#row_sun_settings_header_custom_static_block_hearder_middle_center").addClass("block");
+		}
+		if (check_show_midlle_right == 0) {
+			    $("#row_sun_settings_header_element_header_middle_right").addClass("hidden_block");
+			    $("#row_sun_settings_header_custom_static_block_header_middle_right").addClass("hidden_block");
+		} else {
+			$("#row_sun_settings_header_element_header_middle_right").addClass("block");
+			$("#row_sun_settings_header_custom_static_block_header_middle_right").addClass("block");
+		}
+		
+		if (check_show_bottom_left == 0) {
+			    $("#row_sun_settings_header_element_header_bottom_left").addClass("hidden_block");
+			    $("#row_sun_settings_header_custom_static_block_hearder_bottom_left").addClass("hidden_block");
+		} else {
+			$("#row_sun_settings_header_element_header_bottom_left").addClass("block");
+			$("#row_sun_settings_header_custom_static_block_hearder_bottom_left").addClass("block");
+		}
+		if (check_show_bottom_center == 0) {
+			    $("#row_sun_settings_header_element_header_bottom_center").addClass("hidden_block");
+			    $("#row_sun_settings_header_custom_static_block_hearder_bottom_center").addClass("hidden_block");
+		} else {
+			$("#row_sun_settings_header_element_header_bottom_center").addClass("block");
+			$("#row_sun_settings_header_custom_static_block_hearder_bottom_center").addClass("block");
+		}
+		if (check_show_bottom_right == 0) {
+			    $("#row_sun_settings_header_element_header_bottom_right").addClass("hidden_block");
+			    $("#row_sun_settings_header_custom_static_block_header_bottom_right").addClass("hidden_block");
+		} else {
+			$("#row_sun_settings_header_element_header_bottom_right").addClass("block");
+			$("#row_sun_settings_header_custom_static_block_header_bottom_right").addClass("block");
+		}
+		
+		
+		$("#sun_settings_header_header_top_layout_left").change(function() {
+        	var check_show = $("#sun_settings_header_header_top_layout_left option:selected").val();
+	        if (check_show == 0) {
+			    $("#row_sun_settings_header_element_header_top_left").css("display","none");
+			  /*   $("#row_sun_settings_header_custom_static_block_hearder_left").css("display","none"); */
+			} else {
+				$("#row_sun_settings_header_element_header_top_left").css("display","table-row");
+			/* 	$("#row_sun_settings_header_custom_static_block_hearder_left").css("display","table-row"); */
+			}
+        });
+		$("#sun_settings_header_header_top_layout_center").change(function() { 
+        	var check_show = $("#sun_settings_header_header_top_layout_center option:selected").val();
+	        if (check_show == 0) {
+			    $("#row_sun_settings_header_element_header_top_center").css("display","none");
+			   /*  $("#row_sun_settings_header_custom_static_block_hearder_top_center").css("display","none"); */
+			} else {
+				$("#row_sun_settings_header_element_header_top_center").css("display","table-row");
+				/* $("#row_sun_settings_header_custom_static_block_hearder_top_center").css("display","table-row"); */
+			}
+        });
+		$("#sun_settings_header_header_top_layout_right").change(function() {
+        	var check_show = $("#sun_settings_header_header_top_layout_right option:selected").val();
+	        if (check_show == 0) {
+			    $("#row_sun_settings_header_element_header_top_right").css("display","none");
+			    /* $("#row_sun_settings_header_custom_static_block_header_top_right").css("display","none"); */
+			} else {
+				$("#row_sun_settings_header_element_header_top_right").css("display","table-row");
+				/* $("#row_sun_settings_header_custom_static_block_header_top_right").css("display","table-row"); */
+			}
+        }); 
+		
+		$("#sun_settings_header_header_middle_layout_left").change(function() {
+        	var check_show = $("#sun_settings_header_header_middle_layout_left option:selected").val();
+	        if (check_show == 0) {
+			    $("#row_sun_settings_header_element_header_middle_left").css("display","none");
+			    /* $("#row_sun_settings_header_custom_static_block_hearder_middle_left").css("display","none"); */
+			} else {
+				$("#row_sun_settings_header_element_header_middle_left").css("display","table-row");
+				/* $("#row_sun_settings_header_custom_static_block_hearder_middle_left").css("display","table-row"); */
+			}
+        });
+		$("#sun_settings_header_header_middle_layout_center").change(function() {
+        	var check_show = $("#sun_settings_header_header_middle_layout_center option:selected").val();
+	        if (check_show == 0) {
+			    $("#row_sun_settings_header_element_header_middle_center").css("display","none");
+			   /*  $("#row_sun_settings_header_custom_static_block_hearder_middle_center").css("display","none"); */
+			} else {
+				$("#row_sun_settings_header_element_header_middle_center").css("display","table-row");
+				/* $("#row_sun_settings_header_custom_static_block_hearder_middle_center").css("display","table-row"); */
+			}
+        });
+		$("#sun_settings_header_header_middle_layout_right").change(function() {
+        	var check_show = $("#sun_settings_header_header_middle_layout_right option:selected").val();
+	        if (check_show == 0) {
+			    $("#row_sun_settings_header_element_header_middle_right").css("display","none");
+			   /*  $("#row_sun_settings_header_custom_static_block_hearder_middle_right").css("display","none"); */
+			} else {
+				$("#row_sun_settings_header_element_header_middle_right").css("display","table-row");
+				/* $("#row_sun_settings_header_custom_static_block_hearder_middle_right").css("display","table-row"); */
+			}
+        });
+		
+		
+		$("#sun_settings_header_header_bottom_layout_left").change(function() {
+        	var check_show = $("#sun_settings_header_header_bottom_layout_left option:selected").val();
+	        if (check_show == 0) {
+			   /*  $("#row_sun_settings_header_custom_static_block_hearder_bottom_left").css("display","none"); */
+			    $("#row_sun_settings_header_element_header_bottom_left").css("display","none");
+			} else {
+				/* $("#row_sun_settings_header_custom_static_block_hearder_bottom_left").css("display","table-row"); */
+				$("#row_sun_settings_header_element_header_bottom_left").css("display","table-row");
+			}
+        });
+		$("#sun_settings_header_header_bottom_layout_center").change(function() {
+        	var check_show = $("#sun_settings_header_header_bottom_layout_center option:selected").val();
+	        if (check_show == 0) {
+			    $("#row_sun_settings_header_element_header_bottom_center").css("display","none");
+			   /*  $("#row_sun_settings_header_custom_static_block_hearder_bottom_center").css("display","none"); */
+			} else {
+				$("#row_sun_settings_header_element_header_bottom_center").css("display","table-row");
+				/* $("#row_sun_settings_header_custom_static_block_hearder_bottom_center").css("display","table-row"); */
+			}
+        });
+		$("#sun_settings_header_header_bottom_layout_right").change(function() {
+        	var check_show = $("#sun_settings_header_header_bottom_layout_right option:selected").val();
+	        if (check_show == 0) {
+			    $("#row_sun_settings_header_element_header_bottom_right").css("display","none");
+			   /*  $("#row_sun_settings_header_custom_static_block_hearder_bottom_right").css("display","none"); */
+				
+			} else {
+				$("#row_sun_settings_header_element_header_bottom_right").css("display","table-row");
+				/* $("#row_sun_settings_header_custom_static_block_hearder_bottom_right").css("display","table-row");  */
+			}
+        });
+		
+		
+		var allSelected = $(".positionTypes").map(function () {
+			return $(this).val();
+		}).get(); 
+		// set all enabled
+		$(".positionTypes option").removeAttr("disabled");
+
+		// Disable selected options in other positions
+		$(".positionTypes option:not(:selected):not([value='7'])").each(function () {
+			if ($.inArray($(this).val(), allSelected) != -1) {
+				$(this).attr('disabled', true);
+			}
+		}); 
+		$('#sun_settings_header .positionTypes').change(function () {
+			// Get the selected options of all positions
+			var allSelected = $(".positionTypes").map(function () {
+				return $(this).val();
+			}).get();
+
+			// set all enabled
+			$(".positionTypes option").removeAttr("disabled");
+
+			// Disable selected options in other positions
+			$(".positionTypes option:not(:selected):not([value='7'])").each(function () {
+				if ($.inArray($(this).val(), allSelected) != -1) {
+					$(this).attr('disabled', true);
+				}
+			});
+		}); 
+		
+		var allSelectedmilde = $(".positionTypesmilde").map(function () {
+			return $(this).val();
+		}).get(); 
+		// set all enabled
+		$(".positionTypesmilde option").removeAttr("disabled");
+
+		// Disable selected options in other positions
+		$(".positionTypesmilde option:not(:selected):not([value='7'])").each(function () {
+			if ($.inArray($(this).val(), allSelectedmilde) != -1) {
+				$(this).attr('disabled', true);
+			}
+		}); 
+		$('#sun_settings_header .positionTypesmilde').change(function () {
+			// Get the selected options of all positions
+			var allSelectedmilde = $(".positionTypesmilde").map(function () {
+				return $(this).val();
+			}).get();
+
+			// set all enabled
+			$(".positionTypesmilde option").removeAttr("disabled");
+
+			// Disable selected options in other positions
+			$(".positionTypesmilde option:not(:selected):not([value='7'])").each(function () {
+				if ($.inArray($(this).val(), allSelectedmilde) != -1) {
+					$(this).attr('disabled', true);
+				}
+			});
+		}); 
+		var allSelectedbottom = $(".positionTypesbottom").map(function () {
+			return $(this).val();
+		}).get(); 
+		// set all enabled
+		$(".positionTypesbottom option").removeAttr("disabled");
+
+		// Disable selected options in other positions
+		$(".positionTypesbottom option:not(:selected):not([value='7'])").each(function () {
+			if ($.inArray($(this).val(), allSelectedbottom) != -1) {
+				$(this).attr('disabled', true);
+			}
+		}); 
+		$('#sun_settings_header .positionTypesbottom').change(function () {
+			// Get the selected options of all positions
+			var allSelectedbottom = $(".positionTypesbottom").map(function () {
+				return $(this).val();
+			}).get();
+
+			// set all enabled
+			$(".positionTypesbottom option").removeAttr("disabled");
+
+			// Disable selected options in other positions
+			$(".positionTypesbottom option:not(:selected):not([value='7'])").each(function () {
+				if ($.inArray($(this).val(), allSelectedbottom) != -1) {
+					$(this).attr('disabled', true);
+				}
+			});
+		}); 
+		 
+        $(".change-bg-header").each(function() {
+		    var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ')';
+		    $(this).css("background-color", hue);
+		}); 
+		$(".change-bg").each(function() {
+		    var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ')';
+		    $(this).css("background-color", hue);
+		}); 
+        $("#sun_settings_footer_footer_top").change(function() {
+        	var check = $("#sun_settings_footer_footer_top option:selected").val();
+	        if (check == 0) {
+			    $(".pv-footer-top").css("display","none");
+			} else {
+				$(".pv-footer-top").css("display","block");
+			}
+        });
+		var j=0;
+		while ( j++ < 4 ) {
+		   (function(j){
+	      	    var singleValuesHeader = $("#sun_settings_header_header_bottom_layout_left option:selected").val();
+		    	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+		    	$(".pv-header-bottom-1").css("width",widthChangeHeader);	
+		        $("#sun_settings_header_header_bottom_layout_left").change(function() { 
+	            	var singleValuesHeader = $("#sun_settings_header_header_bottom_layout_left option:selected").val();
+	            	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+			    	$(".pv-header-bottom-1").css("width",widthChangeHeader);
+		        });
+		   })(j);
+		}  
+		var j=0;
+		while ( j++ < 4 ) {
+		   (function(j){
+	      	    var singleValuesHeader = $("#sun_settings_header_header_bottom_layout_center option:selected").val();
+		    	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+		    	$(".pv-header-bottom-2").css("width",widthChangeHeader);	
+		        $("#sun_settings_header_header_bottom_layout_center").change(function() { 
+	            	var singleValuesHeader = $("#sun_settings_header_header_bottom_layout_center option:selected").val();
+	            	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+			    	$(".pv-header-bottom-2").css("width",widthChangeHeader);
+		        });
+		   })(j);
+		} 
+		var j=0;
+		while ( j++ < 4 ) {
+		   (function(j){
+	      	    var singleValuesHeader = $("#sun_settings_header_header_bottom_layout_right option:selected").val();
+		    	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+		    	$(".pv-header-bottom-3").css("width",widthChangeHeader);	
+		        $("#sun_settings_header_header_bottom_layout_right").change(function() { 
+	            	var singleValuesHeader = $("#sun_settings_header_header_bottom_layout_right option:selected").val();
+	            	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+			    	$(".pv-header-bottom-3").css("width",widthChangeHeader);
+		        });
+		   })(j);
+		} 
+		var j=0;
+		while ( j++ < 4 ) {
+		   (function(j){
+	      	    var singleValuesHeader = $("#sun_settings_header_header_middle_layout_left option:selected").val();
+		    	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+		    	$(".pv-header-middle-1").css("width",widthChangeHeader);	
+		        $("#sun_settings_header_header_middle_layout_left").change(function() { 
+	            	var singleValuesHeader = $("#sun_settings_header_header_middle_layout_left option:selected").val();
+	            	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+			    	$(".pv-header-middle-1").css("width",widthChangeHeader);
+		        });
+		   })(j);
+		}  
+		var j=0;
+		while ( j++ < 4 ) {
+		   (function(j){
+	      	    var singleValuesHeader = $("#sun_settings_header_header_middle_layout_center option:selected").val();
+		    	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+		    	$(".pv-header-middle-2").css("width",widthChangeHeader);	
+		        $("#sun_settings_header_header_middle_layout_center").change(function() { 
+	            	var singleValuesHeader = $("#sun_settings_header_header_middle_layout_center option:selected").val();
+	            	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+			    	$(".pv-header-middle-2").css("width",widthChangeHeader);
+		        });
+		   })(j);
+		} 
+		var j=0;
+		while ( j++ < 4 ) {
+		   (function(j){
+	      	    var singleValuesHeader = $("#sun_settings_header_header_middle_layout_right option:selected").val();
+		    	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+		    	$(".pv-header-middle-3").css("width",widthChangeHeader);	
+		        $("#sun_settings_header_header_middle_layout_right").change(function() { 
+	            	var singleValuesHeader = $("#sun_settings_header_header_middle_layout_right option:selected").val();
+	            	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+			    	$(".pv-header-middle-3").css("width",widthChangeHeader);
+		        });
+		   })(j);
+		} 
+		var j=0;
+		while ( j++ < 4 ) {
+		   (function(j){
+	      	    var singleValuesHeader = $("#sun_settings_header_header_top_layout_left option:selected").val();
+		    	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+		    	$(".pv-header-top-1").css("width",widthChangeHeader);	
+		        $("#sun_settings_header_header_top_layout_left").change(function() { 
+	            	var singleValuesHeader = $("#sun_settings_header_header_top_layout_left option:selected").val();
+	            	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+			    	$(".pv-header-top-1").css("width",widthChangeHeader);
+		        });
+		   })(j);
+		} 
+		var j=0;
+		while ( j++ < 4 ) {
+		   (function(j){
+	      	    var singleValuesHeader = $("#sun_settings_header_header_top_layout_center option:selected").val();
+		    	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+		    	$(".pv-header-top-2").css("width",widthChangeHeader);	
+		        $("#sun_settings_header_header_top_layout_center").change(function() { 
+	            	var singleValuesHeader = $("#sun_settings_header_header_top_layout_center option:selected").val();
+	            	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+			    	$(".pv-header-top-2").css("width",widthChangeHeader);
+		        });
+		   })(j);
+		} 
+		var j=0;
+		while ( j++ < 4 ) {
+		   (function(j){
+	      	    var singleValuesHeader = $("#sun_settings_header_header_top_layout_right option:selected").val();
+		    	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+		    	$(".pv-header-top-3").css("width",widthChangeHeader);	
+		        $("#sun_settings_header_header_top_layout_right").change(function() { 
+	            	var singleValuesHeader = $("#sun_settings_header_header_top_layout_right option:selected").val();
+	            	var widthChangeHeader = singleValuesHeader/12*100 + "%";
+			    	$(".pv-header-top-3").css("width",widthChangeHeader);
+		        });
+		   })(j);
+		}
+		var i=0;
+		while ( i++ < 4 ) {
+		   (function(i){
+	      	    var singleValues = $("#sun_settings_footer_footer_top_column_"+i+"_size option:selected").val();
+		    	var widthChange = singleValues/12*100 + "%";
+		    	$(".pv-footer-top-"+i).css("width",widthChange);	
+		        $("#sun_settings_footer_footer_top_column_"+i+"_size").change(function() { 
+	            	var singleValues = $("#sun_settings_footer_footer_top_column_"+i+"_size option:selected").val();
+	            	var widthChange = singleValues/12*100 + "%";
+			    	$(".pv-footer-top-"+i).css("width",widthChange);
+		        });
+		   })(i);
+		}
+
+
+        $("#sun_settings_footer_footer_middle").change(function() {
+        	var check = $("#sun_settings_footer_footer_middle option:selected").val();
+	        if (check == 0) {
+			    $(".pv-footer-middle").css("display","none");
+			} else {
+				$(".pv-footer-middle").css("display","block");
+			}
+        });
+        var i=0;
+		while ( i++ < 4 ) {
+		   (function(i){
+	      	    var singleValues = $("#sun_settings_footer_footer_middle_column_"+i+"_size option:selected").val();
+		    	var widthChange = singleValues/12*100 + "%";
+		    	$(".pv-footer-middle-"+i).css("width",widthChange);	
+		        $("#sun_settings_footer_footer_middle_column_"+i+"_size").change(function() { 
+	            	var singleValues = $("#sun_settings_footer_footer_middle_column_"+i+"_size option:selected").val();
+	            	var widthChange = singleValues/12*100 + "%";
+			    	$(".pv-footer-middle-"+i).css("width",widthChange);
+		        });
+		   })(i);
+		}
+
+
+        $("#sun_settings_footer_footer_bottom").change(function() {
+        	var check = $("#sun_settings_footer_footer_bottom option:selected").val();
+	        if (check == 0) {
+			    $(".pv-footer-bottom").css("display","none");
+			} else {
+				$(".pv-footer-bottom").css("display","block");
+			}
+        });
+		var i=0;
+		while ( i++ < 4 ) {
+		   (function(i){
+	      	    var singleValues = $("#sun_settings_footer_footer_bottom_column_"+i+"_size option:selected").val();
+		    	var widthChange = singleValues/12*100 + "%";
+		    	$(".pv-footer-bottom-"+i).css("width",widthChange);	
+		        $("#sun_settings_footer_footer_bottom_column_"+i+"_size").change(function() { 
+	            	var singleValues = $("#sun_settings_footer_footer_bottom_column_"+i+"_size option:selected").val();
+	            	var widthChange = singleValues/12*100 + "%";
+			    	$(".pv-footer-bottom-"+i).css("width",widthChange);
+		        });
+		   })(i);
+		} 
+        $("#sun_settings_footer_footer_payment").change(function() {
+        	var check = $("#sun_settings_footer_footer_payment option:selected").val();
+	        if (check == 0) {
+			    $(".pv-footer-payment").css("display","none");
+			} else {
+				$(".pv-footer-payment").css("display","block");
+			}
+        }); 
+        $(window).scroll(function() { 
+	        var heightDiv = $("#system_config_tabs").height();
+	        var overHeight = heightDiv + 250;  
+		    var scroll = $(window).scrollTop(); 
+		    if (scroll >= overHeight) {
+		        $(".div_live_preview").addClass("fixed-pv");
+		    } else {
+		        $(".div_live_preview").removeClass("fixed-pv");
+		    }
+		});  
+		 
+		$("select.header-mid option").show();
+		$("select.header-mid option:selected:not([value='0'])").each(function (i) {
+			value = $("select.header-mid option:nth-child(" + ((+this.value) + 1) + ")").val();
+			$("select.header-mid option[value=" + value + "]").hide();
+		});
+			
+		$("select.header-mid").change(function () {
+			$("select.header-mid option").show();
+			$("select.header-mid option:selected:not([value='0'])").each(function (i) {
+				value = $("select.header-mid option:nth-child(" + ((+this.value) + 1) + ")").val();
+				$("select.header-mid option[value=" + value + "]").hide();
+			});
+		});
+		var selectedScheme = $('select.header-type option:selected').val(); 
+		$('select.header-type').addClass(selectedScheme);
+		$('#row_sun_settings_header_header_type td.value').addClass(selectedScheme);
+		$('select.header-type').change(function(){
+			$('#row_sun_settings_header_header_type td.value').removeClass(selectedScheme).addClass($(this).val());
+			$(this).removeClass(selectedScheme).addClass($(this).val());
+			selectedScheme = $(this).val(); 
+ 		});  
+    });
+
+</script>
+

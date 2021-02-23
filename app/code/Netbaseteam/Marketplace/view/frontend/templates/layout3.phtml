@@ -1,0 +1,294 @@
+<?php 
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$layout = $helper->getLandingPage();
+$allseller = $block->getAllSeller();
+$hotsellers = $block->getHotsellerdata();
+if($this->getRequest()->getParam('landingpage')) {
+	$layout = $this->getRequest()->getParam('landingpage');
+}
+?>
+<?php if($layout == '3'):?>
+<div>
+    <div class="banner banner-02 text-center">
+    	<div class="container">
+        	<h1>Reach millions of buyers around the world</h1>
+        	<p>We are largest growing community and lots of shoppers want to see  what you have in store</p>
+            <button class="button btn-slider"><a href="<?php /* @escapeNotVerified */
+                echo $block->getUrl('customer/account/login/') ?>"><?php echo __('Open Your Shop'); ?></a>
+            </button>
+    	</div>
+	</div>
+	<section class="section-turn section-marketplace">
+		<div class="container">
+			<div class="row heading">
+				<h2>TURN YOUR PASSION INTO A BUSINESS</h2>
+				<div class="rule"></div>
+			</div>
+			<div class="row section-content display-clear">
+				<div class="col-sm-6 col-md-3">
+					<div class="section-turn__inner">
+						<div class="section-turn__inner--img display-flex">
+							<i class="icon-pencil" aria-hidden="true"></i>
+						</div>
+						<div class="section-turn__inner--text">
+							<div class="circle"></div>
+							<h3>Register Yourself</h3>
+							<p>First, you have to register your information. It is easy to create an account to start your business. </p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<div class="section-turn__inner">
+						<div class="section-turn__inner--img display-flex">
+							<i class="icon-box" aria-hidden="true"></i>
+						</div>
+						<div class="section-turn__inner--text">
+							<div class="circle"></div>
+							<h3>Add Products</h3>
+							<p>Show off your beautiful and unique products to millions of buyers around the world.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<div class="section-turn__inner">
+						<div class="section-turn__inner--img display-flex">
+							<i class="icon-chart-line" aria-hidden="true"></i>
+						</div>
+						<div class="section-turn__inner--text">
+							<div class="circle"></div>
+							<h3>Start Selling</h3>
+							<p>Now you can sell all things you have with the fabulous marketplace interface and easy-to-manage admin panel</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<div class="section-turn__inner">
+						<div class="section-turn__inner--img display-flex">
+							<i class="icon-money" aria-hidden="true"></i>
+						</div>
+						<div class="section-turn__inner--text">
+							<div class="circle circle-last"></div>
+							<h3>Generate Revenues</h3>
+							<p>Sharing commission with us on each order you have and we grow up our business together</p>
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+	</section>
+	<section class="shop-land section-marketplace">
+		<div class="container">
+			<div class="row heading">
+				<h2>Sellers with Taste</h2>
+				<div class="rule"></div>
+			</div>
+			<div class="row display-clear section-content">
+				<?php if(count($hotsellers)):?>
+					<?php foreach($hotsellers as $seller):?>
+						<?php $sellerId = $seller->getSellerId();?>
+						<?php $shopID = $seller->getShopId();?>
+						<?php $ratingAverage = $block->getRatingAverage($sellerId);?>
+						<?php $ratingCount = $block->getRatingCount($sellerId);?>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+							<div class="shop-land__item">
+								<div class="shop-land__item--bg">
+									<img src="<?php echo $helper->getMediaUrl() . 'marketplace/' . ($seller->getShopBanner() ? $seller->getShopBanner() : 'no-images.png'); ?>" alt="bg-shop-land1">
+								</div>
+								<div class="shop-land__item--inner">
+									<img src="<?php echo $helper->getMediaUrl() . 'marketplace/' . ($seller->getShopLogo() ? $seller->getShopLogo() : 'no-images.png'); ?>" alt="shop_land1">
+									<h4><?php echo $seller->getShopTitle()?></h4>
+									<div class="star">
+						                <div class="rating-summary">
+						                    <div title="<?php echo (int)$ratingAverage; ?>%" class="rating-result">
+						                        <span style="width:<?php echo (int)$ratingAverage; ?>%"><span><?php echo (int)$ratingAverage; ?>%</span></span>
+						                    </div>
+						                </div>
+						                <span>(<?php echo (int)$ratingCount?> total ratings)</span>
+						            </div>
+									<a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>" class="button btn-shop">View Seller</a>
+									<a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/ref=page_internal/", ['_secure' => $this->getRequest()->isSecure()]); ?>" class="button btn-shop">All Product</a>
+									
+								</div>
+							</div>
+						</div>
+					<?php endforeach;?>
+				<?php endif;?>	
+			</div>
+		</div>
+	</section>
+	<section class="view-all section-marketplace">
+		<div class="container">
+			<div class="view-all__inner">
+				<p>More than <?php echo count($allseller);?> shop owners have joined us last month</p>
+				<a href="<?php echo $this->getUrl("marketplace/listseller", ['_secure' => $this->getRequest()->isSecure()]); ?>" class="button btn-viewMore">View all</a>
+			</div>	
+		</div>
+	</section>
+	<section class="section-seller section-marketplace">
+		<div class="container">
+			<div class="row heading">
+				<h2>Seller Stories</h2>
+				<div class="rule"></div>
+			</div>
+			<div class="section-content">
+				<div class="row box-inner">
+					<div class="col-md-6">
+						<div class="section-seller__inner">
+						<i class="icon-quote" aria-hidden="true"></i>
+						<div class="section-seller__inner--text">
+							<p class="desc">Etsy has been an incredible experience for me...I can honestly say if it wasn’t for Etsy, my business would not have flourished the way it has. laborum.</p>
+							<p class="title">Debbie <span class="from">from</span> <span class="author">Gibson Bespoke</span></p>
+							<p class="address">Armagh, Northern Ireland</p>
+						</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<img src="<?php echo $this->getViewFileUrl('Netbaseteam_Marketplace::images/marketplace-sell1/story1.jpg'); ?>" alt="story1">
+					</div>
+				</div>
+				<div class="row box-inner">
+					<div class="col-md-6 col-md-push-6">
+						<div class="section-seller__inner">
+							<i class="icon-quote" aria-hidden="true"></i>
+							<div class="section-seller__inner--text"> 
+								<p class="desc">Etsy has been an incredible experience for me...I can honestly say if it wasn’t for Etsy, my business would not have flourished the way it has. laborum.</p>
+								<p class="title">Debbie <span class="from">from</span> <span class="author">Gibson Bespoke</span></p>
+								<p class="address">Armagh, Northern Ireland</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-md-pull-6">
+						<img src="<?php echo $this->getViewFileUrl('Netbaseteam_Marketplace::images/marketplace-sell1/story2.jpg'); ?>" alt="story1">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="section-seller__inner">
+							<i class="icon-quote" aria-hidden="true"></i>
+							<div class="section-seller__inner--text"> 
+								<p class="desc">Etsy has been an incredible experience for me...I can honestly say if it wasn’t for Etsy, my business would not have flourished the way it has. laborum.</p>
+								<p class="title">Debbie <span class="from">from</span> <span class="author">Gibson Bespoke</span></p>
+								<p class="address">Armagh, Northern Ireland</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6"> 
+						<img src="<?php echo $this->getViewFileUrl('Netbaseteam_Marketplace::images/marketplace-sell1/story3.jpg'); ?>" alt="story1">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section-marketplace section-still">
+		<div class="container">
+			<div class="row heading">
+				<h2>Still got questions? No problem.</h2>
+				<div class="rule"></div>
+			</div>
+			<div class="row section-content display-clear">
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="section-still__inner">
+						<h3>How do fees work on Marketplace?</h3>
+						<p>Joining and starting a shop on  Marketplace is free. There are three basic selling fees: a listing fee, a transaction fee, and a payment processing fee. </p>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="section-still__inner">
+						<h3>How do I get paid?</h3>
+						<p>With  Marketplace Payments, our easy-to-use and secure payment system, you may accept payments from a wide variety of payment methods</p>
+					</div>
+				</div> 
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="section-still__inner">
+						<h3>Do I need a credit or debit card to create a shop?</h3>
+						<p>No, a credit or debit card is not required to create a shop. To be verified as a seller you have the choice to use either a credit card or to register via PayPal. You will not incur any charges until you open your shop and publish your listings.</p>
+					</div>
+				</div> 
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="section-still__inner">
+						<h3>How does Marketplace protect sellers?</h3>
+						<p>Seller Protection is a programme that offers you peace of mind in the event of a transaction dispute. If you are unable to resolve a disagreement with a buyer and the transaction meets eligibility requirements,  Marketplace will help you resolve the issue through our dispute resolution system.</p>
+					</div>
+				</div> 
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="section-still__inner">
+						<h3>What do I need to do to create a shop?</h3>
+						<p>It's easy to set up a shop on  Marketplace. Create an  Marketplace account (if you don’t already have one), set your shop location and currency, choose a shop name, create a listing, set a payment method (how you want to be paid) and finally set a billing method (how you want to pay your  Marketplace fees).</p>
+					</div>
+				</div> 
+				<div class="col-sm-12 col-md-6 col-lg-6">
+					<div class="section-still__inner">
+						<h3>What can I sell on Marketplace?</h3>
+						<p> Marketplace provides a marketplace for crafters, artists and collectors to sell their handmade creations, vintage goods (at least 20 years old) and both handmade and non-handmade crafting supplies.</p>
+					</div>
+				</div>  
+			</div>
+		</div>
+	</section>
+	<section class="section-why03 section-marketplace">
+		<div class="container">
+			<div class="row heading">
+				<h2>why sell on us?</h2>
+				<div class="rule"></div>
+			</div>
+			<div class="row section-content display-clear">
+				<div class="col-sm-6 col-md-3">
+					<div class="section-why03__inner">
+						<div class="section-why03__inner--bg"></div>
+						<div class="section-why03__inner--text">
+							<div class="display-flex inner-img"><img src="<?php echo $this->getViewFileUrl('Netbaseteam_Marketplace::images/marketplace-sell3/why03-1.png'); ?>" alt="why03-1"></div>
+							<h3>Simple, powerful tools</h3>
+							<p>Spend less time managing your shop and more time on the fun stuff.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<div class="section-why03__inner">
+						<div class="section-why03__inner--bg"></div>
+						<div class="section-why03__inner--text">
+							<div class="display-flex inner-img"><img src="<?php echo $this->getViewFileUrl('Netbaseteam_Marketplace::images/marketplace-sell3/why03-2.png'); ?>" alt="why03-1"></div>
+							<h3>Reach hundreds of milions customers</h3>
+							<p>We have more than 100 milion monthly unique visitor all over the world</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<div class="section-why03__inner">
+						<div class="section-why03__inner--bg"></div>
+						<div class="section-why03__inner--text">
+							<div class="display-flex inner-img"><img src="<?php echo $this->getViewFileUrl('Netbaseteam_Marketplace::images/marketplace-sell3/why03-3.png'); ?>" alt="why03-1"></div>
+							<h3>Low fees</h3>
+							<p>It doesn’t take much to list your items and once you make a sale, Marketplace’s commission is just 3.5%.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3">
+				<div class="section-why03__inner">
+					<div class="section-why03__inner--bg"></div>
+					<div class="section-why03__inner--text">
+						<div class="display-flex inner-img"><img src="<?php echo $this->getViewFileUrl('Netbaseteam_Marketplace::images/marketplace-sell3/why03-4.png'); ?>" alt="why03-1"></div>
+						<h3>Support and Community</h3>
+						<p>Learn how to sell successfully with our Seller and meet sellers like you by joining our Teams</p>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+		</div>
+	</section>
+	<section class="section-marketplace section-ready">
+		<div class="container">
+			<div class="row heading">
+				<h2>Ready to start selling?</h2>
+				<div class="rule"></div>
+				<p>With no monthly membership costs and low fees, selling on  our marketplace  is a low risk way to start your online business. Start selling to day.</p>
+                <button class="button btn-slider"><a href="<?php /* @escapeNotVerified */
+                    echo $block->getUrl('customer/account/login/') ?>"><?php echo __('Open Your Shop'); ?></a>
+                </button>
+			</div>
+		</div>
+		</section>
+</div>
+<?php endif;?>

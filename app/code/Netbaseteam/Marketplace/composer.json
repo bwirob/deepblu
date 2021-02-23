@@ -1,0 +1,21 @@
+{
+  "name": "netbaseteam/marketplace",
+  "description": "Market Place",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0",
+    "netbaseteam/core": "3.4.*"
+  },
+  "type": "magento2-module",
+  "version": "3.5.0",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Netbaseteam\\Marketplace\\": ""
+    }
+  }
+}

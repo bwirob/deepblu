@@ -1,0 +1,130 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+////////////////////////////////////////////////////////////////////////////////
+$requestInterface = $objectManager->get('Magento\Framework\App\RequestInterface');
+$routeName      = $requestInterface->getRouteName();
+$moduleName     = $requestInterface->getModuleName(); 
+$controllerName = $requestInterface->getControllerName(); 
+$actionName     = $requestInterface->getActionName();
+$path = $moduleName."/".$controllerName."/".$actionName;
+
+$readonly_text = "";
+if($path == "sales/order/view")$readonly_text = "readonly";
+
+$uploadHelper = $objectManager->get('\Netbaseteam\Orderupload\Helper\Data');
+$storeManager = $objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+$currentStore = $storeManager->getStore();
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+$session_id = session_id();
+if(empty($session_id)) session_start();
+
+/* block_data: parent_pid|childP_sku|session_file */
+
+$block_data = explode( "|", $this->getData('block_data'));
+/* \zend_debug::dump($block_data); */
+$pid = $block_data[0]; /* parent product id */
+
+/* if product is not bundle */
+$_item_sku = $block_data[1];
+$output_dir = $uploadHelper->getBaseDir()."/".$block_data[2];
+$jsonFile = $output_dir.'.json';
+
+/* echo $jsonFile; */
+if (file_exists($jsonFile)):
+	$str 	= file_get_contents($jsonFile);
+	$rows 	= json_decode($str, true);
+?>
+
+<div class="ajax-file-upload-container">
+	<div class="ajax-file-upload-statusbar" style="width: 450px;float:left;">
+		<?php
+		for($i=0; $i < count($rows); $i++){
+			foreach($rows[$i] as $row) {
+				if(isset($row["child_sku"]) && $_item_sku == $row["child_sku"]){
+		?>
+		
+		<div class="talbe-upload-files">
+			<div class="upload-info">
+				<?php
+					$name_actual = explode("/", $row["file"])[1];
+					$file_name = explode(".", $name_actual);
+					if(strlen($file_name[0]) >= 30) {
+						$name_actual = substr($file_name[0], 0, 30)." ..."."(.".$file_name[1].")";
+					}
+				?>
+				<div class="ajax-file-upload-filename file-title"><?php echo $name_actual ?></div>
+				<?php
+				$mediapath = $mediaUrl."Orderupload/".$row["file"];
+				if(@is_array(getimagesize($mediapath))){
+					$image = true;
+				} else {
+					$image = false;
+					$mediapath = $this->getViewFileUrl('Netbaseteam_Orderupload/images/others_files.png');
+				}
+				?>
+				<img class="ajax-file-upload-preview"
+					src="<?php echo $mediapath; ?>">	
+				<textarea rows="4" cols="39" <?php echo $readonly_text; ?>><?php echo $row["comment"]; ?></textarea> 	
+				
+				<div class="ajax-file-upload-green" data-bind="<?php echo $row["parent_pid"]."|".explode("/", $row["file"])[1] ?>" onClick = "myDownload(this); return false;" ><?php echo __('Download File') ?></div>
+			</div>		
+		</div>
+		<?php
+				}
+			}
+		}
+		?>
+		
+	</div>
+</div>
+<?php
+endif;
+?>
+
+<script>
+function myUpdComment(e){
+	var message = jQuery(e).prev().val();
+	console.log(message);
+	var data_array = jQuery(e).attr('data-bind').split('|');
+	var json_file = data_array[0];
+	var parent_id = data_array[1];
+	var child_id = data_array[2];
+	var file = data_array[3];
+	
+	jQuery(e).text("Updating...");
+	
+	jQuery.ajax({
+		type: 'POST',
+		url: '<?php echo $this->getUrl('orderupload/index/updcomment') ?>',
+		data: {
+			parent_id: parent_id,
+			child_id: child_id,
+			json_file: json_file,
+			file: file,
+			msg: message,
+			
+		},
+		dataType: 'json',
+		success: function(data) {
+			jQuery(e).text("Updated Comment");
+			/* if(data.complate == '1') */
+		},
+		error: function() {
+			console.log("Error...")
+		}
+	});
+	return false;
+}
+
+
+function myDownload(e){
+	var data_array = jQuery(e).attr('data-bind').split('|');
+	var parent_id = data_array[0];
+	var filename = data_array[1];
+	
+	location.href="<?php echo $this->getUrl('orderupload/index/download') ?>?p="+parent_id+"&filename="+filename;
+	return false;
+}
+
+</script>

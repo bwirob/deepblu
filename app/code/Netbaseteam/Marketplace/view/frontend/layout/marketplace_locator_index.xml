@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Netbaseteam_Marketplace::css/bootstrap.min.css" />
+        <css src="Netbaseteam_Marketplace::css/font-awesome.css"/>
+        <css src="Netbaseteam_Marketplace::css/locator/locator.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Marketplace\Block\Locator" name="locator.lists" template="Netbaseteam_Marketplace::locator.phtml" >
+                <block class="Netbaseteam\Marketplace\Block\Locator\Search" name="locator.list.search" template="Netbaseteam_Marketplace::locator/search.phtml" />
+                <block class="Netbaseteam\Marketplace\Block\Locator\Storelist" name="locator.list.store" template="Netbaseteam_Marketplace::locator/storelist.phtml" />
+                <block class="Netbaseteam\Marketplace\Block\Locator\Map" name="locator.list.map" template="Netbaseteam_Marketplace::locator/map.phtml" />
+            </block>
+        </referenceContainer>
+    </body>
+</page>

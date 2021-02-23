@@ -1,0 +1,121 @@
+<?php $helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');?>
+<div id="body-overlay" style="display: none;"><div><img src="<?php echo $this->getViewFileUrl('Netbaseteam_Marketplace/images/loading.gif');?>" width="64px" height="64px"/></div></div>
+<div style="display: inline-block">
+    <?php echo $block->getButtonHtml() ?>
+    <script>
+        require([
+            'jquery',
+            'prototype',
+        ], function($){
+            var type = '<?php  echo $block->getTypeLicense() ?>';
+            function func_active() {
+                var code = $('input#netbaseteam_license_license_license_code').val();
+                if (code != '') {
+                    var params = {
+                        'license': code
+                    };
+                    var formData = new FormData();
+                    var form_key = FORM_KEY;
+                    formData.append('form_key', form_key);
+                    formData.append('license', $('input#netbaseteam_license_license_license_code').val());
+
+                    $.ajax({
+                        url: '<?php echo $block->getAjaxUrl() ?>',
+                        type: "POST",
+                        data: formData,
+                        beforeSend: function () {
+                            $("#body-overlay").show();
+                            $("#netbaseteam_license_get_license_get_license_code_email").val("example@gmail.com");
+                            $("#netbaseteam_license_get_license_get_license_code_email").attr("disabled", true);
+                        },
+                        contentType: false,
+                        processData: false,
+                        cache: false,
+                        success: function (data) {
+                            $("#body-overlay").hide();
+                            $("#netbaseteam_license_get_license_get_license_code_email").removeAttr("disabled");
+                            if (data.mess != 'Incorrect License key') {
+                                $('.page-actions .page-actions-buttons>button.primary').click();
+                            } else {
+                                location.reload();
+                            }
+                            alert(data.mess);
+                        },
+                        error: function () {}
+                    });
+                } else {
+                    alert('Please input a license key!');
+                }
+            }
+
+            $('#btn_active').click(function () {
+                func_active();
+            });
+
+            if (type == 'pro') {
+                $('#btn-upgrade-key').prop("disabled", true);
+            }else{
+                $('#btn-upgrade-key').prop("disabled", false);
+            }
+
+            if($('input#netbaseteam_license_license_license_code').val()){
+                $('#netbaseteam_license_license_license_code').prop("disabled", true);
+                $('#netbaseteam_license_get_license-state').parents('.section-config').hide();
+            }
+        });
+    </script>
+    <button id="btn-remove-key" style ="background-color: #f44336; /* Red */">Remove</button>
+    <script>
+        require([
+            'jquery',
+            'prototype',
+        ], function($) {
+            function func_remove(e) {
+                var codex = $('input#netbaseteam_license_license_license_code').val();
+                if (codex != '') {
+                    var params = {
+                        'license': codex
+                    };
+                    $('#netbaseteam_license_license_license_code').prop("disabled", false);
+                    var formData = new FormData();
+                    var form_key = FORM_KEY;
+                    formData.append('form_key', form_key);
+                    formData.append('license', $('input#netbaseteam_license_license_license_code').val());
+                    e.preventDefault();
+                    $.ajax({
+                        url: '<?php echo $block->getAjaxUrlRemove() ?>',
+                        type: "POST",
+                        data: formData,
+                        beforeSend: function () {
+                            $("#body-overlay").show();
+                        },
+                        contentType: false,
+                        processData: false,
+                        cache: false,
+                        success: function (data) {
+                            alert("Remove License key");
+                            $('input#netbaseteam_license_license_license_code').removeAttr('value');
+                            $("#body-overlay").hide();
+                            if (data.mess != 'Incorrect License key') {
+                                $('.page-actions .page-actions-buttons>button.primary').click();
+                            }
+                        },
+                        error: function () {
+                            alert('2');
+                        }
+                    });
+                } else {
+                    alert('Please input a license key!');
+                }
+            }
+            $('#btn-remove-key').click(function (e) {
+                func_remove(e);
+            });
+        });
+    </script>
+</div>
+<?php if(!$helper->releaseLimit() || $helper->releaseLimit() != 'pro'):?>
+<div id="btn-upgrade-key" style="padding-top: 10px">
+    <a target="_blank" href="https://cmsmart.net/magento-2-extensions/magento-multi-vendor">UPGRADE PRO VERSION</a>
+</div>
+<?php endif;?>

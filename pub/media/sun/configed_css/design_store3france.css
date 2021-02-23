@@ -1,0 +1,507 @@
+/**
+ * WARNING: Do not change this file. Your changes will be lost.
+ * 2018-12-06 10:02:39 */
+
+
+html, body { 
+}
+
+.swatch-option.image:hover:not(.disabled), .swatch-option.color:hover:not(.disabled){
+	outline:#40c6ff !important;
+}
+
+.magemenu-menu.vertical-menu .explodedmenu li.menu .inner-cms-block .block.block-cate .subcate:hover h3::before,.fotorama__thumb-border,#shopping-cart-table tbody tr .item .product-item-details .actions-toolbar-detail .action-towishlist:hover,
+.follow-us .spin:hover::before,.block-minicart .block-content > .actions .viewcart:hover,.block-minicart .block-content > .actions .viewcart,
+.men-category .men-category-all .each-mca .each-mca-text > a:hover,
+.product-info-main .product-social-links a, .catalog-product-view .box-tocart .field .control #qty,.box-tocart .field .control #add1,.box-tocart .field .control #minus1,
+.magemenu-menu.vertical-menu .explodedmenu li.menu:hover,
+.search-post .search-content .block-content form:hover,
+.post-list .list-content .post-item .post-wrapper .share ul li,
+.post-list .list-content .post-item .post-wrapper .post-image a .overlay-icon:before,
+.recent-post .block-content ul.recent-list li.item .post-thumbnail a .overlay-icon:before,
+.post-list .list-content .post-item .post-wrapper .share .share-title i:hover,  
+.post-list .list-content .post-item .post-wrapper .post-readmore a,
+.ALL-Brands ul.ALL-Brands-ul li button:hover,.tool-bar-top .toolbar-products .modes .active,.tool-bar-top .toolbar-products .modes .modes-mode:hover,.tool-bar-top .toolbar-products .modes .modes-mode,.tool-bar-bottom .toolbar-products .pages ul li,
+.gift-options .actions-toolbar .secondary .action,.newsletter-home .content .actions .action.primary:hover,.blog-index-index .pages .item:hover a, .blog-index-index .pages-item-next:hover .action.next, .blog-index-index .pages-item-previous:hover .action.previous,.meta-btn .share-list > span.share-title i,.tool-bar-bottom .toolbar-products .pages ul .pages-item-next:hover,.actions-toolbar-detail a,.actions-toolbar-detail a:hover,
+.get-to-mul .each-icon .ab-icon,.products-grid .item .product-item-details .actions-primary button,.place-order-button .actions-toolbar .primary .action, .place-order-button .actions-toolbar .primary .action:hover,.gift-options .actions-toolbar .secondary .action,.gift-options .actions-toolbar .secondary .action,.product-addto-links >a.action:hover,
+.page-header.typesix  ul.box-static-link li  span,.pages .action,
+.meta-btn .share-btn .share-list ul li,.fotorama__active .fotorama__dot,
+.gotohome p a,section.brandhome .home-product-tab-content .tab-content .item a:hover
+{
+	border-color:#40c6ff !important;
+}
+.kc-all:hover .draw-nb:before{
+    border-top-color:#40c6ff !important;
+    border-right-color:#40c6ff !important;
+}
+
+.kc-all:hover .draw-nb:after{
+    border-left-color:#40c6ff !important;
+    border-bottom-color:#40c6ff !important;
+}
+
+
+.theme-color,.home-product-title h3,
+.home-product-tab .home-product-tab-content ul.tabs li.current,
+.home-product-tab .home-product-tab-content ul.tabs li:hover,
+.brand #owl-demo-brand .item .item-content:hover,
+a:hover, a:focus,.old-price, .old.price,
+.magemenu-menu.vertical-menu .explodedmenu li.menu .inner-cms-block .block.block-cate .subcate:hover h3::before,
+.magemenu-menu.vertical-menu .explodedmenu li.menu .inner-cms-block .block.block-cate .subcate:hover h3 > a,
+.magemenu-menu.vertical-menu .explodedmenu li.show-cate a i,
+.page-header .header-top .header-top-left .switcher:hover strong span,
+.page-header .user-custom > span i,
+.magemenu-menu.vertical-menu .explodedmenu li.menu .inner-cms-block .block.block-top:hover,
+.magemenu-menu.horizontal-menu .explodedmenu li.menu.parentMenu .explodedmenu-menu-popup .inner-cms-block.row-productgrid p strong:hover,
+.page-header .ajaxsearch_ext .minisearch .control > button:hover,
+.breadcrumbs ul li > strong,
+.columns .sidebar-main #layered-filter-block .filter-options-item .filter-options-content .items .item:hover a,.product.data.items > .item.title > .switch:hover,.product.data.items > .item.title > .switch:hover span,
+.products ol li .product-item-info .product-item-details .price-final_price .price,
+.qty .control .plus:hover,.magemenu-menu .price-box .price,.qty .control .minus:hover,
+.magemenu-menu a.mm-product-name:hover strong,
+.page-header.typesix .action.showcart:hover .counter-number,
+.draw-nb:hover,#maincontent .columns .main .product-info-main .product-reviews-summary .rating-summary .rating-result > span::before,
+#maincontent .columns .main .product-info-main .product-info-price .price-box .price-wrapper,
+.magemenu-menu.vertical-menu .explodedmenu li.menu .explodedmenu-menu-popup h5,
+.switcher:hover strong span,
+.footer-payment-wrp a,.products-grid .item .product-item-details .actions-primary button > span,
+section.home-product-tab li.tab-link.current,
+section.home-product-tab li.icon-brand.current,
+section.home-product-tab li.tab-link:hover,
+section.home-product-tab li.icon-brand:hover a,
+.page-footer .footer-top .footer-top-amazon ul li a:hover,
+section.home-product-tab-lazada ul.tabs li.current a,
+.page-header .user-custom ul.block-user li a:hover,
+.brand .owl-item:hover .item-content,
+.page-header .user-custom ul.block-user li a:hover,
+.meta-btn .share-btn .share-list ul li a i,
+#faq_category .block-title:hover, #tags .block-title:hover,
+.post-list .list-content .post-item .post-wrapper .post-meta div:hover,
+.post-list > .list-content > .post-item .post-wrapper p.txt-category,
+.post-list .list-content .post-item .post-wrapper .post-image a .overlay-icon:before,
+.recent-post .block-content ul.recent-list li.item .post-thumbnail a .overlay-icon:before,
+.field-tooltip .field-tooltip-action:hover:before,
+.opc-wrapper .fieldset > .field.required > label:after, .opc-wrapper .fieldset > .field._required > label:after, .fieldset > .field.required > .label:after, .fieldset > .fields > .field.required > .label:after, .fieldset > .field._required > .label:after, .fieldset > .fields > .field._required > .label:after,
+#faq_category ul.category-list .item .category-name:hover,
+.breadcrumbs .items .item:last-child a,
+.cmsmart-grand-total-item span.cmsmart-grand-total-item-price,
+.onestepcheckout-giftwrap strong span.price,
+.slider .owl-carousel .info .txt-category,
+.post-list .list-content .post-item .post-wrapper .post-meta div:hover span,
+.post-list .list-content .post-item .post-wrapper .post-readmore a,
+#faq-content .most-faq .most-faq-title, .category-heading .category-title,
+#faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title a:hover, #faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title a:active, #faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title a:visited,
+.products.list.items .action.towishlist:hover:before,.breadcrumbs .items .item:last-child a, .netbaseteam-shopbybrand-view .breadcrumbs .items .item:last-child a,
+.meta-btn .tag-btn a.tag-item,.product-info-main .product-social-links a span,
+#faq_category .block-title:hover, #tags .block-title:hover,
+.know-content .kc-all .kc-text a,.product-addto-links .action.tocompare,.product-addto-links .action.towishlist,ul.Featured-Brands li .name_brand:hover,
+.gotohome p a,.breadcrumbs .items .item:last-child a,.seachbox .seachboxbutton .icon-search,
+.customer-account-login .actions-toolbar .action.remind:hover  >span, .actions-toolbar .action.back:hover  >span,#faq-content .faq-require h3.faq-require-title:hover,#faq-content .faq-require .faq-require-main .panel .panel-heading h4.panel-title,
+.wishlist ol li .box-tocart .fieldset .product-item-actions .actions-primary button:hover:before,.marketplace-order-view .actions-toolbar .action:hover  >span,.product-item .price-box .price,.slider-range-min .slider-range-amount,.block-minicart .block-content > .actions .viewcart span span,.gift-item-block .title:hover,
+section.home-product-tab-ebay li.tab-link.current a,.cms-index-index .home-product-tab .navslider a:hover i,.catalog-category-view .home-product-tab .navslider a:hover i,
+section.home-product-tab li.tab-link:hover,section.sellerhome .mp_all_sellers_container .item .info a.seller-name,section.sellerhome .mp_all_sellers_container .item .info .view-store,
+.each-contact i,.page-header .user-custom.two .block-user > li:hover i,
+.cms-contact-us .each-contact:hover,.cms-no-route .main h1 span,
+.know-content .kc-all .kc-text i,.post-list .list-content .post-item .post-wrapper .share ul li a i,.post-content-wrapper .main-content-wrapper .tags span,ul.links-service li a:hover,#shopping-cart-table tbody tr .item .product-item-details .actions-toolbar-detail .action-towishlist i{
+	color:#40c6ff !important;
+}
+
+.page-header .ajaxsearch_ext .minisearch,
+.home-product-tab.deal-product .home-product-tab-title h3,
+.view-all,#shopping-cart-table tbody tr .item .product-item-details .actions-toolbar-detail .action-towishlist:hover,
+.view-all:hover,
+.navslider a:hover,
+.magemenu-menu.vertical-menu .explodedmenu li.menu:hover,
+.block-slider .inner .owl-controls .owl-pagination .owl-page.active,
+.actions.dropdown.options.switcher-options ul li:hover, 
+.user-custom .block-content ul li:hover,
+.men-smbanner > div a:hover,
+.tool-bar-top .toolbar-products .modes .active,
+.tool-bar-bottom .toolbar-products .pages ul .current,
+.tool-bar-bottom .toolbar-products .pages ul li:hover,
+.action.primary:hover,
+.product-info-main .product-social-links a:hover span,
+.product-info-main .product-social-links a:hover,
+.action.primary:focus, .action.primary:active,
+.product-info-main .product-social-links a:hover span,.get-to-mul .each-icon .ab-icon,
+li.subcate_list:hover,
+.our-team .ot-content .our-text,
+.timeline-year,.products-grid .item .product-item-details .actions-primary button:hover,
+.account-nav .nav li.current > strong,
+ #maincontent .cart.table-wrapper .actions-toolbar > .action:hover, #maincontent .cart.table-wrapper .action-gift:hover,
+.block-dashboard-info .block-content .box div .box-actions .edit:hover, .block-dashboard-addresses .block-content .box div .box-actions .edit:hover, .block-dashboard-info .block-content .box div .box-actions .change-password:hover,
+.abs-shopping-cart-items .action.continue:hover, .block-cart-failed .action.continue:hover,
+#shopping-cart-table tbody tr .qty .field .control input.minus:hover, #shopping-cart-table tbody tr .qty .field .control input.plus:hover,
+.page-header .minicart-wrapper .action.showcart .counter.qty,
+.cmsmart-onepage-checkout .modal-popup.modal-slide .modal-footer .action,
+.opc-wrapper .edit-address-link:not(:focus) span,
+.meta-btn .share-btn .share-list ul li:hover,
+.post-list .list-content .post-item .post-wrapper .share ul li:hover,
+.blog-index-index .pages .item.current span,.search-post .search-content .block-content form button,.seachbox,#tabs-click li:hover,.men-category .men-category-all .each-mca .each-mca-text > a:hover,.block-minicart .block-content > .actions .viewcart:hover,
+.ALL-Brands ul.ALL-Brands-ul li:last-child,
+.viewall button,section.home-product-tab-ebay .home-product-title h3:before, section.sellerhome .home-product-title h3:before,.ebay section.home-product-tab li.tab-link.current:before, .lazada section.home-product-tab li.tab-link:hover:before,section.home-product-tab li.icon-brand.current:before,section.home-product-tab li.icon-brand:hover:before,
+.opc-wrapper .step-title, .opc-block-shipping-information .shipping-information-title, .checkout-agreements-items .checkout-agreements-item-title,
+.blog-index-index .pages .item:hover a,
+.tag .tag-content .block-content ul.tag-list li.item:hover,
+.post-list .list-content .post-item .post-wrapper .post-readmore a:hover,
+#sidebar_faq .block-title,.product-addto-links .action.tocompare:hover,.product-addto-links .action.towishlist:hover,
+#faq-content .most-faq .most-faq-title:after, .category-heading .category-title:after,
+.slider .blog-navslider .prev:hover, .slider .blog-navslider .next:hover,
+.opc-block-summary > .title,.catalog-product-view .home-product-tab .tabs li:hover,
+.customer-account-login button:hover,.customer-account-login .action.primary:hover,
+.Featured-Brands .Featured-Brands-ul .owl-controls.clickable .owl-buttons .owl-prev:hover,.Featured-Brands .Featured-Brands-ul .owl-controls.clickable .owl-buttons .owl-next:hover,.localtor-wrapper .search-box .search-tab.active,section.home-product-tab ul.tab-seller li.tab-link.current:before, section.home-product-tab ul.tab-seller li.tab-link:hover:before,.men-category .men-category-all .each-mca .each-mca-text > a:hover,
+.ALL-Brands ul.ALL-Brands-ul li:hover button,#form-content button.submit-btn,
+.cms-no-route .gotohome a:hover,.fotorama__active .fotorama__dot,
+.tool-bar-bottom .pager .pages ul li.current,.tool-bar-bottom .pager .pages ul li:hover,
+.pages ul li.current,.pages ul li:hover,.account-nav .nav li.current > a,.cms-contact-us #maincontent .contact-us-1 .form .submit{
+	background:#40c6ff!important;
+} 
+ 
+    a{
+        color:#555555 !important;
+    }
+ 
+    a:hover{
+        color:#40c6ff !important;
+    }
+
+/** footer **/
+    .footer-bottom-wrp  {
+        background:#444 !important;
+    }
+    .footer-bottom-wrp  p {
+        color:#dddddd !important;
+    }
+    .footer-bottom-wrp strong,.footer-bottom-wrp span {
+        color:#ffffff !important;
+    }
+
+
+
+    .footer-middle {
+        background:#3d4855 !important;
+    }
+    .footer-middle a,.footer-middle i {
+        color:#dddddd !important;
+    }
+    .footer-middle strong {
+        color:#444444 !important;
+    }
+
+
+
+
+
+    .footer-top  {
+        background:#ffffff !important;
+    }
+    .footer-top ul li a,.footer-top ul.infor-text li span {
+        color:#666666 !important;
+    }
+    .footer-top strong {
+        color:#444444 !important;
+    }
+/** end footer **/
+
+/** button **/
+    #form-validate .actions .continue,.box-actions > a.action,form >button,.primary > a.action,.primary > button.action, .primary > button.action.tocart, .cart-summary .checkout li.item button,#block-discount #discount-coupon-form .actions-toolbar .primary button, #form-validate .actions .update,.block-cart-failed .action.continue, .cart-container .form-cart .action.continue,.primary >button.action,.product-addto-links >a.action,#mainform #submit,#checkout-step-shipping button.action,button.action.action-save-address,.action.action-hide-popup,.btn-wap button.action,.form-group button.action,.loadmore >button.btn-more,.gift-options .actions-toolbar .secondary .action,.newsletter-home .content .actions .action.primary{
+        background:#40c6ff !important;
+    }
+
+
+
+    .box-actions > a.action,form >button,.primary > a.action,.primary > button.action, .primary > button.action.tocart, .cart-summary .checkout,#block-discount #discount-coupon-form .actions-toolbar .primary button, #form-validate .actions .update,.block-cart-failed .action.continue, .cart-container .form-cart .action.continue,.primary >button.action,.product-addto-links >a.action,#mainform #submit,#checkout-step-shipping button.action,button.action.action-save-address,.action.action-hide-popup,.btn-wap button.action,.form-group button.action,.loadmore >button.btn-more,,.products-list .actions > .quickview,.products-list .actions .actions-secondary .towishlist {
+        border:1px solid #40c6ff !important;
+    }
+
+
+   .box-actions > a.action:hover,form >button:hover,.primary > a.action:hover,.primary > button.action:hover,#block-discount #discount-coupon-form .actions-toolbar .primary button:hover, #form-validate .actions .update:hover,.block-cart-failed .action.continue:hover, .cart-container .form-cart .action.continue:hover,.primary >button.action:hover,#mainform #submit:hover,#checkout-step-shipping button.action:hover,button.action.action-save-address:hover,.action.action-hide-popup:hover,.btn-wap button.action:hover,.form-group button.action:hover,.loadmore >button.btn-more:hover,.products-list .actions > .quickview:hover,.products-list .actions .actions-secondary .towishlist:hover{
+        border-color: #40c6ff !important;
+    }
+
+ 
+
+    .viewall button:hover,.page-header .block-minicart .block-content > .actions > .primary .action.primary:hover,#form-validate .actions .continue:hover,.box-actions > a.action:hover,form >button,.primary > a.action:hover,.primary > button.action:hover,.cart-summary .checkout li.item button:hover, #form-validate .actions .update:hover,.block-cart-failed .action.continue:hover, .cart-container .form-cart .action.continue:hover,.product-addto-links >a.action:hover,#mainform #submit:hover,#checkout-step-shipping button.action:hover,button.action.action-save-address:hover,.action.action-hide-popup:hover,.btn-wap button.action:hover,.form-group button.action:hover,.loadmore >button.btn-more:hover,.ALL-Brands .loadmore button.btn-more:hover,.gift-options .actions-toolbar .secondary .action:hover,.newsletter-home .content .actions .action.primary:hover,.box-actions > a.action:hover,form >button:hover,.primary > a.action:hover,.primary > button.action:hover,#block-discount #discount-coupon-form .actions-toolbar .primary button:hover,.block-cart-failed .action.continue:hover, .cart-container .form-cart .action.continue:hover,.primary >button.action:hover,#maincontent .ALL-Brands .loadmore button:hover:before,.products-list .actions > .quickview:hover,.products-list .actions .actions-secondary .towishlist:hover{
+        background:#0e8fe6 !important;
+    }
+
+    .box-actions > a.action,form >button,.primary > a.action,.primary > button.action,.primary > button.action.tocart, .cart-summary .checkout,#block-discount #discount-coupon-form .actions-toolbar .primary button, #form-validate .actions .update,.block-cart-failed .action.continue, .cart-container .form-cart .action.continue,.primary >button.action,.product-addto-links >a.action,#mainform #submit,#checkout-step-shipping button.action,button.action.action-save-address,.action.action-hide-popup,.btn-wap button.action,.form-group button.action,.loadmore >button.btn-more,.products-list .actions > .quickview i,.products-list .actions .actions-secondary .towishlist{
+        color:#ffffff !important;
+    }
+
+
+    .products.list.items .action.towishlist:hover:before{
+        color:#ffffff !important;
+    }
+
+  
+/** end button **/ 
+
+/** action **/
+    .products-grid .actions-all a{
+        color:#ffffff !important;
+    } 
+    .products-grid .actions-all a {
+        background:rgba(0,0,0,0) !important;
+    } 
+
+    .products-grid .actions-all a{
+        border-color:#ffffff !important;
+    } 
+/** action hover color**/
+    .products-grid .actions-all a:hover{
+        color:#40c6ff !important;
+    } 
+    .products-grid .actions-all a:hover{
+        background:rgba(0,0,0,0) !important;
+    } 
+    .products-grid .actions-all a:hover{
+        border-color:#40c6ff !important;
+    } 
+/** end button action grid**/ 
+
+/** button addtocart **/
+    .actions-primary button.action.tocart span, .wishlist .actions-primary button.action.tocart:before, .actions-primary button.action.tocart i,.quickview-catalog-product-view .product-info-main .box-tocart .action.tocart,.box-tocart button.action.tocart span,.box-tocart button.action.tocart i{
+        color:#40c6ff !important;
+    }
+
+
+    button.action.tocart{
+        background:rgba(0,0,0,0) !important;
+    }
+
+
+    button.action.tocart{
+        border-color:#40c6ff !important;
+    }
+
+
+    button.action.tocart:hover span,button.action.tocart:hover i{
+        color:#fff !important;
+    }
+
+
+    button.action.tocart:hover{
+        border-color:#40c6ff !important;
+    }
+
+
+    button.action.tocart:hover{
+        background:#40c6ff !important;
+    }
+
+/** end addtocart **/
+
+/** Sale Label Background Color    **/
+    .item .sale {
+        background: #40c6ff !important;
+    }
+
+    .item .sale span {
+        color: #ffffff !important;
+    }
+
+/** end Sale Label Background Color    **/
+
+/* Color header Config Css */
+.page-header .wrapper{
+    background-color: #f6f6f6 !important;
+} 
+.page-header .header-top  .switcher strong span{
+    color: #999999 !important;
+} 
+
+.page-header .header-top .header-top-left .switcher:hover strong span{
+    color: #40c6ff !important;
+} 
+
+.page-header .header-top .switcher .actions > ul li a,.page-header .header-top  .switcher.language .actions ul li a{
+    color: #999999 !important;
+} 
+
+.page-header .header-top .switcher .actions > ul li:hover a, .page-header .header-top  .switcher.language .actions ul li:hover a{
+    color: #ffffff !important;
+} 
+
+
+.page-header .header-top .switcher .actions > ul li{
+    background: #ffffff !important;
+} 
+.page-header .header-top .switcher .actions > ul li{
+    border-color: #999999 !important;
+} 
+.page-header .header-top .switcher .actions > ul li:hover{
+    background: #40c6ff !important;
+} 
+.page-header .header-top ul.links li a{
+    color: #999999 !important;
+} 
+.page-header .header-top ul.links li:hover a{
+    color: #40c6ff !important;
+} 
+.page-header .header-top ul.links li a{
+    border-color: #999999 !important;
+} 
+
+.page-header .wrapper-header-bottom{
+    background-color: #ffffff !important;
+} 
+.page-header .ajaxsearch_ext .minisearch{
+    background: #ffffff !important;
+} 
+#search_mini_form button > span{
+    color: #a0a0a0 !important;
+} 
+.page-header .ajaxsearch_ext .minisearch .control > button i{
+    color: #333333 !important;
+} 
+.page-header .ajaxsearch_ext .minisearch .control > button:hover i{
+    color: #40c6ff !important;
+} 
+
+.page-header .ajaxsearch_ext .minisearch .control > button{
+    background-color: #ffffff !important;
+} 
+
+.page-header .ajaxsearch_ext .minisearch .control > input.input-text{
+    background-color: #ffffff !important;
+} 
+
+.page-header .ajaxsearch_ext .minisearch .control > button{
+    border-color: #eeeeee !important;
+} 
+
+.page-header .ajaxsearch_ext .actions > button i{
+    color: #444444; !important;
+} 
+.page-header .user-custom ul.block-user li a,.page-header .user-custom > span{
+    color: #999999 !important;
+} 
+.page-header .user-custom ul.block-user li:first-child a{
+    border-color: #999999 !important;
+} 
+.page-header .user-custom > span i{
+    color: #40c6ff !important;
+} 
+.page-header .user-custom .block-content ul li a{
+    color: #444 !important;
+} 
+.page-header .user-custom .block-content ul li:hover a{
+    color: #ffffff !important;
+} 
+.page-header .user-custom .block-content ul li{
+    background-color: #ffffff !important;
+} 
+.page-header .user-custom .block-content ul li:hover{
+    background-color: #40c6ff !important;
+} 
+.page-header .user-custom .block-content ul li{
+    border-color: #eeeeee !important;
+} 
+.page-header .user-custom .block-content:before{
+    border-color:transparent transparent #ffffff !important;
+} 
+.page-header .minicart-wrapper .wrapper-your-cart > span.your-cart{
+    color:#999999 !important;
+} 
+
+.page-header .minicart-wrapper .wrapper-your-cart:hover > span.your-cart{
+    color:#40c6ff !important;
+} 
+
+.page-header .minicart-wrapper #top-mini-total{
+    color:#ffffff !important;
+} 
+.minicart-wrapper .action.showcart .counter.qty{
+    color:#ffffff !important;
+} 
+.page-header .minicart-wrapper .action.showcart .counter.qty:hover .counter-number{
+    color:#40c6ff !important;
+} 
+.page-header .minicart-wrapper .action.showcart .counter.qty{
+    background-color:rgba(0,0,0,0) !important;
+} 
+.page-header .minicart-wrapper .action.showcart .counter.qty:hover{
+    background-color:rgba(0,0,0,0) !important;
+} 
+.page-header .minicart-wrapper .block-minicart{
+    background-color:#ffffff !important;
+} 
+.page-header .minicart-items-wrapper,.page-header .minicart-wrapper .block-minicart,.page-header .minicart-items .product-item:not(:first-child),.page-header .minicart-item .product-item:not(:first-child){
+    border-color:#bbbbbb !important;
+}
+.minicart-wrapper .block-minicart:after{
+    border-color: transparent transparent #bbbbbb transparent; !important;
+}
+.page-header .block-minicart .block-content > .actions > .primary .action.primary{
+    background-color:#40c6ff !important;
+} 
+
+.page-header .block-minicart .block-content > .actions > .primary .action.primary:hover{
+    background-color:#0e8fe6 !important;
+} 
+
+.page-header .block-minicart .block-content > .actions > .primary .action.primary{
+    border-color:#40c6ff !important;
+} 
+
+.page-header .block-minicart .block-content > .actions > .primary .action.primary:hover{
+    border-color:#0e8fe6 !important;
+} 
+.page-header .block-minicart button#top-cart-btn-checkout > span{
+    color:#fff !important;
+} 
+.page-header .block-minicart button#top-cart-btn-checkout:hover > span{
+    color:#ffffff !important;
+} 
+.page-header .block-minicart .label,.page-header .block-minicart .items-total,.minicart-items .product-item-pricing .label{
+    color:#666 !important;
+} 
+.page-header .block-minicart .amount .price-wrapper:first-child .price,.page-header .page-header .block-minicart .items-total .count,.page-header .minicart-items .product-item-details .price{
+    color:#666 !important;
+} 
+.page-header .minicart-items .product-item-name a,.page-header .minicart-item .product-item-name a{
+    color:#999 !important;
+} 
+.page-header .minicart-items .product-item-name a:hover,.page-header .minicart-item .product-item-name a:hover{
+    color:#40c6ff !important;
+} 
+.page-header .minicart-items .action.edit:before,.page-header .minicart-items .action.delete:before,.page-header .minicart-item .action.edit:before,.page-header .minicart-item .action.delete:before{
+    color:#999 !important;
+} 
+.page-header .minicart-wrapper .product .actions > .primary:hover a:before,.page-header .minicart-wrapper .product .actions > .secondary:hover a:before{
+    color:#40c6ff !important;
+} 
+    .block-minicart .block-content > .actions .viewcart span span{
+        color:#40c6ff !important;
+    } 
+    .block-minicart .block-content > .actions .viewcart:hover span span{
+        color:#fff !important;
+    } 
+    .minicart-wrapper .block-minicart:before{
+        border-color: transparent transparent #ffffff transparent; !important;
+    } 
+    .page-header .sections.nav-sections{
+        background-color:#ffffff!important;
+    } 
+    .page-header .sections.nav-sections{
+        border-color:#f6f6f6!important;
+    } 
+
+    .explodedmenu li.menu > a span{
+        color:#444444!important;
+    } 
+
+    .menu .inner-cms-block .block.block-cate .subcate:hover h3 > a,.col-category a:hover,.explodedmenu li.menu .inner-cms-block .block.block-top:hover,.magemenu-menu.vertical-menu .explodedmenu li.show-cate span i,.explodedmenu li.menu .inner-cms-block .price-home span.special,.explodedmenu li.menu .inner-cms-block a:hover,.explodedmenu li.menu .explodedmenu-menu-popup h5,.magemenu-menu a.mm-product-name:hover strong,.explodedmenu li.menu .inner-cms-block .price-home span.normal,
+    .magemenu-menu.vertical-menu .explodedmenu li.menu .inner-cms-block .block.block-top:hover,.magemenu-menu.vertical-menu .explodedmenu li.menu .inner-cms-block .block.block-cate .subcate:hover h3 > a,.magemenu-menu.vertical-menu .explodedmenu li.menu .explodedmenu-menu-popup h5,.magemenu-menu.horizontal-menu .explodedmenu li.menu:hover a span{
+        color:#40c6ff!important;
+    } 
+    .magemenu-menu.vertical-menu .explodedmenu li.menu:hover,.inner-cms-block .block.block-cate .subcate:hover h3::before{
+        border-color:#40c6ff!important;
+    }
+    #slider_logo  .navslider a:hover,.magemenu-menu.vertical-menu .explodedmenu li.menu:hover,li.subcate_list:hover,
+    .magemenu-menu.horizontal-menu .menu .inner-cms-block .block.block-cate .subcate .itemMenu:hover,
+    .magemenu-menu.horizontal-menu .menu .inner-cms-block .block.block-cate .subcate:hover{
+        background-color:#40c6ff!important;
+    }
+ 

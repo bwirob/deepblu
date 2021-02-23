@@ -1,0 +1,60 @@
+<?php
+	$id = $this->getRequest()->getParam('productvideo_id');
+	if ($id) {
+	$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+	$helper = $objectManagerr->get('\Netbaseteam\Productvideo\Helper\Data');
+	$model = $objectManagerr->create('Netbaseteam\Productvideo\Model\Productvideo');
+	$_vdData = $model->load($id);
+?>
+
+
+
+<div class="admin__field field field-left_pgrid_products">
+	<label class="label admin__field-label"><span><?php echo __('Preview Video') ?></span></label>
+	<div class="admin_field-control control">
+		
+		<?php if($helper->videoType($_vdData->getUrl()) == "unknown"){ ?>
+			<iframe id="nb-ifame-detail" src="<?php echo $helper->getBaseUrl().'/'.$_vdData->getUrl(); ?>?wmode=opaque&autoplay=0&controls=1" frameborder="0"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			<p><?php
+			echo __("If you can't see video in preview (This plugin is not supported), please click <a href='".$helper->getBaseUrl().'/'.$_vdData->getUrl()."' target='_blank'>here</a>");
+			?></p>
+			<span class="delete-image" style="float: left;">
+			<?php if($_vdData->getUrl()) { ?>
+				<input id="productvideo_main_thumb_delete" class="checkbox" name="local[delete]" value="1" type="checkbox">
+				<label for="productvideo_main_thumb_delete"> <?php echo __('Delete this local video') ?></label>
+				<input name="local[value]" value="<?php echo $_vdData->getUrl(); ?>" type="hidden">
+			<?php } else {
+				echo __("File does not exists.");
+				}  ?>
+			</span>
+			
+		<?php } else { ?>
+			
+			<?php 
+				/* get video id from url */
+				/* $vdInfo = $helper->getVideoInforFromURL($_vdData->getUrl());
+				$videoID = $vdInfo["video_id"]; */
+				$videoID = $_vdData["vid"];
+			?>
+			
+			<?php if($helper->videoType($_vdData->getUrl()) == \Netbaseteam\Productvideo\Model\Productvideo::youtube){ ?>
+				<iframe src="//www.youtube.com/embed/<?php echo $videoID; ?>?wmode=opaque" width="500" height="350" frameborder="0"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			<?php } ?>
+			
+			<?php if($helper->videoType($_vdData->getUrl()) == \Netbaseteam\Productvideo\Model\Productvideo::vimeo){ ?>
+				<iframe src="//player.vimeo.com/video/<?php echo $videoID; ?>" width="500" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			<?php } ?>
+			
+			<?php if($helper->videoType($_vdData->getUrl()) == \Netbaseteam\Productvideo\Model\Productvideo::dailymotion){ ?>
+				<iframe frameborder="0" width="568" height="270" src="//www.dailymotion.com/embed/video/<?php echo $videoID; ?>" allowfullscreen></iframe>
+			<?php } ?>
+			
+			<?php if($helper->videoType($_vdData->getUrl()) == \Netbaseteam\Productvideo\Model\Productvideo::twitch){ ?>
+				<iframe src="http://www.twitch.tv/<?php echo $videoID; ?>/embed" frameborder="0" scrolling="no" height="350" width="450"></iframe>
+			<?php } ?>
+			
+		<?php } ?>
+		
+	</div>
+</div>
+<?php } ?>

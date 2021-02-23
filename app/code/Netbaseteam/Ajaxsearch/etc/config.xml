@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ajaxsearch>
+            <setting>
+                <enabled>1</enabled>
+                <width_popup>400</width_popup> 
+                <request_time>1000</request_time>
+                <minchar>3</minchar>            
+                <hightlight_color>#2222FF</hightlight_color>
+            </setting>
+
+            <search_by_cate>
+                <enabled>0</enabled>
+            </search_by_cate> 
+
+            <product_preview>
+                <number_product_show>8</number_product_show> 
+                <show_price>1</show_price>
+                <view_all>1</view_all>
+                <num_char_description>100</num_char_description>
+                <show_product_image>1</show_product_image>  
+                <show_description>1</show_description> 
+                <show_rating>1</show_rating> 
+                <show_review>1</show_review>
+            </product_preview>
+            
+            <cate_preview>
+                <enabled>1</enabled>
+            </cate_preview>
+        </ajaxsearch>
+    </default>
+</config>

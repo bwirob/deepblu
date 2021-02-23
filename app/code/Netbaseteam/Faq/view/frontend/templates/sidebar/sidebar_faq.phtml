@@ -1,0 +1,59 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Faq\Helper\Data');
+	$sidebarFaqData = $block->getSidebarFaqData();
+?>
+<?php if ($helper->getConfigEnabled()): ?>
+	<?php if ($block->hasSidebarFaq()): ?>
+		<div id="sidebar_faq">
+			<div class="block-title"><?php echo __('FAQ') ?></div>
+			<div class="sidebar-faq-list">
+				<?php foreach ($sidebarFaqData as $sidebarFaq): ?>
+					<div class="panel">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a href="javascript:void(0);"><?php echo __(strip_tags($sidebarFaq['question'])); ?></a>
+								<i data-icon="icon-plus-1" data-icon-active="icon-minus-1" class="icon-plus-1"></i>
+							</h4>
+						</div>
+
+						<div class="panel-body">
+							<div class="panel-content"><?php echo __($sidebarFaq['answer']); ?>
+							</div>
+
+							<div class="more-info">
+								<?php if ($helper->getShowFaqAthor()): ?>
+									<?php if (!empty($sidebarFaq['author_name'])): ?>
+										<p class="author">
+											<?php echo __('Created by:');?>
+										</p>
+									<?php endif ?>
+								<?php endif ?>
+
+								<?php if ($helper->getShowFaqCreatedTime()): ?>
+									<?php if (!empty($block->getFormatDate($sidebarFaq))): ?>
+										<p class="created-time">
+											<?php echo __($sidebarFaq['author_name'].' on '.$block->getFormatDate($sidebarFaq));?>
+										</p>
+									<?php endif ?>
+								<?php endif ?>
+							</div>			
+						</div>
+						
+					</div>
+				<?php endforeach ?>
+			</div>
+		</div>
+		<script type="text/javascript">
+		    require([
+		    'jquery', 
+		    'jquery/ui',
+		    'Cmsmart_FAQ'
+		    ], function($){
+
+		    
+		    });
+	</script>
+	<?php endif ?>
+
+<?php endif ?>
+

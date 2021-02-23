@@ -1,0 +1,169 @@
+<?php
+// @codingStandardsIgnoreFile
+/**
+ * @var $block \Netbaseteam\Marketplace\Block\Catalog\Product\EditProductForm
+ */
+$productType = $this->getRequest()->getParam('type');
+if($block->getProductModel() && $block->getProductModel()->getId()){
+   $productType = $block->getProductModel()->getTypeId(); 
+}
+if($productType != 'grouped') return;
+
+?>
+<li class="field">
+  <label><?php echo __('Grouped Products') ?>:</label>
+    <div class="row">
+        <div class="add-product-to-group-button-container">
+            <button id="add_product_to_group_button"
+                    title="<?php echo $block->escapeHtml(__('Add Products to Group'));?>"
+                    data-role="add-product-to-group"
+                    type="button"
+                    class="action-secondary"
+                    data-mage-init='{"openGroupedProductDialog" : {}}'
+                    data-ui-id="widget-button-1">
+                <span><?php /* @escapeNotVerified */ echo __('Add Products to Group') ?></span>
+            </button>
+        </div>
+    </div>
+    <?php echo $block->getChildHtml('grouped_product_list'); ?>
+    <?php 
+        $childGroupedIds = '';
+        if ($block->getProductModel()) {
+            $childGroupedIds = $block->getChildGroupedIds();
+        }
+    ?>
+    <?php if($childGroupedIds):?>
+        <div class="grouped_products">
+            <table class="admin__dynamic-rows data-grid" data-role="grid">
+                <thead>
+                    <tr>
+                        <th class="data-grid-draggable-row-cell"></th>
+
+                        <th class="data-grid-th">
+                            <span>ID</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Thumbnail</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Name</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Attribute Set</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Status</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>SKU</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Price</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Default Quantity</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Position</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Action</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php echo $this->getLayout()->createBlock("Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\Grouped")->setData('child_grouped_ids',$childGroupedIds)->setTemplate("Netbaseteam_Marketplace::catalog/product/edit/grouped/selected.phtml")->toHtml();?>
+                </tbody>
+            </table>
+        </div>
+    <?php else:?>
+        <div class="grouped_products" style="display: none;">
+            <table class="admin__dynamic-rows data-grid" data-role="grid">
+                <thead>
+                    <tr>
+                        <th class="data-grid-draggable-row-cell"></th>
+
+                        <th class="data-grid-th">
+                            <span>ID</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Thumbnail</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Name</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Attribute Set</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Status</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>SKU</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Price</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Default Quantity</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Position</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Action</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    <?php endif;?>
+</li>
+
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui', 'reloadGrid', 'uiRegistry'], function($, ui, reloadGrid, registry){
+        $(function() {
+            $('.grouped_products tbody').sortable({
+                placeholder: 'sort-placeholder',
+                forcePlaceholderSize: true,
+                start: function(e, ui) {
+                    ui.item.data('start-pos', ui.item.index() + 1);
+                },
+                change: function(e, ui) {
+                    var seq, startPos = ui.item.data('start-pos'),
+                        $index, correction;
+
+                    correction = startPos <= ui.placeholder.index() ? 0 : 1;
+
+                    ui.item.parent().find('tr.data-row').each(function(idx, el) {
+                        var $this = $(el),
+                            $index = $this.index();
+
+                        if (($index + 1 >= startPos && correction === 0) || ($index + 1 <= startPos && correction === 1)) {
+                            $index = $index + correction;
+                            $this.find('input[name="grouped_position"]').val($index - 1);
+                        }
+
+                    });
+
+                    seq = ui.item.parent().find('tr.sort-placeholder').index() + correction;
+                    ui.item.find('input[name="grouped_position"]').val(seq - 1);
+                }
+            });
+            $(document).on('click', '.data-grid-groupedproduct .action-delete', function() {
+                $(this).parents('tr').remove();
+                if($('.grouped_products table tr').length == 1) {
+                    $('.grouped_products').append('<input id="empty_grouped_product" type="hidden" name="links[grouped][]" value="">');
+                }
+            });
+        });
+        $('#add_product_to_group_button').click(function(){
+            var groupedProducts = [];
+            $('input[name="links[grouped][]"]').each(function() {
+                groupedProducts.push($(this).val());
+            });
+            reloadGrid.reloadUIComponent("marketplace_groupedproduct_listing.marketplace_groupedproduct_listing_grid_data_source",groupedProducts, "groupedproduct_ids");
+        });
+    });
+</script>

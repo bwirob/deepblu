@@ -1,0 +1,162 @@
+<?php
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$sellerData = $block->getSellerData();
+$ratingAverage = $block->getRatingAverage();
+$countRating =  $block->getRatingCount();
+$sameProducts = $block->getSameProduct();
+$product = $block->getProduct();
+$countProduct = $block->getCountProduct();
+$productId = $product->getId();
+$priceArr = [];
+if (count($sameProducts)) {
+    foreach ($sameProducts as $product) {
+        $specialPrice = $product->getSpecialPrice();
+        if ($specialPrice) {
+            $priceArr[] = $specialPrice;
+        } else {
+            $priceArr[] = $product->getPrice();
+        }
+    }
+}
+?>
+<?php if (isset($sellerData)):?>
+    <?php $shopID = $sellerData['shop_id']?>
+
+    <div class="seller-details">
+        <div class="content">
+            <div class="profile_pic">
+                <img src="<?php echo $helper->getMediaUrl() . 'marketplace/' . (isset($sellerData['shop_logo']) ? $sellerData['shop_logo'] : 'no-images.png'); ?>" alt="..." class="profile_img">
+            </div>
+            <div class="profile_info">
+                <div class="title">
+                    <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>" class="action"><span><?php echo $sellerData['shop_title'] ?></span></a>
+                </div>
+                <?php if ($ratingAverage): ?>
+                    <div class="seller-reviews-summary short">
+                        <div class="rating-summary">
+                            <span class="txt-review">Review</span>
+                            <div title="<?php echo (int)$ratingAverage; ?>%" class="rating-result">
+                                <span style="width:<?php echo (int)$ratingAverage; ?>%"><span><?php echo (int)$ratingAverage; ?>%</span></span>
+                            </div>
+                        </div>
+                        <span>(<?php echo (int)$countRating?> total ratings)</span>
+                    </div>
+                <?php endif; ?>
+                <div class="contact">
+                    <ul>
+                        <li class="contact_number"> <?php echo isset($sellerData['contact_number']) ? $sellerData['contact_number'] : ''?></li>
+                        <li class="shop_email"> <?php echo isset($sellerData['shop_email']) ? $sellerData['shop_email'] : ''?></li>
+                        <li class="shop_location"> <?php echo isset($sellerData['shop_location']) ? $sellerData['shop_location'] : ''?></li>
+                        <li class="contact_on_web">
+                            <span>Share: </span>
+                            <?php if ($sellerData['twitter_id']):?>
+                                <a href="//twitter.com/<?php echo $sellerData['twitter_id']?>" target="blank">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            <?php endif;?>
+                            <?php if ($sellerData['facebook_id']):?>
+                                <a href="//facebook.com/<?php echo $sellerData['facebook_id']?>" target="blank">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                            <?php endif;?>
+                            <?php if ($sellerData['gplus_id']):?>
+                                <a href="//plus.google.com/<?php echo $sellerData['gplus_id']?>" target="blank">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </a>
+                            <?php endif;?>
+                            <?php if ($sellerData['youtube_id']):?>
+                                <a href="//www.youtube.com/user/<?php echo $sellerData['youtube_id']?>" target="blank">
+                                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                                </a>
+                            <?php endif;?>
+                            <?php if ($sellerData['instagram_id']):?>
+                                <a href="//instagram.com/<?php echo $sellerData['instagram_id']?>" target="blank">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            <?php endif;?>
+                            <?php if (count($sameProducts) && count($sameProducts) > 1):?>
+                                <div class="same-items">
+                                    <a href="<?php echo $this->getUrl("marketplace/seller/groupitem/id/$productId", ['_secure' => $this->getRequest()->isSecure()]); ?>">New (<?php echo((int)count($sameProducts) - 1);?>) from <?php echo count($priceArr) ? $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(min($priceArr), true, false) : '' ?></a>
+                                </div>
+                            <?php endif;?>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="view-seller">
+                    <li class="store-items">
+                        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/ref=page_internal/", ['_secure' => $this->getRequest()->isSecure()]); ?>" class="action"><span>View Seller<?php //echo $countProduct;?></span></a>
+                    </li>
+                    <li class="store-seller">
+                        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>" class="action"><span><?php //echo $sellerData['shop_title']?>View Shop</span></a>
+                    </li>
+                    <li class="contact-us">
+                        <a id="form-contact-us">Contact Seller</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="mp-contact-popup-modal" style="display:none;">
+        <form class="form contact" action="<?php echo $this->getUrl("marketplace/seller/contactPost/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>" id="contact-form" method="post" data-hasrequired="* Required Fields" data-mage-init='{"validation": {}}' novalidate="novalidate">
+            <fieldset class="fieldset">
+                <legend class="legend"><span>Write Us</span></legend><br>
+                <div class="field note no-label">Jot us a note and we’ll get back to you as quickly as possible.</div>
+                <div class="field name required">
+                    <label class="label" for="name"><span>Name</span></label>
+                    <div class="control">
+                        <input name="name" id="name" title="Name" value="<?php echo $block->getCustomer()->getName();?>" class="input-text" type="text" data-validate="{required:true}" aria-required="true">
+                    </div>
+                </div>
+                <div class="field email required">
+                    <label class="label" for="email"><span>Email</span></label>
+                    <div class="control">
+                        <input name="email" id="email" title="Email" value="<?php echo $block->getCustomer()->getEmail();?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}" aria-required="true">
+                    </div>
+                </div>
+                <div class="field telephone">
+                    <label class="label" for="telephone"><span>Phone Number</span></label>
+                    <div class="control">
+                        <input name="telephone" id="telephone" title="Phone Number" value="" class="input-text" type="text">
+                    </div>
+                </div>
+                <div class="field comment required">
+                    <label class="label" for="comment"><span>What’s on your mind?</span></label>
+                    <div class="control">
+                        <textarea name="comment" id="comment" title="What’s on your mind?" class="input-text" cols="5" rows="3" data-validate="{required:true}" aria-required="true"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <input type="hidden" name="hideit" id="hideit" value="">
+                    <button type="submit" title="Submit" class="action submit primary">
+                        <span>Submit</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function ($, modal) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                buttons: false
+            };
+
+            var popup = modal(options, $('#mp-contact-popup-modal'));
+
+            $('#form-contact-us').on('click', function () {
+                $('#mp-contact-popup-modal').modal('openModal');
+            });
+        }
+    );
+</script>
+<?php endif;?>

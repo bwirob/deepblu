@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>  
+        <css src="Netbaseteam_Locator::css/store.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Locator\Block\Store" name="localtor.store.view" template="Netbaseteam_Locator::store.phtml">
+                <block class="Netbaseteam\Locator\Block\Store\Storeinfo" name="localtor.store.info" template="Netbaseteam_Locator::store/store_info.phtml" />
+            	<block class="Netbaseteam\Locator\Block\Store\Sidebar" name="localtor.store.sidebar" template="Netbaseteam_Locator::store/sidebar.phtml" />
+            	<block class="Netbaseteam\Locator\Block\Store\Map" name="localtor.store.map" template="Netbaseteam_Locator::store/map.phtml" />
+                <block class="Netbaseteam\Locator\Block\Store\Comment" name="localtor.store.comment" template="Netbaseteam_Locator::store/comment.phtml" />
+            </block> 
+        </referenceContainer>
+    </body>
+</page>

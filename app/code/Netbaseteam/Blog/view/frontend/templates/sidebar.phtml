@@ -1,0 +1,24 @@
+<?php  
+    $helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+?>
+<script type="text/javascript">
+    var postlistStyle = '<?php echo $block->getListStyle(); ?>';
+</script>
+<div class="search-post sidebar-item">
+	<?php echo $block->getChildHtml('blog.sidebar.search'); ?>
+</div>
+
+<?php echo $block->getChildHtml('blog.sidebar.recent'); ?>
+<?php echo $block->getChildHtml('blog.sidebar.recentcomment'); ?>
+<?php echo $block->getChildHtml('blog.sidebar.category'); ?>
+<?php echo $block->getChildHtml('blog.sidebar.tag'); ?>
+    
+<script type="text/javascript">
+    require([
+    'jquery', 
+    'jquery/ui',
+    'cmsmart_blog_default'
+    ], function($){
+    	
+    });
+</script>

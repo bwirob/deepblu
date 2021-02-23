@@ -1,0 +1,116 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<div class="creditmemo-items">
+    <h2><?php /* @escapeNotVerified */ echo __('New Memo') ?></h2>
+</div>
+<form name="new-invoice" id="new-invoice"
+                        action="<?php echo $this->getUrl('marketplace/order_creditmemo/save', ['order_id' => $this->request->getParam('order_id')]); ?>"
+                        method="post"
+                        novalidate="novalidate">
+    <div class="table-wrapper creditmemo-items creditmemo"> 
+        <table class="data table table-creditmemo-items creditmemo" id="my-orders-table" summary="<?= /* @escapeNotVerified */ __('Items Ordered') ?>">
+            <caption class="table-caption"><?= /* @escapeNotVerified */ __('New Creditmemo') ?></caption>
+            <thead>
+                <?php if($block->isPagerDisplayed()): ?>
+                    <tr>
+                        <td colspan="5" data-block="creditmemo-items-pager-top" class="order-pager-wrapper order-pager-wrapper-top">
+                            <?= $block->getPagerHtml() ?>
+                        </td>
+                    </tr>
+                <?php endif ?>
+                <tr>
+                    <th class="col name"><?= /* @escapeNotVerified */ __('Product Name') ?></th>
+                    <th class="col sku"><?= /* @escapeNotVerified */ __('SKU') ?></th>
+                    <th class="col price"><?= /* @escapeNotVerified */ __('Price') ?></th>
+                    <th class="col return-to-stock"><?= /* @escapeNotVerified */ __('Return to Stock') ?></th>
+                    <th class="col qty"><?= /* @escapeNotVerified */ __('Qty to Refund') ?></th>
+                    <th class="col subtotal"><?= /* @escapeNotVerified */ __('Subtotal') ?></th>
+                </tr>
+            </thead>
+            <?php $items = $block->getItems(); ?>
+            <?php foreach ($items as $item): ?>
+                <?php if ($item->getParentItem()) continue; ?>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong class="product name product-item-name"><?php echo $item->getName()?></strong>
+                            <?php if(isset($item->getData('product_options')['attributes_info'])):?>
+                                <dl class="item-options">
+                                    <dt><?php echo $item->getData('product_options')['attributes_info'][0]['label']?></dt>
+                                    <dd><?php echo $item->getData('product_options')['attributes_info'][0]['value']?></dd>
+                                </dl>
+                            <?php endif;?>
+                        </td>
+                        </td>
+                        <td><?php echo $item->getSku()?></td>
+                        <td>
+                            <span class="price-excluding-tax" data-label="Excl. Tax">
+                                <span class="cart-price">
+                                    <span class="price"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($item->getPrice(), true, false); ?></span>
+                                </span>
+                            </span>
+                        </td>
+                        <td>
+                            <input type="checkbox" class="control-checkbox" name="creditmemo[items][<?php echo $item->getItemId()?>][back_to_stock]" value="1">
+                            <label class="ield-label"></label>
+                        </td>
+                        <td><input type="text" class="input-text" name="creditmemo[items][<?php echo $item->getItemId()?>][qty]" value="<?php echo (int)$item->getQtyOrdered()?>"></td>
+                        <td>
+                            <span class="price-excluding-tax" data-label="Excl. Tax">
+                                <span class="cart-price">
+                                    <span class="price"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($item->getRowTotal(), true, false); ?></span> 
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            <?php endforeach; ?>
+            <tfoot>
+                <?php if($block->isPagerDisplayed()): ?>
+                    <tr>
+                        <td colspan="5" data-block="creditmemo-items-pager-bottom" class="order-pager-wrapper order-pager-wrapper-bottom">
+                            <?= $block->getPagerHtml() ?>
+                        </td>
+                    </tr>
+                <?php endif ?>
+                <?= $block->getChildHtml('order_totals') ?>
+            </tfoot>
+        </table>
+    </div>
+    <div class="field">
+        <label class="field-label" for="creditmemo_comment_text">
+            <span>Comment Text</span></label>
+        <div class="field-control">
+            <textarea id="creditmemo_comment_text" class="control-textarea" name="creditmemo[comment_text]" rows="3" cols="5"></textarea>
+        </div>
+    </div>
+    <div class="field-append">
+        <input id="notify_customer" name="creditmemo[comment_customer_notify]" value="1" type="checkbox" disabled="">
+        <label for="notify_customer">Append Comments</label>
+    </div>
+    <div class="field-email">
+        <input id="send_email" name="creditmemo[send_email]" value="1" type="checkbox">
+        <label for="send_email">Email Copy of Invoice</label>
+    </div>
+    <div class="primary">
+        <button type="submit" class="action submit primary"><span>Refund Offline</span></button>
+    </div>
+</form>
+<script>
+    require(['jquery', 'jquery/ui'], function($){ 
+        $("table.creditmemo:not(:has(>tbody>tr))").parent().parent().remove();
+        $("#send_email").change(function() {
+            if(this.checked) {
+                $("#notify_customer").removeAttr("disabled"); 
+            } else {
+                $("#notify_customer").attr("disabled","disabled");
+            }
+        });
+    });
+</script>

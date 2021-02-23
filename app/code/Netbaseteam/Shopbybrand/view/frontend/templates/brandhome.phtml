@@ -1,0 +1,142 @@
+<?php
+$_shopbybrand = $this->getCollection(); 
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance(); 
+$storeManager = $objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+$appState = $objectManager->get('\Magento\Framework\App\State');
+$categoryCollection = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Category\CollectionFactory');
+$categories = $categoryCollection->create();
+$categories->addAttributeToSelect('*');
+$category1 = explode(",",$this->getCategorybrand());
+
+
+
+$branddisplay = [];
+$count11 = 0;
+$j=1;
+$h=1; 
+$currentStore = $storeManager->getStore(); 
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$logopath = $this->getViewFileUrl('Netbaseteam_Shopbybrand::images/logo.png');
+$brandpath = $this->getViewFileUrl('Netbaseteam_Shopbybrand::images/search.png');
+?>
+
+<section id="brandhome-tab" class="brandhome brandhome-ebay home-product-tab-ebay home-product-tab container">
+	<div class="inner-block">
+		<div class="row">
+			<div class="home-product-title col-md-12 col-xs-12"> 
+				<h3><?php echo __('outlet brand stuff') ?></h3>
+			</div>
+			<div class="col-md-3 col-xs-4 home-product-tab-title">
+				<ul class="tabs tabs-brand">
+					<?php  
+						foreach ($categories as $category) {
+							if (in_array($category->getId(),$category1)) {  
+							?> 
+								<li class="tab-link icon-brand <?php if($h == 1){ echo 'current loaded';} ?>" data-tab="brand-tab-<?php echo $h;?>" >
+									<a href="javascript:void(0)">
+										<?php echo $category->getName();?>
+									</a>
+								</li>         
+								<?php 
+								$h ++;   
+							}  
+						}
+					?>
+				</ul> 
+			</div>  
+			<div class="col-md-9 col-xs-8 home-product-tab-content">
+				<?php  
+					foreach ($categories as $key => $category) {
+						$count11 = 0; 
+						if (in_array($category->getId(),$category1)) { ?>
+							<div id="brand-tab-<?php echo $j; ?>" class="tab-content <?php if($j == 1){ echo 'show loaded';} ?>">
+
+								<?php if ($j == 1): ?>
+									<div class="home-product-slider nb-list products-grid">
+									<?php
+										$cateinstance = $objectManager->create('Magento\Catalog\Model\CategoryFactory');
+										$cateid = $category->getId();
+										$allcategoryproduct = $cateinstance->create()->load($cateid)->getProductCollection()->addAttributeToSelect('*');
+										foreach ($allcategoryproduct as $product) {
+											foreach ($_shopbybrand as $shopbybrandItem){
+												$path = $mediaUrl.'//Shopbybrand'.'//'.$shopbybrandItem->getLogo(); 
+												$productbrand= explode("&", $shopbybrandItem->getproduct_ids());
+												$brandid = $shopbybrandItem->getBrandId();
+												foreach ($productbrand as $item){
+													if ($item == $product->getId() ) { ?> 
+														<?php if (in_array($brandid,$branddisplay)): ?>
+															
+														<?php else: ?>
+															<?php if ($count11<8): ?>
+																<div class="item">
+																	<a href=""><img src=" <?php echo $path ?>" alt=" "/></a>
+																</div>
+																<?php 
+																	array_push($branddisplay,$brandid);
+																	$count11++;
+																?>
+															<?php endif ?>
+														<?php endif ?>
+														<?php  
+													}
+												}
+											}
+										}
+									?>
+									</div>
+								<?php endif ?>
+								
+							</div>
+							<?php
+							$j++;
+						}
+					} 
+				?>
+			</div>
+		</div>
+	</div>
+</section>
+<script type="text/javascript">
+	//Home product tab
+	require([
+     'jquery',
+     'jquery/ui'
+    ],
+    function($, tabs) {
+        $(document).ready(function(){
+			$('#brandhome-tab ul.tabs li').click(function(){
+				var tab_id = $(this).attr('data-tab');
+				var	cat_id = $(this).attr('data-rev');
+				//console.log(tab_id);
+				$('#brandhome-tab ul.tabs li').removeClass('current');
+				$('#brandhome-tab .tab-content').removeClass('current');
+				$('#brandhome-tab .tab-content').removeClass('show');
+
+				$(this).addClass('show');
+				$("#brandhome-tab #"+tab_id).addClass('show');
+				$("#brandhome-tab li[data-rev='"+cat_id+"']").addClass('current');
+				if (!$(this).hasClass('loaded')) {
+					var param = {
+						'type' : 'brand',
+						'categoryId': cat_id,
+						'home' :'amazon'
+						}
+
+					$.ajax({
+							url: "<?php echo $this->getUrl('shopbybrand/index/request') ?>",
+							data: param,
+							type: "POST",
+							showLoader: true,
+							dataType: 'json'
+						}).done(function (data) {
+							var html = $(data.brand_view);
+							
+							$("#brandhome-tab #"+tab_id).html(html);
+					});
+				}
+
+				$(this).addClass('loaded'); 
+			}) 
+		});
+    });
+</script>

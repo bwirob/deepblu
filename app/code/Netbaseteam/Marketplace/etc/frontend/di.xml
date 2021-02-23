@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Controller\Product\View">
+        <plugin name="checkvacation"
+                type="\Netbaseteam\Marketplace\Controller\Vacation\Product\View"
+                sortOrder="10"/>
+    </type>
+
+    <preference for="Netbaseteam\Marketplace\Api\MarketplaceSaveCartRepositoryInterface" type="Netbaseteam\Marketplace\Model\MarketplaceSaveCartRepository" />
+    <preference for="Netbaseteam\Marketplace\Api\Data\MarketplaceSaveCartInterface" type="Netbaseteam\Marketplace\Model\MarketplaceSaveCart" />
+    <virtualType name="MarketplaceFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ProductDataProvider" type="Netbaseteam\Marketplace\Ui\DataProvider\Product\ProductDataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Netbaseteam\Marketplace\Model\Resource\Product\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MarketplaceFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Netbaseteam\Marketplace\Model\ResourceModel\Product\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">netbaseteam_marketplace_product</argument>
+            <argument name="resourceModel" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\Product</argument>
+        </arguments>
+    </virtualType>
+    
+    <virtualType name="SaleDataProvider" type="Netbaseteam\Marketplace\Ui\DataProvider\Sales\SaleDataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Netbaseteam\Marketplace\Model\Resource\Order\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MarketplaceFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Netbaseteam\Marketplace\Model\ResourceModel\Order\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">netbaseteam_marketplace_order</argument>
+            <argument name="resourceModel" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\Order</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="SalesReportDataProvider" type="Netbaseteam\Marketplace\Ui\DataProvider\Sales\SalesReportDataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Netbaseteam\Marketplace\Model\Resource\SalesReport\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MarketplaceFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Netbaseteam\Marketplace\Model\ResourceModel\SalesReport\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">netbaseteam_marketplace_salesreport</argument>
+            <argument name="resourceModel" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\SalesReport</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="TransactionDataProvider" type="Netbaseteam\Marketplace\Ui\DataProvider\Transaction\TransactionDataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Netbaseteam\Marketplace\Model\Resource\Transaction\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MarketplaceFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Netbaseteam\Marketplace\Model\ResourceModel\Transaction\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">netbaseteam_marketplace_transaction</argument>
+            <argument name="resourceModel" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\Transaction</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Netbaseteam\Marketplace\Api\Data\LocationInterface" type="Netbaseteam\Marketplace\Model\Location" />
+    <virtualType name="LocationDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Netbaseteam\Marketplace\Model\Resource\Location\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MarketplaceFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Netbaseteam\Marketplace\Model\ResourceModel\Location\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">netbaseteam_marketplace_locator</argument>
+            <argument name="resourceModel" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\Location</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Netbaseteam\Marketplace\Api\Data\NotificationInterface" type="Netbaseteam\Marketplace\Model\Notification" />
+    <virtualType name="NotificationDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Netbaseteam\Marketplace\Model\Resource\Notification\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">MarketplaceFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Netbaseteam\Marketplace\Model\ResourceModel\Notification\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">netbaseteam_marketplace_notification</argument>
+            <argument name="resourceModel" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\Notification</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="marketplace_product_listing_data_source" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\Product\Grid\Collection</item>
+                <item name="marketplace_sale_listing_data_source" xsi:type="string">Magento\Sales\Model\ResourceModel\Order\Grid\Collection</item>
+                <item name="marketplace_report_listing_data_source" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\SalesReport\Grid\Collection</item>
+                <item name="marketplace_transaction_listing_data_source" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\Transaction\Grid\Collection</item>
+                <item name="marketplace_locator_listing_data_source" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\Location\Grid\Collection</item>
+                <item name="marketplace_notification_listing_data_source" xsi:type="string">Netbaseteam\Marketplace\Model\ResourceModel\Notification\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- override cart/item/default.phtml file -->
+    <type name="Magento\Checkout\Block\Cart\AbstractCart">
+        <plugin name="item-test" type="Netbaseteam\Marketplace\Plugin\Cart\AbstractCart" sortOrder="1"/>
+    </type>
+    <preference for="Magento\Checkout\Block\Cart\Grid" type="Netbaseteam\Marketplace\Block\Cart\Grid" />
+    <preference for="Magento\Checkout\Block\Cart" type="Netbaseteam\Marketplace\Block\Cart" />
+    <preference for="Magento\Checkout\Block\Onepage\Link" type="Netbaseteam\Marketplace\Block\Onepage\Link" />
+    <preference for="\Magento\Checkout\Block\Cart\Item\Renderer" type="Netbaseteam\Marketplace\Block\Cart\Item\Renderer" />
+    <preference for="Magento\Framework\Model\ActionValidator\RemoveAction" type="Magento\Framework\Model\ActionValidator\RemoveAction\Allowed" />
+
+</config>

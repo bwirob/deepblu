@@ -1,0 +1,55 @@
+<?php
+	$id = $this->getRequest()->getParam('productvideo_id');
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$model = $objectManager->create('Netbaseteam\Productvideo\Model\Productvideo');
+	$catalogSession = $objectManager->create('Magento\Catalog\Model\Session');
+	$model->load($id);	
+	
+	$catalogSession->setProducts($model->getProductIds());
+?>
+		
+<div class="admin__field field field-left_pgrid_products">
+	<label class="label admin__field-label"><span><?php echo __('Products IDs') ?></span></label>
+	<div class="admin_field-control control">
+		<input type="text" class=" input-text admin__control-text" value="<?php echo $model->getProductIds(); ?>" name="product_ids" id="product_ids">                            
+		<!-- <img id="my_ver_select" class="v-middle rule-chooser-trigger" src="<?php //echo $this->getViewFileUrl('Netbaseteam_Productvideo/images/select.gif'); ?>"> -->
+	</div>
+	
+	<!-- *** grid select product in checkbox *** -->
+	<div id="nb_top_select_pids">
+		<div id="vermenu_Grid" style="display: none;">
+		<?php
+			echo $this->getLayout()->createBlock('Netbaseteam\Productvideo\Block\Adminhtml\Pgrid\Grid')
+					->toHtml(); 
+		?>
+		</div>
+	</div>
+	<!-- tmp variable -->
+	<div>
+		<input type="hidden" class="input-text admin__control-text" value="" name="img_thumb" id="img_thumb">                            
+	</div>
+</div>
+
+<script type="text/javascript">
+	requirejs(['jquery'], function($){
+		/* $( "#my_ver_select" ).click(function() {		
+			$('#vermenu_Grid').toggle();
+		}); */ 
+		$( document ).ready(function() {
+			$('#vermenu_Grid').show();
+		});
+	}); 
+	function myVerFunctionSelect(myEl){
+		var vfind = myEl.value;
+		var pid_arr = $('product_ids').value.split(",");
+		if(!myEl.checked){
+			var aryWithoutFound = pid_arr.filter(function(value) { return value != vfind });
+			str = aryWithoutFound.toString();
+			str = str.replace(/(^[,\s]+)|([,\s]+$)/g, '');
+		} else {
+			str = $('product_ids').value + "," + vfind;
+			str = str.replace(/(^[,\s]+)|([,\s]+$)/g, '');
+		}
+		$('product_ids').value = str;
+	}
+</script>

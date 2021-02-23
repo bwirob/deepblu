@@ -1,0 +1,28 @@
+/**
+ * WARNING: Do not change this file. Your changes will be lost.
+ * <?php echo date("Y-m-d H:i:s"); ?>
+ */
+<?php
+    $s = $this->getConfig("sun_settings",$this->_coreRegistry->registry('cssgen_store'));
+    $_helper = $this->helper('Netbase\Sun\Helper\Cssconfig');
+?>
+body.boxed {
+<?php if(isset($s['general']['boxed_bg_color']) && $s['general']['boxed_bg_color']): ?>
+    background-color: #<?php echo $s['general']['boxed_bg_color']; ?>;
+<?php endif; ?>
+<?php if(isset($s['general']['boxed_bg_img']) && $s['general']['boxed_bg_img']): ?>
+    background-image: url(<?php echo $_helper->getBaseMediaUrl()."porto/boxed_bg/".$s['general']['boxed_bg_img']; ?>);
+<?php elseif(isset($s['general']['boxed_bg_color']) && $s['general']['boxed_bg_color']): ?>
+    background-image: none;
+<?php endif; ?>
+<?php if(isset($s['general']['boxed_custom_style']) && $s['general']['boxed_custom_style']): ?>
+    <?php echo $s['general']['boxed_custom_style']; ?>
+<?php endif; ?>
+}
+
+<?php
+if(isset($s['custom_settings']['custom_style']) && $s['custom_settings']['custom_style'])
+    echo $s['custom_settings']['custom_style'];
+if(isset($s['custom_settings']['custom_style_2']) && $s['custom_settings']['custom_style_2'])
+    echo $s['custom_settings']['custom_style_2'];
+?>

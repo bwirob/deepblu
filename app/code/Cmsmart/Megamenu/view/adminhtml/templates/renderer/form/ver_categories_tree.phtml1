@@ -1,0 +1,121 @@
+<?php
+function ver_get_categories() {
+	$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+	$category = $objectManagerr->create('Magento\Catalog\Model\Category');
+    $tree = $category->getTreeModel();
+    $tree->load();
+    $ids = $tree->getCollection()->getAllIds();
+    $arr = array();
+    $arrayCategories = array();
+    if ($ids) {
+        foreach ($ids as $id) {
+            $cat = $objectManagerr->create('Magento\Catalog\Model\Category');
+            $cat->load($id);
+ 
+          //  if($id!=1){
+ 
+                $arrayCategories[$id] =
+                        array("parent_id" => $cat->getParentId(),
+                            "name" => $cat->getName(),
+                            "cat_id" => $cat->getId(),
+                            "cat_level" => $cat->getLevel(),
+                            "cat_url" => $cat->getUrl()
+                );
+          //  }
+        }// for each ends
+        return $arrayCategories;
+        /*
+          echo 'PK<pre>';
+          print_r($arrayCategories);
+          echo '</pre>';
+         */
+    }//if ids present
+}
+$arrayCategories = ver_get_categories();
+/* \zend_debug::dump($arrayCategories); */
+	
+function ver_createTree($array, $currentParent, $currLevel = 0, $prevLevel = -1) {
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$catalogSession = $objectManager->create('Magento\Catalog\Model\Session');
+	$selected_arr = explode(",", $catalogSession->getVerCatIds());
+    foreach ($array as $categoryId => $category) {
+        if ($currentParent == $category['parent_id']) {
+            if ($currLevel > $prevLevel)
+                echo "<ul id='ul_".$categoryId."'>";
+            if ($currLevel == $prevLevel)
+                echo " </li> ";
+ 
+                    $cat_id_hidden = array('1','2');//set category id hidden
+                    if(in_array($categoryId,$cat_id_hidden)){
+                       // $display = 'none';
+                    }
+                    else{
+                       // $display = 'block';
+                    }
+ 
+            /* class="level_'.$category['cat_level'].' " */
+			$chk = "";
+			if(in_array($categoryId, $selected_arr)){
+				$chk = ' checked="true"';
+			}
+			
+            echo '
+				<li id="li_'.$categoryId.'">
+					<img id="ext-cus-'.$categoryId.'" class="my_folder">';
+				if($categoryId > 1){
+					echo '<input type="checkbox" class="mytree-l-tcb" id="ext-gen'.$categoryId.'" '.$chk.' value="'.$categoryId.'" onClick="myVerCatSelect(this)">';
+				}
+            
+			echo '<a id="a_'.$categoryId.'" target="_blank" >';
+                echo '<span id="span_'.$categoryId.'">'.$category['name'].'</span>';
+            echo '</a>';
+            //echo '<input type="text" id="m_cat_id_'.$category['cat_id'].'" name="m_cat_id_'.$category['cat_id'].'" value="id = '.$category['cat_id'].' : level = '.$category['cat_level'].' "/>';
+            if ($currLevel > $prevLevel) {
+                $prevLevel = $currLevel;
+            }
+            $currLevel++;
+            ver_createTree($array, $categoryId, $currLevel, $prevLevel);
+            $currLevel--;
+        }
+    }
+    if ($currLevel == $prevLevel)
+        echo " </li></ul> ";
+}
+?>
+
+<script type="text/javascript">
+	// function expand_prags(str){
+	  
+	// }
+	// jQuery(document).ready(function() {
+		//to remove default behaviour on category id 1 and 2
+		// jQuery("#span_1").html('');
+		// jQuery("#span_1").html('All Categories');
+		// /* jQuery("#span_2").html('');
+		// jQuery("#span_2").html('Pragnesh Karia Root Category'); */
+
+		// jQuery("#a_1").removeAttr("href");
+		// jQuery("#a_1").removeAttr("target");
+		// jQuery("#a_2").removeAttr("href");
+		// jQuery("#a_2").removeAttr("target");
+
+		// jQuery("#a_1").attr({'class':'expandable-hitarea','href':''});
+		// jQuery("#a_2").attr({'class':'expandable-hitarea','href':''});
+
+	// });
+	// jQuery(function() {
+		// jQuery("#ver_tree").treeview({
+			// collapsed: true,
+			// animated: "medium",
+			// control:".sidetreecontrol",
+			// persist: "location"
+		// });
+	// })
+</script>
+
+<div id="top_sidetree">
+	<div class="sidetreecontrol"><a href="?#">Expand All</a> | <a href="?#">Collapse All</a></div>
+	<div id="ver_tree">
+		<?php ver_createTree($arrayCategories, 0); ?>
+	</div>
+</div>

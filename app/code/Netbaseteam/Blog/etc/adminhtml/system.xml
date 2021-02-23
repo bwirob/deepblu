@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+
+    <system>
+
+        <tab id="cmsmart" translate="label" sortOrder="1000">
+            <label>NetBase Team</label>
+        </tab>
+        <section id="blog" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Blog Extension</label>
+            <tab>cmsmart</tab>
+            <resource>Netbaseteam_Blog::config_blog</resource>
+            <group id="view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Gerneral Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Blog On Frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="blog_page" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Blog Page Settings</label>
+                
+                <field id="show_recent_post" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Show Recent Post</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="max_recent_post" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Number Recent Post in Sidebar</label>
+                    <validate>validate-number</validate>
+                    <comment>Default Maximum Number is 8</comment>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                        <field id="blog/blog_page/show_recent_post">1</field>
+                    </depends>
+                </field>
+
+                <field id="show_category_post" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Show Category Post</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="max_category_sidebar" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Category in Sidebar</label>
+                    <validate>validate-number</validate>
+                    <comment>Default Maximum Number is 8</comment>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                        <field id="blog/blog_page/show_category_post">1</field>
+                    </depends>
+                </field>
+                
+                <field id="show_tag_post" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Show Tag Post</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="max_number_tag" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Number Tag in Sidebar</label>
+                    <validate>validate-number</validate>
+                    <comment>Default Maximum Number is 8</comment>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                        <field id="blog/blog_page/show_tag_post">1</field>
+                    </depends>
+                </field>
+
+                <field id="show_comment_recent" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Show Comment Recent</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="max_comment_recent" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Recent Comment in Sidebar</label>
+                    <validate>validate-number</validate>
+                    <comment>Default Maximum Number is 8</comment>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                        <field id="blog/blog_page/show_comment_recent">1</field>
+                    </depends>
+                </field>
+
+                <field id="post_list_style" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Post List Style</label>
+                    <source_model>Netbaseteam\Blog\Model\Config\Source\Liststyle</source_model>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="number_post_page" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number Post Per Page</label>
+                    <validate>validate-number</validate>
+                    <comment>Default Maximum Number is 10</comment>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="blog_post_view" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Post View Page Settings</label>
+                <field id="comment_by_acount" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable User Comment By Account</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="captcha_validate" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Validate Comment Form by Captcha</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="customer_avatar" translate="label" type="image" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Avatar</label>
+                    <backend_model>Netbaseteam\Blog\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">netbaseteam/Blog/customer_avatar</base_url>
+                    <comment>Allowed file types: 'jpg', 'jpeg', 'gif', 'png', 'svg'</comment>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="admin_avatar" translate="label" type="image" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Admin Avatar</label>
+                    <backend_model>Netbaseteam\Blog\Model\Config\Backend\Avatar</backend_model>
+                    <base_url type="media" scope_info="1">netbaseteam/Blog/admin_avatar</base_url>
+                    <comment>Allowed file types: 'jpg', 'jpeg', 'gif', 'png', 'svg'</comment>
+                    <depends>
+                        <field id="blog/view/enabled">1</field>
+                    </depends>
+                </field>
+                
+            </group>
+        </section>
+    </system>
+</config>

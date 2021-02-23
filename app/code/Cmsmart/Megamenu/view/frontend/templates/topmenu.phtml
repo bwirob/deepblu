@@ -1,0 +1,692 @@
+<?php
+$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+$objBlock = $objectManagerr->get('\Cmsmart\Megamenu\Block\Navigation');
+$productHelper = $objectManagerr->get('\Magento\Catalog\Helper\Product');
+//\zend_debug::dump($objBlock->getCollection(20)->getData());
+$c_contact = Cmsmart\Megamenu\Model\Contenttype::Contact;/* 7 */
+$c_pgrid = Cmsmart\Megamenu\Model\Contenttype::Product_Grid;/* 4 */
+$c_dynamic_cat = Cmsmart\Megamenu\Model\Contenttype::Dynamic_Category_Listing;/* 2 */
+$c_plist = Cmsmart\Megamenu\Model\Contenttype::Product_Listing;/* 5 */
+$c_static = Cmsmart\Megamenu\Model\Contenttype::Static_Category_Listing; /* 3 */
+$c_pcat_list = Cmsmart\Megamenu\Model\Contenttype::Product_Listing_Category; /* 6 */
+$helper = $objectManagerr->get('\Cmsmart\Megamenu\Helper\Data');
+?>
+
+<div id="nb_megamenu" class="magemenu-menu horizontal-menu">
+    <div class="header-nav">
+        <ul class="nav-exploded explodedmenu">
+            <?php if ($helper->showHomeLink()) { ?>
+                <li class="menu" id="menu3">
+                    <a href=""><span><?php echo __('Home') ?></span></a>
+                </li>
+            <?php } ?>
+
+            <?php
+            $childrens = $objBlock->getSubCategories($helper->getRootCatID());
+            //\zend_debug::dump(count($childrens));
+            $submenu_class = "";
+            /* echo "A: ".Cmsmart\Megamenu\Model\Fields::top_label; */
+            ?>
+            <?php $h = 0; ?>
+            <?php foreach ($childrens as $cat):
+                $cat_id = $cat["entity_id"];
+                $h_label = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_label, $cat_id);
+                $column = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_pgrid_num_columns, $cat_id);
+                $menu_position = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::position, $cat_id);
+
+                if ($column == 0 || $column == "") {
+                    $column = 5;
+                }
+
+                $childrens2 = $objBlock->getSubCategories($cat_id);
+                $content_type = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_content_type, $cat_id);//default
+                $content_type_name = "nbtype-" . $content_type;
+                if (count($childrens2) || $content_type == $c_contact || $content_type == $c_pgrid) {
+                    $submenu_class = "parentMenu";
+                }
+                ?>
+
+                <?php if ($menu_position == \Cmsmart\Megamenu\Model\Position::top_menu
+                || $menu_position == ""
+                || $menu_position == \Cmsmart\Megamenu\Model\Position::both) { ?>
+
+                <!-- menu root vertical -->
+                <li class="menu <?php echo $submenu_class; ?> <?php echo strtolower($cat->getName()); ?> <?php echo $content_type_name; ?>">
+                    <a href="<?php echo $objBlock->_getCatUrl($cat) ?>">
+                        <?php if ($h_label != "") { ?>
+                            <img src="<?php echo $h_label; ?>">
+                        <?php } ?>
+                        <span><?php echo $cat->getName() ?></span>
+                    </a>
+                    <?php
+                    $kt = true;
+                    if ($content_type == $c_contact) {
+                        if ($helper->getHeaderType() == "for") {
+                            $idenf = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_content_block, $cat_id);
+                            if ($idenf) {
+                                $kt = false;
+                            } else {
+                                $kt = true;
+                            }
+                        }
+                    }
+                    if (count($childrens2) && $kt && $content_type != $c_pgrid && $content_type != $c_dynamic_cat && $content_type != $c_plist && $content_type != $c_static && $content_type != $c_pcat_list) { ?>
+                        <?php
+                        $parent_class = "";
+                        $top_block = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_block_top, $cat_id);
+                        $bottom_block = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_block_bottom, $cat_id);
+                        $right_block = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_block_right, $cat_id);
+                        $left_block = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_block_left, $cat_id);
+                        $sku_pspecial = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_sku, $cat_id);
+                        $left_sku = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_left_block_sku, $cat_id);
+                        if ($left_sku) {
+                            $left_block = "";
+                            $l_data = [];
+                            $l_data[] = $left_sku;
+                            $l_data[] = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_left_sku_title, $cat_id);
+                        }
+
+                        $right_sku = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_right_block_sku, $cat_id);
+                        if ($right_sku) {
+                            $right_block = "";
+                            $r_data = [];
+                            $r_data[] = $right_sku;
+                            $r_data[] = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_right_sku_title, $cat_id);
+                        }
+                        ?>
+                        <div class="explodedmenu-menu-popup">
+                            <div class="exploded-cms-block static-block">
+                                <div class="inner-cms-block <?php echo $parent_class; ?>">
+                                    <!-- top block -->
+                                    <?php if ($top_block) { ?>
+                                        <div class="block block-top">
+                                            <?php
+                                            echo $objectManagerr->get('Magento\Cms\Model\Template\FilterProvider')
+                                                ->getBlockFilter()->filter($top_block);
+                                            ?>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="clearfix"></div>
+
+                                    <!-- left block check khi nao co block thi moi show div block block-left -->
+                                    <?php
+                                    if ($left_block) {
+                                        ?>
+                                        <div class="block block-left">
+                                            <?php
+                                            echo $objectManagerr->get('Magento\Cms\Model\Template\FilterProvider')
+                                                ->getBlockFilter()->filter($left_block); ?>
+                                        </div>
+                                        <?php
+                                    } ?>
+                                    <?php
+                                    if ($left_sku) {
+                                        ?>
+                                        <div class="block block-left">
+                                            <?php
+                                            echo $this->getLayout()->createBlock('Cmsmart\Megamenu\Block\Navigation')
+                                                ->setData('block_data', $l_data)
+                                                ->setTemplate('Cmsmart_Megamenu::sku.phtml')->toHtml(); ?>
+                                        </div>
+                                        <?php
+                                    } ?>
+                                    <!-- end left block -->
+
+                                    <!-- sub-categories  -->
+                                    <div class="block block-cate">
+                                        <?php foreach ($childrens2 as $cate) { ?>
+                                            <?php /*** level 3 ***/ ?>
+                                            <?php $childrens3 = $objBlock->getSubCategories($cate->getId()); ?>
+                                            <div class="subcate <?php if (count($childrens3)) {
+                                        echo "subparent";
+                                    } ?>">
+                                                <h3>
+                                                    <a href="<?php echo $objBlock->_getCatUrl($cate) ?>"><?php echo $cate["name"] ?></a>
+                                                </h3>
+                                                <?php if (count($childrens3)) { ?>
+                                                    <ul class="itemsubmenu">
+                                                        <?php foreach ($childrens3 as $cate) { ?>
+                                                            <?php /*** level 4 ***/ ?>
+                                                            <?php $childrens4 = $objBlock->getSubCategories($cate["entity_id"]); ?>
+                                                            <li class="itemMenu level4 <?php if (count($childrens4)) {
+                                        echo "subparent";
+                                    } ?>">
+                                                                <a href="<?php echo $objBlock->_getCatUrl($cate) ?>"><?php echo $cate["name"] ?></a>
+                                                                <?php if (count($childrens4)) { ?>
+                                                                    <ul class="itemsubmenu level4">
+                                                                        <?php foreach ($childrens4 as $cate) { ?>
+                                                                            <?php /*** level 5 ***/ ?>
+                                                                            <?php $childrens5 = $objBlock->getSubCategories($cate["entity_id"]); ?>
+                                                                            <li class="itemMenu level5 <?php if (count($childrens5)) {
+                                        echo "subparent";
+                                    } ?>">
+                                                                                <a href="<?php echo $objBlock->_getCatUrl($cate) ?>"
+                                                                                   class="itemMenuName level2"><span><?php echo $cate["name"] ?></span></a>
+                                                                                <?php if (count($childrens5)) { ?>
+                                                                                    <ul class="itemsubmenu level5">
+                                                                                        <?php foreach ($childrens5 as $cate) { ?>
+                                                                                            <li class="itemMenu level6">
+                                                                                                <a href="<?php echo $objBlock->_getCatUrl($cate) ?>"
+                                                                                                   class="itemMenuName level6"><span><?php echo $cate["name"] ?></span></a>
+                                                                                            </li>
+                                                                                        <?php } ?>
+                                                                                    </ul>
+                                                                                <?php } ?>
+                                                                            </li>
+                                                                        <?php } /* end level4 */ ?>
+                                                                    </ul>
+                                                                <?php } /* end level4 */ ?>
+                                                            </li>
+                                                        <?php } /* end level3 */ ?>
+                                                    </ul>
+                                                <?php } /* end level3 */ ?>
+                                            </div>
+                                        <?php } /* end level2 */ ?>
+                                    </div>
+                                    <!-- end sub-categories -->
+
+                                    <!-- block show specical product -->
+                                    <?php
+                                    if ($sku_pspecial) {
+                                        ?>
+                                        <div class="block block-product">
+                                            <div class="product-grid">
+                                                <div class="inner">
+                                                    <div class="item">
+                                                        <?php
+                                                        /* block title for product */
+                                                        $p = $objBlock->_getProductData($sku_pspecial);
+                                        $title_pspecial = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_label_container, $cat_id);
+                                        if ($title_pspecial) {
+                                            ?>
+                                                            <h2><?php echo $title_pspecial ?></h2>
+                                                            <?php
+                                        } ?>
+                                                        <div class="product-info">
+                                                            <a class="product-image"
+                                                               href="<?php echo $p->getProductUrl() ?>"><img
+                                                                    src="<?php echo $objectManagerr->get('\Magento\Catalog\Helper\Image')->init($p, 'product_small_image')->resize(250, 250)->getUrl(); ?>"
+                                                                    width="250" height="250"
+                                                                    alt="<?php //echo $this->htmlEscape($p->getName())?>"/>
+                                                            </a>
+                                                            <h2 class="product-name"><a
+                                                                    title="<?php echo $p->getName() ?>"
+                                                                    href="<?php echo $p->getProductUrl() ?>"><?php echo $p->getName() ?></a>
+                                                            </h2>
+                                                            <?php
+                                                            $formattedPrice = $objBlock->showPrice($p->getPrice()); ?>
+                                                            <div class="price-box">
+                                                                <p class="old-price">
+														<span class="price">
+														<?php echo $formattedPrice ?>
+														</span>
+                                                                </p>
+
+                                                                <button class="action tocart primary"
+                                                                        data-post='<?php echo $objBlock->_getAddToCartUrl($p); ?>'
+                                                                        type="button"
+                                                                        title="<?php /* @escapeNotVerified */
+                                                                        echo __('Add to Cart') ?>">
+                                                                    <span><?php /* @escapeNotVerified */
+                                                                        echo __('Add to Cart') ?></span>
+                                                                </button>
+
+                                                            </div>
+                                                            <div class="actions">
+                                                                <?php
+                                                                if ($p->getShortDescription() == "") {
+                                                                    $_mydesc = $helper->limit_text($p->getDescription(), 7);
+                                                                } else {
+                                                                    $_mydesc = $helper->limit_text($p->getShortDescription(), 7);
+                                                                } ?>
+                                                                <p><?php echo $_mydesc ?><a
+                                                                        href="<?php echo $p->getProductUrl() ?>"><?php echo __('read more') ?></a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    } ?>
+
+                                    <!-- block show specical product -->
+                                    <?php
+                                    if ($right_block) {
+                                        ?>
+                                        <div class="block block-right">
+                                            <?php
+                                            echo $objectManagerr->get('Magento\Cms\Model\Template\FilterProvider')
+                                                ->getBlockFilter()->filter($right_block); ?>
+                                        </div>
+                                        <?php
+                                    } ?>
+
+                                    <?php
+                                    if ($right_sku) {
+                                        ?>
+                                        <div class="block block-right">
+                                            <?php
+                                            echo $this->getLayout()->createBlock('Cmsmart\Megamenu\Block\Navigation')
+                                                ->setData('block_data', $r_data)
+                                                ->setTemplate('Cmsmart_Megamenu::sku.phtml')->toHtml(); ?>
+                                        </div>
+                                        <?php
+                                    } ?>
+
+                                    <!-- right block -->
+                                    <div class="clearfix"></div>
+                                    <!-- bottom block -->
+                                    <?php
+                                    if ($bottom_block) {
+                                        ?>
+                                        <div class="block block-bottom">
+                                            <?php
+                                            echo $objectManagerr->get('Magento\Cms\Model\Template\FilterProvider')
+                                                ->getBlockFilter()->filter($bottom_block); ?>
+                                        </div>
+                                        <?php
+                                    } ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+
+                    <!-- contact menu -->
+                    <?php
+
+                    if ($content_type == $c_contact && $helper->getHeaderType() == "for") {
+                        $idenf = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_content_block, $cat_id);
+                        if ($idenf) {
+                            ?>
+                            <div class="explodedmenu-menu-popup">
+                                <div class="exploded-cms-block">
+                                    <div class="inner-cms-block my-contact-form">
+                                        <?php
+                                        echo $objectManagerr->get('Magento\Cms\Model\Template\FilterProvider')
+                                            ->getBlockFilter()->filter($idenf);
+                            //echo $idenf;
+                                        ?>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <?php
+                        } ?>
+                        <?php
+                    } ?>
+
+                    <!-- product grid menu -->
+                    <?php
+                    if ($content_type == $c_pgrid) {
+                        $title = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_pgrid_box_title, $cat_id);
+                        $arr_ids = explode(",", $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_pgrid_products, $cat_id));
+                        $n = count($arr_ids); ?>
+                        <div class="explodedmenu-menu-popup">
+                            <div class="exploded-cms-block">
+                                <div class="inner-cms-block row-productgrid">
+                                    <p><strong class="pgrid_title_menu"><?php echo $title; ?></strong></p>
+                                    <!-- foreach -->
+                                    <?php for ($i = 0; $i < $n; $i++) { ?>
+                                        <?php
+                                        $pid = trim($arr_ids[$i]);
+                                        $p = $objBlock->_loadProduct($pid);
+                                        ?>
+                                        <div class="col-nb-<?php echo $column; ?>">
+                                            <a href="<?php echo $p->getProductUrl(); ?>">
+                                                <img width="135" height="135"
+                                                     src="<?php echo $objectManagerr->get('\Magento\Catalog\Helper\Image')->init($p, 'product_small_image')->resize(135, 135)->getUrl(); ?>"></a>
+                                            <a href="<?php echo $p->getProductUrl() ?>"
+                                               class="mm-product-name"><strong><?php echo $p->getName(); ?></strong></a>
+                                            <?php
+                                            $formattedPrice = $objBlock->showPrice($p->getPrice());
+                                            ?>
+                                            <div class="price-box">
+                                                <p class="old-price">
+										<span class="price">
+										<?php echo $formattedPrice ?>
+										</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    } ?>
+
+
+                    <!-- dynamic icon menu -->
+                    <?php
+                    if ($content_type == $c_dynamic_cat) {
+                        $top_pgrid_cats = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_pgrid_cats, $cat_id)
+                        ?>
+                        <div class="explodedmenu-menu-popup">
+                            <div class="exploded-cms-block">
+                                <div class="inner-cms-block row-cate-grid">
+
+                                    <?php if ($top_pgrid_cats == "") { ?>
+                                        <?php foreach ($childrens2 as $cate) { ?>
+                                            <div class="form-group text-center col-nb-<?php echo $column; ?>">
+                                                <?php
+                                                $cat_id = $cate["entity_id"];
+                                                $cat_name = $cate["name"];
+                                                $category = $objBlock->_loadCat($cat_id);
+                                                ?>
+                                                <a href="<?php echo $objBlock->_getCatUrl($category) ?>">
+                                                    <?php if ($category->getImageUrl()) { ?>
+                                                        <span class="">
+										<img src="<?php echo $category->getImageUrl(); ?>">
+										</span>
+                                                    <?php } ?>
+                                                </a>
+                                                <a class="mm-cate-name"
+                                                   href="<?php echo $objBlock->_getCatUrl($category) ?>"><span
+                                                        class=""><?php echo $cat_name ?></span></a>
+                                            </div>
+                                        <?php } ?>
+
+                                        <?php
+                                    } else {
+                                        $arr_cats = explode(",", $top_pgrid_cats);
+                                        for ($i = 0; $i < count($arr_cats); $i++) { ?>
+                                            <div class="form-group text-center col-nb-<?php echo $column; ?>">
+                                                <?php
+                                                $cat_id = trim($arr_cats[$i]);
+                                                $category = $objBlock->_loadCat($cat_id);
+                                                $cat_name = $category->getName();
+                                                ?>
+                                                <a title="<?php echo $cat_name ?>"
+                                                   href="<?php echo $objBlock->_getCatUrl($category); ?>">
+                                                    <?php if ($category->getImageUrl()) { ?>
+                                                        <span class="">
+										<img src="<?php echo $category->getImageUrl(); ?>">
+										</span>
+                                                    <?php } ?>
+                                                </a>
+                                                <a class="mm-cate-name"
+                                                   href="<?php echo $objBlock->_getCatUrl($category); ?>"><span
+                                                        class=""><?php echo $cat_name ?></span></a>
+                                            </div>
+                                        <?php }
+                                    } ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    } ?>
+
+                    <!-- product list menu -->
+                    <?php
+                    if ($content_type == $c_plist) {
+                        $title = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_pgrid_box_title, $cat_id);
+                        $arr_ids = explode(",", $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_pgrid_products, $cat_id));
+                        /* \zend_debug::dump($arr_ids); */
+                        $n = count($arr_ids); ?>
+                        <div class="explodedmenu-menu-popup">
+                            <div class="exploded-cms-block">
+                                <!-- block 1 -->
+                                <div class="inner-cms-block row-product-list col-sm-9">
+                                    <p><strong class=""><?php echo $title; ?></strong></p>
+                                    <!-- foreach -->
+                                    <?php for ($j = 0; $j < $column; $j++): ?>
+                                        <div class="col-nb-<?php echo $column; ?>">
+                                            <?php for ($i = 0; $i < $n; $i++) { ?>
+                                                <?php
+                                                $pid = trim($arr_ids[$i]);
+                                                $p = $objBlock->_loadProduct($pid);
+                                                if (($i % $column) == $j):
+                                                    ?>
+                                                    <div class="nb_lbl_type">
+                                                        <?php if ($this->_getTopLabel($cat_id, $pid, \Cmsmart\Megamenu\Model\Label::lblNew)) { ?>
+                                                            <img
+                                                                src="<?php echo $this->getViewFileUrl('Cmsmart_Megamenu/images/icon_new.png'); ?>">
+                                                        <?php } ?>
+                                                        <?php if ($this->_getTopLabel($cat_id, $pid, \Cmsmart\Megamenu\Model\Label::lblHot)) { ?>
+                                                            <img
+                                                                src="<?php echo $this->getViewFileUrl('Cmsmart_Megamenu/images/icon_hot.png'); ?>">
+                                                        <?php } ?>
+                                                        <?php if ($this->_getTopLabel($cat_id, $pid, \Cmsmart\Megamenu\Model\Label::lblSale)) { ?>
+                                                            <img
+                                                                src="<?php echo $this->getViewFileUrl('Cmsmart_Megamenu/images/icon_sale.png'); ?>">
+                                                        <?php } ?>
+                                                        <a href="<?php echo $p->getProductUrl(); ?>"
+                                                           class="form-group plist-pname"><span><?php echo $p->getName(); ?></span></a>
+                                                    </div>
+                                                <?php endif;
+                                            } ?>
+                                        </div>
+                                    <?php endfor; ?>
+                                </div>
+                                <!-- block 2 -->
+                                <?php
+                                $idenf = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_content_block, $cat_id);
+                        if ($idenf) {
+                            ?>
+                                    <div id="block-2" class="block-2 row-product-list col-sm-3">
+                                        <?php
+                                        echo $objectManagerr->get('Magento\Cms\Model\Template\FilterProvider')
+                                            ->getBlockFilter()->filter($idenf); ?>
+                                    </div>
+                                    <?php
+                        } ?>
+                            </div>
+                        </div>
+                        <?php
+                    } ?>
+
+
+                    <!-- static categories menu (categories by column) -->
+                    <?php
+                    if ($content_type == $c_static) {
+                        ?>
+                        <div class="explodedmenu-menu-popup">
+                            <div class="exploded-cms-block">
+                                <!-- block 1 -->
+                                <div class="inner-cms-block row-static-cate-grid col-sm-9">
+                                    <!-- foreach column categories -->
+                                    <?php $childrens = $objBlock->getSubCategories($cat_id); ?>
+                                    <?php foreach ($childrens as $cate) { ?>
+                                        <div class="col-category col-nb-<?php echo $column; ?>">
+                                            <?php
+                                            $sub_cat_id = $cate["entity_id"];
+                                            $cat_name = $cate["name"];
+                                            $category = $objBlock->_loadCat($sub_cat_id);
+                                            ?>
+                                            <?php if ($category->getImageUrl()) { ?>
+                                                <span class="">
+									<img src="<?php echo $category->getImageUrl(); ?>" class="img-responsive">
+									</span>
+                                            <?php } ?>
+
+                                            <a href="<?php echo $objBlock->_getCatUrl($category) ?>"
+                                               class="nb_pstatic_cat"><?php echo $cat_name ?></a>
+                                            <?php $childrens2 = $objBlock->getSubCategories($sub_cat_id); ?>
+                                            <!-- foreach items in column -->
+                                            <?php foreach ($childrens2 as $cate) { ?>
+                                                <a href="<?php echo $objBlock->_getCatUrl($cate) ?>"
+                                                   class=""><?php echo $cate["name"] ?></a>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } ?>
+                                    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('block_banner_menu_computer')->toHtml(); ?>
+                                </div>
+                                <!-- block 2 -->
+                                <?php
+                                $idenf = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_content_block, $cat_id);
+                        if ($idenf) {
+                            ?>
+                                    <div id="block-col2" class="inner-cms-block row-static-cate-grid col-sm-3">
+                                        <?php
+                                        echo $objectManagerr->get('Magento\Cms\Model\Template\FilterProvider')
+                                            ->getBlockFilter()->filter($idenf); ?>
+                                    </div>
+                                    <?php
+                        } ?>
+                            </div>
+                        </div>
+                        <?php
+                    } ?>
+
+
+                    <!-- product listing by sub-categories  -->
+                    <?php if ($content_type == $c_pcat_list) { ?>
+                        <?php
+                        $dynamic_cats = $objBlock->getMenuField(Cmsmart\Megamenu\Model\Fields::top_pgrid_cats, $cat_id);
+                        if ($dynamic_cats != "") {
+                            $arr_cats = explode(",", $dynamic_cats);
+                        } else {
+                            foreach ($childrens2 as $cate) {
+                                $arr_cats[] = $cate["entity_id"];
+                            }
+                        }
+                        ?>
+                        <?php
+                        if (count($arr_cats)) {
+                            ?>
+                            <div class="explodedmenu-menu-popup">
+                                <div class="exploded-cms-block static-block">
+                                    <div class="inner-cms-block">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <ul class="">
+                                                    <?php
+                                                    for ($i = 0; $i < count($arr_cats); $i++) {
+                                                        $cat_id = trim($arr_cats[$i]);
+                                                        $category = $objBlock->_loadCat($cat_id);
+                                                        $cat_name = $category->getName(); ?>
+                                                        <li title="Click Item To Show Product Grid"
+                                                            class="subcate_list <?php if ($i == 0) {
+                                                            echo ' active';
+                                                        } ?>" data-toggle="subcate-<?php echo $i; ?>"><span
+                                                                class=""><?php echo $cat_name ?></span></li>
+                                                        <?php
+                                                    } ?>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <?php
+                                                for ($i = 0; $i < count($arr_cats); $i++) {
+                                                    $cat_id = trim($arr_cats[$i]);
+                                                    $category = $objBlock->_loadCat($cat_id);
+                                                    $cat_name = $category->getName();
+                                                    $products = $category = $objBlock->_loadCat($cat_id)
+                                                        ->getProductCollection()
+                                                        ->addAttributeToSelect('entity_id') // add all attributes - optional
+                                                        ->addAttributeToFilter('status', 1) // enabled
+                                                        ->addAttributeToFilter('visibility', 4)  //visibility in catalog,search
+                                                        ->setPageSize(7); ?>
+                                                    <div class="subcate subcate_content <?php if ($i == 0) {
+                                                            echo ' active';
+                                                        } ?>" id="subcate-<?php echo $i; ?>">
+                                                        <?php
+                                                        $count_link = 0;
+                                                    foreach ($products as $p) {
+                                                        $count_link++;
+                                                        $pid = $p->getId();
+                                                        $p = $objBlock->_loadProduct($pid); ?>
+                                                            <div class="col-nb-<?php echo $column; ?>">
+                                                                <a href="<?php echo $p->getProductUrl(); ?>">
+                                                                    <img width="135" height="135"
+                                                                         src="<?php echo $objectManagerr->get('\Magento\Catalog\Helper\Image')->init($p, 'product_small_image')->resize(135, 135)->getUrl(); ?>"></a>
+                                                                <a href="<?php echo $p->getProductUrl() ?>"
+                                                                   class="mm-product-name"><strong><?php echo $p->getName(); ?></strong></a>
+                                                                <?php
+                                                                $formattedPrice = $objBlock->showPrice($p->getPrice()); ?>
+                                                                <div class="price-box">
+                                                                    <p class="old-price">
+															<span class="price">
+															<?php echo $formattedPrice ?>
+															</span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+
+                                                            <?php if ($count_link > 5) { ?>
+                                                                <div class="pull-right"><a
+                                                                        href="<?php echo $objBlock->_getCatUrl($cat); ?>"><?php echo __('View More'); ?></a>
+                                                                </div>
+                                                                <?php break; ?>
+                                                            <?php } ?>
+                                                            <?php
+                                                    } ?>
+                                                    </div>
+
+                                                    <?php
+                                                } ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        } ?>
+                    <?php } ?>
+
+                    <!-- end li -->
+                </li>
+                <?php $h++; ?>
+            <?php } ?>
+            <?php endforeach; ?>
+            <script type="text/javascript">
+                require([
+                    'jquery'
+                ], function ($) {
+                    jQuery(document).ready(function () {
+                        jQuery('li.subcate_list').each(function () {
+                            var c = jQuery(this).data('toggle');
+                            jQuery(this).on('click', function () {
+                                jQuery('li.subcate_list').removeClass('active');
+                                jQuery('.subcate_content').removeClass('active');
+                                jQuery(this).addClass('active');
+                                jQuery('.subcate_content#' + c).addClass('active');
+                            });
+                        });
+                    });
+                });
+            </script>
+            <script type="text/javascript">
+                require([
+                    'jquery'
+                ], function ($) {
+                    jQuery(window).load(function () {
+                        jQuery(".horizontal-menu .inner-cms-block").each(function () {
+                            var block_left = 0;
+                            var block_cate = 0;
+                            var block_product = 0;
+                            var block_right = 0;
+                            var inner_cms_block = 0;
+                            block_left = jQuery(this).find(".block-left").innerWidth();
+                            block_cate = jQuery(this).find(".block-cate").innerWidth();
+                            block_product = jQuery(this).find(".block-product").innerWidth();
+                            block_right = jQuery(this).find(".block-right").innerWidth();
+                            inner_cms_block = block_left + block_cate + block_product + block_right;
+                            if (jQuery(this).hasClass('nb-repare-width')) {
+                                inner_cms_block += 110;
+                            } else {
+                                inner_cms_block += 60;
+                            }
+                            if (jQuery(this).hasClass('block-full')) {
+                                inner_cms_block += 25;
+                            }
+                            ;
+                            if (!jQuery(this).hasClass('row-static-cate-grid') && !jQuery(this).hasClass('row-product-list')) {
+                                jQuery(this).css('width', inner_cms_block);
+                            }
+                        });
+                        jQuery(".horizontal-menu li.menu").each(function () {
+                            var w_container = jQuery("#header-nav").width();
+                            var w_parent = jQuery(this).width();
+                            var w_child = w_container - w_parent;
+                            jQuery(this).find(".explodedmenu-menu-popup .row-productgrid, .explodedmenu-menu-popup .my-contact-form, .explodedmenu-menu-popup .row-cate-grid,.explodedmenu-menu-popup ._row-product-list, .explodedmenu-menu-popup ._row-static-cate-grid, .explodedmenu-menu-popup .product_list_by_sub_cat").css('width', w_child);
+                            jQuery(this).find('.product_list_by_sub_cat .inner-cms-block').css('width', '100%');
+                        });
+                    });
+                });
+            </script>
+        </ul>
+    </div>
+</div>

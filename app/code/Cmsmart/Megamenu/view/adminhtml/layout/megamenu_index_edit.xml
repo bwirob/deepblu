@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Cmsmart_Megamenu/js/treeview/jquery.treeview.css"/>
+		<css src="Cmsmart_Megamenu/css/style.css"/>
+		<!-- <link src="Cmsmart_Megamenu/js/treeview/jquery.js"/>
+		<link src="Cmsmart_Megamenu/js/lib/jquery_noconflict.js"/>
+        <link src="Cmsmart_Megamenu/js/treeview/jquery.treeview.js"/> -->
+		<link src="Cmsmart_Megamenu/js/lib/prototype.js"/>
+		<link src="Cmsmart_Megamenu/js/h.js"/>
+		<link src="Cmsmart_Megamenu/js/v.js"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Cmsmart\Megamenu\Block\Adminhtml\Megamenu\Edit" name="megamenu_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Cmsmart\Megamenu\Block\Adminhtml\Megamenu\Edit\Tabs" name="megamenu_edit_tabs">
+                <block class="Cmsmart\Megamenu\Block\Adminhtml\Megamenu\Edit\Tab\Main" name="megamenu_edit_tab_main"/>
+                <!-- <block class="Cmsmart\Megamenu\Block\Adminhtml\Megamenu\Edit\Tab\Content" name="megamenu_edit_tab_content"/>
+                <block class="Cmsmart\Megamenu\Block\Adminhtml\Megamenu\Edit\Tab\Image" name="megamenu_edit_tab_image"/> -->
+                
+				<block class="Cmsmart\Megamenu\Block\Adminhtml\Megamenu\Edit\Tab\Horizontal" name="megamenu_edit_tab_horizontal"/>
+				<block class="Cmsmart\Megamenu\Block\Adminhtml\Megamenu\Edit\Tab\Vertical" name="megamenu_edit_tab_vertical"/>
+				
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">megamenu_edit_tab_main</argument>
+                </action>
+				
+                <!-- <action method="addTab">
+                    <argument name="name" xsi:type="string">content_section</argument>
+                    <argument name="block" xsi:type="string">megamenu_edit_tab_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">image_section</argument>
+                    <argument name="block" xsi:type="string">megamenu_edit_tab_image</argument>
+                </action> -->
+				
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">horizontal_section</argument>
+                    <argument name="block" xsi:type="string">megamenu_edit_tab_horizontal</argument>
+                </action>
+				
+				<action method="addTab">
+                    <argument name="name" xsi:type="string">vertical_section</argument>
+                    <argument name="block" xsi:type="string">megamenu_edit_tab_vertical</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="empty" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+<update handle="marketplace_vendor_index"/>
+<body>
+    <referenceContainer name="vendor.panel.wrapper">
+        <block class="Netbaseteam\Marketplace\Block\Vendor" name="marketplace.vendor.admin" template="Netbaseteam_Marketplace::vendor/index.phtml" >
+            <block class="Netbaseteam\Marketplace\Block\Vacation\Info" name="marketplace.vendor.content" template="Netbaseteam_Marketplace::vacation/info.phtml" ifconfig="netbaseteammp/vacation/enable" />
+        </block>
+    </referenceContainer>
+</body>
+</page>

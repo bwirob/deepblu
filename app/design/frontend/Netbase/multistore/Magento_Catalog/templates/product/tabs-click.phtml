@@ -1,0 +1,21 @@
+<div class="tabs-click" id="tabs-click">
+	<ul>
+		<li><a href="#tab-label-product.info.description"><?php echo __('Details')?></a></li>
+		<li><a href="#tab-label-reviews"><?php echo __('Reviews')?></a></li> 
+		<?php echo $block->getChildHtml('', true); ?>
+
+		<!-- <li><a href="#faqlist">FAQ</a></li> -->
+	</ul>
+</div>
+<script>
+ require(['jquery'], function($) { 
+    var stickyHeaderTop = $('#tabs-click').offset().top; 
+    $(window).scroll(function(){
+        if( $(window).scrollTop() > stickyHeaderTop ) {
+            $('#tabs-click').addClass('tabs-fixed'); 
+        } else { 
+            $('#tabs-click').removeClass('tabs-fixed');
+        }
+    });
+});
+</script>

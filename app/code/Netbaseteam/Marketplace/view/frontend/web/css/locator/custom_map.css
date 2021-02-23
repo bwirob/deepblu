@@ -1,0 +1,28 @@
+.cms-manage-content-actions button.primary {
+    border: 1px solid;
+    border-radius: 0;
+    display: inline-block;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.36;
+    padding: 0.6rem 1em 0.6rem;
+    text-align: center;
+    vertical-align: baseline;
+    background-color: #eb5202;
+    border-color: #eb5202;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cms-manage-content-actions button.apply-to-form.primary {
+    display: block !important;
+}
+
+#search-auto {
+    width:300px;
+}
+
+.cms-manage-content-actions {
+    margin-top: 25px;
+}

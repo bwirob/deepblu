@@ -1,0 +1,11 @@
+<?php
+$helper = $this->helper('Cmsmart\Quickview\Helper\Data');
+$showReview = $helper->showReview();
+?>
+<?php if($showReview) {
+    echo $this->getLayout()
+        ->createBlock("Magento\Review\Block\Product\Review")
+        ->setTemplate("Magento_Review::review.phtml")->toHtml();
+}
+?>
+

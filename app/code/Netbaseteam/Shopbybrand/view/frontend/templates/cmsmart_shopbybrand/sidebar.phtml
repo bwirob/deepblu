@@ -1,0 +1,86 @@
+<?php 
+	$_shopbybrand = $this->getCollection(); 
+	$_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of\Magento\Framework\App\ObjectManager
+	$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+	$currentStore = $storeManager->getStore();
+	$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+	$Default_Number_Of_Brands_Will_Display = $this->getDefault_Number_Of_Brands_Will_Display();
+	$Show_Product_Count = $this->getShow_Product_Count();
+	$Show_Brand_Name = $this->getShow_Brand_Name();
+	$Enabled = $this->getEnabled();
+	$count1 = 0;
+	$store_id = $storeManager->getStore()->getId();
+	$count2 = 0;
+	if ($this->getLogo_Width()>10 )  {
+		$imagewidth = $this->getLogo_Width();# code...
+	}else{
+		$imagewidth = 60;
+	}
+	if ($this->getLogo_Height()>10 )  {
+		$imageheight = $this->getLogo_Height();# code...
+	}else{
+		$imageheight = 50;
+	}
+?>
+<?php if($Enabled == 1):?>
+	<div class="nb-brand">
+	<div class="Featured-Brands-tittle">Featured Brands</div>
+	<ul class="Featured-Brands">
+	<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+		<?php
+			$store_view = $shopbybrandItem->getStore_ids();
+			$store_view = explode(',', $store_view);
+		?>
+		<?php 
+			$path = $mediaUrl.'//Shopbybrand'.'//'.$shopbybrandItem->getLogo(); 
+			if ($shopbybrandItem->getproduct_ids() == '') {
+				$count = 0;# code...
+			}else{
+				$count = count(explode('&', $shopbybrandItem->getproduct_ids()));
+			}	
+		?>
+		<?php if($shopbybrandItem->getStatus() == 1):?>
+			<?php if (in_array(0,$store_view) || in_array($store_id,$store_view)):?>
+				<?php if($shopbybrandItem->getFeatured() == 1 && $count1 < $Default_Number_Of_Brands_Will_Display ):?>		
+					<?php $count1 ++;?>
+					<li class="Featured-Brands-li">
+						<div class="Featured-Brands-li-div">
+							<div class="Featured-Brands-li-div-div">
+								<a class="imgs" href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>">
+								<?php if (isset($imageheight) && isset($imagewidth)): ?>
+									<img class="img_logo_brand" src="<?php echo $path;?>" style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>''>
+								<?php else: ?>
+									<img class="img_logo_brand" src="<?php echo $path;?>" style='width:60px;height:50px'>
+								<?php endif ?>
+									
+								</a>
+
+								<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class='name_brand'>
+									<?php if($Show_Brand_Name == 1):?>
+										<?php echo $block->reshowTitle($shopbybrandItem->getBrand_title()); //;?>
+									<?php endif;?>
+									<?php if($Show_Product_Count == 1):?>
+										<?php echo '('.$count.')';?>
+									<?php endif;?>
+								</a>
+							</div>
+						</div>	
+					</li>
+					<?php $count2++; ?>
+				<?php endif;?>
+			<?php endif;?>
+		<?php endif;?>		
+	<?php endforeach; ?> 
+	</ul>
+	<?php if ($count2 == 0): ?>
+		<?php echo 'You have no Featured Brands' ?>
+		<br><br>
+	<?php else: ?>
+		<div class="viewall">
+			<form action="<?php echo $this->getUrl('shopbybrand/index/index')?>">
+				<button type="submit" name="viewall">View All</button>
+			</form>
+		</div>
+	<?php endif ?>
+</div>
+<?php endif;?>

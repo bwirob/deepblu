@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+		<tab id="cmsmart" translate="label" sortOrder="1000">
+			<label>Cms-Mart</label>
+		</tab>
+		
+        <section id="megamenu" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Mega Menu</label>
+            <tab>cmsmart</tab>
+            <resource>Cmsmart_Megamenu::config_megamenu</resource>
+            <group id="mainmenu" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Gerneral</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> 
+				<field id="home" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Home Link</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Show Home link only appy for horizontal menu</comment>
+				</field> 
+				<field id="menu_type" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Menu Type</label>
+                    <source_model>Cmsmart\Megamenu\Model\Config\Source\Menutype</source_model>
+                </field>
+				
+				<field id="root_cat_id" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Root Category ID</label>
+                </field>
+            </group>
+			
+			<group id="color_setting" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Color Setting</label>
+				
+				<field id="bcolor_hover" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background color when hover item</label>
+					<comment><![CDATA[Ex: #25bce9]]></comment>
+					<frontend_model>Cmsmart\Megamenu\Block\Adminhtml\System\Config\Form\Field\Colorpicker</frontend_model>
+                </field>
+				
+				<field id="text_color" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Menu Color</label>
+					<comment><![CDATA[Ex: #333333]]></comment>
+					<frontend_model>Cmsmart\Megamenu\Block\Adminhtml\System\Config\Form\Field\Colorpicker</frontend_model>
+                </field>
+				
+				<field id="text_color_hover" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Menu Color When Hover</label>
+					<comment><![CDATA[Ex: #ffffff]]></comment>
+					<frontend_model>Cmsmart\Megamenu\Block\Adminhtml\System\Config\Form\Field\Colorpicker</frontend_model>
+                </field>
+				
+				<field id="text_product_color" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Name Color</label>
+					<comment><![CDATA[Ex: #636363]]></comment>
+					<frontend_model>Cmsmart\Megamenu\Block\Adminhtml\System\Config\Form\Field\Colorpicker</frontend_model>
+				</field>
+				
+				<field id="price_color" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Price Color</label>
+					<comment><![CDATA[Ex: #3399cc]]></comment>
+					<frontend_model>Cmsmart\Megamenu\Block\Adminhtml\System\Config\Form\Field\Colorpicker</frontend_model>
+                </field> 
+			</group>
+        </section>
+    </system>
+</config>

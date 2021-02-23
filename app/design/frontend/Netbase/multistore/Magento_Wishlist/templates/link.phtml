@@ -1,0 +1,69 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \Magento\Wishlist\Block\Link */
+?>
+<?php
+	$helper = $this->helper('Netbase\Sun\Helper\Data');
+	$custom_icon_userlogin = $helper->getConfig('sun_settings/header/custom_icon_account');  
+	$custom_icon_order = $helper->getConfig('sun_settings/header/custom_icon_youorder');
+	$custom_icon_wishlist = $helper->getConfig('sun_settings/header/custom_icon_wishlist');
+	$custom_icon_reviews = $helper->getConfig('sun_settings/header/custom_icon_reviews');
+	$custom_icon_newsletter = $helper->getConfig('sun_settings/header/custom_icon_newsletter');
+	$custom_icon_bill = $helper->getConfig('sun_settings/header/custom_icon_bill');
+?>
+<li class="first">
+	<a title="<?php echo __('Your Account'); ?>" href="<?php echo $this->getUrl('customer/account'); ?>">
+		<i class="icon-user-8" aria-hidden="true"></i>
+		<?php echo __('Your Account'); ?>
+	</a>
+</li>
+<li>
+	<a title="<?php echo __('Your Order'); ?>" href="<?php echo $this->getUrl('sales/order/history');?>">
+		<i class="icon-<?php echo $custom_icon_order; ?>" aria-hidden="true"></i>
+		<?php echo __('Your Order');?>
+	</a>
+</li>
+<li class="wishlist" data-bind="scope: 'wishlist'">
+    <a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes() ?>>
+	<i class="icon-<?php echo $custom_icon_wishlist; ?>" aria-hidden="true"></i>
+	<?php echo __('Your Wishlist') ?>
+        <!-- ko if: wishlist().counter -->
+        <span data-bind="text: wishlist().counter" class="counter qty"></span>
+        <!-- /ko -->
+    </a>
+</li>
+<li>
+	<a title="<?php echo __('Your Product Reviews'); ?>" href="<?php echo $this->getUrl('review/customer'); ?>">
+	<i class="icon-<?php echo $custom_icon_reviews; ?>" aria-hidden="true"></i>
+	<?php echo __('Your Product Reviews'); ?></a>
+</li>
+<li>
+	<a title="<?php echo __('Newsletter Subscription'); ?>" href="<?php echo $this->getUrl('newsletter/manage'); ?>">
+		<i class="icon-<?php echo $custom_icon_newsletter; ?>" aria-hidden="true"></i>
+		<?php echo __('Newsletter Subscription'); ?></a></li>
+<li>
+	<a title="<?php echo __('Billing Agreements'); ?>" href="<?php echo $this->getBaseUrl().'paypal/billing_agreement'; ?>">
+		<i class="icon-<?php echo $custom_icon_bill; ?>" aria-hidden="true"></i>
+		<?php echo __('Billing Agreements'); ?>
+	</a>
+</li>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "wishlist": {
+                        "component": "Magento_Wishlist/js/view/wishlist"
+                    }
+                }
+            }
+        }
+    }
+
+</script>

@@ -1,0 +1,57 @@
+#category_info_tabs_my_custom_tab_content .input-icon-class{
+	display:none;
+}
+.icon-select{
+	padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+}
+.icon-select label{
+	font-size: 14px;
+}
+.icon-select span{
+	color: #f65251;
+	font-size: 20px;
+}
+#category_info_tabs_my_custom_tab_content .menu-icon-head{
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	overflow: hidden;
+}
+#category_info_tabs_my_custom_tab_content .menu-icon-head h3{
+	float: left;
+	margin: 0;
+    line-height: 26px;
+}
+#category_info_tabs_my_custom_tab_content .container{
+	margin-bottom: 30px;
+}
+#category_info_tabs_my_custom_tab_content .container span{
+	margin: 10px !important;
+    font-size: 16px;
+    float: left;
+    width: 15px;
+    height: 15px;
+}
+.btn_save_icon{
+	float: right;
+	background-color: #000 !important;
+	color: #fff !important;
+	padding: 5px 10px;
+	border: none;
+	transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+}
+.btn_save_icon > span{
+	color: #fff !important;
+}
+
+.btn_save_icon:hover{
+	opacity: 0.8;
+	border: none;
+	background-color: #000;
+}

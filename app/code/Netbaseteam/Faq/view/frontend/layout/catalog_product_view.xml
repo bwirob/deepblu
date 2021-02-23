@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head> 
+        <css src="Netbaseteam_Faq::css/faq_product.css"/>
+        <css src="Netbaseteam_Faq::css/contact-form.css"/>
+    </head>
+	
+    <body>
+        <referenceBlock name="product.info.details">
+			<block class="Netbaseteam\Faq\Block\Product\Faqlist" name="faqlist" template="Netbaseteam_Faq::product/faq_list.phtml" group="detailed_info" ifconfig="faq/view/enabled">
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">FAQ</argument>
+					<argument name="sortOrder" xsi:type="string">10000</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+
+		<referenceContainer name="before.body.end">
+            <block class="Netbaseteam\Faq\Block\Product\Contactform" name="faq.product.contact" template="Netbaseteam_Faq::product/contact_form.phtml" cacheable="false" ifconfig="faq/view/enabled">
+                <container name="product.faq.captcha" label="Captcha">
+                    <block class="Magento\Captcha\Block\Captcha" name="captcha" after="-" cacheable="false">
+                        <action method="setFormId">
+                            <argument name="formId" xsi:type="string">product_faq_form</argument>
+                        </action>
+                        <action method="setImgWidth">
+                            <argument name="width" xsi:type="string">400</argument>
+                        </action>
+                        <action method="setImgHeight">
+                            <argument name="width" xsi:type="string">50</argument>
+                        </action>
+                    </block>
+                </container>
+            </block>
+        </referenceContainer>
+
+		<referenceBlock name="head.components">
+            <block class="Magento\Framework\View\Element\Js\Components" name="captcha_page_head_components" template="Magento_Captcha::js/components.phtml" ifconfig="faq/view/enabled" />
+        </referenceBlock>
+
+         <referenceBlock name="product.info.tab.click">
+          <block class="Magento\Framework\View\Element\Template" name="product.info.tab.click.faq" template="Netbaseteam_Faq::product/tabview.phtml" />
+        </referenceBlock> 
+		
+		
+    </body>
+</page>

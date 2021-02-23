@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cmsmart" translate="label" sortOrder="1000">
+            <label>NetBase Team</label>
+        </tab>
+
+        <section id="faq" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>FAQ</label>
+            <tab>cmsmart</tab>
+            <resource>Netbaseteam_Faq::config_faq</resource>
+            <group id="view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable FAQ On Frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="catalog_sidebar_faq" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show FAQ in Category Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="product_view_faq" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Related FAQ in Product View Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="faq_page" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>FAQ Page Settings</label>    
+                <field id="sidebar_faq" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show FAQ in Sidebar</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="faq/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="number_sidebar_question" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Number FAQ in Sidebar</label>
+                     <validate>validate-number</validate>
+                    <comment>Default Maximum Number is 8</comment>
+                    <depends>
+                        <field id="sidebar_faq">1</field>
+                        <field id="faq/view/enabled">1</field>
+                    </depends>
+                </field>
+                
+                <field id="faq_tag_list" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Listing FAQ By Tag Name</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="faq/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="faq_number_tag" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Number Of Tag Listing</label>
+                    <validate>validate-number</validate>
+                    <comment>Default Maximum Number is 5</comment>
+                    <depends>
+                        <field id="faq/view/enabled">1</field>
+                        <field id="faq_tag_list">1</field>
+                    </depends>
+                </field>
+
+                <field id="faq_main_most_faq" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Most FAQ Listing in FAQ Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="faq/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="faq_number_most_faq" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Number Of Most FAQ</label>
+                    <validate>validate-number</validate>
+                    <comment>Default Maximum Number is 8</comment>
+                    <depends>
+                        <field id="faq_main_most_faq">1</field>
+                        <field id="faq/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="show_faq_author" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show FAQ Author</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="faq/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="show_faq_created_time" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show FAQ Created Date</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="faq/view/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="product_view_faq" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Setting Related FAQ in Product Page </label>
+                <field id="number_related_faq" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Number Of Related FAQ</label>
+                    <validate>validate-number</validate>
+                    <comment>Default Maximum Number is 8</comment>
+                    <depends>
+                        <field id="faq/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="captcha_contact_form" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable validate Captcha in Contact Form</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="faq/view/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

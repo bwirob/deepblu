@@ -1,0 +1,136 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "cfaa8fbbdcc7bb8d636cb974aad1f9b9",
+      "css": "glass",
+      "code": 59393,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "a204f0fa972408eaae5a363c444991b2",
+      "css": "login",
+      "code": 59405,
+      "src": "entypo"
+    },
+    {
+      "uid": "3e1bb74572a30486bd647304d9fcaff6",
+      "css": "lock",
+      "code": 59406,
+      "src": "typicons"
+    },
+    {
+      "uid": "75cff40f03567673e13b0e7d005b7741",
+      "css": "lock-open",
+      "code": 59407,
+      "src": "typicons"
+    },
+    {
+      "uid": "frauy9fser6zk9n5ih3rdpz7zzfjbrvu",
+      "css": "eye",
+      "code": 59394,
+      "src": "modernpics"
+    },
+    {
+      "uid": "ab5c31256cdd1f6b2d6de7202936f5a1",
+      "css": "hail-inv",
+      "code": 59395,
+      "src": "meteocons"
+    },
+    {
+      "uid": "d0c325468a74095e565664bec2623aa3",
+      "css": "snowflake",
+      "code": 59396,
+      "src": "meteocons"
+    },
+    {
+      "uid": "f59875f40cbc5ad1b04775cd96feabf1",
+      "css": "drizzle",
+      "code": 59397,
+      "src": "meteocons"
+    },
+    {
+      "uid": "d577552bb94bdeb53e6517873481aeea",
+      "css": "rain",
+      "code": 59398,
+      "src": "meteocons"
+    },
+    {
+      "uid": "5fad7d41511701337ddd5ad9896edc4b",
+      "css": "windy",
+      "code": 59399,
+      "src": "meteocons"
+    },
+    {
+      "uid": "9746a4ace95e1797c94cd2fe05c22485",
+      "css": "attach",
+      "code": 59403,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "ebb8fb741e0b3e794c90555e5f225adf",
+      "css": "bell",
+      "code": 59400,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "291e2e127efe7a6bc580af6d3ead3771",
+      "css": "location",
+      "code": 59401,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "c619e17229d6c874dfc70be359b6b3f1",
+      "css": "folder",
+      "code": 59402,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "88a1241bcbe45c8e9616fd34d0f68a55",
+      "css": "aboveground-rail",
+      "code": 59404,
+      "src": "maki"
+    },
+    {
+      "uid": "a9d3392264236bb9fe4d60a130c662d1",
+      "css": "fire-station",
+      "code": 59409,
+      "src": "maki"
+    },
+    {
+      "uid": "3e98530afcd866a9d607f8be2b5aa159",
+      "css": "minefield",
+      "code": 59410,
+      "src": "maki"
+    },
+    {
+      "uid": "bc6ef9c6531c54e927e9dc18e45524b2",
+      "css": "warehouse",
+      "code": 59408,
+      "src": "maki"
+    },
+    {
+      "uid": "12db1f260b5b2ccd1aa4d8942cc7f6dd",
+      "css": "vk",
+      "code": 59411,
+      "src": "zocial"
+    },
+    {
+      "uid": "6cc1c059e221d7a0bf109870cc48f1a5",
+      "css": "plancast",
+      "code": 59412,
+      "src": "zocial"
+    },
+    {
+      "uid": "fd32deda7b2f5b8cad46d13897c19ae8",
+      "css": "cancel-circled",
+      "code": 59392,
+      "src": "elusive"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="adminhtml_catalog_category_tabs">
+        <observer
+            name="adminhtml_catalog_category_tabs"
+            instance="Cmsmart\Categoryicon\Model\Observer" />
+    </event>
+</config>

@@ -1,0 +1,1736 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="netbase_sun" translate="label" sortOrder="60">
+            <label>Netbase 2.0.0</label>
+        </tab>
+        <section id="sun_settings" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Sun - Theme Settings</label>
+            <tab>netbase_sun</tab>
+            <resource>Netbase_Sun::config</resource> 
+            <group id="header" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header</label>
+				<field id="import_demo_header_heading" translate="label comment" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import Header Demo</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="import_header1" translate="button_label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 1</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header01</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field>
+                <field id="import_header2" translate="button_label" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 2</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header02</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field>
+                <field id="import_header3" translate="button_label" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 3</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header03</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field>
+                <field id="import_header4" translate="button_label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 4</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header04</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field>
+                <field id="import_header5" translate="button_label" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 5</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header05</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field>
+                <field id="import_header6" translate="button_label" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 6</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header06</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field> 
+				<field id="import_header7" translate="button_label" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 7</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header07</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field> 
+				<field id="import_header8" translate="button_label" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 8</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header08</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field> 
+				<field id="import_header9" translate="button_label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 9</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header09</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field> 
+				<field id="import_header10" translate="button_label" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Header 10</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">header10</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+					<frontend_class>import-header</frontend_class> 
+                </field> 
+                <field id="header_type" translate="label comment" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header Type</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Type</source_model>
+					<frontend_class>header-type</frontend_class> 
+                </field>
+				<!-- Header Top -->
+                <field id="header_top_heading" translate="label comment" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Top</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="header_top" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Top Header</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> 
+				
+				<field id="header_top_layout_left" type="select" translate="label comment" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Layout Header Top Left</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Headerlayout</source_model>
+					<depends>
+                        <field id="header_top">1</field> 
+                    </depends>
+                </field>
+				<field id="element_header_top_left" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Elements In Header Top Left</label> 
+					<source_model>Netbase\Sun\Model\Config\Settings\Header\Headerelement</source_model>
+					<depends>
+                        <field id="header_top">1</field> 
+                    </depends>
+					<frontend_class>positionTypes</frontend_class> 
+				</field>
+				
+				<field id="custom_static_block_hearder_left" type="text" translate="label comment" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ID Static Block</label> 
+					<depends>
+                        <field id="header_top">1</field> 
+						<field id="element_header_top_left">7</field> 
+                    </depends>
+                </field>   
+				<field id="header_top_layout_center" type="select" translate="label comment" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Layout Header Top Center</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Headerlayout</source_model>
+					<depends>
+                        <field id="header_top">1</field> 
+                    </depends>
+                </field>
+				<field id="element_header_top_center" translate="label" type="multiselect" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Elements In Header Top Center</label> 
+					<source_model>Netbase\Sun\Model\Config\Settings\Header\Headerelement</source_model>
+					<depends>
+                        <field id="header_top">1</field> 
+                    </depends>
+					<frontend_class>positionTypes</frontend_class>
+				</field>
+				<field id="custom_static_block_hearder_top_center" type="text" translate="label comment" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ID Static Block</label> 
+					<depends>
+                         <field id="header_top">1</field> 
+						<field id="element_header_top_center">7</field> 
+                    </depends>
+                </field>  
+				
+				<field id="header_top_layout_right" type="select" translate="label comment" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Layout Header Top Right</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Headerlayout</source_model>
+					<depends>
+                        <field id="header_top">1</field> 
+                    </depends>
+                </field>
+				<field id="element_header_top_right" translate="label" type="multiselect" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Elements In Header Top Right</label> 
+					<source_model>Netbase\Sun\Model\Config\Settings\Header\Headerelement</source_model>
+					<depends>
+                        <field id="header_top">1</field> 
+                    </depends>
+					<frontend_class>positionTypes</frontend_class>
+				</field>   
+                <field id="custom_static_block_header_top_right" translate="label comment" type="text" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ID Static Block</label>
+					<depends>
+                        <field id="header_top">1</field> 
+						<field id="element_header_top_right">7</field>  
+                    </depends>
+                </field> 
+				<field id="layout_search_header" type="select" translate="label comment" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Layout Type Search</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Layouttypesearch</source_model>
+					<depends>
+                        <field id="header_top">1</field>  
+                    </depends>
+					<frontend_class>layoutsearch</frontend_class>
+                </field>
+				<field id="layout_cart_header" type="select" translate="label comment" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Layout Type Cart</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Layouttype</source_model>
+					<depends>
+                        <field id="header_top">1</field>  
+                    </depends> 
+                </field>
+				<field id="layout_user_header" type="select" translate="label comment" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Layout Type User</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Layouttype</source_model>
+					<depends>
+                        <field id="header_top">1</field>  
+                    </depends> 
+                </field>
+				<field id="header_midle_heading" translate="label comment" sortOrder="85" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Midle</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model> 
+                </field> 
+				
+				<field id="header_middle" translate="label comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Header Middle</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> 
+				
+				<field id="header_middle_layout_left" type="select" translate="label comment" sortOrder="95" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Layout Header Middle Left</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Headerlayout</source_model>
+					<depends>
+                        <field id="header_middle">1</field> 
+                    </depends>
+                </field>
+				<field id="element_header_middle_left" translate="label" type="multiselect" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Elements In Header Middle Left</label> 
+					<source_model>Netbase\Sun\Model\Config\Settings\Header\Headerelement</source_model>
+					<depends>
+                        <field id="header_middle">1</field> 
+                    </depends>
+					<frontend_class>positionTypesmilde</frontend_class> 
+				</field> 
+				<field id="custom_static_block_hearder_middle_left" type="text" translate="label comment" sortOrder="105" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ID Static Block</label> 
+					<depends>
+                        <field id="header_middle">1</field> 
+						<field id="element_header_middle_left">7</field> 
+                    </depends>
+                </field>  
+				<field id="header_middle_layout_center" type="select" translate="label comment" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Layout Header Middle Center</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Headerlayout</source_model>
+					<depends>
+                        <field id="header_middle">1</field> 
+                    </depends>
+                </field>
+				<field id="element_header_middle_center" translate="label" type="multiselect" sortOrder="115" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Elements In Header Middle Center</label> 
+					<source_model>Netbase\Sun\Model\Config\Settings\Header\Headerelement</source_model>
+					<depends>
+                        <field id="header_middle">1</field> 
+                    </depends>
+					<frontend_class>positionTypesmilde</frontend_class> 
+				</field>
+				<field id="custom_static_block_hearder_middle_center" type="text" translate="label comment" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ID Static Block</label> 
+					<depends>
+                         <field id="header_middle">1</field> 
+						<field id="element_header_middle_center">7</field> 
+                    </depends>
+                </field>  
+				
+				<field id="header_middle_layout_right" type="select" translate="label comment" sortOrder="125" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Layout Header Middle Right</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Headerlayout</source_model>
+					<depends>
+                        <field id="header_middle">1</field> 
+                    </depends>
+                </field>
+				<field id="element_header_middle_right" translate="label" type="multiselect" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Elements In Header Middle Right</label> 
+					<source_model>Netbase\Sun\Model\Config\Settings\Header\Headerelement</source_model>
+					<depends>
+                        <field id="header_middle">1</field> 
+                    </depends>
+					<frontend_class>positionTypesmilde</frontend_class> 
+				</field>   
+                <field id="custom_static_block_header_middle_right" translate="label comment" type="text" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ID Static Block</label>
+					<depends>
+                        <field id="header_middle">1</field> 
+						<field id="element_header_middle_right">7</field>  
+                    </depends>
+                </field>  
+				<field id="header_bottom_heading" translate="label comment" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Bottom</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model> 
+                </field> 
+				
+				<field id="header_bottom" translate="label comment" type="select" sortOrder="145" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Header Bottom</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> 
+				
+				<field id="header_bottom_layout_left" type="select" translate="label comment" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Layout Header Bottom Left</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Headerlayout</source_model>
+					<depends>
+                        <field id="header_bottom">1</field> 
+                    </depends> 
+                </field>
+				<field id="element_header_bottom_left" translate="label" type="multiselect" sortOrder="155" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Elements In Header Bottom Left</label> 
+					<source_model>Netbase\Sun\Model\Config\Settings\Header\Headerelement</source_model>
+					<depends>
+                        <field id="header_bottom">1</field> 
+                    </depends>
+					<frontend_class>positionTypesbottom</frontend_class>
+				</field>
+				
+				<field id="custom_static_block_hearder_bottom_left" type="text" translate="label comment" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ID Static Block</label> 
+					<depends>
+                        <field id="header_bottom">1</field> 
+						<field id="element_header_bottom_left">7</field> 
+                    </depends>
+                </field> 
+				
+				
+				
+				<field id="header_bottom_layout_center" type="select" translate="label comment" sortOrder="165" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Layout Header Bottom Center</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Headerlayout</source_model>
+					<depends>
+                        <field id="header_bottom">1</field> 
+                    </depends>
+                </field>
+				<field id="element_header_bottom_center" translate="label" type="multiselect" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Elements In Header Bottom Center</label> 
+					<source_model>Netbase\Sun\Model\Config\Settings\Header\Headerelement</source_model>
+					<depends>
+                        <field id="header_bottom">1</field> 
+                    </depends>
+					<frontend_class>positionTypesbottom</frontend_class>
+				</field>
+				<field id="custom_static_block_hearder_bottom_center" type="text" translate="label comment" sortOrder="175" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ID Static Block</label> 
+					<depends>
+                         <field id="header_bottom">1</field> 
+						<field id="element_header_bottom_center">7</field> 
+                    </depends>
+                </field> 
+				
+				
+				<field id="header_bottom_layout_right" type="select" translate="label comment" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Layout Header Bottom Right</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Headerlayout</source_model>
+					<depends>
+                        <field id="header_bottom">1</field> 
+                    </depends>
+                </field>
+				<field id="element_header_bottom_right" translate="label" type="multiselect" sortOrder="185" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Select Elements In Header Bottom Right</label> 
+					<source_model>Netbase\Sun\Model\Config\Settings\Header\Headerelement</source_model>
+					<depends>
+                        <field id="header_bottom">1</field> 
+                    </depends>
+					<frontend_class>positionTypesbottom</frontend_class>
+				</field>   
+                <field id="custom_static_block_header_bottom_right" translate="label comment" type="text" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ID Static Block</label>
+					<depends>
+                        <field id="header_bottom">1</field> 
+						<field id="element_header_bottom_right">7</field>  
+                    </depends>
+                </field>
+				<field id="custom_logo_header_heading" translate="label comment" sortOrder="191" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom - Logo - Header</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>				
+				<field id="upload_logo_id" translate="label comment" type="image" sortOrder="192" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>UpLoad Logo Header</label>
+                    <backend_model>Netbase\Sun\Model\Config\Settings\Header\Imagelogo</backend_model>
+                    <base_url type="media" scope_info="1">sun/header</base_url>
+                     <comment>
+                            Allowed file types:PNG, GIF, JPG, JPEG.
+                            The default image size [width : 177px, Height :39px]
+                    </comment>
+                </field>
+                <field id="custom_block_search_heading" translate="label comment" sortOrder="195" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom - Block - Search</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="custom_search_border_radius" type="text" translate="label comment" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Border Radius Block Search</label> 
+                </field> 
+                <field id="custom_icon_search" type="radios" translate="label comment" sortOrder="205" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Icon Search</label> 
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Iconsearch</source_model>
+                </field>
+                <field id="fontsize_icon_search" type="text" translate="label comment" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Fontsize Icon Search</label>  
+                </field>
+                <field id="custom_block_login_heading" translate="label comment" sortOrder="215" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom - Block - Login</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="upload_image_id" translate="label comment" type="image" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>UpLoad Image Icon User</label>
+                    <backend_model>Netbase\Sun\Model\Config\Settings\Header\Imagelogin</backend_model>
+                    <base_url type="media" scope_info="1">sun/header</base_url>
+                     <comment>
+                            Allowed file types:PNG, GIF, JPG, JPEG.
+                            The default image size [width : 30px, Height :26px]
+                    </comment>
+                </field>
+                <field id="custom_icon_account" type="radios" translate="label comment" sortOrder="225" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Icon My Account</label> 
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Iconaccount</source_model>
+                </field>
+                <field id="custom_icon_youorder" type="radios" translate="label comment" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Icon Order</label> 
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Iconorder</source_model>
+                </field>
+                <field id="custom_icon_wishlist" type="radios" translate="label comment" sortOrder="235" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Icon Wishlist</label> 
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Iconwishlist</source_model>
+                </field>
+                <field id="custom_icon_reviews" type="radios" translate="label comment" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Icon Reviews Account</label> 
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Iconreviews</source_model>
+                </field>
+                <field id="custom_icon_newsletter" type="radios" translate="label comment" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Icon Newsletter Account</label> 
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Iconnewsletter</source_model>
+                </field>
+                <field id="custom_icon_bill" type="radios" translate="label comment" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Icon Bill Account</label> 
+                    <source_model>Netbase\Sun\Model\Config\Settings\Header\Iconbill</source_model>
+                </field>
+                <field id="custom_block_cart_heading" translate="label comment" sortOrder="255" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom - Block - Cart</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="upload_image_cart_id" translate="label comment" type="image" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>UpLoad Image Icon Cart</label>
+                    <backend_model>Netbase\Sun\Model\Config\Settings\Header\Imagecart</backend_model>
+                    <base_url type="media" scope_info="1">sun/header</base_url>
+                     <comment>
+                            Allowed file types:PNG, GIF, JPG, JPEG.
+                            The default image size [width : 31px, Height :26px]
+                    </comment>
+                </field>  
+            </group>
+
+            <!-- footer hoantan_footer -->
+            <group id="footer" translate="label" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Footer</label>
+
+                <!-- Footer - Top Area -->
+                <field id="footer_top_heading" translate="label comment" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer - Top</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="footer_top" translate="label comment" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Footer Top</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="footer_top_column_1" translate="label comment" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 1</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_top">1</field>
+                    </depends>
+                </field>
+                <field id="footer_top_column_1_custom" translate="label comment" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 1</label>
+                    <depends>
+                        <field id="footer_top">1</field>
+                        <field id="footer_top_column_1">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_top_column_1_size" translate="label comment" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 1 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_top">1</field>
+                        <field id="footer_top_column_1" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+
+                <field id="footer_top_column_2" translate="label comment" type="select" sortOrder="131" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 2</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_top">1</field>
+                    </depends>
+                </field>
+                <field id="footer_top_column_2_custom" translate="label comment" type="text" sortOrder="132" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 2</label>
+                    <depends>
+                        <field id="footer_top">1</field>
+                        <field id="footer_top_column_2">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_top_column_2_size" translate="label comment" type="select" sortOrder="132" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 2 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_top">1</field>
+                        <field id="footer_top_column_2" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+
+                 <field id="footer_top_column_3" translate="label comment" type="select" sortOrder="133" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 3</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_top">1</field>
+                    </depends>
+                </field>
+                <field id="footer_top_column_3_custom" translate="label comment" type="text" sortOrder="134" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 3</label>
+                    <depends>
+                        <field id="footer_top">1</field>
+                        <field id="footer_top_column_3">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_top_column_3_size" translate="label comment" type="select" sortOrder="134" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 3 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_top">1</field>
+                        <field id="footer_top_column_3" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+
+                 <field id="footer_top_column_4" translate="label comment" type="select" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 4</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_top">1</field>
+                    </depends>
+                </field>
+                <field id="footer_top_column_4_custom" translate="label comment" type="text" sortOrder="136" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 4</label>
+                    <depends>
+                        <field id="footer_top">1</field>
+                        <field id="footer_top_column_4">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_top_column_4_size" translate="label comment" type="select" sortOrder="136" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 4 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_top">1</field>
+                        <field id="footer_top_column_4" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+
+                <!-- Footer - Top Area -->
+
+                <!-- Footer - Middle Area -->
+                <field id="footer_middle_heading" translate="label comment" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer - Middle</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="footer_middle" translate="label comment" type="select" sortOrder="201" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Footer Middle</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+
+                <field id="footer_middle_column_1" translate="label comment" type="select" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 1</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                    </depends>
+                </field>
+                <field id="footer_middle_column_1_custom" translate="label comment" type="text" sortOrder="213" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 1</label>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                        <field id="footer_middle_column_1">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_middle_column_1_size" translate="label comment" type="select" sortOrder="213" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 1 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                        <field id="footer_middle_column_1" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>                
+
+                <field id="footer_logo_src" translate="label" type="image" sortOrder="214" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Logo Image</label>
+                    <comment>Allowed file types:PNG, GIF, JPG, JPEG, SVG.</comment>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Image\Logo</backend_model>
+                    <base_url type="media" scope_info="1">sun/footer_logo</base_url>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                        <field id="footer_middle_column_1">custom</field>
+                    </depends>
+                </field>
+
+                <field id="footer_middle_column_2" translate="label comment" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 2</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                    </depends>
+                </field>
+                <field id="footer_middle_column_2_custom" translate="label comment" type="text" sortOrder="221" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 2</label>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                        <field id="footer_middle_column_2">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_middle_column_2_size" translate="label comment" type="select" sortOrder="222" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 2 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                        <field id="footer_middle_column_2" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+
+
+                <field id="footer_middle_column_3" translate="label comment" type="select" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 3</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                    </depends>
+                </field>
+                <field id="footer_middle_column_3_custom" translate="label comment" type="text" sortOrder="231" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 3</label>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                        <field id="footer_middle_column_3">custom</field>
+                    </depends>
+                </field>                
+                <field id="footer_middle_column_3_size" translate="label comment" type="select" sortOrder="232" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 3 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                        <field id="footer_middle_column_3" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+
+
+                <field id="footer_middle_column_4" translate="label comment" type="select" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 4</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                    </depends>
+                </field>
+                <field id="footer_middle_column_4_custom" translate="label comment" type="text" sortOrder="241" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 4</label>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                        <field id="footer_middle_column_4">custom</field>
+                    </depends>
+                </field>                
+                <field id="footer_middle_column_4_size" translate="label comment" type="select" sortOrder="242" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 4 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_middle">1</field>
+                        <field id="footer_middle_column_4" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+                <!-- end footer middle area -->
+
+                <!-- Footer - Bottom Area -->
+                <field id="footer_bottom_heading" translate="label comment" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer - Bottom</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="footer_bottom" translate="label comment" type="select" sortOrder="401" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Footer Bottom</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="footer_bottom_column_1" translate="label comment" type="select" sortOrder="402" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 1</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_column_1_custom" translate="label comment" type="text" sortOrder="403" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 1</label>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                        <field id="footer_bottom_column_1">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_column_1_size" translate="label comment" type="select" sortOrder="404" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 1 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                        <field id="footer_bottom_column_1" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+
+                <field id="footer_bottom_column_2" translate="label comment" type="select" sortOrder="405" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 2</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_column_2_custom" translate="label comment" type="text" sortOrder="406" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 2</label>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                        <field id="footer_bottom_column_2">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_column_2_size" translate="label comment" type="select" sortOrder="407" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 2 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                        <field id="footer_bottom_column_2" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+
+                <field id="footer_bottom_column_3" translate="label comment" type="select" sortOrder="408" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 3</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_column_3_custom" translate="label comment" type="text" sortOrder="409" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 3</label>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                        <field id="footer_bottom_column_3">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_column_3_size" translate="label comment" type="select" sortOrder="410" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 3 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                        <field id="footer_bottom_column_3" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>
+
+                <field id="footer_bottom_column_4" translate="label comment" type="select" sortOrder="411" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 4</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockMiddle</source_model>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_column_4_custom" translate="label comment" type="text" sortOrder="412" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id 4</label>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                        <field id="footer_bottom_column_4">custom</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_column_4_size" translate="label comment" type="select" sortOrder="413" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column 4 Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\Size</source_model>
+                    <depends>
+                        <field id="footer_bottom">1</field>
+                        <field id="footer_bottom_column_4" separator=",">custom,newsletter</field>
+                    </depends>
+                </field>              
+                
+
+                 <field id="footer_bottom_payment" translate="label comment" sortOrder="414" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer - Bottom - Payment</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="footer_payment" translate="label comment" type="select" sortOrder="415" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Footer Bottom</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="footer_bottom_column_payment" translate="label comment" type="select" sortOrder="416" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Column Payment</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Footer\Middle\FooterBlockBottomPayment</source_model>
+                    <depends>
+                        <field id="footer_payment">1</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_column_payment_custom" translate="label comment" type="text" sortOrder="417" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Static Block Id Payment</label>
+                    <depends>
+                        <field id="footer_payment">1</field>
+                        <field id="footer_bottom_column_payment">custom</field>
+                    </depends>
+                </field>
+                <!-- Footer - Bottom Area -->
+            </group>
+            <!-- end footer -->
+
+			<!-- category -->
+			<group id="category_grid" translate="label" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category View (Grid Mode)</label>
+                <field id="columns" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Products Grid Columns</label>
+                    <source_model>Netbase\Sun\Model\Config\Settings\Category\Columns</source_model>
+                </field>  
+            </group> 
+			<!-- end category -->
+
+			<group id="install" translate="label" sortOrder="800" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Installation</label>
+                <field id="import_blocks_heading" translate="label comment" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import Static Blocks</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="import_blocks" translate="button_label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Import Static Blocks</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_cms/import</attribute>
+                    <attribute type="import_type">blocks</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Cms</frontend_model>
+                </field>
+                <field id="overwrite_blocks" translate="label comment" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Overwrite Existing Blocks</label>
+                    <comment>If the identifiers of the static blocks are already exist but you want to overwrite them. You can set to "Yes" then save the configuration, then click the "Import Static Blocks" button.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="import_pages_heading" translate="label comment" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import CMS Pages</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="import_pages" translate="button_label" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Import CMS Pages</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_cms/import</attribute>
+                    <attribute type="import_type">pages</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Cms</frontend_model>
+                </field>
+                <field id="overwrite_pages" translate="label comment" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Overwrite Existing Pages</label>
+                    <comment>If the identifiers of the cms pages are already exist but you want to overwrite them. You can set to "Yes" then save the configuration, then click the "Import Static Blocks" button.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="import_demo_heading" translate="label comment" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import Demo Version Settings</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="import_demo1" translate="button_label" sortOrder="301" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Demo 1</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">demo01</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+                </field>
+                <field id="import_demo2" translate="button_label" sortOrder="302" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Demo 2</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">demo02</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+                </field>
+                <field id="import_demo3" translate="button_label" sortOrder="303" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Demo 3</button_label>
+                    <attribute type="action_url">netbase_admin/system_config_demo/import</attribute>
+                    <attribute type="demo_version">demo03</attribute>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Button\Import\Demo</frontend_model>
+                </field> 
+            </group>
+        </section>
+        <section id="sun_design" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1"> 
+            <label>Sun - Theme Design</label>
+            <tab>netbase_sun</tab>
+            <resource>Netbase_Sun::config</resource>
+            <group id="general" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="theme_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Theme Colors</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                </field> 
+            </group>
+            <group id="font" translate="label" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Font</label>
+                <field id="custom" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="font_size" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size</label>
+                    <source_model>Netbase\Sun\Model\Config\Design\Font\Size</source_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="font_family" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Family</label>
+                    <source_model>Netbase\Sun\Model\Config\Design\Font\Family</source_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="custom_font_family" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Family - Custom</label>
+                    <depends>
+                        <field id="custom">1</field>
+                        <field id="font_family">custom</field>
+                    </depends>
+                </field>
+                <field id="google_font_family" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Family - Google Fonts</label>
+                    <source_model>Netbase\Sun\Model\Config\Design\Font\Googlefonts</source_model>
+                    <depends>
+                        <field id="custom">1</field>
+                        <field id="font_family">google</field>
+                    </depends>
+                </field>
+                <field id="char_latin_ext" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Character Set: Latin Extended</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <depends>
+                        <field id="custom">1</field>
+                        <field id="font_family">google</field>
+                    </depends>
+                </field>
+                <field id="char_subset" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Character Subset</label>
+                    <depends>
+                        <field id="custom">1</field>
+                        <field id="font_family">google</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="colors" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Colors</label>
+                <field id="custom" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> 
+                <field id="links_heading" translate="label comment" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Links</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                 <field id="links_color" translate="label comment" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Links Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+
+                <field id="links_hover_color" translate="label comment" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Links Hover Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+
+                <field id="button_heading" translate="label comment" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Buttons</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="button_bg_color" translate="label comment" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Background Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="button_border_color" translate="label comment" type="text" sortOrder="151" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Border Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="button_text_color" translate="label comment" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Text Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="button_hover_bg_color" translate="label comment" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Hover Background Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                  <field id="button_hover_border_color" translate="label comment" type="text" sortOrder="171" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Hover Border Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="button_hover_text_color" translate="label comment" type="text" sortOrder="172" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Hover Text Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="add_tocart_color" translate="label comment" type="text" sortOrder="175" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to Cart Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="add_tocart_bg_color" translate="label comment" type="text" sortOrder="176" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to Cart Background Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="add_tocart_border_color" translate="label comment" type="text" sortOrder="177" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to Cart Border Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="add_tocart_hover_color" translate="label comment" type="text" sortOrder="178" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to Cart Hover Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="add_tocart_hover_bg_color" translate="label comment" type="text" sortOrder="179" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to Cart Background Hover Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+				<field id="add_tocart_hover_border_color" translate="label comment" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add to Cart Border Hover Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+			
+                <field id="addtolinks_heading" translate="label comment" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Action</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="action_color" translate="label comment" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Action Color</label>
+                    <comment>Quickview,Compare,Wishlist</comment>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="action_bg_color" translate="label comment" type="text" sortOrder="201" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Action Background Color</label>
+                    <comment>Quickview,Compare,Wishlist</comment>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="action_border_color" translate="label comment" type="text" sortOrder="202" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Action Border Color</label>
+                    <comment>Quickview,Compare,Wishlist</comment>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+
+                <field id="action_color_hover" translate="label comment" type="text" sortOrder="203" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Action Hover Color</label>
+                    <comment>Quickview,Compare,Wishlist</comment>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="action_bg_color_hover" translate="label comment" type="text" sortOrder="204" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Action Background Hover Color</label>
+                    <comment>Quickview,Compare,Wishlist</comment>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="action_border_color_hover" translate="label comment" type="text" sortOrder="205" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Action Border Hover Color</label>
+                    <comment>Quickview,Compare,Wishlist</comment>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field> 
+                 
+                <field id="product_label_heading" translate="label comment" sortOrder="270" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Labels</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="sale_bg_color" translate="label comment" type="text" sortOrder="280" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"Sale" Label Background Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="sale_font_color" translate="label comment" type="text" sortOrder="290" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"Sale" Label Font Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+<!--                 <field id="new_bg_color" translate="label comment" type="text" sortOrder="730" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"New" Label Background Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Field\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="new_font_color" translate="label comment" type="text" sortOrder="740" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>"New" Label Font Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                    <frontend_model>Netbase\Sun\Block\System\Config\Form\Field\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field> -->
+            </group>
+            <group id="header" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header</label> 
+                <field id="header_color_top_heading" translate="label comment" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Top</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="custom_color_header_top" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Color Header Top</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> 
+                <field id="custom_background_color_header_top" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color Header Top</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends>
+                    <comment>Enter rgba (r,g,b,a) to get the rgb color code</comment>
+                </field> 
+                <field id="header_color_top_left_heading" translate="label comment" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Top - Left</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends>
+                </field>
+                <field id="custom_color_text_header_top_left" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Header Top Left</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends> 
+                </field> 
+                <field id="custom_hover_color_text_header_top_left" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Hover Header Top Left</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends> 
+                </field> 
+                <field id="custom_color_text_header_top_left_dropdown" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Header Top Left Dropdown</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends> 
+                </field>
+                <field id="custom_hover_color_text_header_top_left_dropdown" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Hover Header Top Left Dropdown</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends> 
+                </field>
+                <field id="custom_background_color_header_top_left_dropdown" translate="label comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Header Top Left Dropdown</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends>
+                    <comment>Enter rgba (r,g,b,a) to get the rgb color code</comment>
+                </field>
+                <field id="custom_border_color_header_top_left_dropdown" translate="label comment" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Border Header Top Left Dropdown</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends>
+                    <comment>Enter rgba (r,g,b,a) to get the rgb color code</comment>
+                </field>
+                <field id="custom_background_color_hover_header_top_left_dropdown" translate="label comment" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Hover Header Top Left Dropdown</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends>
+                    <comment>Enter rgba (r,g,b,a) to get the rgb color code</comment>
+                </field>
+                <field id="header_color_top_right_heading" translate="label comment" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Top - Right</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends>
+                </field>
+                
+                <field id="custom_color_text_header_top_right" translate="label comment" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Header Top Right</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_hover_color_text_header_top_right" translate="label comment" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Hover Header Top Right</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_border_color_text_header_top_right" translate="label comment" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Border Text Header Top Right</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_top">1</field>
+                    </depends>
+                </field> 
+                
+                <field id="header_color_middle_heading" translate="label comment" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Middle</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="custom_color_header_middle" translate="label comment" type="select" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Color Header Middle</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>  
+                <field id="custom_background_color_header_milddle" translate="label comment" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Header Middle</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                    <comment>Enter rgba (r,g,b,a) to get the rgb color code</comment>
+                </field> 
+                <field id="header_color_middle_search_heading" translate="label comment" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Middle -Search</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_background_color_header_milddle_search" translate="label comment" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Header Middle Search</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                    <comment>Enter rgba (r,g,b,a) to get the rgb color code</comment>
+                </field>
+                <field id="custom_text_color_allcategory_search" translate="label comment" type="text" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text All Category Search</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_color_icon_allcategory_search" translate="label comment" type="text" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Icon All Category Search</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_hover_color_icon_allcategory_search" translate="label comment" type="text" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Hover Icon All Category Search</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_background_color_allcategory_search" translate="label comment" type="text" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background All Category Search</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                    <comment>Enter rgba (r,g,b,a) to get the rgb color code</comment>
+                </field>
+                <field id="custom_background_color_input_search" translate="label comment" type="text" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Input Search</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                    <comment>Enter rgba (r,g,b,a) to get the rgb color code</comment>
+                </field>
+                <field id="custom_border_right_color_allcategory_search" translate="label comment" type="text" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Border Right Allcategory Search</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_color_icon_search" translate="label comment" type="text" sortOrder="270" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Icon Search</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="header_color_middle_user_heading" translate="label comment" sortOrder="280" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Middle - User</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="custom_text_color_use_login" translate="label comment" type="text" sortOrder="290" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Use Login</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_border_color_use_login" translate="label comment" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Border Use Login</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_color_icon_arow_use_login" translate="label comment" type="text" sortOrder="310" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Icon triangle Use Login</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_text_color_dropdown_use_login" translate="label comment" type="text" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Dropdown Use Login</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_hover_text_color_dropdown_use_login" translate="label comment" type="text" sortOrder="330" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Hover Color Dropdown Use Login</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_hover_background_color_dropdown_use_login" translate="label comment" type="text" sortOrder="340" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Hover Color Dropdown Use Login</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_background_color_dropdown_use_login" translate="label comment" type="text" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color Dropdown Use Login</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_border_color_dropdown_use_login" translate="label comment" type="text" sortOrder="360" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Border Dropdown Use Login</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_background_color_triangle_dropdown_use_login" translate="label comment" type="text" sortOrder="370" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Triangle Dropdown Use Login</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="header_color_top_cart_heading" translate="label comment" sortOrder="380" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Middle - Cart</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="custom_text_color_your_cart" translate="label comment" type="text" sortOrder="390" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Your Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_hover_text_color_your_cart" translate="label comment" type="text" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Hover Your Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_text_color_price_cart" translate="label comment" type="text" sortOrder="410" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Price Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_text_color_count_cart" translate="label comment" type="text" sortOrder="420" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Count Qty Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_hover_text_color_count_cart" translate="label comment" type="text" sortOrder="430" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Hover Count Qty Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_background_color_count_cart" translate="label comment" type="text" sortOrder="440" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Count Qty Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_background_hover_color_count_cart" translate="label comment" type="text" sortOrder="450" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Hover Count Qty Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>   
+                <field id="custom_background_color_dropdown_cart" translate="label comment" type="text" sortOrder="460" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_border_color_dropdown_cart" translate="label comment" type="text" sortOrder="470" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Border Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_background_color_button_checkout_dropdown_cart" translate="label comment" type="text" sortOrder="480" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Button Checkout Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_hover_background_color_button_checkout_dropdown_cart" translate="label comment" type="text" sortOrder="490" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Hover Button Checkout Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_border_color_button_checkout_dropdown_cart" translate="label comment" type="text" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Border Button Checkout Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_hover_border_color_button_checkout_dropdown_cart" translate="label comment" type="text" sortOrder="510" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Border Hover Button Checkout Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                
+                <field id="custom_text_color_button_checkout_dropdown_cart" translate="label comment" type="text" sortOrder="520" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Button Checkout Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_hover_text_color_button_checkout_dropdown_cart" translate="label comment" type="text" sortOrder="530" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Hover Button Checkout Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_text_color_dropdown_cart" translate="label comment" type="text" sortOrder="540" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_text_color_price_dropdown_cart" translate="label comment" type="text" sortOrder="550" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Price Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_text_color_name_product_dropdown_cart" translate="label comment" type="text" sortOrder="560" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Name Products Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_hover_text_color_name_product_dropdown_cart" translate="label comment" type="text" sortOrder="570" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text Hover Name Products Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_icon_color_dropdown_cart" translate="label comment" type="text" sortOrder="580" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Icon Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_hover_icon_color_dropdown_cart" translate="label comment" type="text" sortOrder="590" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Hover Icon Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_text_view_cart_dropdown" translate="label comment" type="text" sortOrder="600" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Text View Cart Dropdown</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_hover_text_view_cart_dropdown" translate="label comment" type="text" sortOrder="610" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hover Color Text View Cart Dropdown</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="custom_background_color_triangle_dropdown_cart" translate="label comment" type="text" sortOrder="620" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Triangle Dropdown Cart</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_middle">1</field>
+                    </depends>
+                </field>
+                <field id="header_color_bottom_heading" translate="label comment" sortOrder="630" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Bottom</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="custom_color_header_bottom" translate="label comment" type="select" sortOrder="640" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Custom Header Bottom</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>  
+                <field id="custom_background_color_header_bottom" translate="label comment" type="text" sortOrder="650" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Background Header Bottom</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_bottom">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_border_color_header_bottom" translate="label comment" type="text" sortOrder="660" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Border Top Header Bottom</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_bottom">1</field>
+                    </depends>
+                </field> 
+                <field id="header_color_menu_bottom_heading" translate="label comment" sortOrder="670" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header - Bottom - Menu</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom_color_header_bottom">1</field>
+                    </depends>
+                </field>
+                <field id="custom_color_text_menu" translate="label comment" type="text" sortOrder="680" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Menu</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_bottom">1</field>
+                    </depends>
+                </field> 
+                <field id="custom_color_highlight_menu" translate="label comment" type="text" sortOrder="690" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Highlight Menu</label>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                     <depends>
+                        <field id="custom_color_header_bottom">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="footer" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Footer</label>
+                <field id="custom" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="footer_top_heading" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer - Top</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_top_bgcolor" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Background Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_top_color_title" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Color Title</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_top_color" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Top Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+
+                <field id="footer_middle_heading" translate="label comment" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Footer - Middle</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_middle_bgcolor" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Middle Background Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_middle_color" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Middle Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_middle_color_title" translate="label comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Middle Color Title</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                     <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+
+                <field id="footer_bottom_heading" translate="label comment" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom - Top</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_bgcolor" translate="label comment" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Background Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_color_title" translate="label comment" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Color Title</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+                <field id="footer_bottom_color" translate="label comment" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Color</label>
+                    <backend_model>Netbase\Sun\Model\Config\Backend\Design\Color\Validatetransparent</backend_model>
+                    <frontend_model>Netbase\Sun\Block\Color</frontend_model>
+                    <depends>
+                        <field id="custom">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

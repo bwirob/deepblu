@@ -1,0 +1,245 @@
+<?php
+/** @var $block Netbaseteam\Marketplace\Block\Seller\Profile */
+
+$shopID = $this->getRequest()->getParam('shop');
+$radKey = 'ref=page_internal';
+
+$products = $block->getProductCollection();
+$priceArr = array();
+
+if (count($products)) {
+    foreach ($products as $product) {
+        $specialPrice = $product->getSpecialPrice();
+        $finalPrice = $product->getFinalPrice();
+        if ($specialPrice) {
+            $priceArr[] = $specialPrice;
+        }
+        if($product->getPrice()) {
+            $priceArr[] = $product->getPrice();
+        }
+        if ($finalPrice) {
+            $priceArr[] = $finalPrice;
+        }
+    }
+}
+
+$fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+$priceReq = $this->getRequest()->getParam('price');
+if ($priceReq) {
+    $priceReq = explode("-",$priceReq);
+    $minPrice = $priceReq[0];
+    $maxPrice = $priceReq[1];
+} else {
+    $minPrice = count($priceArr) ? min($priceArr) : '0';
+    $maxPrice = count($priceArr) ?max($priceArr) : '0';
+}
+
+$allRequest = $this->getRequest()->getParams();
+unset($allRequest['shop']);
+unset($allRequest['product']);
+$attributeCodes = $this->getProductAttributes();
+
+$categoryCollection = $block->getCategoryCollection();
+$attributes = $block->getAttributeFilter();
+
+?>
+
+<div id="refinementForm" class="innerWrap filters searchFilters desktopFilters">
+    <section class="filter-current">
+        <strong><?= /* @escapeNotVerified */ __('Now Shopping by') ?></strong>
+        <ol>
+            <?php if(count($allRequest) > 1):?>
+                <?php foreach($allRequest as $key=>$value):?>
+                    <?php if (!in_array($key, $attributeCodes)) :?>
+                        <?php unset($allRequest[$key]); ?>
+                    <?php endif;?>    
+                    <?php
+                        $preReq = '';
+                        $content = $fullUrl;
+                        parse_str($content, $vars);
+                        if (isset($vars[$key])){
+                            unset($vars[$key]);
+                        }
+                        if (count($vars) > 2) {
+                            foreach ($vars as $attrCode=>$attrValue) {
+                                $preReq = '&'.$attrCode.'='.$attrValue;
+                            }
+                        } elseif(count($vars) == 2) {
+                            foreach ($vars as $attrCode=>$attrValue) {
+                                $preReq = $attrCode.'='.$attrValue;
+                            }
+                        }
+                        
+                        $attributeInfo = $block->getAttributeInfo($key)->getData();
+                    ?>
+                    <?php if($key == 'cat'):?>
+                        <li>
+                            <span class="filter-label">Category</span>
+                            <span class="filter-value"><?php echo $block->getCategoryInfo($value)->getName();?></span>
+                            <a class="action remove" href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey?$preReq", ['_secure' => $this->getRequest()->isSecure()]); ?>" title="Remove Item">
+                                <span>Remove This Item</span>
+                            </a>
+                        </li>
+                    <?php elseif($key == 'product_name'):?>    
+                        <li>
+                            <span class="filter-label">Product Name</span>
+                            <span class="filter-value"><?php echo $value;?></span>
+                            <a class="action remove" href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey?$preReq", ['_secure' => $this->getRequest()->isSecure()]); ?>" title="Remove Item">
+                                <span>Remove This Item</span>
+                            </a>
+                        </li>
+                    <?php else:?>
+                        <?php $catReq = $this->getRequest()->getParam('cat');?>
+                        <?php if($catReq):?>
+                            <?php $preReq = 'cat='.$catReq?>
+                        <?php endif;?>
+                        <?php if(isset($attributeInfo['frontend_label'])):?>
+                            <?php if($attributeInfo['frontend_input'] == 'price'):?>
+                                <li>
+                                    <span class="filter-label"><?php echo $attributeInfo['frontend_label']?></span>
+                                    <span class="filter-value"><?php echo $allRequest['price'];?></span>
+                                    <a class="action remove" href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey?$preReq", ['_secure' => $this->getRequest()->isSecure()]); ?>" title="Remove Item">
+                                        <span>Remove This Item</span>
+                                    </a>
+                                </li>
+                            <?php else:?>
+                                <li>
+                                    <span class="filter-label"><?php echo $attributeInfo['frontend_label']?></span>
+                                    <span class="filter-value"><?php echo $block->getExistingOptionsValue($key,$value);?></span>
+                                    <a class="action remove" href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey?$preReq", ['_secure' => $this->getRequest()->isSecure()]); ?>" title="Remove Item">
+                                        <span>Remove This Item</span>
+                                    </a>
+                                </li>
+                            <?php endif;?>        
+                        <?php endif;?>    
+                    <?php endif;?> 
+                <?php endforeach;?>
+            <?php elseif(count($allRequest) == 1):?>
+                <?php foreach($allRequest as $key=>$value):?>
+                    <?php $attributeInfo = $block->getAttributeInfo($key)->getData();?>
+                    <?php if($key == 'cat'):?>
+                        <li>
+                            <span class="filter-label">Category</span>
+                            <span class="filter-value"><?php echo $block->getCategoryInfo($value)->getName();?></span>
+                            <a class="action remove" href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey", ['_secure' => $this->getRequest()->isSecure()]); ?>" title="Remove Item">
+                                <span>Remove This Item</span>
+                            </a>
+                        </li>
+                    <?php elseif($key == 'product_name'):?>
+                        <li>
+                            <span class="filter-label">Product Name</span>
+                            <span class="filter-value"><?php echo $value;?></span>
+                            <a class="action remove" href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey", ['_secure' => $this->getRequest()->isSecure()]); ?>" title="Remove Item">
+                                <span>Remove This Item</span>
+                            </a>
+                        </li>
+                    <?php else:?>
+                        <li>
+                            <span class="filter-label"><?php echo $attributeInfo['frontend_label']?></span>
+                            <span class="filter-value"><?php echo $block->getExistingOptionsValue($key,$value);?></span>
+                            <a class="action remove" href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey", ['_secure' => $this->getRequest()->isSecure()]); ?>" title="Remove Item">
+                                <span>Remove This Item</span>
+                            </a>
+                        </li>
+                    <?php endif;?> 
+                <?php endforeach;?>     
+            <?php endif;?>
+        </ol>
+	</section>
+    <div class="block-actions filter-actions">
+        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey", ['_secure' => $this->getRequest()->isSecure()]); ?>" class="action clear filter-clear"><span>Clear All</span></a>
+    </div>
+
+    <strong class="block-subtitle filter-subtitle">Shopping Options</strong>
+    <section class="filter-group">
+        <?php if(count($categoryCollection)) : ?>
+            <ul class="filter-options-title">		
+                <label>Category</label>
+                <?php foreach($categoryCollection as $category):?>
+                    <?php $categoryId = $category->getId()?>
+                    <?php if($categoryId != $this->getRequest()->getParam('cat')):?>
+                        <li class="item-filter">
+                                <a href="<?php echo $fullUrl?><?php echo count($this->getRequest()->getParams()) >2 ? __('&') : __('?')?>cat=<?php echo $categoryId?>">&nbsp;<?php echo $category->getName();?>&nbsp;<span class="txtcolor-gray">(<span><?php echo $block->getCategoryProduct($category->getId())?></span>)</span></a>
+                        </li>
+                    <?php endif;?>
+                <?php endforeach;?>
+            </ul>
+        <?php endif;?>
+        <?php if(count($attributes)):?>
+            <?php foreach($attributes as $attribute):?>
+                <?php $attributeId = $attribute->getAttributeId()?>
+                <?php $attributeCode = $attribute->getAttributeCode()?>
+                <?php if(count($block->getProductCollection($attributeCode,null))):?>
+                    <ul class="filter-options-title">
+                        <?php if($attribute->getData('frontend_input') == 'price' && min($priceArr) != max($priceArr)):?>
+                            <label><?php echo $attribute->getFrontendLabel()?></label>
+                            <li class="item-filter">
+                                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                                <div id="price-slider"></div>
+                            </li>
+                            <script>
+                                var price_url = "<?php echo $fullUrl?><?php echo count($this->getRequest()->getParams()) >2 ? __('&') : __('?')?>price=";
+                                require([
+                                    'jquery',
+                                    "jquery/ui",
+                                    'domReady!'
+                                ], function($){
+                                    $("div#price-slider").slider({
+                                            range: true,
+                                            min: <?php echo $minPrice ?>,
+                                            max: <?php echo $maxPrice ?>,
+                                            values: [ <?php echo $minPrice ?>, <?php echo $maxPrice ?> ],
+                                            slide: function( event, ui ) {
+                                                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                                            },
+                                            change: function( event, ui ) {
+                                                window.location.href = price_url+ui.values[0]+"-"+ui.values[1];
+                                            }
+                                        });
+                                        $( "#amount" ).val( "$" + $( "#price-slider" ).slider( "values", 0 ) +
+                                            " - $" + $( "#price-slider" ).slider( "values", 1 ) );
+                                });
+                            </script>
+                        <?php endif;?>
+                    </ul>
+                <?php endif;?>    
+            <?php endforeach;?>
+        <?php endif;?>  
+    </section>
+    </br>
+    <section class="search-name">
+        <form class="form minisearch active" id="search_product_form" action="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID/product/$radKey", ['_secure' => $this->getRequest()->isSecure()]); ?>" method="get">
+            <div class="field search">
+                <div class="control">
+                    <input id="search" type="text" name="product_name" value="" placeholder="Search product name here..." class="input-text" maxlength="128" role="combobox" aria-haspopup="false" aria-autocomplete="both" autocomplete="off">
+                </div>
+            </div>
+            <div class="actions">
+                <button type="submit" title="Search" class="action search">
+                    <span>Search</span>
+                </button>
+            </div>
+        </form>
+    </section>
+</div>
+<script>
+require([
+    'jquery'
+    ], function($){
+        $(document).ready(function () {
+            $("ul.filter-options-title").click(function () {
+                $("li.item-filter", this).toggle();
+            });
+            $("ul.filter-options-title").not(':has(li)').remove();
+            <?php if($requests = $this->getRequest()->getParams()):?>
+                <?php unset($requests['product']);?>
+                <?php unset($requests['shop']);?>
+                <?php if(!count($requests)):?>
+                    $("section.filter-current").remove();
+                    $(".block-actions.filter-actions").remove();
+                <?php endif;?>
+            <?php endif;?>
+        });
+    });    
+</script>

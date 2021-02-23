@@ -1,0 +1,106 @@
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>New Attribute</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <form action="<?php echo $this->getUrl('marketplace/product_attribute/save', ['_secure' => $this->getRequest()->isSecure()]) ?>" method="post"  id="form-customer-attr-new" data-mage-init='{"validation":{}}'>
+            <div class="netbaseteam-mp-product-attribute">
+                <fieldset class="info fieldset" id="product-attribute">
+                    <button class="action submit primary" type="reset">
+                        <span><?php echo __('Reset') ?></span>
+                    </button>
+                    <button class="action submit primary" title="<?php echo __('Save') ?>" type="submit" id="save-btn">
+                        <span><?php echo __('Save') ?></span>
+                    </button>
+                    <?php echo $block->getBlockHtml('formkey')?>
+
+                    <div class="fieldset form-list" id="product-attribute-form">
+
+                        <div class="field required">
+                            <label><?php echo __('Default Label') ?> : </label>
+                            <div class="control">
+                                <input type="text" class="required-entry widthinput input-text" name="frontend_label[0]" id="attribute_label" />
+                            </div>
+                        </div>
+                        <div class="field required">
+                            <label><?php echo __('Attribute Code') ?> : </label>
+                            <div class="control">
+                                <input type="text" class="required-entry validate-code validate-length maximum-length-30 input-text" name="attribute_code" id="" />
+                            </div>
+                        </div>
+                        <div class="field required">
+                            <label><?php echo __('Catalog Input Type for Store Owner') ?> : </label>
+                            <div class="control">
+                                <select id="frontend_input" class=" select validate-select" title="<?php echo __('Catalog Input Type for Store Owner') ?>" name="frontend_input">
+                                    <?php foreach ($block->catalogInputType() as $set) { ?>
+                                        <option value="<?php echo $set['value'] ?>"><?php echo $set['label'] ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label><?php echo __('Values Required') ?> : </label>
+                            <div class="control">
+                                <select id="val_required" class="select val_required" title="<?php echo __('Values Required') ?>" name="val_required">
+                                    <option value="1"><?php echo __("Yes"); ?></option>
+                                    <option selected="selected" value="0"><?php echo __("No"); ?></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field" id="mp-default-value-text">
+                            <label><?php echo __('Default Value') ?> : </label>
+                            <input name="default_value_text"/>
+                        </div>
+                        <div class="field" id="mp-default-value-textarea" style="display: none">
+                            <label><?php echo __('Default Value') ?> : </label>
+                            <input name="default_value_textarea"/>
+                        </div>
+                        <div class="field" id="mp-default-value-date" style="display: none">
+                            <label><?php echo __('Default Value') ?> : </label>
+                            <input class="datepicker input-text" name="default_value_date"/>
+                        </div>
+                        <div class="field" id="mp-default-value-yesno" style="display: none">
+                            <label><?php echo __('Default Value') ?> : </label>
+                            <select name="default_value_yesno" title="Default Value" class="control-select" style="display: none">
+                                <option value="1">Yes</option>
+                                <option value="0" selected="selected">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset" id="mp-product-attribute-option" style="display: none">
+                    <legend class="legend"><span>Manage Options (Values of Your Attribute)</span></legend>
+                    <div id="manage-options-panel" data-index="attribute_options_select_container">
+                        <table class="form-table" id="attribute-table">
+                            <thead>
+                                <tr id="attribute-options-table">
+                                    <th scope="row"><label>Is Default</label></th>
+                                    <th scope="row"><label>Admin</label></th>
+                                    <th scope="row"><label>Default Store View</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "productAttribute": {},
+            "admin_vendor": {}
+        }
+    }
+</script>

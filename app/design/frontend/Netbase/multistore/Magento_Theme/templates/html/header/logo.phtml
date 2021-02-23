@@ -1,0 +1,37 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+<?php
+	$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();   
+	$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+	$currentStore = $storeManager->getStore();
+	$helper = $this->helper('Netbase\Sun\Helper\Data');
+	$url_logo = $helper->getConfig('sun_settings/header/upload_logo_id');
+	$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+	$UrlimageLogo = $mediaUrl.'sun/header/'.$url_logo; 
+?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?> 
+<?php if ($block->isHomePage()):?>
+    <a class="logo" href="<?php echo $block->getUrl(''); ?>" title="<?php /* @escapeNotVerified */ echo $storeName ?>">
+<?php else: ?>
+    <a class="logo" href="<?php echo $block->getUrl(''); ?>" title="<?php /* @escapeNotVerified */ echo $storeName ?>">
+<?php endif ?>
+        <img src="<?php /* @escapeNotVerified */ echo $UrlimageLogo ?>"
+             alt="<?php /* @escapeNotVerified */ echo $block->getLogoAlt() ?>"
+             <?php echo $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+             <?php echo $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+        />
+<?php if ($block->isHomePage()):?>
+    </a>
+<?php else:?>
+    </a>
+<?php endif?>

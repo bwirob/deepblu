@@ -1,0 +1,76 @@
+<?php
+$transaction = $block->getTransaction();
+$order = $block->getMpOrder();
+
+?>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Transaction Details</h3>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <?php foreach ($order as $item) : ?>
+        <div>
+            <fieldset>
+                <div>
+                    <div>
+                        <div class="box">
+                            <div class="box-content">
+                                <div>
+                                    <span class="label">Order #</span>
+                                    <span><?php echo $block->getOrderIncrement(); ?></span>
+                                </div>
+                                <div>
+                                    <span class="label">Date : </span>
+                                    <span><?php echo $formatDate =  date(("F j, Y, g:i a"), strtotime($transaction->getCreatedAt())); ?></span>
+                                </div>
+                                <div>
+                                    <span class="label">Amount : </span>
+                                    <span><?php echo $block->getAmount($transaction->getAmount()); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-details-items ordered">
+                    <div class="table-wrapper order-items">
+                        <h2 class="table-caption">Transaction Order Information</h2>
+                        <table class="data table table-order-items" summary="Order List Per Product">
+                            <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Purchase Date</th>
+                                <th>Subtotal</th>
+                                <th>Seller Amount</th>
+                                <th>Commission</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><?php echo $block->getOrderIncrement(); ?></td>
+                                <td><?php echo $formatDate = date(("F j, Y, g:i a"), strtotime($block->getOrderCreateAt()));?></td>
+                                <td><?php echo $block->getAmount($item->getRowTotal()); ?></td>
+                                <td><?php echo $block->getAmount($item->getSellerAmount()); ?></td>
+                                <td><?php echo $block->getAmount($item->getCommission()); ?></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "admin_vendor": {}
+        }
+    }
+</script>

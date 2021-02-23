@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Netbaseteam_Productvideo::productvideo" parent="Netbase_Sun::nb_all" title="Productvideo" module="Netbaseteam_Productvideo" sortOrder="30" resource="Netbaseteam_Productvideo::productvideo"/>
+        <add id="Netbaseteam_Productvideo::productvideo_manage" title="Manage Videos" module="Netbaseteam_Productvideo" sortOrder="10" parent="Netbaseteam_Productvideo::productvideo" action="productvideo/index/" resource="Netbaseteam_Productvideo::productvideo_manage"/>
+		<add id="Netbaseteam_Productvideo::productvideo_configuration" title="Configuration" module="Netbaseteam_Productvideo" sortOrder="20" parent="Netbaseteam_Productvideo::productvideo" action="adminhtml/system_config/edit/section/productvideo" resource="Netbaseteam_Productvideo::productvideo_configuration"/>
+    </menu>
+</config>

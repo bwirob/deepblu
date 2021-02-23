@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Cmsmart_Categoryicon::js/treeview/jquery.treeview.css"/>
+		<css src="Cmsmart_Categoryicon::css/cat_icon.css"/>
+		<css src="Cmsmart_Categoryicon::css/fontello.css"/>
+		<css src="Cmsmart_Categoryicon::css/menu_icon.css"/>
+    </head>
+	<body>
+        <referenceContainer name="content">
+            <block class="Cmsmart\Categoryicon\Block\Adminhtml\Categoryicon" name="admin.categoryicon.grid"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,14 @@
+legend {
+    font-size: 2.4rem;
+}
+
+fieldset#locator_base_fieldset {
+    margin-bottom: 20px;
+}
+
+#container {
+    margin-right: 150px;
+}
+#search-auto {
+    width: 350px;
+}

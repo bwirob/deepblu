@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Cmsmart_Categoryicon::categoryicon" title="Categoryicon" sortOrder="40">
+                    <resource id="Cmsmart_Categoryicon::manage" title="Categoryicon Module" sortOrder="10">
+						<resource id="Cmsmart_Categoryicon::save" title="Save Categoryicon" sortOrder="10" />
+                        <resource id="Cmsmart_Categoryicon::news_delete" title="Delete Categoryicon" sortOrder="20" />
+					</resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Cmsmart_Categoryicon::config_categoryicon" title="Categoryicon Section" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

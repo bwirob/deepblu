@@ -1,0 +1,92 @@
+<?php
+/*------------------------------------
+* Product Video Extention
+* Author  CMSMart Team
+* Copyright Copyright (C) 2012 http://cmsmart.net. All Rights Reserved.
+* @license - http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
+* Websites: http://cmsmart.net
+* Email: team@cmsmart.net
+* Technical Support: http://cmsmart.net/support_ticket/
+* Forum - http://cmsmart.net/forum
+-----------------------------------------------------*/
+?>
+
+<?php
+	$process_rate_url = $this->getUrl('productvideo/index/setrate', ['_current' => true]);
+	
+?>
+<script type="text/javascript">
+		/* AJAX Star Rating : v1.0.3 : 2008/05/06 */
+		/* http://www.nofunc.com/AJAX_Star_Rating/ */
+
+		function $gp_s(v,o) { return((typeof(o)=='object'?o:document).getElementById(v)); }
+		function $gp_S1(o) { return((typeof(o)=='object'?o:$gp_s(o)).style); }
+		function gp_agent(v) { return(Math.max(navigator.userAgent.toLowerCase().indexOf(v),0)); }
+		function gp_abPos(o) { var o=(typeof(o)=='object'?o:$gp_s(o)), z={X:0,Y:0}; while(o!=null) { z.X+=o.offsetLeft; z.Y+=o.offsetTop; o=o.offsetParent; }; return(z); }
+		function gp_XY(e,v) { var o=gp_agent('msie')?{'X':event.clientX+document.body.scrollLeft,'Y':event.clientY+document.body.scrollTop}:{'X':e.pageX,'Y':e.pageY}; return(v?o[v]:o); }
+
+		var star={};
+
+		star.mouse=function(e,o) { 
+			if(star.stop || isNaN(star.stop)) { 
+				star.stop=0;
+
+				document.onmousemove = function(e) { 
+					var n=star.num;
+					var p=gp_abPos($gp_s('star'+n)), x=gp_XY(e), oX=x.X-p.X, oY=x.Y-p.Y; star.num=o.id.substr(4);
+					//alert(x.Y + "-" +p.Y + "="+oY)
+					if(oX<1 || oX>84 || /*oY<0 ||*/ oY>19) { star.stop=1; star.revert(); }
+					else {
+						$gp_S1('starCur'+n).width=oX+'px';
+						$gp_S1('starUser'+n).color='#111';
+						$gp_s('starUser'+n).innerHTML=Math.round(oX/84*100)+'%';
+					}
+				};
+			} 
+		};
+
+		star.update=function(e,o) { var n=star.num, v=parseInt($gp_s('starUser'+n).innerHTML);
+		
+		n=o.id.substr(4); $gp_s('starCur'+n).title=v;
+		document.getElementById('rate').value = v;
+
+		require(['jquery'], function($){ 
+			"use strict";
+			
+			$('#nb-rate-loader').show();
+			$('#nb-rate-notice').hide();
+			
+			$.ajax({
+				url: '<?php echo $process_rate_url; ?>',
+				type: 'POST',
+				data: {
+					id_video: $('#current_video_id').val(),
+					rate: $('#rate').val()
+				},
+				dataType: 'json',                  
+				success: function(res) { 
+					$('#nb-rate-loader').hide();
+					$('#nb-rate-notice').show();
+				},
+				error: function (response) {
+					console.log(response);
+				}
+			});
+		});
+		};
+
+		star.revert=function() { var n=star.num, v=parseInt($gp_s('starCur'+n).title);
+
+			$gp_S1('starCur'+n).width=Math.round(v*84/100)+'px';
+			$gp_s('starUser'+n).innerHTML=(v>0?Math.round(v)+'%':'');
+			$gp_s('starUser'+n).style.color='#888';
+			
+			document.onmousemove='';
+
+		};
+
+		star.num=0;
+
+
+
+</script>

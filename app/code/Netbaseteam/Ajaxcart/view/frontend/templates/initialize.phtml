@@ -1,0 +1,30 @@
+<?php
+$helper = $this->helper('Netbaseteam\Ajaxcart\Helper\Data');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$currencysymbol = $objectManager->get('\Magento\Framework\Pricing\PriceCurrencyInterface');
+$currency = $currencysymbol->getCurrency()->getCurrencySymbol();
+	
+$checkVerson = $helper->checkVerson();
+?>
+<?php if ($helper->getConfigEnabled()): ?>
+	<script>
+	var checkVerson = '<?php echo $checkVerson; ?>';
+	if(checkVerson=='0'){
+		require(['jquery', 'cmsmart/customCatalogAddToCart'], function($){ 
+		    "use strict";
+		   
+		});
+	}else{
+		require(['jquery', 'cmsmart/customCatalogAddToCart01'], function($){ 
+		    "use strict";
+		   
+		});
+	}
+
+	var updateQtyUrl = '<?php echo $this->getUrl('ajaxcart/cart/updateqty') ?>';
+	var removeUrl = '<?php echo $this->getUrl('ajaxcart/cart/removeitem') ?>';
+	var addUrl = '<?php echo $this->getUrl('ajaxcart/cart/add', ['ajax' => true]) ?>';
+	var currencyCode = '<?php echo $currency; ?>';
+
+	</script>
+<?php endif ?>

@@ -1,0 +1,39 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Faq\Helper\Data');
+	$imgSrc = $helper->getBaseUrl();
+?>
+<div id="faq-content">
+	<div class="faq-block-search">
+		<?php echo $block->getChildHtml('faq.form.search'); ?>
+	</div>
+	<div class="faq-block-contact">
+		<?php echo $block->getChildHtml('faq.form.contact'); ?>
+	</div>
+	<div class="main-column">
+		<div class="most-faq">
+			<?php echo $block->getChildHtml('faq.list.mostfaq'); ?>
+		</div>
+		<div class="faq_listing">
+			<?php echo $block->getChildHtml('faq.category.list'); ?>
+		</div>
+	</div>
+	
+</div>
+
+<div id="faq-loading" style="display:none;"></div>
+
+<script type="text/javascript">
+    require([
+    'jquery', 
+    'jquery/ui',
+    'Cmsmart_FAQ',
+    'Cmsmart_FAQ_Require'
+    ], function($){
+
+    
+    });
+</script>
+
+
+
+

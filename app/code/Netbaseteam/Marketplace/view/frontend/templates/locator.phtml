@@ -1,0 +1,30 @@
+<?php
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$distanceUnit  = $helper->getDistanceUnit();
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+
+            "sellerLocator": {
+	            "latDefault": "21.225882",
+         		"lngDefault": "105.821103",
+	            "zoomLevelDefault": "2",
+	            "distanceUnit" : "<?php echo $distanceUnit;?>"
+            }
+
+        }
+    }
+</script>
+
+<div class="locator-wrapper col-full">
+	<?php echo $block->getChildHtml('locator.list.search'); ?>
+	<div class="boxes-content">
+		<?php echo $block->getChildHtml('locator.list.map'); ?>
+		<?php echo $block->getChildHtml('locator.list.store'); ?>
+	</div>
+</div>
+
+<div id="page-loading" class="hide"></div>
+
+

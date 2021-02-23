@@ -1,0 +1,176 @@
+.profile_pic .profile_img {
+    width: 100%;
+    border-radius: 50%;
+}
+.same-items {
+    padding-bottom:15px
+}
+#mp-form-contact-us {
+    position: relative;
+    padding-left: 40px;
+    text-align: left;
+    color: #777;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    background: #fff;
+    display: inline-block;
+    min-width: 110px;
+    margin-top: 15px;
+    padding: 7px 25px 7px;
+    font: 700 12px/1 'Open Sans', sans-serif;
+    border-radius: 3px;
+    box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+#mp-form-contact-us::before {
+    content: "\f0e0";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 30px;
+    padding: 7px 0 12px;
+    font-family: FontAwesome;
+    text-align: center;
+    border-radius: 3px 0 0 3px;
+}
+.contact_number::before {
+    content: "\f095";
+    font-family: FontAwesome;
+}
+.shop_email::before {
+    content: "\f003";
+    font-family: FontAwesome;
+}
+.shop_location::before {
+    content: "\f041";
+    font-family: FontAwesome;
+}
+.mp-social-twitter {
+    background-image: url(../images/twitter.png);
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+.mp-social-facebook {
+    background-image: url(../images/facebook.png);
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+.mp-social-gplus {
+    background-image: url(../images/googleplus.png);
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+.mp-social-youtube {
+    background-image: url(../images/youtube.png);
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+.mp-social-instagram {
+    background-image: url(../images/instagram.png);
+    width: 30px;
+    height: 30px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+.seller-details{
+    background: #eee;
+    float: right;
+    width: 40%;
+    border: 1px solid #ddd;
+    box-shadow: 5px 5px 5px 1px rgba(1,1,1,0.25);
+}
+.seller-details .title a:hover,a,a:hover,a:active,a:visited{text-decoration: none}
+.seller-details .content{padding: 15px}
+.seller-details .title,.seller-details .content strong,.profile_info .title a {font-size: 24px;color: #555;}
+.seller-details .content .profile_pic{float: left;padding-right: 15px;width: 150px;height: 150px;overflow: hidden;}
+.profile_info .contact ul{margin: 0;padding: 0}
+.profile_info .contact ul li{list-style: none;padding-right: 5px}
+.profile_info .contact ul li a{
+    padding: 7px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.profile_info .contact ul li a i.fa-facebook,.profile_info .contact ul li a i.fa-instagram{padding: 0 3px 0 5px;}
+.profile_info .contact ul li.contact_on_web{border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;line-height: 70px;}
+.profile_info .contact ul li.contact_on_web span{margin-right: 15px}
+.contact_on_web .same-items{float: right}
+.contact_on_web .same-items a{border: none !important;text-decoration: underline}
+.profile_info .seller-reviews-summary.short{
+    padding: 5px 0 10px;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+}
+.profile_info .seller-reviews-summary.short .rating-summary{
+    padding-bottom: 15px;
+    display: inline;
+    padding-right: 3px;
+}
+.profile_info .seller-reviews-summary.short .rating-summary .txt-review{
+    font-weight: bold;
+    color: #555;
+    padding-right: 10px;
+}
+.profile_info .contact{
+    margin-top: 15px;
+}
+.profile_info .store-items{margin-bottom: 15px}
+#mp-form-contact-us{transition: all .3s ease}
+#mp-form-contact-us:hover{
+    background: #617a86;
+    color: #eee;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0);
+}
+.profile_info .contact ul li:before{padding-right: 10px;margin-top: 15px;}
+ul.view-seller{margin: 0;padding: 0;display: inline-block;}
+ul.view-seller li{
+    list-style: none;float: left;line-height: 45px;margin-right: 10px;
+    transition: all 0.4s ease-in-out;
+}
+ul.view-seller li:hover a{
+    background: #6b6f65;
+}
+ul.view-seller li:hover a{color: #fff;border: none}
+ul.view-seller li a{
+    padding: 7px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+}
+@media(max-width:375px){
+    .seller-details,.seller-details .content .profile_pic{width: 100%;box-shadow: none;background: #fff;    margin-bottom: 30px;}
+    ul.view-seller li a{padding: 7px 10px}
+}
+@media(max-width:767px){
+    .seller-details{width: 100%;box-shadow: none;margin-bottom: 30px;}
+    .contact_on_web .same-items{float: left}
+}
+@media (min-width:768px) and (max-width: 991px){.contact_on_web .same-items{float: left}}
+@media (min-width:768px) and (max-width: 1024px){
+    .seller-details{
+        background: #eee;
+        float: left;
+        width: 57%;
+        margin: 40px 0 50px;
+        border: 1px solid #ddd;
+        box-shadow: none;
+    }
+}

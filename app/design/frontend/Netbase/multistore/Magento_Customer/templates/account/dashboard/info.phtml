@@ -1,0 +1,65 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Account\Dashboard\Info $block */
+?>
+<div class="block-title-nbht"><strong><?php /* @escapeNotVerified */ echo __('Account control panel') ?></strong></div>
+<div class="block block-dashboard-info">
+    <div class="hello-title-nb">
+        <strong><?php echo __('Hello ') ?><?php echo $block->escapeHtml($block->getName()) ?></strong><br>
+        <p>
+            From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.
+        </p>
+    </div>
+    <div class="block-content">
+        <div class="box box-information">
+            <strong class="box-title">
+                <span><?php /* @escapeNotVerified */ echo __('Contact Information') ?></span>
+            </strong>
+            <div class="box-information-content">
+                <div class="box-content">
+                    <p>
+                        <?php echo $block->escapeHtml($block->getName()) ?><br>
+                        <?php echo $block->escapeHtml($block->getCustomer()->getEmail()) ?><br>
+                    </p>
+                </div>
+                <div class="box-actions">
+                    <a class="action edit" href="<?php /* @escapeNotVerified */ echo $block->getUrl('customer/account/edit') ?>">
+                        <span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><?php /* @escapeNotVerified */ echo __('  EDIT') ?></span>
+                    </a>
+                    <a href="<?php /* @escapeNotVerified */ echo $block->getChangePasswordUrl() ?>" class="action change-password">
+                        <?php /* @escapeNotVerified */ echo __('CHANGE PASSWORD') ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <?php if ($block->isNewsletterEnabled()): ?>
+            <div class="box box-newsletter">
+                <strong class="box-title">
+                    <span><?php /* @escapeNotVerified */ echo __('Newsletters') ?></span>
+                </strong>
+                <div class="box-newsletter-content">
+                    <div class="box-content">
+                        <p>
+                            <?php if ($block->getIsSubscribed()): ?>
+                                <?php /* @escapeNotVerified */ echo __('You subscribe to "General Subscription".') ?>
+                            <?php else: ?>
+                                <?php /* @escapeNotVerified */ echo __('You don\'t subscribe to our newsletter.') ?>
+                            <?php endif; ?>
+                        </p>
+                        <?php /* Extensions placeholder */ ?>
+                        <?php echo $block->getChildHtml('customer.account.dashboard.info.extra')?>
+                    </div>
+                    <div class="box-actions">
+                        <a class="action edit" href="<?php /* @escapeNotVerified */ echo $block->getUrl('newsletter/manage') ?>"><span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><?php /* @escapeNotVerified */ echo __('  EDIT') ?></span></a>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

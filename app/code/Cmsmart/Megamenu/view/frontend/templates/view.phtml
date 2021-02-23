@@ -1,0 +1,30 @@
+<?php
+/**
+ * Megamenu template for separate item
+ *
+ */
+
+/**
+ * @var $this Cmsmart\Megamenu\Block\View
+ * @see Cmsmart\Megamenu\Block\View
+ */
+?>
+<?php $_megamenuItem = $this->getMegamenu(); ?>
+    <div class="megamenu_item_subtitle">
+        <?php echo $this->formatDate($_megamenuItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_megamenuItem->getAuthor()) ?>
+    </div>
+
+<div class="megamenu_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_megamenuItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_megamenuItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="megamenu_item_content"><?php echo $_megamenuItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

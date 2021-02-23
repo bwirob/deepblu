@@ -1,0 +1,604 @@
+.faq-index-index .breadcrumbs {
+    background-image: url(../images/banner-faq.jpg);
+    background-position: center center;
+    background-size: cover;
+    text-align: center;
+    min-height: 300px;
+    max-width: 100%;
+    position: relative;
+    margin-bottom: 30px
+}
+.faq-index-index .breadcrumbs:before {
+    font-weight: 700;
+    content: "Frequently asked questions";
+    text-transform: uppercase;
+    font-size: 36px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 auto;
+    text-align: center;
+    transform: translate(-50%, -50%)
+}
+.faq-index-index .breadcrumbs ul.items {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 85%;
+    left: 50%;
+    margin: 0 auto;
+    width: 100%
+}
+.faq-index-index .breadcrumbs ul.items:before {
+    position: absolute;
+    content: "";
+    background: url(../images/diviter.png) no-repeat;
+    bottom: -10px;
+    left: 50%;
+    width: 79px;
+    height: 1px;
+    transform: translate(-50%, -50%);
+    top: 0
+}
+.faq-index-index .breadcrumbs .items .item a {
+    font-size: 14px;
+    color: #fff
+}
+.faq-index-index .breadcrumbs .item:not(:last-child):after {
+    color: #fff
+}
+.faq-index-index .breadcrumbs .items .item:last-child a {
+    color: #f90
+}
+.sidebar-faq-list {
+    margin-top: 15px
+}
+#faq-loading:before {
+    z-index: 9999;
+    width: 100%;
+    display: block;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #000;
+    opacity: .7;
+    background: url(../images/loader.gif) center 50% no-repeat rgba(255, 252, 252, .84);
+    height: 100%
+}
+#faq_category {
+    background: #fff;
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+}
+#faq_category .block-title,
+#tags .block-title {
+    padding: 0 0 13px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    color: #293544;
+    position: relative;
+    border-bottom: 1px solid #ddd
+}
+#faq_category .block-title:hover,
+#tags .block-title:hover {
+    color: #f90
+}
+#faq_category ul.category-list {
+    margin: 10px 0 0;
+    padding: 0 15px;
+    list-style: none
+}
+#faq_category ul.category-list .item {
+    padding: 7px 0
+}
+#faq_category ul.category-list .item:last-child {
+    padding: 0
+}
+#faq_category ul.category-list .item .category-name {
+    font-size: 14px;
+    line-height: 1.29;
+    color: #666
+}
+#faq_category ul.category-list .item .category-name:hover {
+    color: #f90!important
+}
+#sidebar_faq {
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+	background: #fff
+}
+#sidebar_faq .block-title {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f90;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 5px;
+}
+#sidebar_faq .panel {
+    padding: 10px 15px;
+    background: #eee;
+    margin-bottom: 14px;
+    border-radius: 5px;
+}
+#sidebar_faq .panel .panel-heading {
+    padding: 0;
+    cursor: pointer;
+    position: relative
+}
+#sidebar_faq .panel .panel-heading h4.panel-title {
+    margin: 0 30px 0 0
+}
+#sidebar_faq .panel .panel-heading h4.panel-title a {
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 1.43
+}
+#sidebar_faq .panel .panel-heading h4.panel-title a:active,
+#sidebar_faq .panel .panel-heading h4.panel-title a:visited {
+    color: #f90!important
+}
+#sidebar_faq .panel .panel-heading h4.panel-title i {
+    width: 10px;
+    height: 9px;
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    right: 0;
+    top: 3px
+}
+#sidebar_faq .panel .panel-body {
+    display: none;
+    padding: 0;
+    overflow: hidden
+}
+#sidebar_faq .panel .panel-body .panel-content {
+    font-size: 14px;
+    padding: 9px 0 0 9px;
+    overflow: hidden;
+    color: #666;
+    width: 197px
+}
+#sidebar_faq .panel .panel-body .panel-content p {
+    padding: 0;
+    margin: 0
+}
+#sidebar_faq .panel .panel-body .more-info {
+    margin-top: 17px;
+    font-size: 12px;
+    font-style: italic;
+    text-align: right;
+    color: #999
+}
+#sidebar_faq .panel .panel-body .more-info p {
+    margin: 0
+}
+#tags {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    background: #fff;
+}
+#tags .block-content ul.tag-list {
+    float: left;
+    list-style: none;
+    padding: 20px 15px 0
+}
+#tags .block-content ul.tag-list li.tag-item {
+    float: left;
+    display: block;
+    margin: 0 13px 15px 0;
+    border-radius: 4px;
+    padding: 8px 0;
+    line-height: 14px;
+    background-color: #fff;
+    transition: all .3s ease-in-out
+}
+#tags .block-content ul.tag-list li.tag-item a {
+    font-size: 14px;
+    color: #999;
+    display: inline-block
+}
+#tags .block-content ul.tag-list li.tag-item:hover a {
+    color: #f90
+}
+.faq-index-index .sidebar .block-compare {
+    background: #fff;
+    clear: both
+}
+.sidebar .block-compare .block-title {
+    margin-bottom: 7px
+}
+.faq-index-index .sidebar .block-compare .block-title>strong {
+    font-size: 16px;
+    color: #293544;
+    margin-bottom: 7px
+}
+.faq-index-index .sidebar .block-compare div.empty {
+    font-size: 14px;
+    color: #999
+}
+#faq-content .faq-block-contact .contact button {
+    float: right;
+    background: #1979c3;
+    color: #fff;
+    border: 1px solid #1979c3;
+    box-shadow: none;
+    padding: 10px
+}
+#faq-content .faq-block-contact {
+    margin-bottom: 20px;
+    float: right;
+    display: none
+}
+#faq-content .main-column {
+    clear: both
+}
+#faq-content .faq-block-search {
+    width: 50%;
+    margin: 0 auto;
+    display: none
+}
+#faq-content .faq-block-search .faq-search {
+    width: 100%;
+    margin-bottom: 30px;
+    position: relative
+}
+#faq-content .faq-block-search .faq-search .search-box {
+    width: 80%;
+    height: 36px
+}
+#faq-content .faq-block-search .faq-search .search-button {
+    background: #39c;
+    box-shadow: none;
+    color: #FFF;
+    border: 0;
+    border-radius: 0;
+    position: absolute;
+    right: 0;
+    padding: 12px 15px;
+    height: 36px
+}
+#faq-content .most-faq .most-faq-title,
+.category-heading .category-title {
+    margin-top: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dee0e1;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #f90;
+    font-weight: 700;
+    line-height: 1.33;
+    position: relative
+}
+#faq-content .most-faq .most-faq-title:after,
+.category-heading .category-title:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 200px;
+    height: 1px;
+    background: #f8981d
+}
+#faq-content .most-faq .most-faq-main {
+    overflow: hidden
+}
+.columns .column.main
+.ebay #faq-content .faq_listing .category-item:last-child{margin: 0}
+.amazon #faq-content .faq_listing .category-item:last-child{margin-bottom: 20px;padding: 0}
+#faq-content .faq_listing .category-item .category-body .panel,
+#faq-content .most-faq .most-faq-main .panel,
+.faq-require-category .category-body .panel {
+    margin-bottom: 15px;
+    background: #eee;
+    border-radius: 5px;
+}
+#faq-content .most-faq .most-faq-main .panel:last-child {
+    margin-bottom: 0
+}
+#faq-content .most-faq .most-faq-main .panel .panel-heading {
+    padding: 0;
+    cursor: pointer;
+    position: relative
+}
+#faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title {
+    margin: 0;
+    padding: 18px;
+    position: relative;
+    color: #2c3e50
+}
+#faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #2c3e50
+}
+#faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title a:active,
+#faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title a:hover,
+#faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title a:visited {
+    color: #f90
+}
+#faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title i {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    color: #999;
+    font-size: 12px
+}
+#faq-content .most-faq .most-faq-main .panel .panel-body {
+    display: none;
+    padding: 20px 0 0;
+    overflow: hidden;
+    position: relative
+}
+#faq-content .faq_listing .category-item .category-body .panel .panel-body:before,
+#faq-content .most-faq .most-faq-main .panel .panel-body:before,
+.faq-require-category .category-body .panel .panel-body:before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 20px;
+    height: 1px;
+    margin: 0 auto;
+    width: ~"calc(100% - 40px)";
+    background-color: #ccc
+}
+#faq-content .most-faq .most-faq-main .panel .panel-body .panel-content {
+    font-size: 14px;
+    padding: 0 20px;
+    overflow: hidden;
+    color: #5c5c5c
+}
+#faq-content .most-faq .most-faq-main .panel .panel-body .panel-content p {
+    padding: 0;
+    margin: 0
+}
+#faq-content .faq_listing{padding-bottom: 20px}
+#faq-content .faq_listing .category-item,.faq-require-category {
+    margin: 28px 0
+}
+#faq-content .faq_listing .category-item a {
+    text-decoration: none
+}
+#faq-content .faq_listing .category-item a h3.category-title,
+.faq-require-category h3.category-title {
+    margin: 0 0 10px;
+    padding-bottom: .25em;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    font-weight: 400
+}
+#faq-content .faq_listing .category-item a h3.category-title i,
+#faq-content .most-faq .most-faq-title,
+.category-heading .category-title i,
+.faq-require-category h3.category-title i {
+    margin-right: 10px
+}
+#faq-content .faq_listing .category-item .category-heading .cate-description,
+#faq-content .most-faq p,
+.faq-require-category .category-heading .cate-description {
+    font-size: 14px;
+    color: #666
+}
+#faq-content .faq_listing .category-item .category-heading .cate-description p,
+#faq-content .most-faq p {
+    margin-bottom: 13px
+}
+#faq-content .faq_listing .category-item a h3.category-title .line,
+.faq-require-category h3.category-title .line {
+    float: left;
+    width: 2.15em;
+    position: absolute;
+    bottom: -1px;
+    z-index: 9999;
+    display: none
+}
+#faq-content .faq_listing .category-item .category-body .panel .panel-heading,
+.faq-require-category .category-body .panel .panel-heading {
+    padding: 0;
+    cursor: pointer;
+    position: relative
+}
+#faq-content .faq_listing .category-item .category-body .panel .panel-heading i,
+.faq-require-category .category-body .panel .panel-heading i {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    color: #999;
+    font-size: 12px
+}
+#faq-content .faq_listing .category-item .category-body .panel .panel-heading h4.panel-title,
+.faq-require-category .category-body .panel .panel-heading h4.panel-title {
+    margin: 0;
+    padding: 18px;
+    color: #2c3e50;
+    line-height: 10px
+}
+#faq-content .faq_listing .category-item .category-body .panel .panel-heading h4.panel-title a,
+.faq-require-category .category-body .panel .panel-heading h4.panel-title a {
+    font-size: 16px;
+    color: #2c3e50;
+    line-height: 18px
+}
+#faq-content .faq_listing .category-item .category-body .panel .panel-body,
+.faq-require-category .category-body .panel .panel-body {
+    display: none;
+    padding: 20px 0 0;
+    overflow: hidden;
+    position: relative
+}
+#faq-content .faq_listing .category-item .category-body .panel .panel-body .panel-content,
+.faq-require-category .category-body .panel .panel-body .panel-content {
+    font-size: 14px;
+    padding: 0 20px;
+    overflow: hidden;
+    color: #5c5c5c
+}
+#faq-content .faq_listing .category-item .category-body .panel .panel-body .panel-content ol {
+    padding: 0 15px;
+    list-style: decimal
+}
+#faq-content .faq_listing .category-item .category-body .panel .panel-body .panel-content p,
+.faq-require-category .category-body .panel .panel-body .panel-content p {
+    padding: 0;
+    margin: 0
+}
+.catalog-product-view #faq-content .faq-require h3.faq-require-title,.catalog-product-view .product.data.items > .item.title > .switch:before{display: none}
+#faq-content .faq-require h3.faq-require-title {
+    margin: 0 0 30px;
+    padding-bottom: .25em;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    font-weight: 400;
+    font-size: 24px
+}
+#faq-content .faq-require .faq-require-main {
+    overflow: hidden
+}
+#faq-content .faq-require .faq-require-main .panel {
+    margin-bottom: 5px
+}
+.catalog-product-view #faq-content .faq-require .faq-require-main .panel{
+    margin-bottom: 15px;
+    background: #eee;
+    border-radius: 5px;
+    .panel-heading{border: none}
+}
+#faq-content .faq-require .faq-require-main .panel .panel-heading {
+    padding: 0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+}
+#faq-content .faq-require .faq-require-main .panel .panel-heading h4.panel-title {
+    padding: 18px
+}
+.catalog-product-view #faq-content .faq-require .faq-require-main .panel .panel-heading h4.panel-title {
+    margin: 0 30px 0 0;
+}
+#faq-content .faq-require .faq-require-main .panel .panel-heading h4.panel-title a {
+    font-weight: normal;
+    text-decoration: none
+}
+.catalog-product-view #faq-content .faq-require .faq-require-main .panel .panel-heading h4.panel-title i{
+    position: absolute;
+    top: 20px;
+    color: #999;
+    font-size: 12px;
+    right: 5px;
+}
+#faq-content .faq-require .faq-require-main .panel .panel-body {
+    display: none;
+    overflow: hidden
+}
+#faq-content .faq-require .faq-require-main .panel .panel-body .panel-content {
+    font-size: 14px;
+    color: #333;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px
+}
+#faq-content .faq-require .faq-require-main .panel .panel-body .panel-content p {
+    padding: 0;
+    margin: 0
+}
+#faq-content .faq-require .faq-require-main .panel .panel-body .more-info,
+#faq-content .faq_listing .category-item .category-body .panel .panel-body .more-info,
+#faq-content .most-faq .most-faq-main .panel .panel-body .more-info,
+.faq-require-category .category-body .panel .panel-body .more-info {
+    padding: 15px 20px;
+    text-align: right;
+    color: #999;
+    font-size: 12px
+}
+#faq-content .faq-require .faq-require-main .non-result {
+    color: #333;
+    font-size: 14px;
+    padding: 10px 15px
+}
+#faq-content .faq-require .faq-require-main .number-search-result {
+    color: #333;
+    font-size: 14px;
+    padding: 0 15px 10px 10px
+}
+.not-active {
+    pointer-events: none;
+    cursor: default
+}
+ol>li,
+ul>li {
+    margin-top: 0;
+    margin-bottom: 0
+}
+@media (max-width: 425px) {
+    .catalog-product-view #faq-content .faq-require .faq-require-main .panel .panel-heading h4.panel-title i{
+        top: 15px;
+    }
+}
+@media (min-width: 768px) {
+    .faq-index-index .sidebar-main {
+        padding-right: 30px
+    }
+    .faq-index-index .breadcrumbs ul.items {
+        top: 77%
+    }
+}
+@media (max-width: 768px) {
+    #sidebar_faq .panel .panel-body .panel-content {
+        width: 100%
+    }
+    #faq_category .block-title:after,
+    #tags .block-title:after {
+        width: 250px
+    }
+    #faq-content .faq_listing .category-item .category-body .panel .panel-heading h4.panel-title,
+    .faq-require-category .category-body .panel .panel-heading h4.panel-title {
+        margin: 0;
+        padding: 18px;
+        color: #2c3e50;
+        line-height: 18px
+    }
+    #tags {
+        margin-bottom: 5px
+    }
+    #faq-content .faq_listing .category-item .category-body .panel .panel-heading i,
+    #faq-content .most-faq .most-faq-main .panel .panel-heading h4.panel-title i,
+    .faq-require-category .category-body .panel .panel-heading i {
+        right: 3px;
+        top: 20px
+    }
+}
+@media (min-width: 1025px) {
+    #faq-content .faq_listing .category-item .category-body .panel .panel-heading i,
+    .faq-require-category .category-body .panel .panel-heading i {
+        right: 5px
+    }
+    #faq_category .block-title:after,
+    #tags .block-title:after {
+        width: 180px
+    }
+    .faq-index-index .breadcrumbs ul.items {
+        top: 70%
+    }
+}
+.tag-require .faq-require-title span {
+    color: #40c6ff
+}
+.tag-require .faq-require-title:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 200px;
+    height: 1px;
+    background: #40c6ff
+}

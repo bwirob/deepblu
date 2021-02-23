@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+        <script src="Netbaseteam_Faq::js/jscolor.js"/>
+    </head>
+    
+    <update handle="editor"/>
+
+    <body>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Faq\Block\Adminhtml\Faqcategory\Edit" name="faq_category_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Netbaseteam\Faq\Block\Adminhtml\Faqcategory\Edit\Tabs" name="faq_category_edit_tabs">
+                <block class="Netbaseteam\Faq\Block\Adminhtml\Faqcategory\Edit\Tab\Main" name="faq_category_edit_tab_main"/>
+                <block class="Netbaseteam\Faq\Block\Adminhtml\Faqcategory\Edit\Tab\Design" name="faq_category_edit_tab_design"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">faq_category_edit_tab_main</argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">design_section</argument>
+                    <argument name="block" xsi:type="string">faq_category_edit_tab_design</argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">attachment_faqs</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Select FAQ</item>
+                        <item name="title" xsi:type="string">Select FAQ</item>
+                        <item name="url" xsi:type="helper" helper="Netbaseteam\Faq\Helper\Data::getFAQGridUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cmsmart_navigation>
+            <general>
+                <enable>1</enable>
+                <display_mode>2</display_mode>
+                <type_of_show>1</type_of_show>
+                <show_all_attribute>0</show_all_attribute>
+                <allow_multiple>1</allow_multiple>
+            </general>
+            <stock_filter>
+                <enable>1</enable>
+                <position>1</position>
+                <url_param>in-stock</url_param>
+            </stock_filter>
+            <rating_filter>
+                <enabled>1</enabled>
+                <label>Rating</label>
+            </rating_filter>
+        </cmsmart_navigation>
+    </default>
+</config>

@@ -1,0 +1,12 @@
+
+<div id="crosssell-to-product-list" style="display:none">
+    <?= $block->getChildHtml(); ?>
+    <script>
+        require(["jquery","mage/mage"],function($) {
+            $(function(){
+                $('#crosssell-to-product-list').mage('newCrosssellProductDialog');
+            });
+        });
+    </script>
+</div>
+

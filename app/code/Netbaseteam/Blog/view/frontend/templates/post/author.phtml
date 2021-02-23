@@ -1,0 +1,38 @@
+<?php
+	$authorInfos = $block->getAuthorInfo();
+?>
+
+<div class="author-title">
+	<h2>
+		<strong><?php echo __('author') ?></strong>
+	</h2>
+</div>
+
+<div class="author-content">
+	<div class="author-wrapper">
+		<?php if ($authorInfos['author_avatar']): ?>
+			<div class="author-avatar">
+				<img src="<?php echo $authorInfos['author_avatar']; ?>" title="Athor Avatar" />
+			</div>
+		<?php endif ?>
+
+		<?php if ($authorInfos['author_name']): ?>
+			<h3 class="author-name"><?php echo __($authorInfos['author_name']);?></h3>
+		<?php endif ?>
+		<?php if ($authorInfos['author_description']): ?>
+			<div class="author-description">
+				<?php echo __($authorInfos['author_description']); ?>
+			</div>
+		<?php endif ?>
+		<?php if ($authorInfos['author_email']): ?>
+			<div class="author-contact">
+				<div class="email">
+					<span>
+						<i class="fa fa-envelope"></i>
+						<span><?php echo __($authorInfos['author_email']); ?></span>
+					</span>
+				</div>
+			</div>
+		<?php endif ?>
+	</div>
+</div>

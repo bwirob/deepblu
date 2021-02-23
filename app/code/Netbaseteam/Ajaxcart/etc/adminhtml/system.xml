@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+		<tab id="cmsmart" translate="label" sortOrder="1000">
+            <label>NetBase Team</label>
+        </tab>
+		
+        <section id="ajaxcart" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Ajaxcart</label>
+            <tab>cmsmart</tab>
+            <resource>Netbaseteam_Ajaxcart::config_ajaxcart</resource>
+            <group id="view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Ajaxcart View Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Ajaxcart On Frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="show_product_image" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Product Image</label>
+                    <comment>Display product image in notification when adding product to cart successfully</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="animate_image_fly" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable flying product image effect</label>
+                    <comment>When adding product to cart, product image will fly to mini cart</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				
+            </group>
+
+            <group id="display_popup" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                 <label>Dispaly Popup Option</label>
+
+                 <field id="popsucess_title" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ajax Cart Popup Title</label>
+                    <comment>Title of popup confirm</comment>
+                </field>
+
+                <field id="time_mess_pop" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Time to Close Popup Message(in seconds)</label>
+                    <comment>If set to 0, confirmation dialog will not hide automatically.</comment>
+                </field>
+
+
+                <field id="popup_background" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Popup Background Color</label>
+                    <frontend_model>Netbaseteam\Ajaxcart\Block\Config\Color</frontend_model> 
+                </field>
+                
+                <field id="title_background" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title Background Color</label>
+                    <frontend_model>Netbaseteam\Ajaxcart\Block\Config\Color</frontend_model> 
+                </field>
+
+                 <field id="color_text" translate="label" type="text" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Popup Text Color </label>
+                    <frontend_model>Netbaseteam\Ajaxcart\Block\Config\Color</frontend_model> 
+                </field>
+
+
+            </group>
+
+
+        </section>
+    </system>
+</config>

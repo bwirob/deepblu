@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cmsmart_opc>
+            <general>
+                <enable_in_frontend>1</enable_in_frontend>
+                <opc_title>One Step Checkout</opc_title>
+                <opc_discount_enable>1</opc_discount_enable>
+                <onepage_checkout_comments_enabled>1</onepage_checkout_comments_enabled>
+            </general>
+
+            <delivery_date>
+                <active>1</active>
+                <format>yy-mm-dd</format>
+                <disabled>-1</disabled>
+                <hourMin>8</hourMin>
+                <hourMax>22</hourMax>
+            </delivery_date>
+            <gift_wrap>
+                <enable>1</enable>
+                <type>1</type>
+                <amount>5</amount>
+            </gift_wrap>
+            <google_suggest_address>
+                <enable>1</enable>
+                <api_key>AIzaSyB4-LJz5kbD48ZAki_EVYuZC3yTUpbCObM</api_key>
+            </google_suggest_address>
+        </cmsmart_opc>
+    </default>
+</config>

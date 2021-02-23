@@ -1,0 +1,105 @@
+<?php
+
+$shopID = $this->getRequest()->getParam('shop');
+$shopData = $this->getShopData();
+?>
+<div id="seller-profile-content">
+    <div>
+        <div class="cmsmar-mp-title">
+            <h3>About</h3>
+        </div>
+        <div class="clearfix">
+            <div>
+                <div>
+                    <div>
+                        <div>
+                            <strong>BUSINESS INFO</strong>
+                        </div>
+                        <div>
+                            <div><img src="https://www.facebook.com/rsrc.php/v3/yG/r/Ah3XbB5f3O_.png" alt=""></div>
+                            <div class="create_at">
+                                <span>Started on <?php echo date("F j, Y", strtotime(($shopData['created_at']))); ?></span>
+                            </div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <strong>CONTACT INFO</strong>
+                        </div>
+                        <div>
+                            <div class="contact_number">
+                                <span >Call <?php echo $shopData['contact_number']; ?></span>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div class="shop_email">
+                            <a href="#">
+                                <span><?php echo $shopData['shop_email']; ?></span>
+                            </a>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div class="shop_location">
+                            <iframe width="100%" height="250px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="//maps.google.com/maps?q=<?php echo $shopData['shop_location'];?>&amp;output=embed"></iframe>
+                            <br />
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <strong>MORE INFO</strong>
+                    </div>
+                    <div id="mp_shop_contact_on_web">
+                        <div>
+                            <img src="https://www.facebook.com/rsrc.php/v3/yh/r/EF1PxBUsani.png" alt="">
+                        </div>
+                        <div class="contact_on_web">
+                            <div>Contact on the social web</div>
+                            <?php if($shopData['twitter_id']):?>
+                                <a href="//twitter.com/<?php echo $shopData['twitter_id']?>" target="blank">
+                                    <span class="mp-social-twitter" title="Check in Twitter"></span>
+                                </a>
+                            <?php endif;?>
+                            <?php if($shopData['facebook_id']):?>
+                                <a href="//facebook.com/<?php echo $shopData['facebook_id']?>" target="blank">
+                                    <span class="mp-social-facebook" title="Check in Facebook"></span>
+                                </a>
+                            <?php endif;?>
+                            <?php if($shopData['gplus_id']):?>
+                                <a href="//plus.google.com/<?php echo $shopData['gplus_id']?>" target="blank">
+                                    <span class="mp-social-gplus" title="Check in Google Plus"></span>
+                                </a>
+                            <?php endif;?>
+                            <?php if($shopData['youtube_id']):?>
+                                <a href="//www.youtube.com/user/<?php echo $shopData['youtube_id']?>" target="blank">
+                                    <span class="mp-social-youtube" title="Check in Youtube"></span>
+                                </a>
+                            <?php endif;?>
+                            <?php if($shopData['instagram_id']):?>
+                                <a href="//instagram.com/<?php echo $shopData['instagram_id']?>" target="blank">
+                                    <span class="mp-social-instagram" title="Check in Instagram"></span>
+                                </a>
+                            <?php endif;?>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div id="mp_shop_description">
+                        <div>
+                            <img src="https://www.facebook.com/rsrc.php/v3/yh/r/EF1PxBUsani.png" alt="">
+                        </div>
+                        <div class="shop_desciption">
+                            <div>About</div>
+                            <span><?php echo $shopData['shop_description']; ?></span>
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

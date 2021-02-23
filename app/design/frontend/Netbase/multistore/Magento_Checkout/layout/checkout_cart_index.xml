@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"> 
+    <body>
+    	<referenceContainer name="page.wrapper"> 
+		    <container name="container.wrapper.breadcrumbs" htmlClass="wrapper-breadcrumbs" htmlTag="div" before="main.content">
+		    	<container name="wrapper.breadcrumbs" htmlClass="wrapper-breadcrumbs-inner" htmlTag="div" />
+		    	<block class="Magento\Cms\Block\Block" name="checkout.cart.breadcrumbs.image">
+				    <arguments>
+				        <argument name="block_id" xsi:type="string">image-checkout</argument>
+				    </arguments>
+				</block>
+		    </container>
+		</referenceContainer>
+		<referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">        
+                <argument name="crumbName" xsi:type="string">My Shopping Cart</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">My Shopping Cart</item>
+                    <item name="label" xsi:type="string">My Shopping Cart</item>
+                </argument>
+            </action>
+        </referenceBlock> 
+		<move element="page.main.title" destination="wrapper.breadcrumbs" before="-"/>
+		<move element="breadcrumbs" destination="wrapper.breadcrumbs" after="page.main.title"/>
+		<move element="category.image" destination="container.wrapper.breadcrumbs" after="wrapper.breadcrumbs"/>
+        <move element="checkout.cart.coupon" destination="checkout.cart.container" after="checkout.cart.form"/>
+        <move element="checkout.cart.shipping" destination="checkout.cart.container" after="checkout.cart.coupon"/>
+
+
+        <referenceBlock name="checkout.cart.crosssell" remove="true"/>  
+    </body>
+</page>

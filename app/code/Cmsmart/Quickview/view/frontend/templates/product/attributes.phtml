@@ -1,0 +1,10 @@
+<?php
+$helper = $this->helper('Cmsmart\Quickview\Helper\Data');
+$showMoreInfo = $helper->showMoreInfo();
+?>
+<?php if($showMoreInfo) {
+    echo $this->getLayout()
+        ->createBlock("Magento\Catalog\Block\Product\View\Attributes")
+        ->setTemplate("Magento_Catalog::product/view/attributes.phtml")->toHtml();
+}
+?>

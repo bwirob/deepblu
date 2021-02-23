@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="empty" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="sales_order_shipment"/>
+    <body>
+        <referenceContainer name="page.main.title">
+            <block class="Magento\Sales\Block\Order\Info" name="order.status" template="order/order_status.phtml"/>
+            <block class="Magento\Sales\Block\Order\Info" name="order.date" template="order/order_date.phtml"/>
+            <container name="order.actions.container" htmlTag="div" htmlClass="actions-toolbar order-actions-toolbar">
+                <block class="Netbaseteam\Marketplace\Block\Sale\Order\Info\Buttons" as="buttons" name="marketplace.order.info.buttons" />
+            </container>
+        </referenceContainer>
+        <referenceContainer name="sales.order.info.buttons">
+            <block class="Magento\Sales\Block\Order\Info\Buttons\Rss" as="buttons.rss" name="sales.order.info.buttons.rss" cacheable="false"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Shipping\Block\Order\Shipment" name="sales.order.shipment"  after="sales.order.info.links" cacheable="false">
+                <block class="Magento\Shipping\Block\Items" name="shipment_items" template="Netbaseteam_Marketplace::sale/order/shipment/items.phtml">
+                    <block class="Magento\Framework\View\Element\RendererList" name="sales.order.shipment.renderers" as="renderer.list"/>
+                    <block class="Magento\Shipping\Block\Tracking\Link" name="track-all-link" template="tracking/link.phtml">
+                        <arguments>
+                            <argument name="label" xsi:type="string">Track All Shipments</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Sales\Block\Order\Comments" name="shipment_comments" template="order/comments.phtml"/>
+                </block>
+            </block>
+        </referenceContainer>
+        <block class="Magento\Framework\View\Element\Template" name="additional.product.info" template="Magento_Theme::template.phtml"/>
+        <referenceBlock name="sales.order.info.links">
+            <arguments>
+                <argument name="css_class" xsi:type="string">items order-links</argument>
+            </arguments>
+            <block class="Magento\Sales\Block\Order\Link" name="sales.order.info.links.information">
+                <arguments>
+                    <argument name="path" xsi:type="string">marketplace/order/view</argument>
+                    <argument name="label" xsi:type="string" translate="true">Items Ordered</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Sales\Block\Order\Link" name="sales.order.info.links.invoice">
+                <arguments>
+                    <argument name="key" xsi:type="string">Invoices</argument>
+                    <argument name="path" xsi:type="string">marketplace/order_invoice/view</argument>
+                    <argument name="label" xsi:type="string" translate="true">Invoices</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Sales\Block\Order\Link" name="sales.order.info.links.shipment">
+                <arguments>
+                    <argument name="key" xsi:type="string">Shipments</argument>
+                    <argument name="path" xsi:type="string">marketplace/order_shipment/view</argument>
+                    <argument name="label" xsi:type="string" translate="true">Order Shipments</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Sales\Block\Order\Link" name="sales.order.info.links.creditmemo">
+                <arguments>
+                    <argument name="key" xsi:type="string">Creditmemos</argument>
+                    <argument name="path" xsi:type="string">marketplace/order_creditmemo/view</argument>
+                    <argument name="label" xsi:type="string" translate="true">Refunds</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

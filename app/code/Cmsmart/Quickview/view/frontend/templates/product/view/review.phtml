@@ -1,0 +1,24 @@
+<?php
+$helper = $this->helper('Cmsmart\Quickview\Helper\Data');
+$showReview = $helper->showReview();
+
+?>
+<?php if ($showReview) {
+    echo $this->getLayout()
+        ->createBlock("Magento\Catalog\Block\Product\View")
+        ->setTemplate("Magento_Catalog::product/view/review.phtml")->toHtml();
+}
+
+?>
+<style>
+    <?php if(!$showReview) :?>
+    #tab-label-reviews-title {
+        display: none !important;
+    }
+
+    #reviews {
+        display: none !important;
+    }
+
+    <?php endif;?>
+</style>

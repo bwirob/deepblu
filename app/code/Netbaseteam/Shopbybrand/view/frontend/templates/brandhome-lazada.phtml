@@ -1,0 +1,215 @@
+<?php
+$_shopbybrand = $this->getCollection(); 
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance(); 
+$storeManager = $objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+$appState = $objectManager->get('\Magento\Framework\App\State');
+$categoryCollection = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Category\CollectionFactory');
+$categories = $categoryCollection->create();
+$categories->addAttributeToSelect('*');
+$category1 = explode(",",$this->getCategorybrand());
+$branddisplay = [];
+$count11 = 0;
+$j=1;
+$h=1; 
+$currentStore = $storeManager->getStore(); 
+$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$logopath = $this->getViewFileUrl('Netbaseteam_Shopbybrand::images/logo.png');
+$brandpath = $this->getViewFileUrl('Netbaseteam_Shopbybrand::images/search.png');
+?>
+
+<section id="brandhome-tab" class="brandhome brandhome-lazada home-product-tab-lazada home-product-tab container">
+	<div class="inner-block">
+		<div class="row">
+			<div class="col-md-12 col-xs-12">
+				<div class="home-product-title">
+					<div class="row">
+						<div class="title-left col-md-3 col-xs-4">
+							<h3><?php echo __('brand product') ?></h3> 
+						</div>
+						<div class="home-product-tab-title col-md-9 col-xs-8"> 
+							<ul class="tabs tabs-brand">
+								<?php  
+									foreach ($categories as $category) {
+										if (in_array($category->getId(),$category1)) {  
+										?> 
+											<li class="tab-link <?php if($h == 1){ echo 'current loaded';} ?>" data-tab="brand-tab-<?php echo $h;?>">
+												<a href="JavaScript:Void(0);">
+													<?php echo $category->getName();?>
+												</a>
+											</li>         
+											<?php 
+											$h ++;   
+										}  
+									}
+								?>
+							</ul>
+							<div class="navslider-tabs navslider-brand">
+								<a class="prev" href="#"><i class='icon-angle-circled-left'></i></a>
+								<a class="next" href="#"><i class='icon-angle-circled-right'></i></a>
+							</div> 
+						</div> 
+					</div>
+				</div>
+			</div>  
+			<div class="col-md-12 col-xs-12 home-product-tab-content">
+				<?php  
+					foreach ($categories as $category) {  
+						if (in_array($category->getId(),$category1)) { ?>
+								<div id="brand-tab-<?php echo $j; ?>" class="tab-content <?php if($j == 1){ echo 'show loaded';} ?>">
+									<?php if($j == 1): ?>
+										<div class="home-product-slider nb-list products-grid">
+											<?php
+												$cateinstance = $objectManager->create('Magento\Catalog\Model\CategoryFactory');
+												$cateid = $category->getId();
+												$allcategoryproduct = $cateinstance->create()->load($cateid)->getProductCollection()->addAttributeToSelect('*');
+												foreach ($allcategoryproduct as $product) {
+													foreach ($_shopbybrand as $shopbybrandItem){
+														$path = $mediaUrl.'//Shopbybrand'.'//'.$shopbybrandItem->getLogo(); 
+														$productbrand= explode("&", $shopbybrandItem->getproduct_ids());
+														$brandid = $shopbybrandItem->getBrandId();
+														foreach ($productbrand as $item){
+															if ($item == $product->getId() ) { ?> 
+																<?php if (in_array($brandid,$branddisplay)): ?>
+																	
+																<?php else: ?>
+																	<?php if ($count11<11): ?>
+																		<div class="item">
+																			<a href=""><img src=" <?php echo $path ?>" alt=""/></a>
+																		</div>
+																		<?php 
+																			array_push($branddisplay,$brandid);
+																			$count11++;
+																		?>
+																	<?php endif ?>
+																<?php endif ?>
+																<?php  
+															}
+														}
+													}
+												}
+											?>
+										</div>
+									<?php endif; ?>
+								</div>
+							<?php
+						$j++;
+						}
+					} 
+				?>
+			</div>
+		</div>
+	</div>
+</section>
+<script type="text/javascript">
+	//Home product tab
+	require([
+     'jquery',
+     'jquery/ui'
+    ],
+    function($, tabs) {
+        $(document).ready(function(){
+			$('#brandhome-tab ul.tabs li').click(function(){
+				var tab_id = $(this).attr('data-tab');
+				var	cat_id = $(this).attr('data-rev');
+				//console.log(cat_id);
+				$('#brandhome-tab ul.tabs li').removeClass('current');
+				$('#brandhome-tab .tab-content').removeClass('current');
+				$('#brandhome-tab .tab-content').removeClass('show');
+
+				$(this).addClass('show');
+				$("#brandhome-tab #"+tab_id).addClass('show');
+				$("#brandhome-tab li[data-rev='"+cat_id+"']").addClass('current');
+				if (!$(this).hasClass('loaded')) {
+					var param = {
+						'type' : 'brand',
+						'categoryId': cat_id,
+						'home' :'lazada'
+						}
+
+					$.ajax({
+							url: "<?php echo $this->getUrl('shopbybrand/index/request') ?>",
+							data: param,
+							type: "POST",
+							showLoader: true,
+							dataType: 'json'
+						}).done(function (data) {
+							var html = $(data.brand_view); 
+							$("#brandhome-tab #"+tab_id).html(html);
+					});
+				}
+
+				$(this).addClass('loaded'); 
+			})  
+		});
+    });
+    require(['jquery','owlCarousel'], function($) {
+       jQuery(document).ready(function() {		
+			$('.tabs-brand').owlCarousel({
+				items: 6,
+				itemsCustom: [ 
+					[320, 1], 
+					[480, 2], 
+					[640, 3],
+					[768, 3], 
+					[1024, 4], 
+					[1200, 6]
+				],
+				pagination: false,
+				slideSpeed : 800,
+				addClassActive: true,
+				scrollPerPage: false,
+				touchDrag: true,
+				autoWidth:true,
+				afterAction: function (e) {
+					if(this.$owlItems.length > this.options.items){
+						$('.navslider-brand').show();
+					}else{
+						$('.navslider-brand').hide();
+					}
+				}
+				//scrollPerPage: true,
+			});
+			$('.navslider-brand .prev').on('click', function(e){
+				e.preventDefault();
+				$('.tabs-brand').trigger('owl.prev');
+			});
+			$('.navslider-brand .next').on('click', function(e){
+				e.preventDefault();
+				$('.tabs-brand').trigger('owl.next');
+			});
+			$('#brandhome-tab div.products-grid').owlCarousel({
+				items: 4,
+				itemsCustom: [ 
+					[0, 1], 
+					[480, 2], 
+					[640, 3], 
+					[800, 3],  
+					[1024, 4],  
+					[1200, 5],
+					[1900, 6] 
+				],
+				pagination: false,
+				slideSpeed : 800,
+				addClassActive: true,
+				scrollPerPage: false,
+				touchDrag: false,
+				afterAction: function (e) {
+					if(this.$owlItems.length > this.options.items){
+						$('#brandhome-tab .navslider').show();
+					}else{
+						$('#brandhome-tab .navslider').hide();
+					}
+				}
+				//scrollPerPage: true,
+			});
+			$('#brandhome-tab .navslider .prev').on('click', function(e){
+				e.preventDefault();
+				$('#brandhome-tab div.products-grid').trigger('owl.prev');
+			});
+			$('#brandhome-tab .navslider .next').on('click', function(e){
+				e.preventDefault();
+				$('#brandhome-tab div.products-grid').trigger('owl.next');
+			}); 
+		});
+    });
+</script>

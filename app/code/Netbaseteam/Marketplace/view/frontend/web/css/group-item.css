@@ -1,0 +1,43 @@
+#maincontent .column.main{padding: 0}
+.page-layout-1column .offers-list .toolbar-products{position: relative;margin: 30px 0;}
+.offers-list .toolbar-products .modes{display: none}
+.column{float: left;padding: 0 15px;}
+.column .sell{
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+.panel{margin: 0;background: none}
+.page-header{margin: 0;padding: 0}
+.column .backTo{margin-top: 30px}
+.column .moreOfferFor h3{margin: 0}
+.offers-list .title-seller{margin-bottom: 40px}
+.offers-list{clear: both}
+.items-offers{
+    box-shadow: 0 0 4px rgba(0,0,0,.2);
+    margin: 15px 0;
+    padding: 15px;
+    background: #fff;
+    overflow: hidden;
+}
+#condition-all,.order-products-toolbar{clear: both}
+.list-main .items .title{
+    font-weight: bold;
+    font-size: 16px;
+}
+.item{margin-bottom: 20px;border-bottom: 1px solid #ddd;overflow: hidden;padding: 15px 0}
+.action.primary{padding: 7px 3px;}
+@media(max-width:320px){
+    .action.primary{padding: 7px 9px}
+    .column{padding: 5px 0}
+    #condition-all .item .column{padding: 7px 0}
+}
+@media(max-width:425px){
+    .toolbar-products span.limiter-text,.toolbar-products .toolbar-sorter.sorter .sorter-label,.toolbar .pager .limiter .limiter-label,.limiter span.limiter-text{display: none}
+    .toolbar-products .field.limiter,.pager .toolbar-amount,.pager .limiter{display: inline-block}
+}
+@media(max-width:767px){
+    .action.primary{padding: 7px 15px}
+    .item .column{float: right;clear: right}
+    .list-main .items{display: none}
+    #condition-all .item .img{float: left}
+}

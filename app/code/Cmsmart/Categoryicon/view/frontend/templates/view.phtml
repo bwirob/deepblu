@@ -1,0 +1,30 @@
+<?php
+/**
+ * Categoryicon template for separate item
+ *
+ */
+
+/**
+ * @var $this Cmsmart\Categoryicon\Block\View
+ * @see Cmsmart\Categoryicon\Block\View
+ */
+?>
+<?php $_categoryiconItem = $this->getCategoryicon(); ?>
+    <div class="categoryicon_item_subtitle">
+        <?php echo $this->formatDate($_categoryiconItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_categoryiconItem->getAuthor()) ?>
+    </div>
+
+<div class="categoryicon_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_categoryiconItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_categoryiconItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="categoryicon_item_content"><?php echo $_categoryiconItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+       <tab id="cmsmart" translate="label" sortOrder="1000">
+            <label>Cms-Mart</label>
+        </tab>
+
+        <section id="shopbybrand" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Shop By Brand</label>
+            <tab>cmsmart</tab>
+            <resource>Netbaseteam_Shopbybrand::config_shopbybrand</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="Enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled Module On Fontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="latest_category" translate="label" type="multiselect" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category in Homepage</label>
+                    <source_model>Netbaseteam\Shopbybrand\Model\Config\Categorylist</source_model>
+                </field>
+            </group>
+                
+            <group id="list_page_settings" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>List Page Settings</label>
+                <field id="Page_Title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Title</label>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                </field>
+                <field id="Show_Brand_Name" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Brand Name</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                </field>
+                <field id="Show_Product_Count" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Count</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                </field>
+                <field id="Show_Featured_Brands" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Featured Brands</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                </field>
+                <field id="Logo_Width" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Logo Thumbnail Width</label>
+                    <comment>Default Width: 170px</comment>
+                    <depends>
+                        <field id="shopbybrand/Sidebar_Settings/Enabled">1</field>
+                    </depends>
+                    
+                </field>
+                <field id="Logo_Height" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Logo Thumbnail Height</label>
+                    <comment>Default Width: 150px</comment>
+                    <depends>
+                        <field id="shopbybrand/Sidebar_Settings/Enabled">1</field>
+                    </depends>
+                    
+                </field>
+            </group>
+           
+            <group id="Product_Page_Settings" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Detail Page Settings</label>               
+                <field id="Show_Brand" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Brand</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                </field>
+                <field id="Show_Related_Products_By_Brand" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Related Products By Brand</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                </field>
+                <field id="Number_Of_Related_Products_By_Brand_Will_Display" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Number Of Related Products By Brand</label>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                        <field id="shopbybrand/Product_Page_Settings/Show_Related_Products_By_Brand">1</field>
+                    </depends>
+                </field>
+                <field id="Show_Brand_Name" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Brand Name</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                        
+                    </depends>
+                </field>
+                <field id="Show_Product_Count" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Count</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                        
+                    </depends>
+                </field>
+            </group>
+            <group id="Sidebar_Settings" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sidebar Settings</label>
+                <field id="Enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                </field>
+                <field id="Show_Brand_Name" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Brand Name</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                        <field id="shopbybrand/Sidebar_Settings/Enabled">1</field>
+                    </depends>
+                   
+                </field>
+                <field id="Show_Product_Count" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Count</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="shopbybrand/Sidebar_Settings/Enabled">1</field>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                    
+                </field>
+                <field id="Logo_Width" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Logo Thumbnail Width</label>
+                    <comment>Default Width: 60px</comment>
+                    <depends>
+                        <field id="shopbybrand/Sidebar_Settings/Enabled">1</field>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                    
+                </field>
+                <field id="Logo_Height" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Logo Thumbnail Height</label>
+                    <comment>Default Height: 50px</comment>
+                    <depends>
+                        <field id="shopbybrand/Sidebar_Settings/Enabled">1</field>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                    </depends>
+                    
+                </field>
+                <field id="Default_Number_Of_Brands_Will_Display" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Number Of Brands</label>
+                    <depends>
+                        <field id="shopbybrand/general/Enabled">1</field>
+                         <field id="shopbybrand/Sidebar_Settings/Enabled">1</field>
+                    </depends>
+                </field>  
+            </group>
+        </section>
+    </system>
+</config>

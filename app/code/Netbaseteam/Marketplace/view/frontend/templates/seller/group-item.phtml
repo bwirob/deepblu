@@ -1,0 +1,121 @@
+<?php
+use Magento\Framework\App\Action\Action;
+
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$sameProducts = $block->getLoadedProductCollection();
+$mainSeller = $block->getSellerData();
+
+$shopID = $mainSeller['shop_id'];
+?>
+<?php if(count($sameProducts)) : ?>
+    <div class="offers-list">
+    <?php echo $block->getToolbarHtml() ?>
+    <?php echo $block->getAdditionalHtml() ?>
+        <div>
+            <div class="title-seller">
+                <h3>Available from all sellers&nbsp;
+                    <span>(<?php echo count($sameProducts)?>&nbsp;offers)</span>
+                </h3>
+            </div>
+            <div>
+                <div class="list-main">
+                    <div class="list items">
+                        <div class="col-md-2 col-sm-2 col-xs-6 column title">&nbsp;</div>
+                        <div class="col-md-2 col-sm-2 col-xs-6 column title">Price</div>
+                        <div class="col-md-2 col-sm-2 col-xs-6 column title">Condition</div>
+                        <div class="col-md-4 col-sm-4 col-xs-6 column title">Seller Information</div>
+                        <div class="col-md-2 col-sm-2 col-xs-6 column title">Buying Options</div>
+                    </div>
+                    <?php foreach($sameProducts as $product):?>
+                        <?php 
+                        $seller = $block->getSellerData($product->getId());
+                        $shopID = $seller['shop_id'];
+                        $ratingAverage = $block->getRatingAverage($seller['id']);
+                        $countRating = $block->getCountRating($seller['id']);
+                        
+                        $specialPrice = $product->getSpecialPrice();
+                        if ($specialPrice) {
+                            $price = $specialPrice;
+                        } else {
+                            $price = $product->getPrice();
+                        }
+
+                        ?>
+                        <div id="condition-all" class="unit-offers-list">
+                            <div class="item">
+                                <div class="col-md-2 col-sm-2 col-xs-6 column img">
+                                    <?php $productImage = $block->getLayout()->createBlock('Magento\Catalog\Block\Product\ListProduct')->getImage($product, 'product_page_image_small');?>
+                                    <a href="<?php echo $product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                                        <?php echo $productImage->toHtml(); ?>
+                                    </a>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-6 column">
+                                    <div>
+                                        <?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($price, true, false);?>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-6 column">
+                                    New
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-6 column">
+                                    <div class="field seller-name">
+                                    <span>
+                                        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>" class="action"><span><?php echo $seller['shop_title'] ?></span></a>
+                                    </span>
+                                    </div>
+                                    <div class="field clearfix labels"></div>
+                                    
+                                    <?php if($ratingAverage): ?>
+                                        <div class="field seller-rating">
+                                            <div class="rating-summary">
+                                                <div title="<?php echo (int)$ratingAverage; ?>%" class="rating-result">
+                                                    <span style="width:<?php echo (int)$ratingAverage; ?>%"><span><?php echo (int)$ratingAverage; ?>%</span></span>
+                                                </div>
+                                            </div>
+                                            <span>(<?php echo (int)$countRating?> total ratings)</span>
+                                            
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-6 column">
+                                    <?php if ($product->isSaleable()): ?>
+                                        <?php $postParams = $block->getAddToCartPostParams($product); ?>
+                                        <form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+                                            <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+                                            <input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+                                            <?php echo $block->getBlockHtml('formkey')?>
+                                                <button type="submit"
+                                                        title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
+                                                        class="action tocart primary">
+                                                    <span><?php /* @escapeNotVerified */
+                                                        echo __('Add to Cart') ?></span>
+                                                </button>
+                                        </form>
+                                    <?php else: ?>
+                                        <?php if ($product->getIsSalable()): ?>
+                                            <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+                                        <?php else: ?>
+                                            <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach;?>              
+                </div>
+            </div>
+        </div>
+    </div>
+<?php if ($block->getPagerHtml()): ?>
+    <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); // for display pager block which we create in block file.   ?></div>
+<?php endif ?>
+<?php if (!$block->isRedirectToCartEnabled()) : ?>
+    <script type="text/x-magento-init">
+    {
+        "[data-role=tocart-form], .form.map.checkout": {
+            "catalogAddToCart": {}
+        }
+    }
+    </script>
+<?php endif; ?>
+<?php endif;?>

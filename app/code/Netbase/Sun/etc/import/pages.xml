@@ -1,0 +1,613 @@
+<root>
+    <pages>
+		<cms_item>
+		    <title>Faq</title>
+		    <identifier>faq</identifier>
+		    <content><![CDATA[
+				<script type="text/javascript">
+				require(['jquery','bootstrap'], function ($) {
+
+				});
+				</script>
+				<div class="faq-content-nb">
+				<ul class="nav nav-tabs col-md-3">
+				<li class="active"><i class="fa fa-truck"></i><a href="#menu">Shipping &amp; Delivery</a></li>
+				<li><i class="fa fa-exclamation-triangle"></i><a href="#menu1">Returns &amp; Refunds</a></li>
+				<li><i class="fa fa-paypal"></i><a href="#menu2">Orders &amp; Payment</a></li>
+				<li><i class="fa fa-archive"></i><a href="#menu3">Products on Multistore</a></li>
+				<li><i class="fa fa-tag"></i><a href="#menu4">Vouchers &amp; Promotions</a></li>
+				<li><i class="fa fa-user"></i><a href="#menu5">Your Account</a></li>
+				<li><i class="fa fa-bookmark"></i><a href="#menu6">Marketplace</a></li>
+				</ul>
+
+				<div class="tab-content col-md-9">
+				<div id="menu" class="tab-pane fade in active">
+				<div class="container-faq">
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo">What is Lorem Ipsum?</button>
+				<div id="demo" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo01">Why do we use it?</button>
+				<div id="demo01" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo02">Where does it come from?</button>
+				<div id="demo02" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo03">Where can I get some?</button>
+				<div id="demo03" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo04">Lorem Ipsum is simply dummy text of the printing and typesetting industry?</button>
+				<div id="demo04" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo05">Why do we use it?</button>
+				<div id="demo05" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo06">Where can I get some?</button>
+				<div id="demo06" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				</div>
+				</div>
+				<div id="menu1" class="tab-pane fade">
+				<div class="container-faq">
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo1">Simple collapsible</button>
+				<div id="demo1" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				</div>
+				</div>
+				<div id="menu2" class="tab-pane fade">
+				<div class="container-faq">
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo2">Simple collapsible</button>
+				<div id="demo2" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				</div>
+				</div>
+				<div id="menu3" class="tab-pane fade">
+				<div class="container-faq">
+				<div class="each-faq"><button class="btn-info" type="button" data-toggle="collapse" data-target="#demo3">Simple collapsible</button>
+				<div id="demo3" class="collapse" style="padding: 20px; background: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<script type="text/javascript" xml="space">// 
+				 require(['jquery'], function ($) {
+									$(document).ready(function($) {
+										$(".nav-tabs a").click(function() {
+											$(this).tab('show');
+										});
+									});
+							});			
+				// </script>
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Contact us</title>
+		    <identifier>contact-us</identifier>
+		    <content><![CDATA[
+				<div class="contact-us">
+				<div class="row">
+				<h1 class="animation-element banner-nb-bottom">We Are Here To Help You</h1>
+				<p class="animation-element banner-nb-bottom">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+				<div class="col-xs-12 col-md-3 each-contact animation-element scroll-zoom-out"><i class="fa fa-map-marker"></i>
+				<div class="each-text"><strong>HEAD OFFICEL</strong> <br /> <span>121 King Street, Melbourne </span> <br /> <span>Victoria 3000 Australia</span></div>
+				</div>
+				<div class="col-xs-12 col-md-3 each-contact animation-element scroll-zoom-out"><i class="fa fa-futbol-o"></i>
+				<div class="each-text"><strong>SUPPORTL</strong> <br /> <span>+0 (899) 123-456789 </span> <br /> <span>+0 (899) 123-456789</span></div>
+				</div>
+				<div class="col-xs-12 col-md-3 each-contact animation-element scroll-zoom-out"><i class="fa fa-phone"></i>
+				<div class="each-text"><strong>BILING</strong> <br /> <span>+0 (899) 123-456789 </span> <br /> <span>+0 (899) 123-456789</span></div>
+				</div>
+				<div class="col-xs-12 col-md-3 each-contact animation-element scroll-zoom-out"><i class="fa fa-comments"></i>
+				<div class="each-text"><strong>LIVE CHAT</strong> <br /> <span>+0 (899) 123-456789 </span> <br /> <span>+0 (899) 123-456789</span></div>
+				</div>
+				</div>
+				</div>
+				<div class="box-map animation-element banner-nb-bottom">
+				<p><iframe style="border: 0;" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=1920&amp;hl=en&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" width="1920" height="600" frameborder="0" allowfullscreen=""></iframe></p>
+				<div class="contact-us contact-us-1">{{block class="Magento\Contact\Block\ContactForm" template="form.phtml"}}</div>
+				</div>
+				<script type="text/javascript" xml="space">// 
+				// 
+				require(['jquery'], function ($) {
+					$(document).ready(function($) {
+
+					  	var $animation_elements = $('.animation-element');
+						var $window = $(window);
+
+						function check_if_in_view() {
+						  var window_height = $window.height();
+						  var window_top_position = $window.scrollTop();
+						  var window_bottom_position = (window_top_position + window_height);
+						 
+						  $.each($animation_elements, function() {
+						    var $element = $(this);
+						    var element_height = $element.outerHeight();
+						    var element_top_position = $element.offset().top;
+						    var element_bottom_position = (element_top_position + element_height);
+						 
+						    //check to see if this current container is within viewport
+						    if ((element_bottom_position >= window_top_position) &&
+						        (element_top_position <= window_bottom_position)) {
+						      $element.addClass('in-view');
+						    } else {
+						      $element.removeClass('in-view');
+						    }
+						  });
+						}
+
+						$window.on('scroll resize', check_if_in_view);
+						$window.trigger('scroll');
+					});
+				});
+				// 
+				// </script>
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>About us</title>
+		    <identifier>about-us</identifier>
+		    <content><![CDATA[
+				<p>{{block class="Magento\\Cms\\Block\\Block" block_id="get-to-about"}} {{block class="Magento\\Cms\\Block\\Block" block_id="mul-about"}} {{block class="Magento\\Cms\\Block\\Block" block_id="our-about"}} {{block class="Magento\\Cms\\Block\\Block" block_id="our-history-about"}}</p>
+				<p>{{block class="Cmsmart\Brandcategory\Block\Brandcategory" template="Cmsmart_Brandcategory::brand_view.phtml"}}</p>
+				<p></p>
+				<script type="text/javascript" xml="space">// 
+				require(['jquery'], function ($) {
+					$(document).ready(function($) {
+					  	var $animation_elements = $('.animation-element');
+						var $window = $(window);
+
+						function check_if_in_view() {
+						  var window_height = $window.height();
+						  var window_top_position = $window.scrollTop();
+						  var window_bottom_position = (window_top_position + window_height);
+						 
+						  $.each($animation_elements, function() {
+						    var $element = $(this);
+						    var element_height = $element.outerHeight();
+						    var element_top_position = $element.offset().top;
+						    var element_bottom_position = (element_top_position + element_height);
+						 
+						    //check to see if this current container is within viewport
+						    if ((element_top_position <= window_bottom_position)) {
+						      $element.addClass('in-view');
+						    } else {
+						      $element.removeClass('in-view');
+						    }
+						  });
+						}
+
+						$window.on('scroll resize', check_if_in_view);
+						$window.trigger('scroll');
+					});
+				});
+				// </script>
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Home MultiStore</title>
+		    <identifier>home</identifier>
+		    <content><![CDATA[
+				{{block class="Magento\Cms\Block\Block" block_id="home_slider_01"}}{{block class="Netbase\Product\Block\Bestseller" template="Netbase_Product::Bestseller.phtml"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_01"}}{{block class="Netbase\Product\Block\Deals" template="Netbase_Product::Deals.phtml"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_02"}}{{block class="Netbase\Product\Block\NewProduct" template="Netbase_Product::New.phtml"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_03"}}{{block class="Netbase\Product\Block\ProductByAttribute" category_id="21"&nbsp;attribute_id="nb_featured" template="Netbase_Product::Featured.phtml"}}{{block class="Cmsmart\Brandcategory\Block\Brandcategory" template="Cmsmart_Brandcategory::brand_view.phtml"}}
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Home MultiStore 3</title>
+		    <identifier>home-3</identifier>
+		    <content><![CDATA[
+				{{block class="Magento\Cms\Block\Block" block_id="home_slider_03"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_05"}}<div class=" bestseller bestseller-home-3">{{block class="Netbase\Product\Block\Bestseller" template="Netbase_Product::Bestseller-no-img.phtml"}}</div>{{block class="Magento\Cms\Block\Block" block_id="home_banner_02"}}{{block class="Netbase\Product\Block\Deals" template="Netbase_Product::Deals.phtml"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_03"}}<div class="new-6 container">{{block class="Netbase\Product\Block\NewProduct" template="Netbase_Product::New-no-img.phtml"}}</div>{{block class="Magento\Cms\Block\Block" block_id="home_service_01"}}<div class="featured-6 container">
+    			{{block class="Netbase\Product\Block\ProductByAttribute" category_id="21"&nbsp;attribute_id="nb_featured" template="Netbase_Product::Featured-no-img.phtml"}} 
+				</div>{{block class="Cmsmart\Brandcategory\Block\Brandcategory" template="Cmsmart_Brandcategory::brand_view.phtml"}}
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Home MultiStore 2</title>
+		    <identifier>home-2</identifier>
+		    <content><![CDATA[
+				{{block class="Magento\Cms\Block\Block" block_id="home_slider_02"}}{{block class="Magento\Cms\Block\Block" block_id="home_service_01"}}{{block class="Netbase\Product\Block\Deals" template="Netbase_Product::Deals.phtml"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_04"}}{{block class="Netbase\Product\Block\Bestseller" template="Netbase_Product::Bestseller.phtml"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_03"}}{{block class="Netbase\Product\Block\NewProduct" template="Netbase_Product::New.phtml"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_02"}}{{block class="Netbase\Product\Block\ProductByAttribute" category_id="21"&nbsp;attribute_id="nb_featured" template="Netbase_Product::Featured.phtml"}}{{block class="Cmsmart\Brandcategory\Block\Brandcategory" template="Cmsmart_Brandcategory::brand_view.phtml"}}
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Home MultiStore 6</title>
+		    <identifier>home-6</identifier>
+		    <content><![CDATA[
+				{{block class="Magento\Cms\Block\Block" block_id="home_slider_06"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_08"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_09"}}<div class=" bestseller bestseller-home-3">{{block class="Netbase\Product\Block\Bestseller" template="Netbase_Product::Bestseller-no-img.phtml"}}</div>{{block class="Magento\Cms\Block\Block" block_id="home_banner_07"}}<div class="new-6 container">{{block class="Netbase\Product\Block\NewProduct" template="Netbase_Product::New-no-img.phtml"}}</div>{{block class="Magento\Cms\Block\Block" block_id="home_banner_03"}}<div class="featured-6 container">
+    			{{block class="Netbase\Product\Block\ProductByAttribute" category_id="21"&nbsp;attribute_id="nb_featured" template="Netbase_Product::Featured-no-img.phtml"}} 
+			</div>{{block class="Cmsmart\Brandcategory\Block\Brandcategory" template="Cmsmart_Brandcategory::brand_view.phtml"}}
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Home MultiStore 4</title>
+		    <identifier>home-4</identifier>
+		    <content><![CDATA[
+				{{block class="Magento\Cms\Block\Block" block_id="home_slider_04"}}{{block class="Magento\Cms\Block\Block" block_id="home_service_02"}}<div class="bestseller bestseller-6">{{block class="Netbase\Product\Block\Bestseller" template="Netbase_Product::Bestseller-all-pro.phtml"}}</div>{{block class="Magento\Cms\Block\Block" block_id="home_banner_03"}}<div class="new-home-4 container">{{block class="Netbase\Product\Block\NewProduct" template="Netbase_Product::New-all-pro.phtml"}}</div>{{block class="Magento\Cms\Block\Block" block_id="home_banner_06"}}<div class="featured-home-4 container">{{block class="Netbase\Product\Block\ProductByAttribute" category_id="21"&nbsp;attribute_id="nb_featured" template="Netbase_Product::Featured-all-pro.phtml"}}</div>{{block class="Magento\Cms\Block\Block" block_id="home_banner_07"}}{{block class="Cmsmart\Brandcategory\Block\Brandcategory" template="Cmsmart_Brandcategory::brand_view.phtml"}}
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Home MultiStore 5</title>
+		    <identifier>home-5</identifier>
+		    <content><![CDATA[
+				{{block class="Magento\Cms\Block\Block" block_id="home_slider_05"}}{{block class="Magento\Cms\Block\Block" block_id="home_banner_02"}}{{block class="Magento\Cms\Block\Block" block_id="home_service_02"}}<div class="bestseller bestseller-6">{{block class="Netbase\Product\Block\Bestseller" template="Netbase_Product::Bestseller-all-pro.phtml"}}</div>{{block class="Magento\Cms\Block\Block" block_id="home_banner_07"}}<div class="new-home-4 container">{{block class="Netbase\Product\Block\NewProduct" template="Netbase_Product::New-all-pro.phtml"}}</div>{{block class="Magento\Cms\Block\Block" block_id="home_banner_04"}}<div class="featured-home-4 container">{{block class="Netbase\Product\Block\ProductByAttribute" category_id="21"&nbsp;attribute_id="nb_featured" template="Netbase_Product::Featured-all-pro.phtml"}}</div>{{block class="Cmsmart\Brandcategory\Block\Brandcategory" template="Cmsmart_Brandcategory::brand_view.phtml"}}
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>404 Not Found</title>
+		    <identifier>no-route</identifier>
+		    <content><![CDATA[
+				<h1 style="text-align: center; margin-bottom: -20px; font-size: 70px; margin-top: 95px;"><span style="display: inline-block; vertical-align: middle; font-size: 280px;color:#293544;">404</span><i class="porto-icon-doc" style="display: inline-block; vertical-align: middle;"></i></h1>
+				<div class="desc-404" style="text-align: center;">
+				<p style="text-align: center; font-size: 14px; width: 520px; display: inline-block; color: #5c5c5c; line-height: 25px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p>
+				</div>
+				<div class="gotohome" style="text-align: center; margin-top: 13px;">
+				<p><a style="display: inline-block; padding: 12px 20px; border: 2px solid #ff9900; color: #ff9900;" href="{{config path="web/unsecure/base_url"}}">Back to Homepage</a></p>
+				</div>
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>404 Not Found 2</title>
+		    <identifier>no-route-2</identifier>
+		    <content><![CDATA[
+				<h1 style="text-align:center;margin: 20px 0; font-size: 70px;margin-top:70px"><span style="display: inline-block;vertical-align:middle;">404</span><i class="porto-icon-doc" style="display: inline-block;vertical-align:middle;"></i></h1>
+				<p style="text-align:center; font-size: 15px;">You might want to check that URL again or head over to our <a href="{{config path="web/unsecure/base_url"}}">homepage.</a></p>
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Customer Service</title>
+		    <identifier>customer-service</identifier>
+		    <content><![CDATA[
+				<div class="customer-service cms-content">
+				  <div class="cms-content-important">
+				      <h2>Luma Delivery and Returns</h2>
+				      <p>We hope you love shopping with Luma. Here are our delivery and returns policies to help make sure we meet your expectations. <a href="{{store url="contact"}}">Contact Us.</a></p>
+				  </div>
+
+				  <h2>Shipping and Delivery</h2>
+				  <p>Shipping and Delivery is the charge for internet order processing, item selection, packaging, transport and handling. We don’t guarantee delivery times, but we do our best to provide accurate estimates.</p>
+
+				  <p>Deliveries occur only on weekdays. Shipping and Delivery charges are subject to change and are determined when you order. Estimated delivery time assumes orders are placed before 12:00 noon (PST). Orders you place with Luma late on Friday or on Saturday will not be processed until Monday. Charges may be added to orders with Priority, Overnight and International shipping if we try unsuccessfully to deliver your order more than once.</p>
+
+				  <p>Delivery addresses in Alaska, Hawaii, Puerto Rico, and Guam should add an additional $5.00 charge for standard Shipping & Delivery. Orders arrive in 7 to 9 business days when ordered before 12:00 noon (PST).</p>
+
+				  <div class="table-wrapper">
+				      <table>
+				          <caption>Shipping and Delivery</caption>
+				          <thead>
+				              <tr>
+				                  <th><strong>Merchandise total *</strong></th>
+				                  <th><strong>STANDARD</strong><br />5&mdash;7 day shipping **</th>
+				                  <th><strong>PRIORITY</strong><br />2&mdash;3 day shipping **</th>
+				                  <th><strong>OVERNIGHT</strong><br />Next business day **</th>
+				              </tr>
+				          </thead>
+				          <tbody>
+				              <tr>
+				                  <th>Up to $200</th>
+				                  <td>$16</td>
+				                  <td>$26</td>
+				                  <td>$33</td>
+				              </tr>
+				              <tr>
+				                  <th>$200.01&mdash;500.00</th>
+				                  <td>$21</td>
+				                  <td>$31</td>
+				                  <td>$38</td>
+				              </tr>
+				              <tr>
+				                  <th>$500.01&mdash;1000.00</th>
+				                  <td>$29</td>
+				                  <td>$39</td>
+				                  <td>$46</td>
+				              </tr>
+				              <tr>
+				                  <th>Over $1000.00</th>
+				                  <td>$34</td>
+				                  <td>$44</td>
+				                  <td>$51</td>
+				              </tr>
+				          </tbody>
+				      </table>
+				  </div>
+
+				  <p>
+				      <small>*before tax and additional charges</small><br />
+				      <small>**after processing if ordered by 12:00 noon PST</small>
+				  </p>
+
+				  <h2 style="margin-top: 40px;">Returns and Replacements</h2>
+				  <p>We want you to be completely happy with your Luma order. If for any reason you are not satisfied, we will gladly accept your timely return of unworn, unwashed, or defective merchandise. Used merchandise cannot be returned unless defective. Returned merchandise should include the vendor packaging and tags and be in the same condition as when it was received. A pickup and/or restock fee may apply. Merchandise must be returned within 30 days of receipt of merchandise.</p>
+
+				  <h3>Returning Gifts</h3>
+				  <p>When returning a gift, a Luma Gift Card will be issued to the gift recipient for the amount of the returned merchandise. The card can be used for purchases from any Luma store, and online. In compliance with Federal law, for gifts valued at more than $2,000.00, the recipient will receive a check rather than an Luma Gift Card.</p>
+
+				  <h3>Returning Merchandise by Mail</h3>
+				  <p>On the back of the packing slip enclosed with your Luma order, please note the reason(s) for return and whether you wish to  exchange the item(s) or receive a credit/refund (depending on the original form of  payment).</p>
+				  <p>Enclose the return section of the packing slip with your item(s). Please use one  of the return labels provided on the front of your packing slip to ensure proper  return address and credit information. Restricted items must be returned using  ground transportation.</p>
+				  <p>Please allow 10 to 14 days for Luma to process your return.</p>
+				</div>
+
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Privacy Policy</title>
+		    <identifier>privacy-policy-cookie-restriction-mode</identifier>
+		    <content><![CDATA[
+				<div class="privacy-policy cms-content">
+			    <div class="privacy-policy-content">
+			        <p>This website ("website") is operated by Luma Inc., which includes Luma stores, and Luma Private Sales. This privacy policy only covers information collected at this website, and does not cover any information collected offline by Luma. All Luma websites are covered by this privacy policy.</p>
+
+			        <h2 id="privacy-policy-title-1">Luma Security</h2>
+			        <p>Personal information provided on the website and online credit card transactions are transmitted through a secure server. We are committed to handling your personal information with high standards of information security. We take appropriate physical, electronic, and administrative steps to maintain the security and accuracy of personally identifiable information we collect, including limiting the number of people who have physical access to our database servers, as well as employing electronic security systems and password protections that guard against unauthorized access.</p>
+
+			        <p>Our website uses encryption technology, like Secure Sockets Layer (SSL), to protect your personal information during data transport. SSL encrypts ordering information such as your name, address, and credit card number. Our Customer Care center and stores also operate over a private, secure network. Please note that email is not encrypted and is not considered to be a secure means of transmitting credit card information.</p>
+
+			        <h2 id="privacy-policy-title-2">Luma Privacy Policy</h2>
+			        <p>To help us achieve our goal of providing the highest quality products and services, we use information from our interactions with you and other customers, as well as from other parties. Because we respect your privacy, we have implemented procedures to ensure that your personal information is handled in a safe, secure, and responsible manner. We have posted this privacy policy in order to explain our information collection practices and the choices you have about the way information is collected and used.</p>
+
+			        <p>As we continue to develop the Luma website and take advantage of advances in technology to improve the services we offer, this privacy policy likely will change. We therefore encourage you to refer to this policy on an ongoing basis so that you understand our current privacy policy.</p>
+
+			        <h2 id="privacy-policy-title-3">The Information We Collect</h2>
+			        <p>Generally, you may browse the Luma website without providing any personally identifiable information. However, we may ask you to provide personally identifiable information at various times and places on this website. In some cases, if you choose not to provide us with the requested information, you may not be able to access all parts of this website or participate in all of its features, pricing, and product selection.</p>
+
+			        <p>We may collect the following information:</p>
+			        <ul>
+			            <li>name</li>
+			            <li>contact information including email address</li>
+			            <li>demographic information such as postcode, preferences and interests</li>
+			            <li>other information relevant to customer surveys and/or offers</li>
+			        </ul>
+			        <p>For the exhaustive list of cookies we collect see the <a href="#privacy-policy-title-10">List of cookies we collect</a> section. From your purchases and other interactions with us, we obtain information concerning the specific products or services you purchase or use. When you visit this website, our web server automatically collects anonymous information such as log data and IP addresses, and may collect general information concerning your location. We may use the automatically collected information for a number of purposes, such as improving our site design, product assortments, customer service, and special promotions.</p>
+			        <h2 id="privacy-policy-title-4">How We Use The Information We Collect</h2>
+			        <p>We require this information to understand your needs and provide you with a better service, and in particular for the following reasons:</p>
+			        <ul>
+			            <li>Internal record keeping.</li>
+			            <li>We may use the information to improve our products and services.</li>
+			            <li>We may periodically send promotional emails about new products, special offers or other information which we think you may find interesting using the email address which you have provided.</li>
+			            <li>From time to time, we may also use your information to contact you for market research purposes. We may contact you by email, phone, fax or mail. We may use the information to customize the website according to your interests.</li>
+			        </ul>
+
+			        <h2 id="privacy-policy-title-5">Security</h2>
+			        <p>We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.</p>
+
+			        <h2 id="privacy-policy-title-6">Others With Whom We Share Your Information.</h2>
+			        <p><b>The Luma Group:</b> All of the above information that we collect, as described  above, may be shared among all Luma entities, including Luma Venia and Luma  Terra stores, website and Private Sales.</p>
+
+			        <p><b>Service Providers:</b> We also may disclose information to outside companies that  help us bring you the products and services we offer. For example, we may work  with an outside company to: (a) manage a database of customer information; (b)  assist us in distributing emails; (c) assist us with direct marketing and data  collection; (d) provide us storage and analysis; (d) provide fraud prevention; and  (e) provide other services designed to assist us in maximizing our business potential. We require that these outside companies agree to keep confidential all information we share with them and to use the information only to perform their obligations in our agreements with them.</p>
+
+			        <p><b>Other Companies:</b> We may provide information to carefully selected outside companies when we believe their products or services may be of interest to you.</p>
+
+			        <p><b>Business Transitions:</b> We may transfer or share a copy of personal information about you in the event that Luma or one of its properties, affiliates, or subsidiaries goes through a business transition, such as a merger, being acquired by another company, or selling a portion of its assets. You will be notified via email or prominent notice on our website prior to a change of ownership or control of your personal information, if your personal information will be used contrary to this policy. However, nothing in this Privacy Policy is intended to interfere with the ability of Luma to transfer all or part of its business and/or assets to an affiliate or independent third party at any time, for any purpose, without any limitation whatsoever.</p>
+
+			        <p>Luma specifically reserves the right to transfer or share a copy of personally identifiable information collected from its websites to the buyer of that portion of its business relating to that information.</p>
+
+			        <p><b>Compliance with Law:</b> We may provide access to information when legally required to do so, to cooperate with police investigations or other legal proceedings, to protect against misuse or unauthorized use of our website, to limit our legal liability, and to protect our rights or to protect the rights, property, or safety of visitors of this website or the public.</p>
+
+			        <p>Luma partners with advertising companies to place our advertising on publisher websites on the Internet. These advertising companies collect anonymous information about your visits to our web site. This technology involves the use of third party cookies that allow them to develop personalized advertising so that it directly relates to offers that may be of interest to you. You may choose to opt-out of this service we have with our third-party advertising partner. We may also use Luma cookies to provide similar enhanced online marketing to you based on your interests and preferences. You may also choose to opt out of these enhanced online marketing ads.</p>
+
+			        <h2 id="privacy-policy-title-7">Your Choices Regarding Use Of The Information We Collect</h2>
+
+			        <p>You have several choices regarding our handling of your nonpublic personally identifiable information.</p>
+
+			        <p>
+			            <b>Direct Mail or Telephone Marketing:</b> If you shop at the Luma or Private Sales stores and wish to be removed from the list of customers that receive direct mail or telemarketing calls, please either write to Luma Customer Care at 112 West  34th Street, 18th Flr. New York, NY 10120 or call +1 800-403-8838. If you choose to write to us, please include your name, address, and credit card account number (if you have one), and state one of the following:
+			            <ul>
+			                <li>"NO MAIL OFFERS" (if you don't want to receive offers by mail);</li>
+			                <li>"NO PHONE OFFERS" (if you don't want to receive offers by phone);</li>
+			                <li>"NO PHONE OR MAIL OFFERS" (if you don't want to receive either).</li>
+			            </ul>
+			        </p>
+
+			        <p>Because customer lists often are prepared well in advance of an offering  (sometimes a few months before the offer is made), you may continue to receive  some offers after you send us a request not to use your information for specified  marketing purposes. We appreciate your patience and understanding in giving us  time to carry out your request.</p>
+
+			        <h2 id="privacy-policy-title-8">Your California Privacy Rights</h2>
+			        <p>Under California Civil Code sections 1798.83-1798.84, California residents are  entitled to ask us for a notice describing what categories of personal customer  information we share with third parties or corporate affiliates for those third  parties or corporate affiliates' direct marketing purposes. That notice will identify  the categories of information shared and will include a list of the third parties and  affiliates with which it was shared, along with their names and addresses. If you  are a California resident and would like a copy of this notice, please submit a  written request to the following address: Luma Customer Care, 112 West 34th  Street, 18th Floor, New York, NY 10120. Please allow 30 days for a response.</p>
+
+			        <h2 id="privacy-policy-title-9">Cookies, Web Beacons, and How We Use Them</h2>
+			        <p>A cookie is a small file which asks permission to be placed on your computer's hard drive. Once you agree, the file is added and the cookie helps analyze web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences.</p>
+
+			        <p>We use traffic log cookies to identify which pages are being used. This helps us analyze data about web page traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system.</p>
+
+			        <p>Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us. You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.</p>
+
+			        <p>A "web beacon" or "pixel tag" or "clear gif" is typically a one-pixel image, used to pass information from your computer or mobile device to a website.</p>
+
+			        <p>We use cookies and web beacons to keep track of what you have in your shopping cart and to remember you when you return to the website as well as to identify the pages you click on during your visit to our site and the name of the website you visited immediately before clicking to the Luma website. We use this information to improve our site design, product assortments, customer service, and special promotions. You can, of course, disable cookies and web beacons on your computer by indicating this in the preferences or options menus in your browser. However, it is possible that some parts of our website will not operate correctly if you disable cookies. We may also use web beacons, and other technologies, to help track whether our communications are reaching you, to measure their effectiveness, or to collect certain non-personal information about your computer, device, or browser in order to allow us to better design future communications to you.</p>
+
+			        <p>We may contract with third parties who may use cookies and web beacons and collect information on our behalf or provide services such as credit card processing, shipping, promotional services, or data management. We call them our Customer Care Partners. These third parties are prohibited by our contract with them from sharing that information with anyone other than us or our other Customer Care Partners.</p>
+
+			        <h2 id="privacy-policy-title-10">List of cookies we collect</h2>
+			        <p>The table below lists the cookies we collect and the information they store.</p>
+			        <table class="data-table">
+			            <thead>
+			                <tr>
+			                    <th>COOKIE name</th>
+			                    <th>COOKIE Description</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr>
+			                    <th>CART</th>
+			                    <td>The association with your shopping cart.</td>
+			                </tr>
+			                <tr>
+			                    <th>CATEGORY_INFO</th>
+			                    <td>Allows pages to be displayed more quickly.</td>
+			                </tr>
+			                <tr>
+			                    <th>COMPARE</th>
+			                    <td>The items that you have in the Compare Products list.</td>
+			                </tr>
+			                <tr>
+			                    <th>CUSTOMER</th>
+			                    <td>An encrypted version of your customer id.</td>
+			                </tr>
+			                <tr>
+			                    <th>CUSTOMER_AUTH</th>
+			                    <td>An indicator if you are signed into the store.</td>
+			                </tr>
+			                <tr>
+			                    <th>CUSTOMER_INFO</th>
+			                    <td>An encrypted version of the customer group you belong to.</td>
+			                </tr>
+			                <tr>
+			                    <th>CUSTOMER_SEGMENT_IDS</th>
+			                    <td>Stores your Customer Segment ID</td>
+			                </tr>
+			                <tr>
+			                    <th>EXTERNAL_NO_CACHE</th>
+			                    <td>A flag that, indicates whether caching is on or off.</td>
+			                </tr>
+			                <tr>
+			                    <th>FRONTEND</th>
+			                    <td>Your session ID on the server.</td>
+			                </tr>
+			                <tr>
+			                    <th>GUEST-VIEW</th>
+			                    <td>Allows guests to edit their orders.</td>
+			                </tr>
+			                <tr>
+			                    <th>LAST_CATEGORY</th>
+			                    <td>The last category you visited.</td>
+			                </tr>
+			                <tr>
+			                    <th>LAST_PRODUCT</th>
+			                    <td>The last product you looked at.</td>
+			                </tr>
+			                <tr>
+			                    <th>NEWMESSAGE</th>
+			                    <td>Indicates whether a new message has been received.</td>
+			                </tr>
+			                <tr>
+			                    <th>NO_CACHE</th>
+			                    <td>Indicates whether it is allowed to use cache.</td>
+			                </tr>
+			                <tr>
+			                    <th>PERSISTENT_SHOPPING_CART</th>
+			                    <td>A link to information about your cart and viewing history if you have asked the site.</td>
+			                </tr>
+			                <tr>
+			                    <th>RECENTLYCOMPARED</th>
+			                    <td>The items you recently compared.</td>
+			                </tr>
+			                <tr>
+			                    <th>STF</th>
+			                    <td>Information on products you emailed to friends.</td>
+			                </tr>
+			                <tr>
+			                    <th>STORE</th>
+			                    <td>The store view or language you have selected.</td>
+			                </tr>
+			                <tr>
+			                    <th>USER_ALLOWED_SAVE_COOKIE</th>
+			                    <td>Indicates whether a customer authorized cookies.</td>
+			                </tr>
+			                <tr>
+			                    <th>VIEWED_PRODUCT_IDS</th>
+			                    <td>The products that you recently looked at.</td>
+			                </tr>
+			                <tr>
+			                    <th>WISHLIST</th>
+			                    <td>An encrypted list of products added to your wish list.</td>
+			                </tr>
+			                <tr>
+			                    <th>WISHLIST_CNT</th>
+			                    <td>The number of items in your wish list.</td>
+			                </tr>
+			            </tbody>
+			        </table>
+
+			        <h2 id="privacy-policy-title-11">Online Account Registration</h2>
+			        <p>To make online shopping faster and easier, you may register on the Luma website. As a registered customer, you only have to enter your shipping addresses and billing information once; they will be securely stored with us for your future use. Using your name and a password of your choice, you may access your account online at any time to add, delete, or change information. If you are using a public computer, we strongly encourage you to Sign Out when you finish shopping. Your information will still be stored with us but it will not be accessible to anyone else from that computer.</p>
+
+			        <h2 id="privacy-policy-title-12">Emails</h2>
+			        <p>You will receive promotional emails from us only if you have asked to receive them. If you do not want to receive email from Luma or its affiliates you can click on the "Unsubscribe" link at the bottom of any email communication sent by us. Please allow us 3 business days from when the request was received to complete the removal, as some of our promotions may already have been in process before you submitted your request.</p>
+
+			        <h2 id="privacy-policy-title-13">Acceptance</h2>
+			        <p>By using this website, you accept the policies set forth in this Privacy Policy.</p>
+
+			        <h2 id="privacy-policy-title-14">Questions for Luma?</h2>
+			        <p><a href="{{store url="contact"}}">Contact Us</a></p>
+			    </div>
+			    <div class="block block-collapsible-nav">
+			        <div class="title block-collapsible-nav-title" data-mage-init="{&quot;toggleAdvanced&quot;: {&quot;toggleContainers&quot;: &quot;#privacy-policy-nav-content&quot;, &quot;selectorsToggleClass&quot;: &quot;active&quot;}}">Privacy Menu</div>
+			        <div class="block-collapsible-content content" id="privacy-policy-nav-content">
+			            <ul class="items">
+			                <li class="item current"><a href="#privacy-policy-title-1">Luma Security</a></li>
+			                <li class="item"><a href="#privacy-policy-title-2">Luma Privacy Policy</a></li>
+			                <li class="item"><a href="#privacy-policy-title-3">The Information We Collect</a></li>
+			                <li class="item"><a href="#privacy-policy-title-4">How We Use The Information We Collect</a></li>
+			                <li class="item"><a href="#privacy-policy-title-5">Security</a></li>
+			                <li class="item"><a href="#privacy-policy-title-6">Others With Whom We Share Your Information.</a></li>
+			                <li class="item"><a href="#privacy-policy-title-7">Your Choices Regarding Use Of The Information We Collect</a></li>
+			                <li class="item"><a href="#privacy-policy-title-8">Your California Privacy Rights</a></li>
+			                <li class="item"><a href="#privacy-policy-title-9">Cookies, Web Beacons, and How We Use Them</a></li>
+			                <li class="item"><a href="#privacy-policy-title-10">List of cookies we collect</a></li>
+			                <li class="item"><a href="#privacy-policy-title-11">Online Account Registration</a></li>
+			                <li class="item"><a href="#privacy-policy-title-12">Emails</a></li>
+			                <li class="item"><a href="#privacy-policy-title-13">Acceptance</a></li>
+			                <li class="item"><a href="#privacy-policy-title-14">Questions for Luma?</a></li>
+			            </ul>
+			        </div>
+			    </div>
+			</div>
+
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+		<cms_item>
+		    <title>Enable Cookies</title>
+		    <identifier>enable-cookies</identifier>
+		    <content><![CDATA[
+				<div class="enable-cookies cms-content">
+				<p>"Cookies" are little pieces of data we send when you visit our store. Cookies help us get to know you better and personalize your experience. Plus they help protect you and other shoppers from fraud.</p>
+				<p style="margin-bottom: 20px;">Set your browser to accept cookies so you can buy items, save items, and receive customized recommendations. Here’s how:</p>
+				<ul>
+				<li><a href="https://support.google.com/accounts/answer/61416?hl=en" target="_blank">Google Chrome</a></li>
+				<li><a href="http://windows.microsoft.com/en-us/internet-explorer/delete-manage-cookies" target="_blank">Internet Explorer</a></li>
+				<li><a href="http://support.apple.com/kb/PH19214" target="_blank">Safari</a></li>
+				<li><a href="https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences" target="_blank">Mozilla/Firefox</a></li>
+				</ul>
+				</div>
+			]]></content>
+		    <is_active>1</is_active>
+		    <page_layout>1column</page_layout>
+		    <layout_update_xml><![CDATA[]]></layout_update_xml>
+		</cms_item>
+   </pages>
+</root>

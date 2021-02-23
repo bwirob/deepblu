@@ -1,0 +1,9 @@
+select[type="time"]:nth-child(4){
+	display: none;
+}
+div[class="control"]:nth-child(3){
+	display: none;
+}
+.hide{
+	display: none;
+}

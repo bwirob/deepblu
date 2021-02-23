@@ -1,0 +1,124 @@
+
+<?php 
+	$imagewidth = '200';
+	$imageheight = '200';
+	$mode = 'grid';
+	$image = 'brand_products_content_widget_grid';
+	$type = 'widget-new-grid';
+    $_shopbybrand = $this->getCollection(); 
+    $productID = $this->getProductId();
+    $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+    $currentStore = $storeManager->getStore();
+    $mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+    $rating = 'short';
+    $Number_Of_Related_Products_By_Brand_Will_Display = $this->getNumber_Of_Related_Products_By_Brand_Will_Display()+1;
+    $Show_Related_Products_By_Brand = $this->getShow_Related_Products_By_Brand();
+    $count = 0;
+?>
+<?php if ($Show_Related_Products_By_Brand == 1): ?>
+	<h2> RELATED PRODUCTS BY BRAND</h2>
+<style>
+.mySlides {display:none}
+</style>
+<div class="w3-content" >
+  <?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+	    <div class="items">
+	        <?php if (in_array($productID, explode('&', $shopbybrandItem->getproduct_ids()))): ?>
+	            
+	            <?php 
+	                $product = explode("&", $shopbybrandItem->getproduct_ids());   
+	            ?>
+	            <?php foreach ($product as $item): ?>
+	            	<?php if ($item != $productID && $count < $Number_Of_Related_Products_By_Brand_Will_Display): ?>
+		                <div class="items-box mySlides" style="width:50%">
+		                
+		                <?php $count ++;?>
+		                    <?php
+		                        $products=$this->getLoadProduct($item);
+		                        $image_url = $block->imageHelperObj()->init($products, 'product_page_image_small')->setImageFile($products->getFile())->resize($imagewidth, $imageheight)->getUrl();
+		                    ?>
+		                    <a href="<?php /* @ */echo $products->getProductUrl() ?>" class="product-item-photo">
+		                        <img src="<?php echo $image_url; ?>" alt="<?php echo $this->escapeHtml($products->getName()) ?>" />
+		                    </a>
+		                    <div class="product-item-details">
+		                        <strong class="product-item-name">
+		                            <a title="<?php echo $block->escapeHtml($products->getName()) ?>" href="<?php /* @ */echo $products->getProductUrl() ?>" class="product-item-link">
+		                                <?php echo $block->escapeHtml($products->getName()) ?>
+		                             </a>
+		                        </strong><?php echo $this->getProductPricetoHtml($products, $type);?>
+		                        <div>
+		                             <?php echo '$'.number_format($products->getFinalPrice(), 2); ?>
+		                             <?php echo $block->getReviewsSummaryHtml($item, $rating) ?>
+		                        </div>
+		                        <div class="product-item-actions">
+		                            <div class="actions-primary">
+		                                <?php if ($products->isSaleable()): ?>
+		                                    <?php if ($products->getTypeInstance()->hasRequiredOptions($products)): ?>
+		                                        <button class="action tocart primary" data-mage-init='{"redirectUrl":{"url":"<?php /* @ */echo $block->getAddToCartUrl($products) ?>"}}' type="button" title="<?php /* @ */echo __('Add to Cart') ?>">
+		                                            <span>
+		                                                <?php /* @ */echo __('Add to Cart') ?>
+		                                            </span>
+		                                        </button>
+		                                    <?php else: ?>
+		                                        <?php
+		                                            $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+		                                            $postData = $postDataHelper->getPostData($block->getAddToCartUrl($products) , ['product' => $products->getId() ]);
+		                                        ?>
+		                                        <button class="action tocart primary" data-post='<?php echo $postData; ?>' type="button" title="<?php echo __('Add to Cart') ?>">
+		                                            <span><?php echo __('Add to Cart') ?></span>
+		                                        </button>
+		                   
+		                                    <?php endif; ?>
+		                                <?php else: ?>
+		                                    <?php if ($products->getIsSalable()): ?>
+		                                        <div class="stock available">
+		                                            <span>
+		                                                <?php echo __('In stock') ?>
+		                                            </span>
+		                                        </div>
+		                                    <?php else: ?>
+		                                        <div class="stock unavailable">
+		                                            <span><?php /* @ */
+		                                                echo __('Out of stock') ?>
+		                                            </span>
+		                                        </div>
+		                                    <?php endif; ?>
+		                                <?php endif; ?>
+		                            </div>
+		                        </div>
+		                    </div>  
+		                </div>
+		            <?php endif ?>
+	            <?php endforeach; ?> 
+	        <?php endif ?>
+	    </div>
+	<?php endforeach; ?>
+</div>
+<script>
+var slideIndex = 1;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex = slideIndex+1;
+    if (slideIndex > x.length ) {slideIndex = 2;}
+    	x[slideIndex-2].style.display = "block";  
+   		x[slideIndex-1].style.display = "block"; 	
+    setTimeout(carousel, 2000); 
+}
+</script>
+	<br>
+	<br>
+	<div class="view-all">
+		<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+		        <?php if (in_array($productID, explode('&', $shopbybrandItem->getproduct_ids()))): ?>	            
+		            <a href="<?php echo $this->getUrl('shopbybrand/index/view',array('id'=>$shopbybrandItem->getbrand_id()));?>">View All</a>
+		        <?php endif ?>
+		<?php endforeach; ?> 		
+	</div>
+<?php endif ?>

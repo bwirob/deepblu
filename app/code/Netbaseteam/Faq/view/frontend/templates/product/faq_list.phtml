@@ -1,0 +1,109 @@
+<?php 
+	$helper = $this->helper('Netbaseteam\Faq\Helper\Data');
+	$faqData = $block->getFaqByProductView();
+?>
+<div id="faq-content">
+	<div class="contact-form primary actions-primary">
+		<button id="contact-btn" class="action submit">
+			<span><?php echo __('Ask Us Question'); ?></span>
+		</button>
+	</div>
+	<div class="faq-require">
+		<h3 class="faq-require-title"><?php echo __("FAQ's Related"); ?></h3>
+
+		<div class="faq-require-main">
+			<?php if ($block->hasFaqByProductView()): ?>
+				<?php foreach ($faqData as $faq): ?>
+					<div class="panel">
+						<div class="panel-heading">
+							<h4 class="panel-title" >
+								<a href="javascript:void(0);"><?php echo __(strip_tags($faq['question'])); ?></a>
+								<i data-icon="icon-plus-1" data-icon-active="icon-minus-1" class="fa icon-plus-1"></i>
+							</h4>
+						</div>
+						
+						<div class="panel-body">
+							<div class="panel-content"><?php echo __($faq['answer']); ?></div>
+							<div class="more-info">
+								<?php if ($helper->getShowFaqAthor()): ?>
+									<?php if (!empty($faq['author_name'])): ?>
+										<span class="author">
+											<?php echo __('Created by '.$faq['author_name']);?>
+										</span>
+									<?php endif ?>
+								<?php endif ?>
+								<?php if ($helper->getShowFaqCreatedTime()): ?>
+									<?php if (!empty($block->getFormatDate($faq))): ?>
+										<span class="created-time">
+											<?php echo __('on '.$block->getFormatDate($faq));?>
+										</span>
+									<?php endif ?>
+								<?php endif ?>
+							</div>		
+						</div>
+						
+					</div>	
+				<?php endforeach ?>
+				
+			<?php else: ?>
+				<div class="non-result"><?php echo __('No FAQ Founded'); ?></div>
+			<?php endif ?>
+		</div>
+	</div>
+</div>
+<div style="clear: both;"></div>
+<script type="text/javascript">
+	require([
+    'jquery', 
+    'jquery/ui',
+    'Cmsmart_FAQ_Contact_Form'
+    ], function($){
+    	$(document).ready(function(){
+    		var enableShowFaq = "<?php echo $helper->getEnableFaqInProductPage(); ?>";
+    		var faqHeading = $('.faq-require .panel .panel-heading');
+    		if(enableShowFaq == '0'){
+    			$('#tab-label-faqlist').hide();
+    		}
+	    	$(faqHeading).click(function(){
+	    		var icon = $(this).children().find('i');
+	            if($(this).hasClass('panel-active')){
+	               $(this).removeClass('panel-active');
+	            }else{
+	                $(this).addClass('panel-active');
+	            }
+	            if($(icon).hasClass('icon-plus-1')){
+	                $(icon).removeClass('icon-plus-1');
+	                $(icon).addClass('icon-minus-1');
+	            }else{
+	                $(icon).removeClass('icon-minus-1');
+	                $(icon).addClass('icon-plus-1');
+	            }   
+	            $(this).next().fadeToggle('500',function(){});
+	    	});
+
+	    	$('#contact-btn').click(function(){
+		   		$('#mainform').show();
+			});
+
+
+	    	$('body').click(function(event) {		
+			    if ($('#form:visible').length&&!$(event.target).closest('#contact-btn').length&&!$(event.target).closest('#form').length) {
+			        $('#mainform').hide();
+			    };
+			});
+
+			$('#form .close-btn').click(function(){
+		   		$('#mainform').hide();
+			});
+
+    
+		});
+
+		
+	});
+    	
+  
+
+
+  
+</script>

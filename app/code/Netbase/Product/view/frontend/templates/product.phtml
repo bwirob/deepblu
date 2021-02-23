@@ -1,0 +1,26 @@
+<?php $_product = $this->getCollection(); ?>
+<?php if ($_product->getSize()): ?>
+<div class="product_list_view">
+    <?php foreach ($_product as $productItem): ?>
+        <div id="item_<?php echo $productItem->getId() ?>" class="product_list_item">
+            <h2>
+                <a title="  <?php echo $this->escapeHtml($productItem->getTitle()) ?>" href="<?php echo $this->getItemUrl($productItem) ?>">
+                    <?php echo $this->escapeHtml($productItem->getTitle()) ?>
+                </a>
+            </h2>
+
+            <div class="product_item_subtitle">
+                <?php echo $this->formatDate($productItem->getPublishedAt()) ?> |
+                <?php echo $this->escapeHtml($productItem->getAuthor()) ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($productItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($productItem->getTitle()); ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php echo $this->getPager() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Product.'); ?></span></div>
+<?php endif ?>

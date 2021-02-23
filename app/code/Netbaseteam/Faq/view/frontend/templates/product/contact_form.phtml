@@ -1,0 +1,37 @@
+<?php  
+	$helper = $this->helper('Netbaseteam\Faq\Helper\Data');
+?>
+<div id="mainform">
+	<form id="form" 
+	autocomplete="off" method="post" action="<?php echo $block->getFormAction(); ?>">
+		<?php echo $block->getBlockHtml('formkey'); ?>
+		<input type="hidden" name="product_ids" value="<?php echo $block->getProductId(); ?>" />
+		<input type="hidden" name="reindex_url" value="<?php echo $block->getCallBackUrl(); ?>" />
+		<input type="hidden" name="store_ids" value="<?php echo $block->getStoreId(); ?>" />
+		<div class="close-btn"></div>
+		<h3><?php echo __('Ask Us Question'); ?></h3>
+		<p id="returnmessage"></p>
+		<label><?php echo __('Name:');?> <span class="validate">*</span></label>
+		<input type="text" name="author_name" data-validate="{required:true}" id="name" placeholder="Name"/>
+		<label><?php echo __('Email:'); ?> <span class="validate">*</span></label>
+		<input type="text" name="author_email" data-validate="{required:true, 'validate-email':true}" id="email" placeholder="Email" />
+		<label><?php echo __('Question:'); ?> <span class="validate">*</span></label>
+		<textarea id="question" data-validate="{required:true}" placeholder="Enter Your Question..." name="question"></textarea>
+		<?php if ($helper->getEnableCaptchaValidate()): ?>
+			<?php echo $block->getChildHtml('product.faq.captcha'); ?>
+		<?php endif ?>
+		<input type="submit" id="submit" value="Send Question"/>
+
+	</form>
+</div>
+
+<script type="text/javascript">
+require([
+    'jquery',
+    'mage/mage'
+], function($){
+   var dataForm = $('#form');
+   dataForm.mage('validation', {});
+   $( '<span class="validate"> *</span>').insertAfter( "#form .captcha .label span" );
+});
+</script>

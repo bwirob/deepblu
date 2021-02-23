@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Netbaseteam_Marketplace::marketplace" title="Marketplace" module="Netbaseteam_Marketplace" sortOrder="30" resource="Netbaseteam_Marketplace::marketplace" />
+        <add id="Netbaseteam_Marketplace::marketplacee" title="Marketplace" module="Netbaseteam_Marketplace" sortOrder="20" resource="Netbaseteam_Marketplace::marketplacee" parent="Netbaseteam_Marketplace::marketplace" />
+        <add id="Netbaseteam_Marketplace::marketplace_seller" title="Manage Sellers" module="Netbaseteam_Marketplace" sortOrder="10" parent="Netbaseteam_Marketplace::marketplacee" action="marketplace/seller" resource="Netbaseteam_Marketplace::marketplace_seller"/>
+        <add id="Netbaseteam_Marketplace::marketplace_product" title="Manage Products" module="Netbaseteam_Marketplace" sortOrder="20" parent="Netbaseteam_Marketplace::marketplacee" action="marketplace/product" resource="Netbaseteam_Marketplace::marketplace_product"/>
+        <add id="Netbaseteam_Marketplace::marketplace_order" title="Manage Orders" module="Netbaseteam_Marketplace" sortOrder="30" parent="Netbaseteam_Marketplace::marketplacee" action="marketplace/order" resource="Netbaseteam_Marketplace::marketplace_order"/>
+        <add id="Netbaseteam_Marketplace::marketplace_transaction" title="Manage Transactions" module="Netbaseteam_Marketplace" sortOrder="40" parent="Netbaseteam_Marketplace::marketplacee" action="marketplace/transaction" resource="Netbaseteam_Marketplace::marketplace_transaction"/>
+        <add id="Netbaseteam_Marketplace::marketplace_vacation" title="Manage Vacations" module="Netbaseteam_Marketplace" sortOrder="50" parent="Netbaseteam_Marketplace::marketplacee" action="marketplace/vacation" resource="Netbaseteam_Marketplace::marketplace_vacation"/>
+        <add id="Netbaseteam_Marketplace::marketplace_locator" title="Manage Seller Locator" module="Netbaseteam_Marketplace" sortOrder="50" parent="Netbaseteam_Marketplace::marketplacee" action="marketplace/locator" resource="Netbaseteam_Marketplace::marketplace_locator"/>
+        <add id="Netbaseteam_Marketplace::marketplace_setting" title="Settings" module="Netbaseteam_Marketplace" sortOrder="90" parent="Netbaseteam_Marketplace::marketplacee" action="adminhtml/system_config/edit/section/netbaseteammp" resource="Netbaseteam_Marketplace::marketplace_setting"/>
+    </menu>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Netbaseteam_Marketplace::css/custom_map.css" />
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Marketplace\Block\Adminhtml\Locator\Edit" name="marketplace_locator_edit"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Netbaseteam\Marketplace\Block\Adminhtml\Locator\Edit\Renderer\Geomap" name="googlemaps.api" template="Netbaseteam_Marketplace::locator/geomap.phtml" />
+        </referenceContainer>
+    </body>
+</page>

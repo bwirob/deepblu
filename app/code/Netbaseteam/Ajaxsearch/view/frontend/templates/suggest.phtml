@@ -1,0 +1,58 @@
+<?php
+    $helper = $this->helper('Netbaseteam\Ajaxsearch\Helper\Data');
+    $helper_config = $this->helper('Netbase\Sun\Helper\Data');
+    $custom_search_border_radius = $helper_config->getConfig('sun_settings/header/custom_search_border_radius');
+?> 
+<?php if ($helper->getEnableConfig()): ?>
+	<span class="nb_loading"></span>
+	<span class="nb_remove"></span>
+	<span class="nb_custom_ie9" style="display:none;"></span>
+	<div id="nb_suggest" >
+		<div id="nb_suggest_cate" class="nb_suggest_word"></div>			
+		<div id="nb_cate"></div>		
+		<div id="nb_suggest_product" class="nb_suggest_word"></div>
+		<div id="nb_product"></div>		
+	</div>
+
+	<?php if ($helper->getSearchByCate()): ?>
+		<span class="nb_load_cate_icon" style="border-top-left-radius:<?php echo $custom_search_border_radius; ?>;border-bottom-left-radius:<?php echo $custom_search_border_radius; ?>" ><?php echo __('Shop by category'); ?><i class="icon-down-dir-3"></i></span>
+		<div id="nb_search_cate">
+			<button id="nb_button_cate" class="nb_button_cate" data-bind="" style="display:none">All Category</button>
+			<div class="nb_list_cate" style="display: none;">				
+				<?php
+                    echo $this->getLayout()->createBlock('Netbaseteam\Ajaxsearch\Block\Suggest')
+                            ->setTemplate('Netbaseteam_Ajaxsearch::top_categories_tree.phtml')->toHtml();
+                ?>	
+			</div>
+		</div>
+	<?php endif ?>	
+
+	<script type="text/javascript">
+		/* insert ajax search js when load page */
+		require(['jquery', 'Netbaseteam_Ajaxsearch/js/nb_ajaxsearch'], function($){ 
+			"use strict";
+		});
+			var enable = '<?php echo $helper->getEnableConfig(); ?>';
+			var baseUrl = '<?php echo $helper->getBaseUrl(); ?>';
+			var t_request = '<?php echo $helper->getRequestTime(); ?>';
+			var minchar = '<?php echo $helper->getMinchar(); ?>';
+			var NoResultText = '<?php echo __('No results found.'); ?>';
+			var searchByCates = '<?php echo $helper->getSearchByCate(); ?>';
+			var searchCate = '<?php echo $helper->getEnableSearchCate(); ?>';
+			var searchUrl = '<?php echo $this->getUrl('catalogsearch/result') ?>';
+			var getBaseMediaUrl = '<?php echo $helper->getBaseMediaUrl(); ?>'
+			var itemConfig = new Array();		
+			itemConfig['num_show'] = '<?php echo $helper->getNumProductShow(); ?>';
+			itemConfig['hightlight_text_color'] = '<?php echo $helper->getHightlightColor(); ?>';
+			itemConfig['show_price'] = '<?php echo $helper->getShowPrice(); ?>';
+			itemConfig['show_price'] = '<?php echo $helper->getShowPrice(); ?>';
+			itemConfig['width_popup'] = '<?php echo $helper->getWidthPopup(); ?>';
+			itemConfig['show_image'] = '<?php echo $helper->getShowImage(); ?>';
+			itemConfig['show_description'] = '<?php echo $helper->getShowDescription(); ?>';
+			itemConfig['show_review'] = '<?php echo $helper->getShowReview(); ?>';
+			itemConfig['show_rating'] = '<?php echo $helper->getShowRating(); ?>';
+			itemConfig['view_all'] = '<?php echo $helper->getViewAll(); ?>';	
+			itemConfig['NumDescription'] = '<?php echo $helper->getNumDescription(); ?>';
+	</script>
+<?php endif ?>
+<div class="ajaxsearch-media-url no-display"><?php echo $helper->getBaseMediaUrl(); ?></div>

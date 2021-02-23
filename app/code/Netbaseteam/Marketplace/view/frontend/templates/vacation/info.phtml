@@ -1,0 +1,96 @@
+<?php
+$vacation = $block->getVacation();
+?>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Vacation Details</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <form action="<?php echo $this->getUrl('marketplace/vacation/save', ['_secure' => $this->getRequest()->isSecure()]) ?>" method="post"  id="form-vacation-settings" data-mage-init='{"validation":{}}'>
+            <div class="netbaseteam-mp-vacation">
+                <fieldset class="info fieldset" id="seller-vacation">
+                    <button class="action submit primary" type="reset">
+                        <span><?php echo __('Reset') ?></span>
+                    </button>
+                    <button class="action submit primary" title="<?php echo __('Save') ?>" type="submit" id="save-btn">
+                        <span><?php echo __('Save') ?></span>
+                    </button>
+                    <?php echo $block->getBlockHtml('formkey')?>
+
+                    <fieldset class="fieldset info netbaseteam-mp-fieldset">
+                        <legend class="legend"></legend>
+
+                        <div class="field required">
+                            <label><?php echo __('Vacation Message') ?> : </label>
+                            <div class="control">
+                                <textarea type="text" class="required-entry input-text" name="vacation_message" id="vacation_message" /><?php echo $vacation['vacation_message']?></textarea>
+                            </div>
+                        </div>
+
+                        <div class="field required">
+                            <label><?php echo __('Date From') ?>:</label>
+                            <div class="input-box">
+                                <input type="text" name="date_from" id="date_from"
+                                       class="datepicker required-entry input-text"
+                                       value="<?php echo isset($vacation['date_to']) ? $this->formatDate($vacation['date_from']) : ''?>"/>
+                            </div>
+                        </div>
+
+                        <div class="field required">
+                            <label><?php echo __('Date To') ?>:</label>
+                            <div class="input-box">
+                                <input type="text" name="date_to" id="date_to"
+                                       class="datepicker required-entry input-text"
+                                       value="<?php echo isset($vacation['date_to']) ? $this->formatDate($vacation['date_to']) : ''?>"/>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label><?php echo __('Disable Type') ?> : </label>
+                            <div class="control">
+                                <select id="disable_type" class=" select validate-select" title="<?php echo __('Disable Type') ?>" name="disable_type">
+                                    <?php foreach ($block->getDisableType() as $set) { ?>
+                                        <option <?php echo ($vacation['disable_type'] == $set['value']) ? ('selected') : ('')?> value="<?php echo $set['value'] ?>"><?php echo $set['label'] ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field" id="add_to_cart_label" style="display: none">
+                            <label><?php echo __('Add To Cart Button Label') ?> : </label>
+                            <div class="control">
+                                <input type="text" class="input-text" name="add_to_cart_label" placeholder="The maximum length is 30 characters" maxlength="30"
+                                       value="<?php echo isset($vacation['add_to_cart_label']) ? $vacation['add_to_cart_label'] : ''?>"/>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label><?php echo __('Vacation Status') ?> : </label>
+                            <div class="control">
+                                <select id="vacation_status" class="select vacation_status" title="<?php echo __('Values Required') ?>" name="vacation_status">
+                                    <option <?php echo ($vacation['vacation_status'] == 0) ? ('selected') : ('')?> value="0"><?php echo __("Off"); ?></option>
+                                    <option <?php echo ($vacation['vacation_status'] == 1) ? ('selected') : ('')?> value="1"><?php echo __("On"); ?></option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "vacationInfo": {},
+            "admin_vendor": {}
+        }
+    }
+</script>

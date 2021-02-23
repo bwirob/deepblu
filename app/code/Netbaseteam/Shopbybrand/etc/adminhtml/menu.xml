@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Netbaseteam_Shopbybrand::shopbybrand" title="Shop By Brand" parent="Netbase_Sun::nb_all" module="Netbaseteam_Shopbybrand" sortOrder="30" resource="Netbaseteam_Shopbybrand::shopbybrand"/>
+        
+        <add id="Netbaseteam_Shopbybrand::shopbybrand_manage" title="Manage Brands" module="Netbaseteam_Shopbybrand" sortOrder="10" parent="Netbaseteam_Shopbybrand::shopbybrand" action="shopbybrand/index/" resource="Netbaseteam_Shopbybrand::manage"/>
+
+        <add id="Netbaseteam_Shopbybrand::shopbybrand_setting" title="Settings" module="Netbaseteam_Shopbybrand" sortOrder="20" parent="Netbaseteam_Shopbybrand::shopbybrand" action="adminhtml/system_config/edit/section/shopbybrand" resource="Netbaseteam_Shopbybrand::shopbybrand_setting"/>
+    </menu>
+</config>

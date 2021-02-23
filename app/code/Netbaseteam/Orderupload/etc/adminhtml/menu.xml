@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Netbaseteam_Orderupload::orderupload" title="Orderupload" parent="Netbase_Sun::nb_all" module="Netbaseteam_Shopbybrand" sortOrder="30" resource="Netbaseteam_Orderupload::orderupload"/>
+        <add id="Netbaseteam_Orderupload::orderupload_manage" parent="Netbaseteam_Orderupload::orderupload" title="Orderupload" module="Netbaseteam_Orderupload" sortOrder="10" action="adminhtml/system_config/edit/section/orderupload" resource="Netbaseteam_Orderupload::orderupload_manage"/>
+    </menu>
+</config>

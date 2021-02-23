@@ -1,0 +1,80 @@
+<?php 
+$attributes = $this->getAttributes();
+
+$product = $this->getProduct();
+?>
+
+<table id="datatable" class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>
+            <span>
+                <input type="checkbox" name="mpselectall" value="all"
+                    id="mpselectall"/>
+            </span>
+        </th>
+        <th><?php echo __('Attribute Code') ?></th>
+        <th><?php echo __('Attribute Label') ?></th>
+        <th><?php echo __('Required ') ?></th>
+        <th><?php echo __('Visible') ?></th>
+        <th><?php echo __('Searchable') ?></th>
+        <th><?php echo __('Compareable') ?></th>
+        <th><?php echo __('Use in Layered Navigation') ?></th>
+    </tr>
+    </thead>
+
+
+    <tbody>
+    <?php if ($attributes):  ?>
+        <?php foreach ($attributes as $attribute): ?>
+            <?php $attrCode = $attribute->getAttributeCode();
+
+            ?>
+            <tr>
+                <td>
+                    <span>
+                        <input type="checkbox" name="attribute_mass_select[]"
+                            class="mpcheckbox" <?php echo !empty($product) && !empty($product->getData("$attrCode")) ? 'checked' : ''?> value="<?php echo $attribute->getAttributeId(); ?>"/>
+                    </span>
+                </td>
+                <td><?php echo $attrCode; ?></td>
+                <td><?php echo $attribute->getFrontendLabel(); ?></td>
+                <td><?php echo $this->getYesNoLabel($attribute->getIsRequired()); ?></td>
+                <td><?php echo $this->getYesNoLabel($attribute->getIsVisible()); ?></td>
+                <td><?php echo $this->getYesNoLabel($attribute->getIsSearchable()); ?></td>
+                <td><?php echo $this->getYesNoLabel($attribute->getIsComparable()); ?></td>
+                <td><?php echo $this->getYesNoLabel($attribute->getUsedInProductListing()); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif ?>
+    </tbody>
+</table>
+<input type="hidden" name="product_id" value="<?php echo !empty($product) && !empty($product->getId()) ? $product->getId() : ''?>">
+<script>
+    require(["jquery","mage/calendar"], function ($) {
+        $(document).ready(function () {
+            $("#mpselectall").click(function () {
+                $(".mpcheckbox").prop('checked', $(this).prop('checked'));
+            });
+
+            $(".mpcheckbox").change(function () {
+                if (!$(this).prop("checked")) {
+                    $("#mpselectall").prop("checked", false);
+                }
+            });
+
+            var checkBoxes = $('.mpcheckbox');
+            checkBoxes.change(function () {
+                $('#mass_delete_btn').prop('disabled', checkBoxes.filter(':checked').length < 1);
+            });
+            $('.mpcheckbox').change();
+
+            var checkAll = $('#mpselectall');
+            checkAll.change(function () {
+                $('#mass_delete_btn').prop('disabled', checkBoxes.filter(':checked').length < 1);
+            });
+            $('#mpselectall').change();
+
+        });
+    });
+</script>

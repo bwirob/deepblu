@@ -1,0 +1,21 @@
+
+<?php
+	$helper = $this->helper('Netbaseteam\Faq\Helper\Data');
+	$listTagName = $block->getTagNameData();
+	
+?>
+<?php if ($block->hasTagName()): ?>
+	<div id="tags" class="faq-taglist">
+		<div class="block-title"><?php echo __('Tags'); ?></div>
+		<?php if ($block->hasTagName()): ?>
+			<div class="block-content">
+				<ul class="tag-list">
+					<?php foreach ($listTagName as  $tagName): ?>
+							<li class="tag-item"><a href="<?php echo __($block->getTagNameUrl().'/tag/'.$tagName);
+							?>" class="tag-links"><?php echo __($tagName); ?></a></li>
+					<?php endforeach ?>
+				</ul>
+			</div>
+		<?php endif ?>
+	</div>
+<?php endif ?>

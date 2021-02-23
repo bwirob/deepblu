@@ -1,0 +1,53 @@
+<!--@subject [{{trans "%template_subject" template_subject=$templateSubject}}] @-->
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td>
+            <p class="greeting">Hi {{trans "%shop_name," shop_name=$admin}}</p>
+
+            <p>
+                {{trans "%seller_message" seller_message=$message}}
+            </p>
+        </td>
+    </tr>
+    <tr class="email-summary">
+        <td>
+            <p>
+                {{trans "%pro_link" pro_link=$pro_link}}
+            </p>
+        </td>
+    </tr>
+    <tr class="email-information">
+        <td>
+            <table class="product-name">
+                <tr>
+                    <td class="product-details" style="border:1px solid #cccccc;text-align: center;">
+                        <h3 style="padding: 0 10px;">{{trans "Product Name"}}</h3>
+
+                        <p style="border-top:1px solid #cccccc;padding: 7px 10px 0 10px;">{{var product_name|raw}}</p>
+                    </td>
+                    <td class="product-details" style="border:1px solid #cccccc;text-align: center">
+                        <h3 style="padding: 0 10px;">{{trans "Sku"}}</h3>
+
+                        <p style="border-top:1px solid #cccccc;padding: 7px 10px 0 10px;">{{var sku|raw}}</p>
+                    </td>
+                    <td class="product-details" style="border:1px solid #cccccc;text-align: center">
+                        <h3 style="padding: 0 10px;">{{trans "Price"}}</h3>
+
+                        <p style="border-top:1px solid #cccccc;padding: 7px 10px 0 10px;">{{var price|raw}}</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    <tr>
+    <tr class="email-footer">
+        <td>
+            <p class="greeting" style="margin-top: 10px;">{{trans "Thanks for your submission!"}}</p>
+            <p>Regards, </p>
+            <p>{{trans "%template_subject" template_subject=$templateSubject}}</p>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

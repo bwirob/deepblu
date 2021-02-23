@@ -1,0 +1,110 @@
+<!-- <link  rel="stylesheet" type="text/css"  media="all" href="<?php //echo $this->getViewFileUrl('Netbaseteam_Megamenu/css/uploadfile.css'); ?>" /> -->
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$uploadHelper = $objectManager->get('\Netbaseteam\Orderupload\Helper\Data');
+
+if($uploadHelper->isEnable()) {
+	
+	$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
+	
+	if($product->getHasUploadFile()) {
+		
+	$pid = $product->getId();
+	$catalogSession = $objectManager->create('Magento\Catalog\Model\Session');
+	$catalogSession->setGroupPid($pid);
+	
+	$max_file_size = $uploadHelper->getMaxFileSize() * 1024 * 1024;
+	$show_download = $uploadHelper->isShowDownload();
+	$alow_types = $uploadHelper->allowFileTypes();
+	$show_comment = $uploadHelper->isShowComment();
+	$allow_multifile = $uploadHelper->allowMultiFile();
+	
+	/* get json file */
+	$session_id = session_id();
+	if(empty($session_id)) session_start();
+	$output_dir = $uploadHelper->getBaseDir()."/".$pid."/".$session_id;
+	$jsonFile = $output_dir.'.json';
+?>
+
+<div id="label_oderupload">
+	<p><strong><?php echo __('ORDER UPLOAD') ?>
+	<?php echo __(' (Allow size per file: ').$uploadHelper->getMaxFileSize().' Mb.'; ?>
+	<?php echo __(' Allow file type: ').$uploadHelper->allowFileTypes(). ")"; ?>
+	</strong></p>
+</div>
+
+<div id="fileuploader"><?php __('Upload') ?></div>
+
+<script type="text/javascript">
+require([
+	'jquery',
+	'uploadfile'
+], function($){
+
+	$(document).ready(function($) {
+		$("#fileuploader").uploadFile({
+			url: "<?php echo $this->getUrl('orderupload/index/upload', ['p' => $pid]) ?>",
+			dragDrop: true,
+			fileName: "myfile",
+			returnType: "json",
+			showDelete: true,
+			showDone: true,
+			showDownload: <?php echo $show_download; ?>,
+			showComment: <?php echo $show_comment; ?>,
+			statusBarWidth: 600,
+			dragdropWidth: 600,
+			maxFileSize: <?php echo $max_file_size; ?>, /* Unit Byte */
+			showPreview: true,
+			previewHeight: "100px",
+			previewWidth: "100px",
+			multiple: '<?php echo $allow_multifile; ?>',
+			fileType: "<?php echo $alow_types; ?>",
+
+			json_file: "<?php echo $jsonFile; ?>",
+			parent_id: "<?php echo $pid; ?>",
+			comment_updurl: "<?php echo $this->getUrl('orderupload/index/updcproductdetail') ?>",
+			others_files: "<?php echo $this->getViewFileUrl('Netbaseteam_Orderupload/images/others_files.png') ?>",
+
+			onLoad:function(obj) {
+				jQuery.ajax({
+					cache: false,
+					url: "<?php echo $this->getUrl('orderupload/index/load', ['p' => $pid]) ?>",
+					dataType: "json",
+					success: function(data) {
+						if(data != null) {
+							for(var i=0;i<data.length;i++){
+								obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"],data[i]["comment"]);
+							}
+						}
+					}
+				});
+		  },
+
+		deleteCallback: function (data, pd) {
+			for (var i = 0; i < data.length; i++) {
+				$.post("<?php echo $this->getUrl('orderupload/index/fdelete', ['p' => $pid]) ?>", {op: "delete",name: data[i]},
+					function (resp,textStatus, jqXHR) {
+						alert("File Deleted");
+					});
+			}
+			pd.statusbar.hide();
+
+		},
+
+		downloadCallback:function(filename,pd)
+		{
+			location.href="<?php echo $this->getUrl('orderupload/index/download', ['p' => $pid]) ?>?filename="+filename;
+		}
+		});
+
+	});
+
+});
+</script>
+
+	<?php 
+	} 
+	/* end check has upload files */ 
+}
+	?>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Netbase_Product::product" title="Product" sortOrder="40">
+                    <resource id="Netbase_Product::manage" title="Product Module" sortOrder="10">
+						<resource id="Netbase_Product::save" title="Save Product" sortOrder="10" />
+                        <resource id="Netbase_Product::news_delete" title="Delete Product" sortOrder="20" />
+					</resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Netbase_Product::config_product" title="Product Section" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

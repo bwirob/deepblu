@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Netbaseteam_Navigation::cmsmart_navigation" title="Navigation" module="Netbaseteam_Navigation" sortOrder="10" resource="Netbaseteam_Navigation::navigation"/>
+
+        <add id="Netbaseteam_Navigation::navigation_setting" title="Settings" module="Netbaseteam_Navigation" sortOrder="20" parent="Netbaseteam_Navigation::cmsmart_navigation" action="adminhtml/system_config/edit/section/cmsmart_navigation" resource="Netbaseteam_Navigation::settings"/>
+    </menu>
+</config>

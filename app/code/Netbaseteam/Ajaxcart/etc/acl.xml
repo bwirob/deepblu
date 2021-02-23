@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Netbaseteam_Ajaxcart::ajaxcart" title="Ajaxcart" sortOrder="40">
+                    <resource id="Netbaseteam_Ajaxcart::manage" title="Ajaxcart Module" sortOrder="10">
+						<resource id="Netbaseteam_Ajaxcart::save" title="Save Ajaxcart" sortOrder="10" />
+                        <resource id="Netbaseteam_Ajaxcart::news_delete" title="Delete Ajaxcart" sortOrder="20" />
+					</resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Netbaseteam_Ajaxcart::config_ajaxcart" title="Ajaxcart Section" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

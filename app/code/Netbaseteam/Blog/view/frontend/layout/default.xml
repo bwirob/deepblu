@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="blog-header-links" ifconfig="blog/view/enabled">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Blog</argument>
+                    <argument name="path" xsi:type="string" translate="true">blog</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="blog-footer-link" before="-" ifconfig="blog/view/enabled">
+                <arguments>
+                    <argument name="label" xsi:type="string">Blog</argument>
+                    <argument name="path" xsi:type="string">blog</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
+

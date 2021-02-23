@@ -1,0 +1,29 @@
+<?php
+// @codingStandardsIgnoreFile
+
+?>
+
+<li class="field" id="vendor-attribute">
+    <label class="label"><?php echo __('Attribute') ?>:</label>
+    <div class="row">
+        <div class="add-attribute-button-container">
+            <button id="add_attribute_button"
+                    title="<?php echo $block->escapeHtml(__('Add Attribute'));?>"
+                    data-role="add-attribute-button"
+                    type="button"
+                    class="action-secondary"
+					data-mage-init='{"openAttributeModal" : {}}'
+                    data-ui-id="widget-button-1">
+                <span><?php /* @escapeNotVerified */ echo __('Add Attribute') ?></span>
+            </button>
+        </div>
+    </div>
+
+  <?php echo $block->getChildHtml('new-attribute'); ?>
+  <?php
+    echo $this->getLayout()->createBlock("Netbaseteam\Marketplace\Block\Catalog\Product\Attribute")
+        ->setTemplate("Netbaseteam_Marketplace::catalog/product/edit/attribute/items.phtml")->toHtml();
+    ?>
+    </div>
+    <div id="vendor-attribute-block"></div>
+</li>

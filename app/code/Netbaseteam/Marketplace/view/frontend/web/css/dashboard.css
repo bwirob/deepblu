@@ -1,0 +1,101 @@
+.loading_overlay {
+    display: none;
+}
+.mp-label-dashboard {
+    padding: 0 5px 0 40px;
+}
+#orderChart {
+    width: 400px;
+    height: 400px
+}
+#amountChart {
+    width: 400px;
+    height: 400px
+}
+/* Style the tab */
+.mp-dashboard-tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.mp-dashboard-tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.mp-dashboard-tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.mp-dashboard-tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+#period-between {
+    display: none;
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+    .fb_iframe_widget iframe{
+        width: 100% !important;
+    }
+}
+@media (max-width: 768px) {
+    .dashboard-item .dashboard-item-content{
+        white-space: normal;
+    }
+   .dashboard-commission-value .amount{
+       float: left;
+       clear: both;
+       width: 100%;
+   }
+
+}
+@media (max-width: 767px) {
+    .mp-dashboard-diagram .dashboard-item {
+        border: none;
+    }
+    #my-orders-table tbody tr:nth-child(2n) td{
+        background: rgba(204, 204, 204, 0.34);
+    }
+    #my-orders-table tbody tr:nth-child(even){
+        background:none;
+    }
+}
+@media (max-width: 320px) {
+    .dashboard-diagram-switcher{
+        padding-top:45px;
+
+    }
+    .dashboard-diagram-switcher .box-select{
+        right:0;
+    }
+}

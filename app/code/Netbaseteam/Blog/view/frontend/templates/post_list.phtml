@@ -1,0 +1,126 @@
+<?php  
+    $postData = $block->getPostListData();
+    $helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+ 	$numberGrid = $block->getNumberGridConfig();
+?>
+<?php if ($block->hasPostInlist()): ?>
+	<div class="post-list">
+		<div class="list-content">
+			<?php foreach ($postData as $key => $post): ?>
+				<div class="post-item">
+					<div class="post-wrapper">
+						<?php if (!empty($post['image'])): ?>
+							<div class="post-image">
+								<a href="<?php echo $helper->getPreBlogUrl().'/'.$post['identifier'];?>" title="<?php echo __($post['title']); ?>">
+									<span class="fa overlay-icon"></span>
+									<img src="<?php echo $helper->getPrePostImageUrl().'/'.$post['image']; ?>" />
+								</a>
+							</div>
+						<?php endif ?>
+						<!-- Show tag category -->
+						<?php $categories= $block->getCategoryByPostId($post['post_id']); ?>
+						<?php if ($categories): ?>
+							<?php foreach ($categories as $key => $category): ?>
+								<p class="txt-category"><?php echo $category->getName(); ?></p>
+							<?php endforeach ?>
+						<?php endif ?>
+						
+						<h2 class="post-title">
+							<a href="<?php echo $helper->getPreBlogUrl().'/'.$post['identifier'];?>" title="<?php echo __($post['title']); ?>">
+								<?php echo __($post['title']);?>
+							</a>
+						</h2>
+						
+							
+						
+						<div class="post-meta">
+
+							<?php if ($post['creation_time']): ?>
+								<div class="create-time">
+									<span>
+										<i class="fa fa-clock-o"></i>
+										<span><?php echo __($helper->getFormatDate($post['creation_time'])); ?></span>
+									</span>
+								</div>
+							<?php endif ?>
+
+							<?php if ($post['author_name']): ?>
+								<div class="author">
+									<span>
+										<i class="fa fa-user"></i>
+										<span><?php echo __($post['author_name']); ?></span>
+									</span>
+								</div>
+							<?php endif ?>
+							
+							<?php if ($post['author_email']): ?>
+								<div class="email">
+									<span>
+										<i class="fa fa-envelope"></i>
+										<span><?php echo __($post['author_email']); ?></span>
+									</span>
+								</div>
+							<?php endif ?>
+
+							<?php if ($post['author_email']): ?>
+								<div class="num-comments">
+									<span>
+										<i class="icon-comment-7"></i>
+										<span><?php echo __($block->getNumberComments($post['post_id'])); ?></span>
+										<?php if($block->getNumberComments($post['post_id']) < 2): ?>
+										<span>Comment</span>
+									<?php else:?>
+										<span>Comments</span>
+									<?php endif; ?>
+									</span>
+								</div>
+							<?php endif ?>
+							
+						</div>
+						<div class="post-summary">
+							<div class="summary-fluid">
+								<?php echo __($post['short_content']); ?>
+							</div>
+						</div>
+						<div class="btn-nb-readmore">
+							<div class="post-readmore">
+								<a href="<?php echo $helper->getPreBlogUrl().'/'.$post['identifier'];?>">	<?php echo __('Read More');?>	
+								</a>
+							</div>
+							<div class="share">
+								<span id="share-cta" class="share-title"><i class="icon-share-2"></i></span>
+								<ul>
+									<li class="facebook"> 
+										<a class="" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $block->getPostUrl(); ?>" title="Facebook" target="_blank"><i class="icon-facebook-1"></i>
+										</a>
+									</li>
+									<li class="twitter">
+										<a class="" href="https://twitter.com/home?status=<?php echo $block->getPostUrl(); ?>" title="twitter" target="_blank"><i class="icon-twitter"></i></a>
+									</li>
+									<li class="google"> 
+										<a class="" href="https://plus.google.com/share?url=<?php echo $block->getPostUrl(); ?>" title="Google" target="_blank"><i class="icon-gplus-2"></i></a>
+									</li> 
+									<li class="linke"> 
+										<a class="" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $block->getPostUrl(); ?>&title=&summary=&source=" title="Linkedin" target="_blank"><i class="icon-linkedin-4"></i></a>
+									</li> 
+														
+									<li class="printer">
+										<a class="" href="https://pinterest.com/pin/create/button/?url=<?php echo $block->getPostUrl(); ?>&media=&description=" title="Pinterest" target="_blank"><i class="icon-pinterest-1"></i></a>
+									</li>
+								</ul>
+							</div> 
+						</div>
+					</div>
+				</div>
+				
+				
+			<?php endforeach ?>
+		</div>
+	</div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom pager-list"><?php echo $block->getPagerHtml();?></div>
+    <?php endif ?>
+
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('No Post be Founded'); ?></span></div>
+<?php endif ?>

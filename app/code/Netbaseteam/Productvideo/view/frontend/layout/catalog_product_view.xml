@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Netbaseteam_Productvideo::css/uploadvideo.css"/>
+        <css src="Netbaseteam_Productvideo::css/carousel/owl.carousel.css"/>
+        <css src="Netbaseteam_Productvideo::css/carousel/owl.theme.css"/>
+        <css src="Netbaseteam_Productvideo::css/video.css"/>
+    </head>
+	
+    <body>
+        <referenceBlock name="product.info.details">
+			<block class="Netbaseteam\Productvideo\Block\Productvideo" name="video.tab" template="Netbaseteam_Productvideo::video_tab.phtml" group="detailed_info" ifconfig="productvideo/view/enabled">
+			
+			<arguments>
+				<!-- <argument name="at_call" xsi:type="string">getVideo</argument>
+				<argument name="at_code" xsi:type="string">video</argument>
+				<argument name="css_class" xsi:type="string">video</argument>
+				<argument name="at_label" xsi:type="string">none</argument> -->
+				<argument translate="true" name="title" xsi:type="string">Product Videos</argument>
+				<argument name="sortOrder" xsi:type="string">300</argument>
+			</arguments>
+			</block>
+		</referenceBlock>
+		
+		<!-- <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="rating.beforebody"  template="Netbaseteam_Productvideo::rating.phtml"/>
+		</referenceContainer> -->
+    </body>
+</page>

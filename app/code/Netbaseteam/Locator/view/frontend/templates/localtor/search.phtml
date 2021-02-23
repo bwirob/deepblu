@@ -1,0 +1,95 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Locator\Helper\Data');
+	$countryData = $block->getCountrysData();
+	$distanceUnit  = $helper->getDistanceUnit();
+	
+?>
+<div class="search-box">
+	<div class="search-button col-xs-12">
+		<div class="search-distance pull-left search-tab active">
+			<span><?php echo __('Search by distance'); ?></span>
+		</div>
+		<div class="search-area pull-left search-tab">
+			<span><?php echo __('Search by Area'); ?></span>
+		</div>
+	</div>
+	<div class="search-content col-xs-12">
+		<div class="container-search">
+			<div class="search-by-distance">
+				<div class="form-inline col-full form-group padding-right padding-left">
+					
+
+						<div class=" form-group col-md-4 col-sm-4 col-xs-12">
+							<input id="auto-fill" type="text" name="q" placeholder="<?php echo __('Enter a Location...'); ?>" autocomplete="off" class="input-search-distance input-sm" />
+						</div>
+
+						<div class="form-group col-md-4 col-sm-4 col-xs-12 slider-range-min">
+							<div id="slider-range-min" class="slider-range-bar slider-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+							</div>
+							
+								<?php if ($distanceUnit=='mile'): ?>
+									<span class="show-unit slider-range-amount" range-data="1609">
+										<?php echo __('1 Mile');?>
+									</span>
+								<?php else: ?>
+									<span class="show-unit slider-range-amount" range-data="1000">
+										<?php echo __('1 Km');?>
+									</span>
+								<?php endif ?>
+								
+							
+						</div>
+
+						<div class="form-group col-sm-3 col-xs-12 pull-right button-box text-right">
+							<div class="btn-wap">
+								<button class="btn-reset-search-distance action primary" title="<?php echo __('Search');?>">
+									<span><?php echo __('Reset');?></span>
+								</button>
+								<button class="btn-search-distance action primary" title="<?php echo __('Search');?>">
+									<span><?php echo __('Search');?></span>
+								</button>
+							</div>
+						</div>
+					
+				</div>
+			</div>
+
+			<div class="search-by-area hide">
+				<form class="search-area" id="form-search-area" action="<?php echo $block->getActionForm();?>" method = "post">
+					<div class="form-group col-sm-6 col-xs-12 padding-right padding-left">
+						<input type="text" name="store-name" title="Store Name" placeholder="Store Name" class="input-search-city form-control" />
+					</div>
+					<div class="form-group col-sm-6 col-xs-12 padding-right padding-left">
+						<select name="country" class="input-search-country-id form-control" title="<?php echo __('Select Country');?>">
+							<option value=""><?php echo __('Select Country');?></option>
+							<?php foreach ($countryData as $code => $country): ?>
+								<option value="<?php echo $country['value']; ?>"><?php echo __($country['label']); ?></option>
+							<?php endforeach ?>
+						</select>
+
+					</div>
+
+					<div class="form-group col-sm-6 col-xs-12 padding-right padding-left">
+						<input type="text" name="city" title="City" placeholder="City" class="input-search-city form-control"/>
+					</div>
+
+					<div class="form-group col-sm-6 col-xs-12 padding-right padding-left">
+						<input type="text" name="state" placeholder="<?php echo __('State/Province');?>" title="<?php echo __('State/Province');?>" class="input-search-state form-control"/>
+					</div>
+					<div class="form-group col-sm-6 col-xs-12  padding-right padding-left">
+                    	<input type="text" name="zip-code" title="<?php echo __('Zip Code');?>" placeholder="<?php echo __('Zip Code');?>" class="input-search-zipcode form-control">
+                	</div>
+
+                	<div class="form-group col-sm-6 col-xs-12 pull-right text-right padding-right padding-left">
+	                    <button class="btn-reset-search-area action primary" title="<?php echo __('Reset');?>" type="reset">
+	                        <span><?php echo __('Reset');?></span>
+	                    </button>
+	                    <button class="btn-search-area action primary" title="<?php echo __('Search');?>" type="submit">
+	                        <span><?php echo __('Search');?></span>
+	                    </button>
+                	</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<?php
+$helper = $this->helper('Cmsmart\Quickview\Helper\Data');
+$backgroundColor = $helper->getBackgroundColor();
+if(!$backgroundColor) {
+    $backgroundColor = 'rgba(27, 255, 31, 0.6)';
+}
+?>
+<script>
+    requirejs(['jquery', 'cmsmartQuickview' ],
+        function($, quickview) {
+            $(document).ready(function() {
+//                $('.cmsmart-quickview').bind('click', function() {
+                //way to fix error js not run after calling ajax
+                    $(document).on('click', '.cmsmart-quickview',function() {
+                    var prodUrl = $(this).attr('data-quickview-url');
+                    var qvTitle = '<?php echo $helper->getQvTitle(); ?>';
+                    var updateCartUrl = '<?php echo $block->getUpdateCartUrl(); ?>';
+                    var qvBackground = '<?php echo $backgroundColor;?>';
+                    if (prodUrl.length) {
+                        quickview.displayContent(prodUrl, updateCartUrl, qvTitle, qvBackground);
+                    }
+                });
+            });
+        });
+</script>

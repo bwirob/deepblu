@@ -1,0 +1,36 @@
+<?php
+	$cateResult = $this->getCateResult();
+	$helper = $this->helper('Netbaseteam\Ajaxsearch\Helper\Data');
+?>
+
+<div id="nb_tab_result">
+	<ul class="nb_result_list">
+		<li class="nb_product_tab active">
+			<a href="#">Products</a>
+		</li>
+		<?php if ($helper->getEnableSearchCate()): ?>
+			<li class="nb_cate_tab">
+				<a href="#"><?php echo 'Categories&nbsp;('.count($cateResult).')'; ?></a>
+			</li>
+		<?php endif ?>
+	</ul>
+	<div style="clear: both;"></div>
+
+	<div class="nb_cate_result">
+		<ul>
+			<?php foreach ($cateResult as $key => $cate): ?>
+				<?php
+					if($cate['level'] ==3){
+						$nameCate = $cate['parent_cate'].'&nbsp;>&nbsp;'.$cate['name'];
+					}else{
+						$nameCate =  $cate['name'];
+					}
+				?>
+				<li class="nb_cate_item">
+					<a href="<?php echo $cate['url']; ?>"><?php echo $nameCate; ?></a>
+				</li>
+			<?php endforeach ?>
+		</ul>
+	</div>
+</div>
+

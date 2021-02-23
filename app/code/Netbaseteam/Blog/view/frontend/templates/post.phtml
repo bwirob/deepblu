@@ -1,0 +1,392 @@
+
+<div class="post-content-wrapper">
+	<div class="post-image">
+		<?php if ($block->getImageUrl()): ?>
+			<img src="<?php echo $block->getImageUrl();?>" title="Post Image" />
+		<?php endif ?>
+	</div>
+	<div class="main-content-wrapper">
+		<?php  
+			$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+			$metaInfo = $block->getMetaInfo();
+			$categoryInfo = $block->getCategoryInfo();
+			$preUrl = $helper->getPreBlogUrl();
+		?>
+		<?php if ($metaInfo['tag']): ?>
+			<div class="tags">
+				<span><?php echo $metaInfo['tag'] ?></span>
+			</div>
+		<?php endif ?>
+			<div class="name">
+				<span><?php echo $this->getPost()->getTitle(); ?></span>
+			</div>
+		<div class="meta-info">
+			<?php if ($metaInfo['creation_time']): ?>
+				<div class="creation-time">
+					<i class="fa fa-clock-o"></i>
+					<span><?php echo __($metaInfo['creation_time']); ?></span>		
+				</div>
+			<?php endif ?>
+			<?php if ($metaInfo['author_name']): ?>
+				<div class="author-name">
+					<i class="fa fa-user"></i>
+					<span><?php echo __($metaInfo['author_name']); ?></span>
+				</div>
+			<?php endif ?>
+
+			<?php if ($metaInfo['author_email']): ?>
+				<div class="author-email">
+					<i class="fa fa-envelope"></i>
+					<span><?php echo __($metaInfo['author_email']); ?></span>	
+				</div>
+			<?php endif ?>
+
+			<?php if (count($categoryInfo)>0): ?>
+				<div class="category-name">
+					<i class="fa fa-folder"></i>
+					<?php foreach ($categoryInfo as $key => $category): ?>
+						<a href="<?php echo $preUrl.'/'.$category['identifier']; ?>"><?php echo __($category['category_name'] );?></a>
+					<?php endforeach ?>
+				</div>
+			<?php endif ?>
+
+			<?php if ($metaInfo['num_comments']): ?>
+				<div class="num_comments">
+					<i class="icon-comment-7"></i>
+					<span><?php echo __($metaInfo['num_comments']); ?></span>
+					<?php if($metaInfo['num_comments'] <2 ):?>
+						<span>Comment</span>
+					<?php else: ?>
+						<span>Comments</span>
+					<?php endif; ?>
+				</div>
+			<?php endif ?>
+
+			
+
+		</div>
+
+		<div class="content">
+			<div class="fluid-content">
+				<?php echo __($block->getPostContent()); ?>
+			</div>		
+		</div>	
+	</div>
+</div>
+
+<div class="meta-btn">
+	<?php
+	$tags = $block->getTagList();
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+	?>
+	<div class="nb-tabs-share">
+		<ul>
+			<?php if ($helper->showTagPost()): ?>
+				<?php if ($tags): ?>
+					<li class="tag-btn">
+						<span class="tag-title"><?php echo __('Tags:') ?></span>
+						<?php foreach ($tags as $tag): ?>
+							<a href="<?php echo $block->getPreTagUrl().$tag?>" title="<?php echo $tag; ?>" class="tag-item"><?php echo __($tag); ?></a>
+						<?php endforeach ?>
+					</li>
+				<?php endif ?>
+			<?php endif ?>
+
+			<li class="share-btn">
+				<!-- <span class="share-title"><i class="icon-share-1"></i></span> -->
+				<div class="share-list">
+					<span id="share-cta" class="share-title"><i class="icon-share-2"></i></span>
+					<ul>
+						<li class="facebook"> 
+							<a class="" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $block->getPostUrl(); ?>" title="Facebook" target="_blank"><i class="icon-facebook-1"></i>
+							</a>
+						</li>
+						<li class="twitter">
+							<a class="" href="https://twitter.com/home?status=<?php echo $block->getPostUrl(); ?>" title="twitter" target="_blank"><i class="icon-twitter"></i></a>
+						</li>
+						<li class="google"> 
+							<a class="" href="https://plus.google.com/share?url=<?php echo $block->getPostUrl(); ?>" title="Google" target="_blank"><i class="icon-gplus-2"></i></a>
+						</li> 
+						<li class="linke"> 
+							<a class="" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $block->getPostUrl(); ?>&title=&summary=&source=" title="Linkedin" target="_blank"><i class="icon-linkedin-4"></i></a>
+						</li> 
+											
+						<li class="printer">
+							<a class="" href="https://pinterest.com/pin/create/button/?url=<?php echo $block->getPostUrl(); ?>&media=&description=" title="Pinterest" target="_blank"><i class="icon-pinterest-1"></i></a>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="next-prev-post">
+	<?php
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+	$next = $block->getNextPost();
+	$prev = $block->getPrevPost();
+?>
+
+	<?php if ($prev): ?>
+		<div class="prev-post post">
+			<p class="btn-cta">Previous article</p>
+			<a class="title" href="<?php echo $helper->getPreBlogUrl().'/'.$prev[0]['identifier'];?>"><?php echo $prev[0]['title']; ?></a>
+		</div>
+	<?php endif ?>
+	<?php if ($next): ?>
+		<div class="next-post post">
+			<p class="btn-cta">Next article</p>
+			<a class="title" href="<?php echo $helper->getPreBlogUrl().'/'.$next[0]['identifier'];?>"><?php echo $next[0]['title']; ?></a>
+		</div>
+	<?php endif ?>
+</div>
+
+<div class="author-info">
+		<?php
+			$authorInfos = $block->getAuthorInfo();
+		?>
+
+		<div class="author-title">
+			<h2>
+				<strong><?php echo __('author') ?></strong>
+			</h2>
+		</div>
+
+		<div class="author-content">
+			<div class="author-wrapper">
+				<?php if ($authorInfos['author_avatar']): ?>
+					<div class="author-avatar">
+						<img src="<?php echo $authorInfos['author_avatar']; ?>" title="Athor Avatar" />
+					</div>
+				<?php endif ?>
+
+				<?php if ($authorInfos['author_name']): ?>
+					<h3 class="author-name"><?php echo __($authorInfos['author_name']);?></h3>
+				<?php endif ?>
+				<?php if ($authorInfos['author_description']): ?>
+					<div class="author-description">
+						<?php echo __($authorInfos['author_description']); ?>
+					</div>
+				<?php endif ?>
+				<?php if ($authorInfos['author_email']): ?>
+					<div class="author-contact">
+						<div class="email">
+							<span>
+								<i class="fa fa-envelope"></i>
+								<span><?php echo __($authorInfos['author_email']); ?></span>
+							</span>
+						</div>
+					</div>
+				<?php endif ?>
+			</div>
+		</div>
+</div>
+
+<div class="related-post">
+	<?php
+	$relatedPosts = $block->getRelatedData();
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+?>
+<?php if ($block->hasRelated()): ?>
+	<div class="realted-title">
+		<h2><strong>RELATED ARTICLES</strong></h2>
+	</div>
+	<div class="realted-content">
+		<ul class="related-list">
+			<?php foreach ($relatedPosts as $related): ?>
+				<li class="item">
+					<?php if (!empty($related['image'])): ?>
+						<div class="post-image">
+							<a href="<?php echo $helper->getPreBlogUrl().'/'.$related['identifier']?>" title="<?php echo __($related['title']); ?>">
+								<span class="fa overlay-icon"></span>
+								<img src="<?php echo $helper->getPrePostImageUrl().'/'.$related['image']; ?>" />
+							</a>
+						</div>
+					<?php endif ?>
+					<div class="post-meta">
+						<div class="post-title">
+							<a href="<?php echo $helper->getPreBlogUrl().'/'.$related['identifier'];?>" title="<?php echo __($related['title']); ?>">
+								<?php echo __($related['title']);?>
+							</a>
+						</div>
+						
+					</div>
+				</li>
+			<?php endforeach ?>
+		</ul>
+		
+	</div>
+<?php endif ?>
+</div>
+
+<div class="products-related">
+	<?php echo $block->getChildHtml('blog.post.view.productrelated');  ?>
+</div>
+
+<div class="post-comment">
+	<?php
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+	$commentCount = $block->countNumComment();
+	$commentData = $block->getCommentData();
+	$showAuthorBox = $block->showAuthorInfoBox();
+	$accountInfo = $block->getCustomerLoginInfo();
+	$customerAvatar = $helper->getCustomerAvatar();
+	$adminAvatar = $helper->getAdminAvatar();
+
+	?>
+
+	<h3 class="count-comment">
+		<span><?php echo __($commentCount); ?></span>
+		<?php echo __("Comments"); ?>
+	</h3>
+
+	<?php if ($commentCount>0): ?>
+		<div class="comment-list">
+			<ul>	
+				<?php foreach ($commentData as $comment): ?>
+					<li class="comment">
+						<?php if ($customerAvatar): ?>
+							<div class="avatar">
+								<img src="<?php echo $customerAvatar; ?>" title="avatar" />
+							</div>
+						<?php endif ?>
+						<?php if ($comment['author_name']): ?>
+							<span class="author-comment">
+								<?php echo __($comment['author_name']); ?>
+							</span>
+							<br>
+						<?php endif ?>
+
+						<?php if ($comment['create_time']): ?>
+							<span class="comment-time">
+								<i class="fa fa-clock-o"></i>
+								<?php echo __($block->formatDateTime($comment['create_time'])); ?>
+							</span>
+						<?php endif ?>
+						<?php if ($comment['content']): ?>
+							<div class="comment-content">
+								<?php echo __($comment['content']); ?>
+							</div>
+						<?php endif ?>
+						<?php if ($comment['reply_content']): ?>
+							<div class="reply-comment">
+								<?php if ($adminAvatar): ?>
+									<div class="reply-avatar">
+										<img src="<?php echo $adminAvatar; ?>" title="avatar" />
+									</div>
+								<?php endif ?>
+							
+								<?php if ($comment['reply_author']): ?>
+									<span class="reply-author">
+										<?php echo __($comment['reply_author']); ?>
+									</span>
+									<br>
+								<?php endif ?>
+
+								<?php if ($comment['reply_createtime']): ?>
+									<span class="reply-time">
+										<i class="fa fa-clock-o"></i>
+										<?php echo __($block->formatDateTime($comment['reply_createtime'])); ?>
+									</span>
+								<?php endif ?>
+
+								<?php if ($comment['reply_content']): ?>
+									<div class="reply-content">
+										<?php echo __($comment['reply_content']); ?>
+									</div>
+								<?php endif ?>
+							</div>
+						<?php endif ?>
+					</li>
+				<?php endforeach ?>
+			</ul>
+			
+		</div>
+
+	<?php endif ?>
+	<?php if ($block->getEnableComment() == 1): ?>
+		<div class="comment-form">
+			<h2 class="form-title">
+				<strong>
+					<?php echo __('LEAVE A REPLY'); ?>
+				</strong>
+			</h2>
+			<form method="post" action="<?php echo $block->getFormCommentUrl(); ?>" id="form-content">
+				<div class="hidden-fields">
+					<input type="hidden" name="post_id" value="<?php echo $block->getPostId(); ?>" />
+					<input type="hidden" name="post_title" value="<?php echo $block->getPostTitle(); ?>" />
+					<input type="hidden" name="store_ids" value="<?php echo $block->getStoreId(); ?>" />
+					<input type="hidden" name="post_url" value="<?php echo $block->getPostIdentifier(); ?>" />
+					<?php if (!$showAuthorBox): ?>
+						<input type="hidden" name="author_name" value="<?php echo $accountInfo['cutomer_name']; ?>" />
+						<input type="hidden" name="author_email" value="<?php echo $accountInfo['cutomer_email']; ?>" />
+					<?php endif ?>
+				</div>
+				<div class="form-fluid">
+					<div class="form-note">
+						<?php 
+							echo __('Make sure you enter the (*) required information where indicated. HTML code is not allowed.'); 
+						?>
+					</div>
+					<div class="textarea-input form-input">
+						<div class="input-box">
+							<textarea  class="input-text required-entry" name="content" title="Comment" placeholder="Your Comment"></textarea>
+						</div>
+					</div>
+					<?php if ($showAuthorBox): ?>
+						<div class="input-list">
+							<ul >
+								<li class="fields author-name">
+									<div class="input-box form-input">
+										<input type="text" name="author_name" class="input-text required-entry" placeholder="Name*">
+									</div>
+								</li>
+
+								<li class="fields author-email">
+									<div class="input-box form-input">
+										<input type="text" name="author_email" class="input-text required-entry validate-email" placeholder="Mail*">
+									</div>
+								</li>
+							</ul>
+						</div>
+					<?php endif ?>
+					<div class="input-box form-input">
+						<input type="text" name="website_name" class="input-text" placeholder="Website: ">
+					</div>
+					<?php if ($helper->getEnableCaptchaValidate()): ?>
+						<!-- <div class="captcha-validate">
+							<?php echo $block->getChildHtml('post.comment.captcha'); ?>
+						</div> -->
+					<?php endif ?>
+					<div class="submit-comment">
+						<button class="submit-btn primary" type="submit">
+							<span>
+								<span ><?php echo __('post comment'); ?></span>
+							</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	<?php endif ?>
+
+	<script type="text/javascript">
+		require([
+		    'jquery',
+		    'mage/mage'
+		], function($){
+		   var dataForm = $('#form-content');
+		   dataForm.mage('validation', {});
+		});
+	</script>
+</div>
+
+<script type="text/javascript">
+    require([
+    'jquery', 
+    'jquery/ui',
+    'cmsmart_blog_post_view'
+    ], function($){
+    	
+    });
+</script>

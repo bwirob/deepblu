@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+	$_element = $block->getElement();
+	$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+ ?>
+
+ <script type="text/x-magento-init">
+    {
+        "*": {
+            "Locator_Admin_Map": {
+                "latDefault": "19.31114335506464",
+                "lngDefault": "-10.107421875",
+                "zoomLevelDefault": "2"
+            }
+        }
+    }
+</script>
+
+<?php if (!$_element->getNoDisplay()): ?>
+<div class="cms-manage-content-actions">
+    <?php echo trim($_element->getElementHtml()) ?>
+
+    <div class="search-box ">
+    	<input id="search-auto" class="search-auto" type="text" name="q_str" autocomplete="off" placeholder="<?php echo __('Enter a Location'); ?>"/>
+    	<button class="btn-reset primary"><?php echo __('Reset Map'); ?></button>
+    </div>
+    <div id="map" style="width: 100%;height: 400px"></div>
+</div>
+<?php endif; ?>
+
+

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Cmsmart_Megamenu/treeview/jquery.treeview.css"/>
+		<css src="Cmsmart_Megamenu/css/style.css"/>
+		<link src="Cmsmart_Megamenu/js/lib/jquery.js"/>
+		<link src="Cmsmart_Megamenu/js/lib/jquery_noconflict.js"/>
+		<link src="Cmsmart_Megamenu/js/lib/prototype.js"/>
+        <link src="Cmsmart_Megamenu/js/treeview/jquery.treeview.js"/>
+		<link src="Cmsmart_Megamenu/js/lib/jquery_noconflict.js"/>
+		<link src="Cmsmart_Megamenu/js/h.js"/>
+		<link src="Cmsmart_Megamenu/js/v.js"/>
+    </head>
+	<update handle="megamenu_index_edit"/>
+    <body/>
+</page>

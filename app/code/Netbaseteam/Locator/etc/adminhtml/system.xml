@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cmsmart" translate="label" sortOrder="1000">
+            <label>CmsMart</label>
+        </tab>
+        <section id="locator" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Locator</label>
+            <tab>cmsmart</tab>
+            <resource>Netbaseteam_Locator::config_locator</resource>
+            <group id="view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Locator View Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Locator On Frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="lat_center_default" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Latitude Of Center Default</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="locator/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                 <field id="lng_center_default" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Longitude Of Center Default</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="locator/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="zoom_default" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Zoom Default Level</label>
+                    <validate>validate-number</validate>
+                    <comment>Default Zoom Level is 2</comment>
+                    <depends>
+                        <field id="locator/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="distance_unit" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Distance Unit</label>
+                    <source_model>Netbaseteam\Locator\Model\Config\System\Unit</source_model>
+                    <depends>
+                        <field id="locator/view/enabled">1</field>
+                    </depends>
+                </field>
+
+
+            </group>
+
+            <group id="service_api" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Service API</label>
+                <field id="gg_map_api" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Map API key</label>
+                    <comment><![CDATA[To register a Google Map API key, please follow the guide <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">here</a>]]> </comment>
+                    <depends>
+                        <field id="locator/view/enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="enabled_face_comment" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Comment By Facebook</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="locator/view/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

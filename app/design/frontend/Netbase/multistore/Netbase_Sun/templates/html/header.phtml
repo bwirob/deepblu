@@ -1,0 +1,952 @@
+<?php   
+	$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();   
+	$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+	$currentStore = $storeManager->getStore();
+	$helper = $this->helper('Cmsmart\Megamenu\Helper\Data');
+    $header_type = $this->getConfig('sun_settings/header/header_type');
+	/* Image User Config */
+	$getImageUser = $this->getConfig('sun_settings/header/upload_image_id'); 
+	
+	$getImageCart = $this->getConfig('sun_settings/header/upload_image_cart_id'); 
+	/* base url media */
+	$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA); 
+	$UrlimageUser = $mediaUrl.'sun/header/'.$getImageUser;   
+	$UrlimageCart = $mediaUrl.'sun/header/'.$getImageCart;
+    /** @var \Magento\Framework\App\ObjectManager $ */
+	/* Get positon mega menu */
+	$getPositionMegamenu = $helper -> getPosition(); 
+	
+	$get_font_icon_search = $this->getConfig('sun_settings/header/fontsize_icon_search');
+	 
+	$show_top_header = $this->getConfig('sun_settings/header/header_top'); 
+	/* config id static block Right */ 
+	$show_middle_header = $this->getConfig('sun_settings/header/header_middle'); 
+	
+	$show_bottom_header = $this->getConfig('sun_settings/header/header_bottom'); 
+	
+	$id_static_block_header_top = $this->getConfig('sun_settings/header/custom_static_block_header_top');
+	/* config display language */
+ 
+	$show_position_static_header_top = $this->getConfig('sun_settings/header/show_position_static_header_top');
+	/* config display top header Left */
+	$position_header_mid_left = $this->getConfig('sun_settings/header/position_header_mid_left');
+	/* config display top header center */
+	$position_header_mid_center = $this->getConfig('sun_settings/header/position_header_mid_center');
+	/* config display top header right */
+	$position_header_mid_right = $this->getConfig('sun_settings/header/position_header_mid_right');
+	/* config custom border radius block search */
+	$custom_search_border_radius = $this->getConfig('sun_settings/header/custom_search_border_radius');
+    $context = $_objectManager->get('Magento\Framework\App\Http\Context'); 
+    $customerSession = $_objectManager->create('Magento\Customer\Model\Session');
+    /** @var bool $isLoggedIn */
+    $isLoggedIn = $context->getValue(\Magento\Customer\Model\Context::CONTEXT_AUTH); 
+	/* config layout header top */
+	$header_top_layout_left = $this->getConfig('sun_settings/header/header_top_layout_left');
+	$header_top_layout_center = $this->getConfig('sun_settings/header/header_top_layout_center');
+	$header_top_layout_right = $this->getConfig('sun_settings/header/header_top_layout_right');
+	
+	$element_header_top_left = $this->getConfig('sun_settings/header/element_header_top_left'); 
+	$element_header_top_center = $this->getConfig('sun_settings/header/element_header_top_center'); 
+	$element_header_top_right = $this->getConfig('sun_settings/header/element_header_top_right'); 
+	$items_left = explode(",",$element_header_top_left); 
+	$items_center = explode(",",$element_header_top_center); 
+	$items_right = explode(",",$element_header_top_right);
+	
+	$custom_static_block_hearder_left = $this->getConfig('sun_settings/header/custom_static_block_hearder_left'); 
+	$custom_static_block_hearder_top_center = $this->getConfig('sun_settings/header/custom_static_block_hearder_top_center'); 
+	$custom_static_block_header_top_right = $this->getConfig('sun_settings/header/custom_static_block_header_top_right'); 
+	
+	$header_middle_layout_left = $this->getConfig('sun_settings/header/header_middle_layout_left'); 
+	$header_middle_layout_center = $this->getConfig('sun_settings/header/header_middle_layout_center'); 
+	$header_middle_layout_right = $this->getConfig('sun_settings/header/header_middle_layout_right'); 
+	$element_header_midle_left = $this->getConfig('sun_settings/header/element_header_middle_left'); 
+	$element_header_midle_center = $this->getConfig('sun_settings/header/element_header_middle_center'); 
+	$element_header_midle_right = $this->getConfig('sun_settings/header/element_header_middle_right'); 
+	$items_mid_left = explode(",",$element_header_midle_left); 
+	$items_mid_center = explode(",",$element_header_midle_center); 
+	$items_mid_right = explode(",",$element_header_midle_right); 
+	
+	$header_bottom_layout_left = $this->getConfig('sun_settings/header/header_bottom_layout_left'); 
+	$header_bottom_layout_center = $this->getConfig('sun_settings/header/header_bottom_layout_center'); 
+	$header_bottom_layout_right = $this->getConfig('sun_settings/header/header_bottom_layout_right'); 
+	$element_header_bottom_left = $this->getConfig('sun_settings/header/element_header_bottom_left'); 
+	$element_header_bottom_center = $this->getConfig('sun_settings/header/element_header_bottom_center'); 
+	$element_header_bottom_right = $this->getConfig('sun_settings/header/element_header_bottom_right'); 
+	$items_bottom_left = explode(",",$element_header_bottom_left); 
+	$items_bottom_center = explode(",",$element_header_bottom_center); 
+	$items_bottom_right = explode(",",$element_header_bottom_right);
+	
+	$custom_static_block_hearder_bottom_left = $this->getConfig('sun_settings/header/custom_static_block_header_bottom_left'); 
+	$custom_static_block_header_bottom_right = $this->getConfig('sun_settings/header/custom_static_block_header_bottom_right'); 
+	
+	
+	
+	$custom_static_block_hearder_middle_center = $this->getConfig('sun_settings/header/custom_static_block_hearder_middle_center'); 
+	$layout_search_header = $this->getConfig('sun_settings/header/layout_search_header'); 
+	$layout_user_header = $this->getConfig('sun_settings/header/layout_user_header'); 
+	//\Zend_Debug::dump($custom_static_block_hearder_middle_center); 
+?>
+<header class="page-header header-container type<?php echo $header_type; ?>"> 
+	<?php if($show_top_header == 1){ ?>
+		<div class="panel wrapper"> 
+			<div class="panel header"> 
+				<?php if($header_top_layout_left != 0){ ?> 
+					<div class="col-left col-lg-<?php echo $header_top_layout_left; ?> col-xs-<?php echo $header_top_layout_left; ?>">
+					<?php foreach ($items_left as $_items_left) { ?>
+						 <?php 
+							switch ($_items_left) {
+								case "0": ?>
+									  <?php echo $this->getChildHtml("store_language"); ?> 
+								<?php break; ?>
+								<?php case "1": ?>
+									  <?php echo $this->getChildHtml("currency"); ?>  
+								<?php break; ?> 
+								<?php case "2": ?>
+									<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('All Category') ?></span></span>
+									<div class="box-search <?php echo $layout_search_header; ?>"> 
+										<?php if($layout_search_header == 'two') { ?>
+										<a href="javascript:void(0)" class="search-toggle-icon"><i class="icon-search" style="font-size:<?php echo $get_font_icon_search; ?>"></i><?php echo __('Search'); ?></a>
+										<?php } ?>
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div> 
+								<?php break; ?> 
+								<?php case "3": ?>
+									<?php echo $this->getChildHtml("minicart"); ?>
+								<?php break; ?> 
+								<?php case "4": ?>  
+									 <div class="user-custom <?php echo $layout_user_header; ?>">
+										<ul class="block-user">
+											<li>
+											<?php if($layout_user_header =="two") {?>
+												<i class="icon-pencil-7"></i>	
+											<?php } ?>
+												<?php if($isLoggedIn): ?>  
+													<a title="<?php echo __('Logout'); ?>" href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Logout'); ?></a>
+												<?php else: ?>
+													<a title="<?php echo __('Sign In'); ?>" href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo __('Sign In'); ?></a>
+												<?php endif; ?>  
+											</li>
+											<li>
+											<?php if($layout_user_header =="two") {?>
+												<i class="icon-login-2"></i>	
+											<?php } ?>
+											<a title="<?php echo __('Join free'); ?>" href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo __('Join free'); ?></a></li> 
+										</ul>
+										<?php if($layout_user_header == 'one') {?>
+											<?php if($isLoggedIn): ?>  
+											<span><?php echo __('Wellcome')?><?php echo $customerSession->getCustomer()->getName(); ?></span>
+											<?php else: ?>
+												<span><?php echo __('Your account')?><i class="icon-down-dir-3"></i></span>
+											<?php endif; ?> 
+										<?php } ?>									
+										<div class="block-content">
+											<?php echo $this->getChildHtml("header.links"); ?>
+										</div>
+									</div> 
+								<?php break; ?>
+								<?php case "5":?> 
+									<div class="inner-logo">
+										<?php echo $this->getChildHtml("logo"); ?>
+									</div>
+									 <?php break; ?> 
+								<?php case "6":
+										if($getPositionMegamenu == 2){ ?>
+											<div class="wrap-menu">
+												<div class="sections nav-sections"> 
+													<?php
+													echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+															->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+													?>
+												</div>
+											</div> 
+										<?php } ?>
+										<?php if($getPositionMegamenu == 1){?> 
+											<div class="wrap-menu">
+												<div class="sections nav-sections"> 
+													<?php
+														echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+															->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+													?>
+												</div> 
+											</div> 
+											
+										<?php 
+										} ?>
+										
+								<?php	break; ?>
+								<?php case "7": 
+									echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($custom_static_block_hearder_left)->toHtml();
+									?> 
+								<?php break; ?>
+								<?php default: ?>
+								<?php	echo "Select option Header top";
+							}
+						 ?> 
+					<?php } ?>	 
+					</div>  
+				<?php } ?> 
+				<?php if($header_top_layout_center != 0){ ?>
+					<div class="col-center col-lg-<?php echo $header_top_layout_center; ?> col-xs-<?php echo $header_top_layout_center; ?>"> 
+						<?php foreach ($items_center as $_items_center) { ?>
+							 <?php 
+								switch ($_items_center) {
+								case "0": ?>
+									  <?php echo $this->getChildHtml("store_language"); ?> 
+								<?php break; ?>
+								<?php case "1": ?>
+									  <?php echo $this->getChildHtml("currency"); ?> 
+								<?php break; ?>
+								<?php case "2": ?> 
+									<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('All Category') ?></span></span>
+									<div class="box-search <?php echo $layout_search_header; ?>">  
+										<?php if($layout_search_header == 'two') { ?>
+										<a href="javascript:void(0)" class="search-toggle-icon"><i class="icon-search" style="font-size:<?php echo $get_font_icon_search; ?>"></i><?php echo __('Search'); ?></a>
+										<?php } ?>
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div> 
+								<?php break; ?> 
+								<?php case "3": ?>
+									<?php echo $this->getChildHtml("minicart"); ?>
+								<?php break; ?>
+								<?php case "4": ?>
+									 <div class="user-custom <?php echo $layout_user_header; ?>">
+										<ul class="block-user">
+											<li>
+											<?php if($layout_user_header =="two") {?>
+												<i class="icon-pencil-7"></i>	
+											<?php } ?>
+												<?php if($isLoggedIn): ?>  
+													<a title="<?php echo __('Logout'); ?>" href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Logout'); ?></a>
+												<?php else: ?>
+													<a title="<?php echo __('Sign In'); ?>" href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo __('Sign In'); ?></a>
+												<?php endif; ?>  
+											</li>
+											<li>
+											<?php if($layout_user_header =="two") {?>
+												<i class="icon-login-2"></i>	
+											<?php } ?>
+											<a title="<?php echo __('Join free'); ?>" href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo __('Join free'); ?></a></li> 
+										</ul>
+										<?php if($layout_user_header == 'one') {?>
+											<?php if($isLoggedIn): ?>  
+											<span><?php echo __('Wellcome')?><?php echo $customerSession->getCustomer()->getName(); ?></span>
+											<?php else: ?>
+												<span><?php echo __('Your account')?><i class="icon-down-dir-3"></i></span>
+											<?php endif; ?> 
+										<?php } ?>									
+										<div class="block-content">
+											<?php echo $this->getChildHtml("header.links"); ?>
+										</div>
+									</div>
+								<?php break; ?>
+								<?php case "5":?> 
+									<div class="inner-logo">
+										<?php echo $this->getChildHtml("logo"); ?>
+									</div>
+									 <?php break; ?> 
+								<?php case "6":
+										if($getPositionMegamenu == 2){ ?>
+											<div class="wrap-menu">
+												<div class="sections nav-sections"> 
+													<?php
+													echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+															->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+													?>
+												</div>
+											</div>
+										<?php } ?>
+										<?php if($getPositionMegamenu == 1){?> 
+											<div class="wrap-menu">
+												<div class="sections nav-sections"> 	
+												<?php
+													echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+														->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+												?>
+												</div> 
+											</div> 
+										<?php } ?>
+								<?php	break; ?>
+								<?php case "7": 
+									echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($custom_static_block_hearder_middle_center)->toHtml();
+									?> 
+								<?php break; ?>
+								<?php default: ?>
+								<?php	echo "Select option Header top";
+							}
+							 ?>
+						<?php } ?>
+					</div> 
+				<?php } ?>
+				
+				<?php if($header_top_layout_right != 0){ ?> 
+				 <div class="col-right col-lg-<?php echo $header_top_layout_right; ?> col-xs-<?php echo $header_top_layout_right; ?>">
+						<?php foreach ($items_right as $_items_right) { ?>
+							<?php 
+								switch ($_items_right) {
+									case "0": ?>
+										  <?php echo $this->getChildHtml("store_language"); ?> 
+									<?php break; ?>
+									<?php case "1": ?>
+										  <?php echo $this->getChildHtml("currency"); ?> 
+									<?php break; ?>
+									<?php case "2": ?> 
+										<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('All Category') ?></span></span>
+										<div class="box-search <?php echo $layout_search_header; ?>"> 
+											<?php if($layout_search_header == 'two') { ?>
+											<a href="javascript:void(0)" class="search-toggle-icon"><i class="icon-search" style="font-size:<?php echo $get_font_icon_search; ?>"></i><?php echo __('Search'); ?></a>
+											<?php } ?>
+											<?php echo $this->getChildHtml("top.search"); ?>
+										</div> 
+									<?php break; ?> 
+									<?php case "3": ?>
+										<?php echo $this->getChildHtml("minicart"); ?>
+									<?php break; ?>
+									<?php case "4": ?>
+										 <div class="user-custom <?php echo $layout_user_header; ?>">
+											<ul class="block-user">
+												<li>
+												<?php if($layout_user_header =="two") {?>
+													<i class="icon-pencil-7"></i>	
+												<?php } ?>
+													<?php if($isLoggedIn): ?>  
+														<a title="<?php echo __('Logout'); ?>" href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Logout'); ?></a>
+													<?php else: ?>
+														<a title="<?php echo __('Sign In'); ?>" href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo __('Sign In'); ?></a>
+													<?php endif; ?>  
+												</li>
+												<li>
+												<?php if($layout_user_header =="two") {?>
+													<i class="icon-login-2"></i>	
+												<?php } ?>
+												<a title="<?php echo __('Join free'); ?>" href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo __('Join free'); ?></a></li> 
+											</ul>
+											<?php if($layout_user_header == 'one') {?>
+												<?php if($isLoggedIn): ?>  
+												<span><?php echo __('Wellcome')?><?php echo $customerSession->getCustomer()->getName(); ?></span>
+												<?php else: ?>
+													<span><?php echo __('Your account')?><i class="icon-down-dir-3"></i></span>
+												<?php endif; ?> 
+											<?php } ?>									
+											<div class="block-content">
+												<?php echo $this->getChildHtml("header.links"); ?>
+											</div>
+										</div>
+									<?php break; ?>
+									<?php case "5":?> 
+									<div class="inner-logo">
+										<?php echo $this->getChildHtml("logo"); ?>
+									</div>
+									 <?php break; ?> 
+									<?php case "6":
+											if($getPositionMegamenu == 2){ ?>
+												<div class="wrap-menu">
+													<div class="sections nav-sections"> 	
+														<?php
+														echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+														?>
+													</div>
+												</div> 
+											<?php } ?>
+											<?php if($getPositionMegamenu == 1){?> 
+												<div class="wrap-menu">
+													<div class="sections nav-sections"> 	
+														<?php
+															echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+														?>
+													</div> 
+												</div> 
+											<?php } ?>
+									<?php	break; ?>
+									<?php case "7": 
+										echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($custom_static_block_header_top_right)->toHtml();
+										?> 
+									<?php break; ?>
+									<?php default: ?>
+									<?php	echo "Select option Header top";
+								}
+							 ?> 
+						<?php } ?>
+					</div>  
+				<?php } ?>
+			</div>
+		 </div>  
+	<?php } ?>
+	<?php if($show_middle_header == 1){ ?>
+		<div class="wrapper-header-bottom">  
+			<div class="header content">
+				<?php if($header_type == 'one'){ ?>
+					<div class="row">
+				<?php } ?>
+					<?php if($header_middle_layout_left != 0){ ?> 
+						<div class="col-left col-lg-<?php echo $header_middle_layout_left; ?> col-xs-<?php echo $header_middle_layout_left; ?>"> 
+							<?php foreach ($items_mid_left as $_items_mid_left) { ?>
+								<?php 
+									switch ($_items_mid_left) {
+										case "0": ?>
+											  <?php echo $this->getChildHtml("store_language"); ?> 
+										<?php break; ?>
+										<?php case "1": ?>
+											  <?php echo $this->getChildHtml("currency"); ?> 
+										<?php break; ?>
+										<?php case "2": ?>
+											<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('All Category') ?></span></span>
+											<div class="box-search <?php echo $layout_search_header; ?>">
+												<?php if($layout_search_header == 'two') { ?>
+												<a href="javascript:void(0)" class="search-toggle-icon"><i class="icon-search" style="font-size:<?php echo $get_font_icon_search; ?>"></i><?php echo __('Search'); ?></a>
+												<?php } ?>
+												<?php echo $this->getChildHtml("top.search"); ?>
+											</div> 
+										<?php break; ?> 
+										<?php case "3": ?>
+											<?php echo $this->getChildHtml("minicart"); ?>
+										<?php break; ?>
+										<?php case "4": ?>
+											 <div class="user-custom <?php echo $layout_user_header; ?>">
+												<ul class="block-user">
+													<li>
+													<?php if($layout_user_header =="two") {?>
+														<i class="icon-pencil-7"></i>	
+													<?php } ?>
+														<?php if($isLoggedIn): ?>  
+															<a title="<?php echo __('Logout'); ?>" href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Logout'); ?></a>
+														<?php else: ?>
+															<a title="<?php echo __('Sign In'); ?>" href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo __('Sign In'); ?></a>
+														<?php endif; ?>  
+													</li>
+													<li>
+													<?php if($layout_user_header =="two") {?>
+														<i class="icon-login-2"></i>	
+													<?php } ?>
+													<a title="<?php echo __('Join free'); ?>" href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo __('Join free'); ?></a></li> 
+												</ul>
+												<?php if($layout_user_header == 'one') {?>
+													<?php if($isLoggedIn): ?>  
+													<span><?php echo __('Wellcome')?><?php echo $customerSession->getCustomer()->getName(); ?></span>
+													<?php else: ?>
+														<span><?php echo __('Your account')?><i class="icon-down-dir-3"></i></span>
+													<?php endif; ?> 
+												<?php } ?>									
+												<div class="block-content">
+													<?php echo $this->getChildHtml("header.links"); ?>
+												</div>
+											</div>
+										<?php break; ?>
+										<?php case "5":?> 
+										<div class="inner-logo">
+											<?php echo $this->getChildHtml("logo"); ?>
+										</div>
+										 <?php break; ?> 
+										<?php case "6":
+												if($getPositionMegamenu == 2){ ?>
+													<div class="wrap-menu">
+														<div class="sections nav-sections"> 	
+														<?php
+														echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+														?>
+														</div> 
+													</div> 
+												<?php } ?>
+												<?php if($getPositionMegamenu == 1){?> 
+													<div class="wrap-menu">
+													<div class="sections nav-sections"> 
+														<?php
+															echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+														?>
+															</div> 
+													</div> 
+												<?php } ?>
+										<?php	break; ?>
+										<?php case "7": 
+											echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($custom_static_block_hearder_left)->toHtml();
+											?> 
+										<?php break; ?>
+										<?php default: ?>
+										<?php	echo "Select option Header top";
+									}
+								 ?> 
+							<?php } ?>
+						</div>
+					<?php } ?>
+					<?php if($header_middle_layout_center != 0){ ?> 
+						<div class="col-center col-lg-<?php echo $header_middle_layout_center; ?> col-xs-<?php echo $header_middle_layout_center; ?>">
+							<?php foreach ($items_mid_center as $_items_mid_center) { ?>
+								<?php 
+									switch ($_items_mid_center) {
+										case "0": ?>
+											  <?php echo $this->getChildHtml("store_language"); ?> 
+										<?php break; ?>
+										<?php case "1": ?>
+											  <?php echo $this->getChildHtml("currency"); ?> 
+										<?php break; ?>
+										<?php case "2": ?>
+											<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('All Category') ?></span></span>
+											<div class="box-search <?php echo $layout_search_header; ?>">
+												<?php if($layout_search_header == 'two') { ?>
+												<a href="javascript:void(0)" class="search-toggle-icon"><i class="icon-search" style="font-size:<?php echo $get_font_icon_search; ?>"></i><?php echo __('Search'); ?></a>
+												<?php } ?>
+												<?php echo $this->getChildHtml("top.search"); ?>
+											</div> 
+										<?php break; ?> 
+										<?php case "3": ?>
+											<?php echo $this->getChildHtml("minicart"); ?>
+										<?php break; ?>
+										<?php case "4": ?>
+											 <div class="user-custom <?php echo $layout_user_header; ?>">
+												<ul class="block-user">
+													<li>
+													<?php if($layout_user_header =="two") {?>
+														<i class="icon-pencil-7"></i>	
+													<?php } ?>
+														<?php if($isLoggedIn): ?>  
+															<a title="<?php echo __('Logout'); ?>" href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Logout'); ?></a>
+														<?php else: ?>
+															<a title="<?php echo __('Sign In'); ?>" href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo __('Sign In'); ?></a>
+														<?php endif; ?>  
+													</li>
+													<li>
+													<?php if($layout_user_header =="two") {?>
+														<i class="icon-login-2"></i>	
+													<?php } ?>
+													<a title="<?php echo __('Join free'); ?>" href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo __('Join free'); ?></a></li> 
+												</ul>
+												<?php if($layout_user_header == 'one') {?>
+													<?php if($isLoggedIn): ?>  
+													<span><?php echo __('Wellcome')?><?php echo $customerSession->getCustomer()->getName(); ?></span>
+													<?php else: ?>
+														<span><?php echo __('Your account')?><i class="icon-down-dir-3"></i></span>
+													<?php endif; ?> 
+												<?php } ?>									
+												<div class="block-content">
+													<?php echo $this->getChildHtml("header.links"); ?>
+												</div>
+											</div>
+										<?php break; ?>
+										<?php case "5":?> 
+										<div class="inner-logo">
+											<?php echo $this->getChildHtml("logo"); ?>
+										</div>
+										 <?php break; ?> 
+										<?php case "6":
+												if($getPositionMegamenu == 2){ ?>
+													<div class="wrap-menu">
+														<div class="sections nav-sections"> 	
+															<?php
+															echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																	->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+															?>
+														</div>
+													</div> 
+												<?php } ?>
+												<?php if($getPositionMegamenu == 1){?> 
+													<div class="wrap-menu">
+														<div class="sections nav-sections"> 	
+														<?php
+															echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+														?>
+														</div> 
+													</div>  
+												<?php } ?>
+										<?php	break; ?>
+										<?php case "7": 
+											echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($custom_static_block_hearder_middle_center)->toHtml();
+											?> 
+										<?php break; ?>
+										<?php default: ?>
+										<?php	echo "Select option Header top";
+									}
+								 ?> 
+							<?php } ?>
+						</div>
+					<?php } ?>
+					<?php if($header_middle_layout_right != 0){ ?>   
+						<div class="col-right <?php if($header_type == "eleven"){ echo "menu-right";}?> col-lg-<?php echo $header_middle_layout_right; ?> col-xs-<?php echo $header_middle_layout_right; ?>"> 
+							<?php if($header_type == "eleven"){?>
+									<span id="close"><i class="icon-cancel-5"></i></span>
+							<?php } ?>
+							<?php foreach ($items_mid_right as $_items_mid_right) { ?>
+								<?php 
+									switch ($_items_mid_right) {
+										case "0": ?>
+											  <?php echo $this->getChildHtml("store_language"); ?> 
+										<?php break; ?>
+										<?php case "1": ?>
+											  <?php echo $this->getChildHtml("currency"); ?> 
+										<?php break; ?>
+										<?php case "2": ?>
+											<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('All Category') ?></span></span>
+											<div class="box-search <?php echo $layout_search_header; ?>">
+												<?php if($layout_search_header == 'two') { ?>
+												<a href="javascript:void(0)" class="search-toggle-icon"><i class="icon-search" style="font-size:<?php echo $get_font_icon_search; ?>"></i><?php echo __('Search'); ?></a>
+												<?php } ?>
+												<?php echo $this->getChildHtml("top.search"); ?>
+											</div> 
+										<?php break; ?> 
+										<?php case "3": ?>
+											<?php echo $this->getChildHtml("minicart"); ?>
+										<?php break; ?>
+										<?php case "4": ?>
+											 <div class="user-custom <?php echo $layout_user_header; ?>">
+												<ul class="block-user">
+													<li>
+													<?php if($layout_user_header =="two") {?>
+														<i class="icon-pencil-7"></i>	
+													<?php } ?>
+														<?php if($isLoggedIn): ?>  
+															<a title="<?php echo __('Logout'); ?>" href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Logout'); ?></a>
+														<?php else: ?>
+															<a title="<?php echo __('Sign In'); ?>" href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo __('Sign In'); ?></a>
+														<?php endif; ?>  
+													</li>
+													<li>
+													<?php if($layout_user_header =="two") {?>
+														<i class="icon-login-2"></i>	
+													<?php } ?>
+													<a title="<?php echo __('Join free'); ?>" href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo __('Join free'); ?></a></li> 
+												</ul>
+												<?php if($layout_user_header == 'one') {?>
+													<?php if($isLoggedIn): ?>  
+													<span><?php echo __('Wellcome')?><?php echo $customerSession->getCustomer()->getName(); ?></span>
+													<?php else: ?>
+														<span><?php echo __('Your account')?><i class="icon-down-dir-3"></i></span>
+													<?php endif; ?> 
+												<?php } ?>									
+												<div class="block-content">
+													<?php echo $this->getChildHtml("header.links"); ?>
+												</div>
+											</div>
+										<?php break; ?>
+										<?php case "5":?> 
+											<div class="inner-logo">
+												<?php echo $this->getChildHtml("logo"); ?>
+											</div>
+											<?php break; ?> 
+										<?php case "6":
+												if($getPositionMegamenu == 2){ ?>
+													<div class="wrap-menu">
+														<div class="sections nav-sections"> 	
+															<?php
+															echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																	->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+															?>
+														</div> 
+													</div> 
+												<?php } ?>
+												<?php if($getPositionMegamenu == 1){?> 
+													<div class="wrap-menu">
+														<div class="sections nav-sections"> 
+															<?php
+																echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																	->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+															?>
+														</div> 
+													</div> 
+												<?php } ?>
+										<?php	break; ?>
+										<?php case "7": 
+											echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($custom_static_block_hearder_left)->toHtml();
+											?> 
+										<?php break; ?>
+										<?php default: ?>
+										<?php	echo "Select option Header top";
+									}
+								 ?> 
+							<?php } ?> 
+						</div>
+					<?php } ?>
+				<?php if($header_type == 'one'){ ?>
+					</div>
+				<?php } ?> 
+				</div>
+			</div> 
+	<?php } ?> 
+		<?php if($show_bottom_header == 1){ ?>
+	<div class="sections nav-sections"> 
+		<nav class="navigation">
+			<div class="row"> 
+				<?php if($header_bottom_layout_left != 0){ ?> 
+					<div class="col-left col-lg-<?php echo $header_bottom_layout_left; ?> col-xs-<?php echo $header_bottom_layout_left; ?>">
+					
+					<?php foreach ($items_bottom_left as $_items_bottom_left) { ?>
+					
+						 <?php  
+							switch ($_items_bottom_left) {
+								case "0": ?>
+									  <?php echo $this->getChildHtml("store_language"); ?> 
+								<?php break; ?>
+								<?php case "1": ?>
+									  <?php echo $this->getChildHtml("currency"); ?> 
+								<?php break; ?>
+								<?php case "2": ?>
+									<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('All Category') ?></span></span>
+									<div class="box-search <?php echo $layout_search_header; ?>">
+										<?php if($layout_search_header == 'two') { ?>
+										<a href="javascript:void(0)" class="search-toggle-icon"><i class="icon-search" style="font-size:<?php echo $get_font_icon_search; ?>"></i><?php echo __('Search'); ?></a>
+										<?php } ?>
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div> 
+								<?php break; ?> 
+								<?php case "3": ?>
+									<?php echo $this->getChildHtml("minicart"); ?>
+								<?php break; ?>
+								<?php case "4": ?>
+									 <div class="user-custom <?php echo $layout_user_header; ?>">
+										<ul class="block-user">
+											<li>
+											<?php if($layout_user_header =="two") {?>
+												<i class="icon-pencil-7"></i>	
+											<?php } ?>
+												<?php if($isLoggedIn): ?>  
+													<a title="<?php echo __('Logout'); ?>" href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Logout'); ?></a>
+												<?php else: ?>
+													<a title="<?php echo __('Sign In'); ?>" href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo __('Sign In'); ?></a>
+												<?php endif; ?>  
+											</li>
+											<li>
+											<?php if($layout_user_header =="two") {?>
+												<i class="icon-login-2"></i>	
+											<?php } ?>
+											<a title="<?php echo __('Join free'); ?>" href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo __('Join free'); ?></a></li> 
+										</ul>
+										<?php if($layout_user_header == 'one') {?>
+											<?php if($isLoggedIn): ?>  
+											<span><?php echo __('Wellcome')?><?php echo $customerSession->getCustomer()->getName(); ?></span>
+											<?php else: ?>
+												<span><?php echo __('Your account')?><i class="icon-down-dir-3"></i></span>
+											<?php endif; ?> 
+										<?php } ?>									
+										<div class="block-content">
+											<?php echo $this->getChildHtml("header.links"); ?>
+										</div>
+									</div>
+								<?php break; ?>
+								<?php case "5":?> 
+									<div class="inner-logo">
+										<?php echo $this->getChildHtml("logo"); ?>
+									</div>
+									 <?php break; ?> 
+								<?php case "6":
+										if($getPositionMegamenu == 2){ ?>
+											<div class="wrap-menu">
+												 
+													<?php
+													echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+															->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+													?>
+												 
+											</div> 
+										<?php } ?>
+										<?php if($getPositionMegamenu == 1){?> 
+											<div class="wrap-menu">
+												 
+													<?php
+														echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+															->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+													?>
+												 
+											</div> 
+										<?php } ?>
+								<?php	break; ?>
+								<?php case "7": 
+									echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($custom_static_block_hearder_left)->toHtml();
+									?> 
+								<?php break; ?>
+								<?php default: ?>
+								<?php	echo "Select option Header top";
+							}
+						 ?>
+					<?php } ?>	 
+					</div>
+				<?php } ?>	
+				<?php if($header_bottom_layout_center != 0){ ?>
+					<div class="col-center col-lg-<?php echo $header_bottom_layout_center; ?> col-xs-<?php echo $header_bottom_layout_center; ?>">
+						<?php foreach ($items_bottom_center as $_items_bottom_center) { ?>
+							 <?php 
+								switch ($_items_bottom_center) {
+								case "0": ?>
+									  <?php echo $this->getChildHtml("store_language"); ?> 
+								<?php break; ?>
+								<?php case "1": ?>
+									  <?php echo $this->getChildHtml("currency"); ?> 
+								<?php break; ?>
+								<?php case "2": ?>
+									<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('All Category') ?></span></span>
+									<div class="box-search <?php echo $layout_search_header; ?>">
+										<?php if($layout_search_header == 'two') { ?>
+										<a href="javascript:void(0)" class="search-toggle-icon"><i class="icon-search" style="font-size:<?php echo $get_font_icon_search; ?>"></i><?php echo __('Search'); ?></a>
+										<?php } ?>
+										<?php echo $this->getChildHtml("top.search"); ?>
+									</div> 
+								<?php break; ?> 
+								<?php case "3": ?>
+									<?php echo $this->getChildHtml("minicart"); ?>
+								<?php break; ?>
+								<?php case "4": ?>
+									 <div class="user-custom <?php echo $layout_user_header; ?>">
+										<ul class="block-user">
+											<li>
+												<?php if($isLoggedIn): ?>  
+													<a title="<?php echo __('Logout'); ?>" href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Logout'); ?></a>
+												<?php else: ?>
+													<a title="<?php echo __('Sign In'); ?>" href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo __('Sign In'); ?></a>
+												<?php endif; ?>  
+											</li>
+											<li><a title="<?php echo __('Join free'); ?>" href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo __('Join free'); ?></a></li> 
+										</ul> 
+										<?php if($layout_user_header == 'one') {?>
+											<?php if($isLoggedIn): ?>  
+											<span><?php echo __('Wellcome')?><?php echo $customerSession->getCustomer()->getName(); ?></span>
+											<?php else: ?>
+												<span><?php echo __('Your account')?><i class="icon-down-dir-3"></i></span>
+											<?php endif; ?> 
+										<?php } ?>
+										<div class="block-content">
+											<?php echo $this->getChildHtml("header.links"); ?>
+										</div>
+									</div>
+								<?php break; ?>
+								<?php case "5":?> 
+									<div class="inner-logo">
+										<?php echo $this->getChildHtml("logo"); ?>
+									</div>
+									 <?php break; ?> 
+								<?php case "6":
+										if($getPositionMegamenu == 2){ ?>
+											<div class="wrap-menu"> 
+													<?php
+													echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+															->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+													?>
+												 
+											</div> 
+										<?php } ?>
+										<?php if($getPositionMegamenu == 1){?> 
+											<div class="wrap-menu">
+												<div class="sections nav-sections">
+													<?php
+														echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+															->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+													?>
+												</div> 
+											</div> 
+										<?php } ?>
+								<?php	break; ?>
+								<?php case "7": 
+									echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($custom_static_block_hearder_bottom_center)->toHtml();
+									?> 
+								<?php break; ?>
+								<?php default: ?>
+								<?php	echo "Select option Header top";
+							}
+							 ?>
+						<?php } ?>
+					</div> 
+				<?php } ?>
+				<?php if($header_bottom_layout_right != 0){ ?>
+				
+				 <div class="col-right col-lg-<?php echo $header_bottom_layout_right; ?> col-xs-<?php echo $header_bottom_layout_right; ?>">
+						<?php foreach ($items_bottom_right as $_items_bottom_right) { ?>
+							<?php 
+								switch ($_items_bottom_right) {
+									case "0": ?>
+										  <?php echo $this->getChildHtml("store_language"); ?> 
+									<?php break; ?>
+									<?php case "1": ?>
+										  <?php echo $this->getChildHtml("currency"); ?> 
+									<?php break; ?>
+									<?php case "2": ?>
+										<span data-action="toggle-nav" class="action nav-toggle"><span><?php /* @escapeNotVerified */ echo __('All Category') ?></span></span>
+										<div class="box-search <?php echo $layout_search_header; ?>">
+											<?php if($layout_search_header == 'two') { ?>
+											<a href="javascript:void(0)" class="search-toggle-icon"><i class="icon-search" style="font-size:<?php echo $get_font_icon_search; ?>"></i><?php echo __('Search'); ?></a>
+											<?php } ?>
+											<?php echo $this->getChildHtml("top.search"); ?>
+										</div> 
+									<?php break; ?> 
+									<?php case "3": ?>
+										<?php echo $this->getChildHtml("minicart"); ?>
+									<?php break; ?>
+									<?php case "4": ?>
+										 <div class="user-custom <?php echo $layout_user_header; ?>">
+											<ul class="block-user">
+												<li>
+													<?php if($isLoggedIn): ?>  
+														<a title="<?php echo __('Logout'); ?>" href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo __('Logout'); ?></a>
+													<?php else: ?>
+														<a title="<?php echo __('Sign In'); ?>" href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo __('Sign In'); ?></a>
+													<?php endif; ?>  
+												</li>
+												<li><a title="<?php echo __('Join free'); ?>" href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo __('Join free'); ?></a></li> 
+											</ul> 
+											<?php if($layout_user_header == 'one') {?>
+												<?php if($isLoggedIn): ?>  
+												<span><?php echo __('Wellcome')?><?php echo $customerSession->getCustomer()->getName(); ?></span>
+												<?php else: ?>
+													<span><?php echo __('Your account')?><i class="icon-down-dir-3"></i></span>
+												<?php endif; ?> 
+											<?php } ?>
+											<div class="block-content">
+												<?php echo $this->getChildHtml("header.links"); ?>
+											</div>
+										</div>
+									<?php break; ?>
+									<?php case "5":?> 
+										<div class="inner-logo">
+											<?php echo $this->getChildHtml("logo"); ?>
+										</div>
+										 <?php break; ?> 
+									<?php case "6":
+											if($getPositionMegamenu == 2){ ?>
+												<div class="wrap-menu"> 
+														<?php
+														echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+														?> 
+												</div> 
+											<?php } ?>
+											<?php if($getPositionMegamenu == 1){?> 
+												<div class="wrap-menu"> 
+														<?php
+															echo $this->getLayout()->createBlock('Magento\Theme\Block\Html\Topmenu')
+																->setTemplate('Cmsmart_Megamenu::main_menu.phtml')->toHtml();  
+														?>
+												 
+												</div> 
+											<?php } ?>
+									<?php	break; ?>
+									<?php case "7": 
+										echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($custom_static_block_header_bottom_right)->toHtml();
+										?> 
+									<?php break; ?>
+									<?php default: ?>
+									<?php	echo "Select option Header top";
+								}
+							 ?> 
+						<?php } ?>
+					</div>  
+				<?php } ?>
+			</div>
+		</nav>
+	</div>
+	<?php } ?>
+</header>
+<style>
+	/*.page-header .user-custom:after{
+		background: url(<?php echo $UrlimageUser; ?>) no-repeat;
+	}*/
+	.page-header .minicart-wrapper .action.showcart:before{
+		background: url(<?php echo $UrlimageCart; ?>) no-repeat;
+	}
+    .page-header.typesix .panel.header {
+    	background: #fff !important;
+    }
+    @media (min-width: 768px) {
+    	.page-header .panel.wrapper {
+    		background-color: #fff !important;
+    	}
+    }
+</style>

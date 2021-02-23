@@ -1,0 +1,83 @@
+<!-- For popup success message -->
+<?php
+$helper = $this->helper('Netbaseteam\Ajaxcart\Helper\Data');
+$title =  $helper->getPopupSucessTitle();
+$showProductImage = $helper->getShowImageProduct();
+$titleBackground = $helper->getTitleBackground();
+$textTitleColor = $helper->getTextPopupColor();
+/*get Qty and price total from mini cart*/
+$qtyTotal = $this->helper('\Magento\Checkout\Helper\Cart')->getSummaryCount();
+$priceTotal = $this->helper('\Magento\Checkout\Helper\Cart')->getQuote()->getGrandTotal();
+$priceTotal = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($priceTotal, 2), true, false);
+?>
+<div class="ajaxcart-success-box">
+    <?php
+    $_product = $block->getProduct();
+    $objectManager =\Magento\Framework\App\ObjectManager::getInstance();
+    $helperImport = $objectManager->get('\Magento\Catalog\Helper\Image');
+    $imageHelper = \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Catalog\Helper\Image::class);
+    $defaultImg = $imageHelper->getDefaultPlaceholderUrl('small_image');
+    $imgSrc = $this->helper('Magento\Catalog\Helper\Image')
+        ->init($_product, 'product_base_image')
+        ->constrainOnly(true)
+        ->keepAspectRatio(true)
+        ->keepTransparency(true)
+        ->keepFrame(false)
+        ->resize(150, 150)->getUrl();
+    ?>
+    <div id="nb-ajaxcart-title" style="background: <?php echo $titleBackground; ?>; color:<?php echo $textTitleColor;?>">
+        <h2 class="pop-title"><?php echo $title;?></h2>
+    </div>
+    <div class="product-info">
+        <h4><?php echo __('You have added <span class="product-name">' . $_product->getName() . '</span> to cart'); ?></h4>
+            <img src="<?php echo isset($imgSrc) ? $imgSrc : $defaultImg; ?>" class="photo-image"/>
+    </div>
+    <div class="cart-info">
+        <p><?php echo __('There are <span class="total-items">' . $qtyTotal . ' Items </span>in your cart'); ?></p>
+        <p><?php echo __('Cart Subtotal: <span class="total-prices">' . $priceTotal . '</span>'); ?></p>
+        <a href="#" onClick="window.location='<?php echo $block->getUrl('checkout/cart/'); ?>'" class="view-cart">View Cart</a>
+    </div>
+    <div class="the-action">
+        <button type="button" name="nb-ajaxcart-continue" title="<?php echo __('Continue Shopping '); ?>" id="nb-ajaxcart-continue" class="button nb_close_x" >
+            <span><?php echo __('Continue Shopping'); ?></span>
+            <span class="counter"><?php echo __('(' . $helper->getTimeMessPop() . ')'); ?></span>
+        </button>
+        <button type="button" name="nb-ajaxcart-checkout" title="<?php echo __('Go to Checkout'); ?>" id="nb-ajaxcart-checkout" class="button">
+            <span><?php echo __('Go to Checkout')?></span>
+        </button>
+    </div>
+</div>
+<script type="text/javascript">
+
+    require([
+        'jquery'
+    ], function ($) {
+        'use strict';
+        var counter = config['timeShowMesPop']-1;
+        var countDown;
+
+        if(counter&&counter!=0){
+            clearInterval(countDown);
+            countDown = setInterval(function(){
+                $('#nb-ajaxcart-continue .counter').html("("+counter+")");
+                if(counter<0){
+                    clearInterval(countDown);
+                    $('#nb_popupmess').hide();
+                    $('#nb_shadow').hide();
+
+                }
+                counter--;
+
+            },1000);
+        }
+        $('.nb_close_x').click(function(){
+            $('#nb_popupmess').empty().hide();
+            $('#nb_shadow').hide();
+            clearTimeout(countDown);
+            return false;
+        });
+        $('#nb-ajaxcart-checkout').click(function(){
+            $('#top-cart-btn-checkout').trigger('click');
+        });
+    });
+</script>

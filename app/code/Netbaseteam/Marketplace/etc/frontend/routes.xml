@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.Netbaseteam.net
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="marketplace" frontName="marketplace">
+            <module name="Netbaseteam_Marketplace" />
+        </route>
+    </router>
+</config>

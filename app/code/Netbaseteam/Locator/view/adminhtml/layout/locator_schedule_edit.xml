@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Netbaseteam_Locator::css/custom_field.css" />
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Locator\Block\Adminhtml\Schedule\Edit" name="localtor_schedule_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Netbaseteam\Locator\Block\Adminhtml\Schedule\Edit\Tabs" name="schedule_edit_tabs">
+                <block class="Netbaseteam\Locator\Block\Adminhtml\Schedule\Edit\Tab\Main" name="schedule_edit_tab_main"/>
+                <block class="Netbaseteam\Locator\Block\Adminhtml\Schedule\Edit\Tab\Content" name="localtor_edit_tab_content"/> 
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">schedule_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">content_section</argument>
+                    <argument name="block" xsi:type="string">localtor_edit_tab_content</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="head.components">
+            <block class="Magento\Framework\View\Element\Js\Components" name="cmsmart.localtor.schedule" template="Netbaseteam_Locator::js_valid.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

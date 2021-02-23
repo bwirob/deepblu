@@ -1,0 +1,59 @@
+<?php 
+	$_shopbybrand = $this->getCollection();
+	$productID = $this->getProductId();
+	$_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of\Magento\Framework\App\ObjectManager
+	$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+	$currentStore = $storeManager->getStore();
+	$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+	$Show_Brand = $this->getShow_Brand();
+	$Show_Brand_Name = $this->getShow_Brand_Name();
+	$Show_Product_Count = $this->getShow_Product_Count();
+	$count2 = 0;
+	$logopath = $this->getViewFileUrl('Netbaseteam_Shopbybrand::images/logo.png');
+   
+	if ($this->getLogo_Width()>10 )  {
+        $imagewidth = $this->getLogo_Width();# code...
+    }else{
+        $imagewidth = 170;
+    }
+    if ($this->getLogo_Height()>10 )  {
+        $imageheight = $this->getLogo_Height();# code...
+    }else{
+        $imageheight = 150;
+    }
+?>
+<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+	<?php 
+		$path = $mediaUrl.'//Shopbybrand'.'//'.$shopbybrandItem->getLogo(); 
+		$os = explode('&', $shopbybrandItem->getproduct_ids());
+		if ($shopbybrandItem->getproduct_ids() == '') {
+			$count = 0;# code...
+		}else{
+			$count = count(explode('&', $shopbybrandItem->getproduct_ids()));
+		}
+	?>
+	<?php if(in_array($productID, $os)):?>
+		<div class="brand-info">
+			<div class="brand-info-div">
+				<a class="brand-info-div-a" href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>">
+					<?php if ($shopbybrandItem->getLogo() == ''): ?>
+						<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+					<?php else: ?>
+						<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+					<?php endif ?>	
+				</a>
+			</div>
+			<h3 class="brand-info-detail">
+				<a  class="brand-info-detail-a" href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>">
+					<?php if($Show_Brand_Name == 1):?>
+						<?php echo $shopbybrandItem->getBrand_title();?>
+					<?php endif;?>
+					<?php if($Show_Product_Count == 1):?>
+						<?php echo '('.$count.')';?>
+					<?php endif;?>
+				</a>
+			</h3>
+		</div>
+	<?php endif;?>
+<?php endforeach; ?> 
+<div style="clear: both;"></div>

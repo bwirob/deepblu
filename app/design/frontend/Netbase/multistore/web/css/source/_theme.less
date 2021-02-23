@@ -1,0 +1,58 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+//
+//  Multistore theme overrides
+//  _____________________________________________
+
+//  Theme file should contain declarations (overrides) ONLY OF EXISTING variables
+//  Otherwise this theme won't be available for parent nesting
+//  All new variables should be placed in local theme lib or local theme files
+
+//  Layout grid
+//  ---------------------------------------------
+
+@layout__max-width : 1170px;
+@total-columns: 12;
+@layout-indent__width : 15px;
+
+//  Variables for layout columns
+@layout-column__sidebar-width: 3;
+
+//  Checkout columns width
+@layout-column-checkout__width-left: 3;
+
+//Typography
+@theme-color: #232f3e;
+
+//
+//  Buttons
+//  ---------------------------------------------
+
+@button-background_color: #394351;
+@button-background_active_color: #ff9900;
+
+@button__font-weight: @font-weight__semibold;
+
+//  Default = secondary button
+@button__background: @button-background_color;
+@button__border: 1px solid @button-background_color;
+@button__hover__color: @color-white;
+@button__hover__background: @button-background_active_color;
+@button__active__background: @button-background_active_color;
+
+//  Primary button
+@button-primary__padding: 9px 25px; 
+@button-primary__background: #293544;
+@button-primary__color: #ffffff;
+@button-primary__border: #dedede;
+@button-primary__hover__background: @button-background_active_color;
+@button-primary__hover__border: @button-background_active_color;
+@button-primary__active__background: @button-background_active_color;
+@button-primary__active__border: @button-background_active_color;
+@button__font-weight: 400;
+@button__font-family: Helvetica, Arial, sans-serif;
+//  variable nav
+
+@active-nav-indent : 25px;

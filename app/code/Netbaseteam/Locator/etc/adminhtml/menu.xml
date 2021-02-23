@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Netbaseteam_Locator::locator" title="Store Locator" module="Netbaseteam_Locator" parent="Netbase_Sun::nb_all" sortOrder="30" resource="Netbaseteam_Locator::locator"/>
+        <add id="Netbaseteam_Locator::locator_manage" title="Manage Store Locations" module="Netbaseteam_Locator" sortOrder="10" parent="Netbaseteam_Locator::locator" action="locator/index/" resource="Netbaseteam_Locator::manage"/>
+
+         <add id="Netbaseteam_Locator::schedule_manage" title="Manage Schedules" module="Netbaseteam_Locator" sortOrder="10" parent="Netbaseteam_Locator::locator" action="locator/schedule/index" resource="Netbaseteam_Locator::manage"/>
+
+        <add id="Netbaseteam_Locator::locator_settings" title="Settings" module="Netbaseteam_Locator" sortOrder="20" parent="Netbaseteam_Locator::locator" action="adminhtml/system_config/edit/section/locator" resource="Netbaseteam_Locator::manage"/>
+    </menu>
+</config>

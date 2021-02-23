@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+    <head>
+        <css src="Netbaseteam_Marketplace::css/productdetails.css"/>
+        <css src="Netbaseteam_Marketplace::css/font-awesome.css"/>
+    </head>
+    <body>
+        <move element="product.info.linktoshop" destination="product.info.main" after="product.info.extrahint"/>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\View" name="product.info.linktoshop" after="product.info.media" template="Netbaseteam_Marketplace::catalog/product/link.phtml" >
+            </block>
+        </referenceContainer>
+        <referenceContainer name="product.info.form.content">
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\View" name="product.info.addtocart" as="addtocart" template="Netbaseteam_Marketplace::catalog/product/vacation-to-cart.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="product.info.options.wrapper.bottom">
+            <block class="Netbaseteam\Marketplace\Block\Catalog\Product\View" name="product.info.addtocart.additional" template="Netbaseteam_Marketplace::catalog/product/vacation-to-cart.phtml" after="-"/>
+        </referenceBlock>
+    </body>
+</page>

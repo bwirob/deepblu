@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <action name="ajaxcart/cart/add">
+        <section name="cart"/>
+    </action>
+    <action name="checkout/cart">
+        <section name="cart"/>
+    </action>
+    <action name="ajaxcart/cart/updateqty">
+        <section name="cart"/>
+    </action>
+    <action name="ajaxcart/wishlist/cart">
+        <section name="cart"/>
+        <section name="wishlist"/>
+    </action>
+</config>

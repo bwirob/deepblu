@@ -1,0 +1,2219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<blocks>
+		<cms_item>
+			<title>Footer Links Block </title>
+			<identifier>footer_links_block</identifier>
+			<content><![CDATA[
+				<ul class="footer links">
+				    <li class="nav item"><a href="{{store url="about-us"}}">About us</a></li>
+				    <li class="nav item"><a href="{{store url="customer-service"}}">Customer Service</a></li>
+				</ul>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Contact us info</title>
+			<identifier>contact-us-info</identifier>
+			<content><![CDATA[
+				<div class="contact-info cms-content">
+				   <p class="cms-content-important">We love hearing from you, our Luma customers. Please contact us about anything at all. Your latest passion, unique health experience or request for a specific product. We’ll do everything we can to make your Luma experience unforgettable every time. Reach us however you like</p>
+				   <div class="block block-contact-info">
+				       <div class="block-title">
+				           <strong>Contact Us Info</strong>
+				       </div>
+				       <div class="block-content">
+				           <div class="box box-phone">
+				               <strong class="box-title">
+				                   <span>Phone</span>
+				               </strong>
+				               <div class="box-content">
+				                   <span class="contact-info-number">1-800-403-8838</span>
+				                   <p>Call the Luma Helpline for concerns, product questions, or anything else. We’re here for you 24 hours a day - 365 days a year.</p>
+				               </div>
+				           </div>
+				           <div class="box box-design-inquiries">
+				               <strong class="box-title">
+				                   <span>Apparel Design Inquiries</span>
+				               </strong>
+				               <div class="box-content">
+				                   <p>Are you an independent clothing designer? Feature your products on the Luma website! Please direct all inquiries via email to: <a href="mailto:cs@luma.com">cs@luma.com</a></p>
+				               </div>
+				           </div>
+				           <div class="box box-press-inquiries">
+				               <strong class="box-title">
+				                   <span>Press Inquiries</span>
+				               </strong>
+				               <div class="box-content">
+				                   <p>Please direct all media inquiries via email to: <a href="mailto:pr@luma.com">pr@luma.com</a></p>
+				               </div>
+				           </div>
+				       </div>
+				   </div>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Sale Left Menu Block</title>
+			<identifier>sale-left-menu-block</identifier>
+			<content><![CDATA[
+				<div class="categories-menu"><strong class="title"><span>Women's Deals</span></strong>
+				<ul class="items">
+				    <li class="item"><a href="{{store url=""}}women/tops-women/hoodies-and-sweatshirts-women.html">Hoodies and Sweatshirts</a></li>
+				    <li class="item"><a href="{{store url=""}}women/tops-women/jackets-women.html">Jackets</a></li>
+				    <li class="item"><a href="{{store url=""}}women/tops-women/tees-women.html">Tees</a></li>
+				    <li class="item"><a href="{{store url=""}}women/tops-women/tanks-women.html">Bras & Tanks</a></li>
+				    <li class="item"><a href="{{store url=""}}women/bottoms-women/pants-women.html">Pants</a></li>
+				    <li class="item"><a href="{{store url=""}}women/bottoms-women/shorts-women.html">Shorts</a></li>
+				</ul>
+
+				<strong class="title"><span>Mens's Deals</span></strong>
+				<ul class="items">
+				    <li class="item"><a href="{{store url=""}}men/tops-men/hoodies-and-sweatshirts-men.html">Hoodies and Sweatshirts</a></li>
+				    <li class="item"><a href="{{store url=""}}men/tops-men/jackets-men.html">Jackets</a></li>
+				    <li class="item"><a href="{{store url=""}}men/tops-men/tees-men.html">Tees</a></li>
+				    <li class="item"><a href="{{store url=""}}men/bottoms-men/pants-men.html">Pants</a></li>
+				    <li class="item"><a href="{{store url=""}}men/bottoms-men/shorts-men.html">Shorts</a></li>
+				</ul>
+
+				<strong class="title"><span>Gear Deals</span></strong>
+				<ul class="items">
+				    <li class="item"><a href="{{store url=""}}gear/bags.html">Bags</a></li>
+				    <li class="item"><a href="{{store url=""}}gear/fitness-equipment.html">Fitness Equipment</a></li>
+				</ul>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Gear Left Menu Block</title>
+			<identifier>gear-left-menu-block</identifier>
+			<content><![CDATA[
+				<div class="categories-menu"><strong class="title"><span></span></strong>
+					<ul class="items">
+					    <li class="item"><a href="{{store url=""}}gear/bags.html">Bags</a></li>
+					    <li class="item"><a href="{{store url=""}}gear/fitness-equipment.html">Fitness Equipment</a></li>
+					    <li class="item"><a href="{{store url=""}}gear/watches.html">Watches</a></li>
+					</ul>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Men Left Menu Block</title>
+			<identifier>men-left-menu-block</identifier>
+			<content><![CDATA[
+				<div class="categories-menu"><strong class="title"><span>Tops</span></strong>
+					<ul class="items">
+					    <li class="item"><a href="{{store url=""}}men/tops-men/hoodies-and-sweatshirts-men.html">Hoodies & Sweatshirts</a></li>
+					    <li class="item"><a href="{{store url=""}}men/tops-men/jackets-men.html">Jackets</a></li>
+					    <li class="item"><a href="{{store url=""}}men/tops-men/tees-men.html">Tees</a></li>
+					    <li class="item"><a href="{{store url=""}}men/tops-men/tanks-men.html">Tanks</a></li>
+					</ul>
+
+					<strong class="title"><span>Bottoms</span></strong>
+					<ul class="items">
+					    <li class="item"><a href="{{store url=""}}men/bottoms-men/pants-men.html">Pants</a></li>
+					    <li class="item"><a href="{{store url=""}}men/bottoms-men/shorts-men.html">Shorts</a></li>
+					</ul>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Women Left Menu Block</title>
+			<identifier>women-left-menu-block</identifier>
+			<content><![CDATA[
+				<div class="categories-menu"><strong class="title"><span>Tops</span></strong>
+					<ul class="items">
+					    <li class="item"><a href="{{store url=""}}women/tops-women/hoodies-and-sweatshirts-women.html">Hoodies & Sweatshirts</a></li>
+					    <li class="item"><a href="{{store url=""}}women/tops-women/jackets-women.html">Jackets</a></li>
+					    <li class="item"><a href="{{store url=""}}women/tops-women/tees-women.html">Tees</a></li>
+					    <li class="item"><a href="{{store url=""}}women/tops-women/tanks-women.html">Bras & Tanks</a></li>
+					</ul>
+
+					<strong class="title"><span>Bottoms</span></strong>
+					<ul class="items">
+					    <li class="item"><a href="{{store url=""}}women/bottoms-women/pants-women.html">Pants</a></li>
+					    <li class="item"><a href="{{store url=""}}women/bottoms-women/shorts-women.html">Shorts</a></li>
+					</ul>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>New Left Menu Block</title>
+			<identifier>new-left-menu-block</identifier>
+			<content><![CDATA[
+				<div class="categories-menu"><strong class="title"><span>New in women's</span></strong>
+					<ul class="items">
+					    <li class="item"><a href="{{store url=""}}women/tops-women/hoodies-and-sweatshirts-women.html">Hoodies & Sweatshirts</a></li>
+					    <li class="item"><a href="{{store url=""}}women/tops-women/jackets-women.html">Jackets</a></li>
+					    <li class="item"><a href="{{store url=""}}women/tops-women/tees-women.html">Tees</a></li>
+					    <li class="item"><a href="{{store url=""}}women/tops-women/tanks-women.html">Bras & Tanks</a></li>
+					    <li class="item"><a href="{{store url=""}}women/bottoms-women/pants-women.html">Pants</a></li>
+					    <li class="item"><a href="{{store url=""}}women/bottoms-women/shorts-women.html">Shorts</a></li>
+					</ul>
+
+					<strong class="title"><span>New in men's</span></strong>
+					<ul class="items">
+					    <li class="item"><a href="{{store url=""}}men/tops-men/hoodies-and-sweatshirts-men.html">Hoodies & Sweatshirts</a></li>
+					    <li class="item"><a href="{{store url=""}}men/tops-men/jackets-men.html">Jackets</a></li>
+					    <li class="item"><a href="{{store url=""}}men/tops-men/tees-men.html">Tees</a></li>
+					    <li class="item"><a href="{{store url=""}}men/tops-men/tanks-men.html">Tanks</a></li>
+					    <li class="item"><a href="{{store url=""}}men/bottoms-men/pants-men.html">Pants</a></li>
+					    <li class="item"><a href="{{store url=""}}men/bottoms-men/shorts-men.html">Shorts</a></li>
+					</ul>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Women Block</title>
+			<identifier>women-block</identifier>
+			<content><![CDATA[
+				<div class="blocks-promo">
+				    <a href="{{store url=""}}women.html" class="block-promo womens-main">
+				        <img src="{{media url="wysiwyg/womens/womens-main.jpg"}}" alt="" />
+				        <span class="content">
+				            <span class="info">New Luma Yoga Collection</span>
+				            <strong class="title">Yoga is ancient<br />Clothing shouldn’t be</strong>
+				            <span class="more button">Shop New Yoga</span>
+				        </span>
+				    </a>
+				    <div class="block-promo-wrapper block-promo-2columns">
+				        <a href="{{store url=""}}women/tops-women/tees-women.html" class="block-promo womens-t-shirts">
+				            <span class="content">
+				                <strong class="title">You can’t have too many tees</strong>
+				                <img src="{{media url="wysiwyg/womens/womens-t-shirts.png"}}" alt="" />
+				                <span class="info">4 tees for the price of 3. Right now</span>
+				                <span class="more icon">Women’s Tees</span>
+				            </span>
+				        </a>
+				        <a href="{{store url=""}}women/bottoms-women/pants-women.html" class="block-promo womens-pants">
+				            <img src="{{media url="wysiwyg/womens/womens-pants.jpg"}}" alt="" />
+				            <span class="content">
+				                <strong class="title">Hot pants<br />Hot deals</strong>
+				                <span class="info"><span>20% OFF</span>Luma pants when you shop today*</span>
+				                <span class="more icon">Shop Pants</span>
+				            </span>
+				        </a>
+				    </div>
+				    <a href="{{store url=""}}collections/erin-recommends.html" class="block-promo womens-erin">
+				        <span class="content">
+				            <strong class="title">What would Erin wear?</strong>
+				            <span class="info">It’s no secret: see Luma founder Erin Renny’s wardrobe go-to’s</span>
+				            <span class="more icon">Shop Erin Recommends</span>
+				        </span>
+				        <span class="image"><img src="{{media url="wysiwyg/womens/womens-erin.jpg"}}" alt="" /></span>
+				    </a>
+				    <div class="block-promo-wrapper block-promo-3columns">
+				        <a href="{{store url=""}}women/bottoms-women/pants-women.html" class="block-promo womens-category-pants">
+				            <span class="content">
+				                <strong class="title">Luma pants</strong>
+				                <span class="info">Pants for yoga, gym and outdoors</span>
+				                <span class="more icon">Shop Pants</span>
+				            </span>
+				            <span class="image"><img src="{{media url="wysiwyg/womens/womens-category-pants.jpg"}}" alt="" /></span>
+				        </a>
+				        <a href="{{store url=""}}women/bottoms-women/shorts-women.html" class="block-promo womens-category-shorts">
+				            <span class="content">
+				                <strong class="title">Luma shorts</strong>
+				                <span class="info">Exercise comfort</span>
+				                <span class="more icon">Shop Shorts</span>
+				            </span>
+				            <span class="image"><img src="{{media url="wysiwyg/womens/womens-category-shorts.jpg"}}" alt="" /></span>
+				        </a>
+				        <a href="{{store url=""}}women/tops-women/tanks-women.html" class="block-promo womens-category-tanks">
+				            <span class="content">
+				                <strong class="title">Luma Bras<br />Tanks</strong>
+				                <span class="info">Stock up for summer!</span>
+				                <span class="more icon">Shop Now</span>
+				            </span>
+				            <span class="image"><img src="{{media url="wysiwyg/womens/womens-category-tanks.jpg"}}" alt="" /></span>
+				        </a>
+				    </div>
+				</div>
+				<div class="content-heading">
+				    <h2 class="title">Hot Sellers</h2>
+				    <p class="info">Favorites from Luma shoppers</p>
+				</div>
+				{{widget type="Magento\\CatalogWidget\\Block\\Product\\ProductsList" products_per_page="4" products_per_page="4" products_count="4" template="product/widget/content/grid.phtml" conditions_encoded="a:2:[i:1;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Combine`;s:10:`aggregator`;s:3:`all`;s:5:`value`;s:1:`1`;s:9:`new_child`;s:0:``;]s:4:`1--1`;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Product`;s:9:`attribute`;s:3:`sku`;s:8:`operator`;s:2:`()`;s:5:`value`;s:22:`WS12, WT09, WH05, WP12`;]]"}}
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Training Block</title>
+			<identifier>training-block</identifier>
+			<content><![CDATA[
+				<div class="blocks-promo">
+				    <a href="{{store url=""}}training.html" class="block-promo training-main">
+				        <img src="{{media url="wysiwyg/training/training-main.jpg"}}" alt="" />
+				        <span class="content">
+				            <strong class="title">
+				                <span>Motivate</span> yourself.<br />
+				                <span>Reach</span> goals.<br />
+				                <span>Boost</span> ambition.<br />
+				                <span>Max</span> fitness.<br />
+				                <span>Upgrade</span> lifestyle.
+				            </strong>
+				        </span>
+				    </a>
+				    <a href="{{store url=""}}collections/erin-recommends.html" class="block-promo training-erin">
+				        <img src="{{media url="wysiwyg/training/training-erin.jpg"}}" alt="" />
+				        <span class="content">
+				            <strong class="title">Before creating Luma, pro trainer Erin Renny helped world-class athletes reach peak fitness</strong>
+				            <span class="info">Hand-selected by Erin, our training downloads reflect a commitment to yoga, health and wellness.</span>
+				        </span>
+				    </a>
+				    <a href="{{store url=""}}training/training-video.html" class="block-promo training-on-demand">
+				        <span class="content">
+				            <span class="icon download"><span>Download</span></span>
+				            <strong class="title">Training on demand</strong>
+				            <span class="info">Luma downloads to inspire and&nbsp;challenge.<br />Your space, your pace</span>
+				            <span class="more icon">Videos</span>
+				        </span>
+				    </a>
+				</div>
+				<div class="content-heading">
+				    <h2 class="title">Top Videos</h2>
+				    <p class="info">Stream free with subscription</p>
+				</div>
+				{{widget type="Magento\\CatalogWidget\\Block\\Product\\ProductsList" products_count="4" template="product/widget/content/grid.phtml" conditions_encoded="a:2:[i:1;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Combine`;s:10:`aggregator`;s:3:`all`;s:5:`value`;s:1:`1`;s:9:`new_child`;s:0:``;]s:4:`1--1`;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Product`;s:9:`attribute`;s:3:`sku`;s:8:`operator`;s:2:`()`;s:5:`value`;s:38:`241-MB08, 240-LV05, 240-LV09, 240-LV07`;]]"}}
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Gear Block</title>
+			<identifier>gear-block</identifier>
+			<content><![CDATA[
+				<div class="blocks-promo">
+				    <a href="{{store url=""}}gear.html" class="block-promo gear-main">
+				        <img src="{{media url="wysiwyg/gear/gear-main.jpg"}}" alt="" />
+				        <span class="content">
+				            <strong class="title">Sprite Yoga Companion Kit</strong>
+				            <span class="info">Save up to 20% on a&nbsp;bundle!</span>
+				            <span class="more button">Shop Yoga Kit</span>
+				        </span>
+				    </a>
+				    <div class="block-promo-wrapper block-promo-2columns">
+				        <a href="{{store url=""}}gear/fitness-equipment.html" class="block-promo gear-fitnes">
+				            <img src="{{media url="wysiwyg/gear/gear-fitnes.jpg"}}" alt="" />
+				            <span class="content">
+				                <strong class="title">Loosen Up</strong>
+				                <span class="info">Extend your training with yoga straps, tone bands,<br />and jump ropes</span>
+				                <span class="more icon">Shop Fitness</span>
+				            </span>
+				        </a>
+				        <a href="{{store url=""}}gear/fitness-equipment.html" class="block-promo gear-equipment">
+				            <img src="{{media url="wysiwyg/gear/gear-equipment.jpg"}}" alt="" />
+				            <span class="content">
+				                <strong class="title">Here’s to you!</strong>
+				                <span class="info">$4 Luma water bottle<br />(save&nbsp;70%)</span>
+				                <span class="note">Enter promo code H2O<br />at check out</span>
+				            </span>
+				        </a>
+				    </div>
+				    <div class="block-promo-wrapper block-promo-3columns">
+				        <a href="{{store url=""}}gear/bags.html" class="block-promo gear-category-bags">
+				            <span class="content">
+				                <strong class="title">Tote, cart or carry</strong>
+				                <span class="info">Luma bags go the distance</span>
+				                <span class="more icon">Shop Bags</span>
+				            </span>
+				            <span class="image"><img src="{{media url="wysiwyg/gear/gear-category-bags.jpg"}}" alt="" /></span>
+				        </a>
+				        <a href="{{store url=""}}gear/fitness-equipment.html" class="block-promo gear-category-equipment">
+				            <span class="content">
+				                <strong class="title">Let’s get after it!</strong>
+				                <span class="info">Luma gym equipment fits your goals and&nbsp;style</span>
+				                <span class="more icon">Shop Equipment</span>
+				            </span>
+				            <span class="image"><img src="{{media url="wysiwyg/gear/gear-category-equipment.jpg"}}" alt="" /></span>
+				        </a>
+				        <a href="{{store url=""}}gear/watches.html" class="block-promo gear-category-watches">
+				            <span class="content">
+				                <strong class="title">Luma watches</strong>
+				                <span class="info">Keeping pace has never been more stylish</span>
+				                <span class="more icon">Shop Watches</span>
+				            </span>
+				            <span class="image"><img src="{{media url="wysiwyg/gear/gear-category-watches.jpg"}}" alt="" /></span>
+				        </a>
+				    </div>
+				</div>
+				<div class="content-heading">
+				    <h2 class="title">Hot Sellers</h2>
+				    <p class="info">Favorites from Luma shoppers</p>
+				</div>
+				{{widget type="Magento\\CatalogWidget\\Block\\Product\\ProductsList" products_per_page="4" products_count="4" template="product/widget/content/grid.phtml" conditions_encoded="a:2:[i:1;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Combine`;s:10:`aggregator`;s:3:`all`;s:5:`value`;s:1:`1`;s:9:`new_child`;s:0:``;]s:4:`1--1`;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Product`;s:9:`attribute`;s:3:`sku`;s:8:`operator`;s:2:`()`;s:5:`value`;s:35:`24-MB02, 24-WB04, 24-UG06, 24-WG080`;]]"}}
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Sale Block</title>
+			<identifier>sale-block</identifier>
+			<content><![CDATA[
+				<div class="blocks-promo">
+				    <a href="{{store url=""}}promotions/women-sale.html" class="block-promo sale-main">
+				        <img src="{{media url="wysiwyg/sale/sale-main.jpg"}}" alt="" />
+				        <span class="content">
+				            <span class="info">Women’s Deals</span>
+				            <strong class="title">Pristine prices on pants, tanks and bras.</strong>
+				            <span class="more button">Shop Women’s Deals</span>
+				        </span>
+				    </a>
+				    <div class="block-promo-wrapper block-promo-2columns">
+				        <a href="{{store url=""}}promotions/men-sale.html" class="block-promo sale-mens">
+				            <img src="{{media url="wysiwyg/sale/sale-mens.jpg"}}" alt="" />
+				            <span class="content">
+				                <strong class="title">Men’s Bargains</strong>
+				                <span class="info">Stretch your budget with active attire</span>
+				                <span class="more icon">Shop Men’s Deals</span>
+				            </span>
+				        </a>
+				        <a href="{{store url=""}}gear.html" class="block-promo sale-women">
+				            <img src="{{media url="wysiwyg/sale/sale-gear.jpg"}}" alt="" />
+				            <span class="content">
+				                <strong class="title">Luma Gear Steals</strong>
+				                <span class="info">Your best efforts deserve a deal</span>
+				                <span class="more icon">Shop Luma Gear</span>
+				            </span>
+				        </a>
+				    </div>
+				    <div class="block-promo-wrapper block-promo-3columns">
+				        <a class="block-promo sale-20-off">
+				            <span class="content">
+				                <strong class="title">20% OFF</strong>
+				                <span class="info">Every $200-plus purchase!</span>
+				            </span>
+				            <span class="image"><img src="{{media url="wysiwyg/sale/sale-20-off.png"}}" alt="" /></span>
+				        </a>
+				        <a class="block-promo sale-free-shipping">
+				            <span class="content">
+				                <strong class="title">Spend $50 or more&nbsp;&mdash; shipping is free!</strong>
+				                <img src="{{media url="wysiwyg/sale/sale-free-shipping.png"}}" alt="" />
+				                <span class="info">Buy more, save more</span>
+				            </span>
+				        </a>
+				        <a href="{{store url=""}}women/tops-women/tees-women.html" class="block-promo sale-womens-t-shirts">
+				            <span class="content">
+				                <strong class="title">You can't have too many tees</strong>
+				                <span class="info">4 tees for the price of 3. Right now</span>
+				                <span class="more icon">Tees on sale</span>
+				            </span>
+				            <span class="image"><img src="{{media url="wysiwyg/womens/womens-t-shirts.png"}}" alt="" /></span>
+				        </a>
+				    </div>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Page Block</title>
+			<identifier>home-page-block</identifier>
+			<content><![CDATA[
+				<div class="blocks-promo">
+				   <a href="{{store url=""}}collections/yoga-new.html" class="block-promo home-main">
+				       <img src="{{media url="wysiwyg/home/home-main.jpg"}}" alt="" />
+				       <span class="content bg-white">
+				           <span class="info">New Luma Yoga Collection</span>
+				           <strong class="title">Get fit and look fab in new seasonal styles</strong>
+				           <span class="action more button">Shop New Yoga</span>
+				       </span>
+				   </a>
+				   <div class="block-promo-wrapper block-promo-hp">
+				       <a href="{{store url=""}}promotions/pants-all.html" class="block-promo home-pants">
+				           <img src="{{media url="wysiwyg/home/home-pants.jpg"}}" alt="" />
+				           <span class="content">
+				               <strong class="title">20% OFF</strong>
+				               <span class="info">Luma pants when you shop today*</span>
+				               <span class="action more icon">Shop Pants</span>
+				           </span>
+				       </a>
+				       <a href="{{store url=""}}promotions/tees-all.html" class="block-promo home-t-shirts">
+				           <span class="image"><img src="{{media url="wysiwyg/home/home-t-shirts.png"}}" alt="" /></span>
+				           <span class="content">
+				               <strong class="title">Even more ways to mix and match</strong>
+				               <span class="info">Buy 3 Luma tees get a 4th free</span>
+				               <span class="action more icon">Shop Tees</span>
+				           </span>
+				       </a>
+				       <a href="{{store url=""}}collections/erin-recommends.html" class="block-promo home-erin">
+				           <img src="{{media url="wysiwyg/home/home-erin.jpg"}}" alt="" />
+				           <span class="content">
+				               <strong class="title">Take it from Erin</strong>
+				               <span class="info">Luma founder Erin Renny shares her favorites!</span>
+				               <span class="action more icon">Shop Erin Recommends</span>
+				           </span>
+				       </a>
+				       <a href="{{store url=""}}collections/performance-fabrics.html" class="block-promo home-performance">
+				           <img src="{{media url="wysiwyg/home/home-performance.jpg"}}" alt="" />
+				           <span class="content bg-white">
+				               <strong class="title">Science meets performance</strong>
+				               <span class="info">Wicking to raingear, Luma covers&nbsp;you</span>
+				               <span class="action more icon">Shop Performance</span>
+				           </span>
+				       </a>
+				       <a href="{{store url=""}}collections/eco-friendly.html" class="block-promo home-eco">
+				           <img src="{{media url="wysiwyg/home/home-eco.jpg"}}" alt="" />
+				           <span class="content bg-white">
+				               <strong class="title">Twice around, twice as nice</strong>
+				               <span class="info">Find conscientious, comfy clothing in our <nobr>eco-friendly</nobr> collection</span>
+				               <span class="action more icon">Shop Eco-Friendly</span>
+				           </span>
+				       </a>
+				   </div>
+				</div>
+				<div class="content-heading">
+				   <h2 class="title">Hot Sellers</h2>
+				   <p class="info">Here is what`s trending on Luma right now</p>
+				</div>
+				{{widget type="Magento\\CatalogWidget\\Block\\Product\\ProductsList" products_per_page="8" products_count="8" template="product/widget/content/grid.phtml" conditions_encoded="a:2:[i:1;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Combine`;s:10:`aggregator`;s:3:`all`;s:5:`value`;s:1:`1`;s:9:`new_child`;s:0:``;]s:4:`1--1`;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Product`;s:9:`attribute`;s:3:`sku`;s:8:`operator`;s:2:`()`;s:5:`value`;s:60:`WS12, WT09, MT07, MH07, 24-MB02, 24-WB04, 241-MB08, 240-LV05`;]]"}}
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Page Block</title>
+			<identifier>home-page-block</identifier>
+			<content><![CDATA[
+				<div class="blocks-promo">
+				   <a href="{{store url=""}}collections/yoga-new.html" class="block-promo home-main">
+				       <img src="{{media url="wysiwyg/home/home-main.jpg"}}" alt="" />
+				       <span class="content bg-white">
+				           <span class="info">New Luma Yoga Collection</span>
+				           <strong class="title">Get fit and look fab in new seasonal styles</strong>
+				           <span class="action more button">Shop New Yoga</span>
+				       </span>
+				   </a>
+				   <div class="block-promo-wrapper block-promo-hp">
+				       <a href="{{store url=""}}promotions/pants-all.html" class="block-promo home-pants">
+				           <img src="{{media url="wysiwyg/home/home-pants.jpg"}}" alt="" />
+				           <span class="content">
+				               <strong class="title">20% OFF</strong>
+				               <span class="info">Luma pants when you shop today*</span>
+				               <span class="action more icon">Shop Pants</span>
+				           </span>
+				       </a>
+				       <a href="{{store url=""}}promotions/tees-all.html" class="block-promo home-t-shirts">
+				           <span class="image"><img src="{{media url="wysiwyg/home/home-t-shirts.png"}}" alt="" /></span>
+				           <span class="content">
+				               <strong class="title">Even more ways to mix and match</strong>
+				               <span class="info">Buy 3 Luma tees get a 4th free</span>
+				               <span class="action more icon">Shop Tees</span>
+				           </span>
+				       </a>
+				       <a href="{{store url=""}}collections/erin-recommends.html" class="block-promo home-erin">
+				           <img src="{{media url="wysiwyg/home/home-erin.jpg"}}" alt="" />
+				           <span class="content">
+				               <strong class="title">Take it from Erin</strong>
+				               <span class="info">Luma founder Erin Renny shares her favorites!</span>
+				               <span class="action more icon">Shop Erin Recommends</span>
+				           </span>
+				       </a>
+				       <a href="{{store url=""}}collections/performance-fabrics.html" class="block-promo home-performance">
+				           <img src="{{media url="wysiwyg/home/home-performance.jpg"}}" alt="" />
+				           <span class="content bg-white">
+				               <strong class="title">Science meets performance</strong>
+				               <span class="info">Wicking to raingear, Luma covers&nbsp;you</span>
+				               <span class="action more icon">Shop Performance</span>
+				           </span>
+				       </a>
+				       <a href="{{store url=""}}collections/eco-friendly.html" class="block-promo home-eco">
+				           <img src="{{media url="wysiwyg/home/home-eco.jpg"}}" alt="" />
+				           <span class="content bg-white">
+				               <strong class="title">Twice around, twice as nice</strong>
+				               <span class="info">Find conscientious, comfy clothing in our <nobr>eco-friendly</nobr> collection</span>
+				               <span class="action more icon">Shop Eco-Friendly</span>
+				           </span>
+				       </a>
+				   </div>
+				</div>
+				<div class="content-heading">
+				   <h2 class="title">Hot Sellers</h2>
+				   <p class="info">Here is what`s trending on Luma right now</p>
+				</div>
+				{{widget type="Magento\\CatalogWidget\\Block\\Product\\ProductsList" products_per_page="8" products_count="8" template="product/widget/content/grid.phtml" conditions_encoded="a:2:[i:1;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Combine`;s:10:`aggregator`;s:3:`all`;s:5:`value`;s:1:`1`;s:9:`new_child`;s:0:``;]s:4:`1--1`;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Product`;s:9:`attribute`;s:3:`sku`;s:8:`operator`;s:2:`()`;s:5:`value`;s:60:`WS12, WT09, MT07, MH07, 24-MB02, 24-WB04, 241-MB08, 240-LV05`;]]"}}
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Performance Fabrics Block</title>
+			<identifier>performance-fabrics-block</identifier>
+			<content><![CDATA[
+				<div class="blocks-promo">
+				   <div class="block-promo collection-performance">
+				       <img src="{{media url="wysiwyg/collection/collection-performance.jpg"}}" alt="" />
+				       <span class="content">
+				           <strong class="title">You're the best</strong>
+				           <span class="info">Make a strong statement with Luma Performance sportswear</span>
+				       </span>
+				   </div>
+				</div>
+				{{widget type="Magento\\CatalogWidget\\Block\\Product\\ProductsList" products_count="5" template="product/widget/content/grid.phtml" conditions_encoded="a:3:[i:1;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Combine`;s:10:`aggregator`;s:3:`all`;s:5:`value`;s:1:`1`;s:9:`new_child`;s:0:``;]s:4:`1--1`;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Product`;s:9:`attribute`;s:18:`performance_fabric`;s:8:`operator`;s:2:`==`;s:5:`value`;s:1:`1`;]s:4:`1--2`;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Product`;s:9:`attribute`;s:3:`new`;s:8:`operator`;s:2:`==`;s:5:`value`;s:1:`1`;]]"}}
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Eco Friendly Block</title>
+			<identifier>eco-friendly-block</identifier>
+			<content><![CDATA[
+				<div class="blocks-promo">
+				    <div class="block-promo collection-eco">
+				        <img src="{{media url="wysiwyg/collection/collection-eco.jpg"}}" alt="" />
+				        <span class="content">
+				            <strong class="title">Eco-friendly, ego-friendly</strong>
+				            <span class="info">Recycled polyester, hemp and organic cotton apperel</span>
+				        </span>
+				    </div>
+				</div>
+				{{widget type="Magento\\CatalogWidget\\Block\\Product\\ProductsList" products_count="5" template="product/widget/content/grid.phtml" conditions_encoded="a:3:[i:1;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Combine`;s:10:`aggregator`;s:3:`all`;s:5:`value`;s:1:`1`;s:9:`new_child`;s:0:``;]s:4:`1--1`;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Product`;s:9:`attribute`;s:14:`eco_collection`;s:8:`operator`;s:2:`==`;s:5:`value`;s:1:`1`;]s:4:`1--2`;a:4:[s:4:`type`;s:50:`Magento|CatalogWidget|Model|Rule|Condition|Product`;s:9:`attribute`;s:3:`new`;s:8:`operator`;s:2:`==`;s:5:`value`;s:1:`1`;]]"}}
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Giftcard Block</title>
+			<identifier>giftcard-block</identifier>
+			<content><![CDATA[
+				<div class="blocks-promo">
+				    <div class="block-promo-wrapper block-promo-2columns">
+				        <a href="{{store url=""}}" class="block-promo giftcard-mailed">
+				            <span class="content">
+				                <strong class="title">Give it away now</strong>
+				                <span class="info">A gift card always beats a blind guess</span>
+				                <span class="more icon">Mailed Gift Cards</span>
+				            </span>
+				            <span class="image"><img src="{{media url="wysiwyg/giftcards/giftcard-mailed.jpg"}}" alt="" /></span>
+				        </a>
+				        <a href="{{store url=""}}" class="block-promo giftcard-virtual">
+				            <img src="{{media url="wysiwyg/giftcards/giftcard-virtual.png"}}" alt="" />
+				            <span class="content">
+				                <strong class="title">Can't decide?</strong>
+				                <span class="info">Just remember it's the card that counts</span>
+				                <span class="more icon">Virtual Gift Cards</span>
+				            </span>
+				        </a>
+				    </div>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Login Info Block</title>
+			<identifier>login-data</identifier>
+			<content><![CDATA[
+				<div class="message info" style="margin-top: 50px;">
+				    <p><strong>Try Demo Customer Access</strong></p>
+				    <p><span style="display:inline-block; width: 80px; padding-right: 10px;">Email:</span>roni_cost@example.com</p>
+				    <p><span style="display:inline-block; width: 80px; padding-right: 10px;">Password:</span>roni_cost3@example.com</p>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Slider 01</title>
+			<identifier>home_slider_01</identifier>
+			<content><![CDATA[
+				<section class="slider" id="slider1">
+					<div class="container">
+						<div class="row">
+							<div class="block-slider col-lg-6 col-md-offset-3 col-xs-offset-4">
+								<div id="banner-slider-demo-1" class="banner-slider-demo-1">
+									<div class="inner">
+										<div class="item"><img src="{{media url="multistore/slider/baner2.jpg"}}" alt="" /></div>
+										<div class="item">
+											<img src="{{media url="multistore/slider/1.jpg"}}" alt="" />
+											<div class="info"><span class="top">top sellers of week</span> <span class="iphone">iPhone 6s</span> <span class="last">Last chance to buy extra 25% off</span> <a class="shop-now" href="#">Shop Now</a></div>
+										</div>
+										<div class="item"><img src="{{media url="multistore/slider/baner3.jpg"}}" alt="" /></div>
+										<div class="item"><img src="{{media url="multistore/slider/baner1.jpg"}}" alt="" /></div>
+									</div>
+								</div>
+							</div>
+							<div class="block-banner-slider col-lg-3">{{block class="Magento\Cms\Block\Block" block_id="block_banner_slider_right"}}</div>
+						</div>
+						<div class="wrap-service">{{block class="Magento\Cms\Block\Block" block_id="home_slider_01_banner"}}</div>
+					</div>
+				</section>
+				<script type="text/javascript">
+				 require(['jquery','owlCarousel'], function($) {
+					$(document).ready(function($) {
+					  	$('.block-slider div.inner').owlCarousel({
+							items: 4,
+							itemsCustom: [ 
+								[0, 1], 
+								[480, 1], 
+								[768, 1], 
+								[992, 1], 
+								[1200,1] 
+							],
+							pagination: true,
+							slideSpeed : 200,
+							addClassActive: true,
+							autoPlay:true,
+							scrollPerPage: false,
+							touchDrag: false,
+							afterAction: function (e) {
+								if(this.$owlItems.length > this.options.items){
+									$('.new-product .navslider').show();
+								}else{
+									$('.new-product .navslider').hide();
+								}
+							}
+							//scrollPerPage: true,
+						});
+					}); 
+				});
+				</script>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Block Banner Slider Right</title>
+			<identifier>block_banner_slider_right</identifier>
+			<content><![CDATA[
+				<div class="banner_slider_right">
+				<div class="block block-top"><img src="{{media url="multistore/banner/banner-top-right.jpg"}}" alt="" />
+				<div class="info"></div>
+				</div>
+				<div class="block block-bottom"><img src="{{media url="multistore/banner/banner-bottom-right.jpg"}}" alt="" />
+				<div class="info"><span>Watch</span><span><br />for Women </span></div>
+				</div>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Banner On Slider 01</title>
+			<identifier>home_slider_01_banner</identifier>
+			<content><![CDATA[
+				<div class="service row">
+					<div class="col-lg-3 col-md-offset-3 col-md-3 col-xs-4 block block-shipping "><img src="{{media url="multistore/servive/shipping.jpg"}}" alt="" />
+					<div class="info"><i class="icon-truck-1"> </i>
+					<div class="box-text"><span> Free Shipping </span><br><span> On all orders $199.00 </span></div>
+					</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-xs-4 block block-money"><img src="{{media url="multistore/servive/money.jpg"}}" alt="" />
+					<div class="info"><i class="icon-money-1"> </i>
+					<div class="box-text"><span> 90 Day </span><br><span> Money Back </span></div>
+					</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-xs-4 block block-safe"><img src="{{media url="multistore/servive/safe.jpg"}}" alt="" />
+					<div class="info"><i class="icon-umbrella"> </i>
+					<div class="box-text"><span> Safe Shopping </span><br><span> Guarantee 100% </span></div>
+					</div>
+					</div>
+					</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Banner On Slider 01</title>
+			<identifier>home_slider_01_banner</identifier>
+			<content><![CDATA[
+				<div class="service row">
+				<div class="col-lg-3 col-md-offset-3 col-md-3 col-xs-4 block block-shipping "><img src="{{media url="multistore/servive/shipping.jpg"}}" alt="" />
+				<div class="info"><i class="icon-truck-1"> </i>
+				<div class="box-text"><span> Free Shipping </span><br><span> On all orders $199.00 </span></div>
+				</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-xs-4 block block-money"><img src="{{media url="multistore/servive/money.jpg"}}" alt="" />
+				<div class="info"><i class="icon-money-1"> </i>
+				<div class="box-text"><span> 90 Day </span><br><span> Money Back </span></div>
+				</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-xs-4 block block-safe"><img src="{{media url="multistore/servive/safe.jpg"}}" alt="" />
+				<div class="info"><i class="icon-umbrella"> </i>
+				<div class="box-text"><span> Safe Shopping </span><br><span> Guarantee 100% </span></div>
+				</div>
+				</div>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home slider 03</title>
+			<identifier>home_slider_03</identifier>
+			<content><![CDATA[
+				<section class="slider slider-3 container">
+					<div class="block-slider-3 row">
+					<div id="banner-slider-demo-3" class="banner-slider-demo-3 col-md-9 col-md-offset-3">
+					    <div class="inner slider-home-3">
+					        <div class="item"><img src="{{media url="multistore/slider/slider-home-3/slider-2-1.png"}}" alt="" />
+					        </div>
+					        <div class="item"><img src="{{media url="multistore/slider/slider-home-3/slider-2-2.png"}}" alt="" />
+					        </div>
+					        <div class="item"><img src="{{media url="multistore/slider/slider-home-3/slider-2-3.png"}}" alt="" />
+					        </div>
+					    </div>
+					</div>
+					</div>
+					</section>
+					<script type="text/javascript">
+					 require(['jquery','owlCarousel'], function($) {
+					    $(document).ready(function($) {
+					        $('.slider-home-3').owlCarousel({
+					            items: 4,
+					            itemsCustom: [
+					                [0, 1],
+					                [480, 1],
+					                [768, 1],
+					                [992, 1],
+					                [1200, 1]
+					            ],
+					            pagination: true,
+					            slideSpeed: 200,
+					            addClassActive: true,
+					            autoPlay: false,
+					            scrollPerPage: false,
+					            touchDrag: false,
+					            afterAction: function(e) {
+					                    if (this.$owlItems.length > this.options.items) {
+					                        $('.new-product .navslider').show();
+					                    } else {
+					                        $('.new-product .navslider').hide();
+					                    }
+					                }
+					                //scrollPerPage: true,
+					        });
+					    });
+					    });
+					</script>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home slider 04</title>
+			<identifier>home_slider_04</identifier>
+			<content><![CDATA[
+				<section class="slider slider-4">
+			    <div class="container">
+					<div class="row">
+			        	<div class="block-slider-4 col-md-9 col-xs-12">
+							<div id="banner-slider-demo-4" class="banner-slider-demo-4">
+							    <div class="inner slider-home-4">
+							        <div class="item"><img src="{{media url="multistore/slider/slider-home-4/slider-3-1.png"}}" alt="" />
+							        </div>
+							        <div class="item"><img src="{{media url="multistore/slider/slider-home-4/slider-3-2.png"}}" alt="" />
+							        </div>
+							        <div class="item"><img src="{{media url="multistore/slider/slider-home-4/slider-3-3.png"}}" alt="" />
+							        </div>
+							    </div>
+							</div>
+						</div>
+			        	<div class="wrap-service-3 col-md-3 col-xs-12 banner-border">
+			            	<a class="image" href="{{store direct_url="infant-toys.phtml"}}" target="_blank">
+			            		<img src="{{media url="wysiwyg/sun/home-4/home-3-1.png"}}" alt="home banner" />
+			            	</a>
+			        	</div>
+			        </div>
+			    </div>
+			</section>
+			<script type="text/javascript">
+			require(['jquery','owlCarousel'], function ($) {
+			    $(document).ready(function($) {
+			        $('.slider-home-4').owlCarousel({
+			            items: 4,
+			            itemsCustom: [
+			                [0, 1],
+			                [480, 1],
+			                [768, 1],
+			                [992, 1],
+			                [1200, 1]
+			            ],
+			            pagination: true,
+			            slideSpeed: 200,
+			            addClassActive: true,
+			            autoPlay: false,
+			            scrollPerPage: false,
+			            touchDrag: false,
+			            afterAction: function(e) {
+			                if (this.$owlItems.length > this.options.items) {
+			                    $('.new-product .navslider').show();
+			                } else {
+			                    $('.new-product .navslider').hide();
+			                }
+			            }
+			            //scrollPerPage: true,
+			        });
+			    });
+			 });
+			</script>
+			<script type="text/javascript">
+			require(['jquery'], function ($) {
+			    $(document).ready(function($) {
+			        $('.magemenu-menu.vertical-menu').addClass('show');
+			        $('#nb_mn_computer .btn-menu').click(function(){
+			           $('.magemenu-menu.vertical-menu').toggleClass('nb-mega-add');
+			        });
+			    });
+			    });
+			</script>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Service 01</title>
+			<identifier>home_service_01</identifier>
+			<content><![CDATA[
+				<section class="services">
+				<div class="wrap-service-2 container">
+				<div class="service-home-2 row">
+				    <div class="col-xs-12 col-sm-3 block block-shipping center-out-nb ">
+				        <div class="info"><i class="icon-truck"> </i>
+				            <div class="box-text"><span> Free Shipping </span>
+				                <br><span> On all orders $199.00 </span>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="col-xs-12 col-sm-3 block block-money center-out-nb">
+				        <div class="info"><i class="icon-money-1"> </i>
+				            <div class="box-text"><span> 90 Day </span>
+				                <br><span> Money Back </span>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="col-xs-12 col-sm-3 block block-lowest center-out-nb">
+				        <div class="info"><i class="fa fa-calendar" aria-hidden="true"> </i>
+				            <div class="box-text"><span>lowest Price</span>
+				                <br><span> Guarantee </span>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="col-xs-12 col-sm-3 block block-safe center-out-nb">
+				        <div class="info"><i class="icon-umbrella"> </i>
+				            <div class="box-text"><span> Safe Shopping </span>
+				                <br><span> Guarantee 100% </span>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				</div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home banner 05</title>
+			<identifier>home_banner_05</identifier>
+			<content><![CDATA[
+				<div class="wrap-service-3">
+				    <section class="home-category-banner home-category-banner-3 animation-element slide-left home-banner-05">
+				        <div class="container">
+				            <div class="row">
+				                <div class="col-md-3 col-xs-12 block banner-left animation-element scroll-zoom-out">
+				                    <div class="left-top block">
+				                        <a class="image" href="{{store direct_url="infant-toys.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-3/home-2-1.png"}}" alt="home banner" /> <span>Headphone</span> </a>
+				                    </div>
+				                </div>
+				                <div class="col-md-6 col-xs-12 banner-middle  animation-element scroll-zoom-out">
+				                    <div class="row">
+				                        <div class="mid-top block col-md-12 col-xs-12">
+				                            <a class="image" href="{{store direct_url="fashion.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-3/home-2-2.png"}}" alt="home banner" /> <span>Watch</span> </a>
+				                        </div>
+				                        <div class="mid-bt-left block col-md-6 col-xs-12">
+				                            <a class="image" href="{{store direct_url="fashion.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-3/home-2-4.png"}}" alt="home banner" /> <span>Ring</span> </a>
+				                        </div>
+				                        <div class="mid-bt-right block col-md-6 col-xs-12 ">
+				                            <a class="image" href="{{store direct_url="fashion.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-3/home-2-5.png"}}" alt="home banner" /> <span>Fashion</span> </a>
+				                        </div>
+				                    </div>
+				                </div>
+				                <div class="col-md-3 col-xs-12 block banner-left animation-element scroll-zoom-out">
+				                    <div class="right-top block">
+				                        <a class="image" href="{{store direct_url="infant-toys.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-3/home-2-3.png"}}" alt="home banner" /> <span>Electronics</span> </a>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				    </section>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home slider 05</title>
+			<identifier>home_slider_05</identifier>
+			<content><![CDATA[
+				<section class="slider slider-5">
+				    <div class="block-slider-5">
+						<div id="banner-slider-demo-5" class="banner-slider-demo-5">
+						    <div class="inner slider-home-5">
+						        <div class="item"><img src="{{media url="multistore/slider/slider-home-5/slider-4-2.png"}}" alt="" />
+						        </div>
+						        <div class="item"><img src="{{media url="multistore/slider/slider-home-5/slider-4-1.png"}}" alt="" />
+						        </div>
+						        <div class="item"><img src="{{media url="multistore/slider/slider-home-5/slider-4-3.png"}}" alt="" />
+						        </div>
+						    </div>
+						</div>
+				    </div>
+				</section>
+				<script type="text/javascript">
+				require(['jquery','owlCarousel'], function($) {
+				    $(document).ready(function($) {
+				        $('.slider-home-5').owlCarousel({
+				            items: 1,
+				            itemsCustom: [
+				                [0, 1],
+				                [480, 1],
+				                [768, 1],
+				                [992, 1],
+				                [1200, 1]
+				            ],
+				            pagination: true,
+				            slideSpeed: 200,
+				            addClassActive: true,
+				            autoPlay: false,
+				            scrollPerPage: false,
+				            touchDrag: false,
+				            afterAction: function(e) {
+				                    if (this.$owlItems.length > this.options.items) {
+				                        $('.new-product .navslider').show();
+				                    } else {
+				                        $('.new-product .navslider').hide();
+				                    }
+				                }
+				        });
+				        $(document).ready(function($) {
+					        $('.magemenu-menu.vertical-menu').addClass('show');
+					        $('#nb_mn_computer .btn-menu').click(function(){
+					           $('.magemenu-menu.vertical-menu').toggleClass('nb-mega-add');
+					        });
+					    });
+				    });
+				  });
+				</script>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>block_service_5</title>
+			<identifier>block_service_5</identifier>
+			<content><![CDATA[
+				<section class="home-promotion-banner-5 home-promotion-banner container">
+				    <div class="row">
+				        <div class="col-xs-12 col-md-4 banner-left block  animation-element scroll-zoom-out">
+				            <a class="image" href="{{store direct_url="food.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-5/home-4-4.png"}}" alt="home banner" /> </a>
+				        </div>
+				        <div class="col-xs-12 col-md-4 banner-right block animation-element scroll-zoom-out">
+				            <a class="image" href="{{store direct_url="women.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-5/home-4-5.png"}}" alt="home banner" /> </a>
+				        </div>
+				        <div class="col-xs-12 col-md-4 banner-right block animation-element scroll-zoom-out">
+				            <a class="image" href="{{store direct_url="women.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-5/home-4-6.png"}}" alt="home banner" /> </a>
+				        </div>
+				    </div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>block_banner_5</title>
+			<identifier>block_banner_5</identifier>
+			<content><![CDATA[
+				<section class="home-category-banner home-category-banner-4 animation-element slide-left container">
+			    <div class="row">
+			        <div class="col-md-4 col-xs-12 block banner-left animation-element scroll-zoom-out">
+			            <div class="left-top block">
+			                <a class="image" href="{{store direct_url="infant-toys.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-5/home-4-8.png"}}" alt="home banner" /> <span>Laptop</span> </a>
+			            </div>
+			            <div class="left-bottom block">
+			                <a class="image" href="{{store direct_url="infant-toys.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-5/home-4-11.png"}}" alt="home banner" /> <span>Faction</span> </a>
+			            </div>
+			        </div>
+			        <div class="col-md-4 col-xs-12 banner-middle  animation-element scroll-zoom-out">
+			            <div class="mid-top block">
+			                <a class="image" href="{{store direct_url="fashion.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-5/home-4-10.png"}}" alt="home banner" /> <span>Sports</span> </a>
+			            </div>
+			        </div>
+			        <div class="col-md-4 col-xs-12 block banner-left animation-element scroll-zoom-out">
+			            <div class="right-top block">
+			                <a class="image" href="{{store direct_url="infant-toys.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-5/home-4-9.png"}}" alt="home banner" /> <span>Ring</span> </a>
+			            </div>
+			            <div class="right-bottom block">
+			                <a class="image" href="{{store direct_url="infant-toys.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-5/home-4-12.png"}}" alt="home banner" /> <span>Food</span> </a>
+			            </div>
+			        </div>
+			    </div>
+			</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home slider 06</title>
+			<identifier>home_slider_06</identifier>
+			<content><![CDATA[
+				<section class="slider-6">
+					<div class="container">
+						<div class="row">
+						    <div class="block-slider-6">
+								<div id="banner-slider-demo-6" class="banner-slider-demo-6 col-md-offset-3 col-md-6 col-xs-12">
+								    <div class="inner slider-home-6">
+								        <div class="item"><img src="{{media url="multistore/slider/slider-home-6/slider-5-1.png"}}" alt="" />
+								        </div>
+								        <div class="item"><img src="{{media url="multistore/slider/slider-home-6/slider-5-2.png"}}" alt="" />
+								        </div>
+								        <div class="item"><img src="{{media url="multistore/slider/slider-home-6/slider-5-3.png"}}" alt="" />
+								        </div>
+								    </div>
+								</div>
+								<div class="baner-slider-6-right col-md-3">
+								    <div class="baner-slider-6-right-top block  animation-element scroll-zoom-out">
+								        <a class="image banner-border" href="{{store direct_url="food.phtml "}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-1.png"}}" alt="home banner" /> </a>
+								    </div>
+								    <div class="baner-slider-6-right-bt block animation-element scroll-zoom-out banner-border">
+								        <a class="image banner-border" href="{{store direct_url="women.phtml "}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-2.png"}}" alt="home banner" /> </a>
+								    </div>
+								</div>
+							</div>
+						</div>
+						<div class="wrap-service-6 row">{{block class="Magento\Cms\Block\Block" block_id="home_slider_06_banner"}}</div>
+				</section>
+				<script type="text/javascript">
+				require([
+							'jquery','owlCarousel'
+							], function ($) {
+				    jQuery(document).ready(function($) {
+				        $('.slider-home-6').owlCarousel({
+				            items: 1,
+				            itemsCustom: [
+				                [0, 1],
+				                [480, 1],
+				                [768, 1],
+				                [992, 1],
+				                [1200, 1]
+				            ],
+				            pagination: true,
+				            slideSpeed: 200,
+				            addClassActive: true,
+				            autoPlay: false,
+				            scrollPerPage: false,
+				            touchDrag: false,
+				            afterAction: function(e) {
+				                    if (this.$owlItems.length > this.options.items) {
+				                        $('.new-product .navslider').show();
+				                    } else {
+				                        $('.new-product .navslider').hide();
+				                    }
+				                }
+				                //scrollPerPage: true,
+				        });
+				    });
+				    });
+				</script>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home banner on slider 06</title>
+			<identifier>home_slider_06_banner</identifier>
+			<content><![CDATA[
+				<div class="service-home-6">
+				    <div class="col-xs-12 col-md-3 block block-shipping col-md-offset-3 rotale-nb">
+				        <img src="{{media url="wysiwyg/sun/home-6/home-5-3.png"}}" alt="home banner" />
+				    </div>
+				    <div class="col-xs-12 col-md-3 block block-money rotale-nb">
+				        <img src="{{media url="wysiwyg/sun/home-6/home-5-4.png"}}" alt="home banner" />
+				    </div>
+				    <div class="col-xs-12 col-md-3 block block-lowest rotale-nb">
+				        <img src="{{media url="wysiwyg/sun/home-6/home-5-5.png"}}" alt="home banner" />
+				    </div>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home banner 08</title>
+			<identifier>home_banner_08</identifier>
+			<content><![CDATA[
+				<div class="promo-6-1 container">
+					<section class="home-promotion-banner-6 home-promotion-banner">
+					    <div class="row">
+					        <div class="col-xs-12 col-md-7 banner-left block  animation-element scroll-zoom-out">
+					            <a class="image" href="{{store direct_url="food.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-6.png"}}" alt="home banner" /> </a>
+					        </div>
+					        <div class="col-xs-12 col-md-5 banner-right animation-element scroll-zoom-out">
+					            <div class="block banner-right-top">
+					                <a class="image image-top" href="{{store direct_url="women.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-7.png"}}" alt="home banner" /> </a>
+					            </div>
+					            <div class="block banner-right-bt">
+					                <a class="image image-bt" href="{{store direct_url="women.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-8.png"}}" alt="home banner" /> </a>
+					            </div>
+					        </div>
+					    </div>
+					</section>
+					</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home banner 09</title>
+			<identifier>home_banner_09</identifier>
+			<content><![CDATA[
+				<div class="promo-6-2 container">
+					<section class="home-promotion-banner-6-2 home-promotion-banner">
+					    <div class="row">
+					        <div class="col-xs-12 col-md-3 banner-left block  animation-element scroll-zoom-out">
+					            <strong><span>Ceiling lights and lamps</span></strong>
+					            <p>Within this long list of brands, you'll be able to find headphones for all your needs. For the audiophile, we carry headphones with wireless freedom</p>
+					            <a href="{{store direct_url="food.phtml"}}" class="a-buttom">SHOP NOW</a>
+					            <a class="image" href="{{store direct_url="food.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-10.png"}}" alt="home banner" /> </a>
+					        </div>
+					        <div class="col-xs-12 col-md-6 banner-mid block animation-element scroll-zoom-out">
+					            <a class="image" href="{{store direct_url="women.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-9.png"}}" alt="home banner" /> </a>
+					            <strong><span>Ceiling lights and lamps</span></strong>
+					            <p>Within this long list of brands, you'll be able to find headphones for all your needs. For the audiophile, we carry headphones with wireless freedom</p>
+					            <a href="{{store direct_url="women.phtml"}}" class="a-buttom">SHOP NOW</a>
+					        </div>
+					        <div class="col-xs-12 col-md-3 banner-right block animation-element scroll-zoom-out">
+					            <strong><span>Ceiling lights and lamps</span></strong>
+					            <p>Within this long list of brands, you'll be able to find headphones for all your needs. For the audiophile, we carry headphones with wireless freedom</p>
+					            <a href="{{store direct_url="food.phtml"}}" class="a-buttom">SHOP NOW</a>
+					            <a class="image" href="{{store direct_url="women.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-11.png"}}" alt="home banner" /> </a>
+					        </div>
+					    </div>
+					</section>
+					</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>baner_home_6</title>
+			<identifier>baner_home_6</identifier>
+			<content><![CDATA[
+				<section class="home-promotion-banner-6 home-promotion-banner">
+				    <div class="row">
+				        <div class="col-xs-12 col-md-6 banner-left block  animation-element scroll-zoom-out">
+				            <a class="image" href="{{store direct_url="food.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-13.png"}}" alt="home banner" /> </a>
+				        </div>
+				        <div class="col-xs-12 col-md-6 banner-right block animation-element scroll-zoom-out">
+				            <a class="image" href="{{store direct_url="women.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-6/home-5-14.png"}}" alt="home banner" /> </a>
+				        </div>
+				    </div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Banner 01</title>
+			<identifier>home_banner_01</identifier>
+			<content><![CDATA[
+				<section class="home-category-banner animation-element slide-left">
+				    <div class="container">
+				        <div class="row">
+				            <div class="col-md-4 col-xs-4 block banner-left animation-element scroll-zoom-out">
+				                <a class="image" href="{{store direct_url="fashion.phtml "}}" target="_blank">
+				                    <img src="{{media url="wysiwyg/sun/home/home_v1_03.png"}}" alt="home banner" /> <span>Fashion</span> 
+				                </a>
+				            </div>
+				            <div class="col-md-5 col-xs-5 banner-middle animation-element scroll-zoom-out">
+				                <div class="middle-top block">
+				                    <a class="image" href="{{store direct_url="infant-toys.phtml "}}" target="_blank">
+				                        <img src="{{media url="wysiwyg/sun/home/home_v1_05.png"}}" alt="home banner" />
+				                        <span>Furniture</span>
+				                    </a>
+				                </div>
+				                <div class="middle-bottom block">
+				                    <a class="image" href="{{store direct_url="beauty-health.phtml "}}" target="_blank">
+				                        <img src="{{media url="wysiwyg/sun/home/home_v1_10.png"}}" alt="home banner" />
+				                        <span>Beauty</span>
+				                    </a>
+				                </div>
+				            </div>
+				            <div class="col-md-3 col-xs-3 banner-right block animation-element scroll-zoom-out">
+				                <a class="image" href="{{store direct_url="electronis.phtml "}}" target="_blank">
+				                    <img src="{{media url="wysiwyg/sun/home/home_v1_07.png"}}" alt="home banner" />
+				                    <span>Electronic</span>
+				                </a>
+				            </div>
+				        </div>
+				    </div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Banner 02</title>
+			<identifier>home_banner_02</identifier>
+			<content><![CDATA[
+				<section class="home-promotion-banner">
+				<div class="container">
+				<div class="row">
+				<div class="col-sm-4 banner-left block  animation-element scroll-zoom-out"><a class="image" href="{{store direct_url="food.phtml "}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home/home-banner-mid-left.jpg"}}" alt="home banner" /> </a>
+				</div>
+				<div class="col-sm-4 banner-middle block animation-element scroll-zoom-out"><a class="image" href="{{store direct_url="electronis.phtml "}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home/home-banner-mid-center.jpg"}}" alt="home banner" /> </a>
+				</div>
+				<div class="col-sm-4 banner-right block animation-element scroll-zoom-out"><a class="image" href="{{store direct_url="women.phtml "}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home/home-banner-mid-right.jpg"}}" alt="home banner" /> </a></div>
+				</div>
+				</div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Banner 03</title>
+			<identifier>home_banner_03</identifier>
+			<content><![CDATA[
+				<section class="home-collection-banner">
+				<div class="container">
+				<div class="row">
+				<div class="col-xs-12 col-md-6 banner-left block  animation-element scroll-zoom-out"><a class="image" href="{{store direct_url="fashion.html "}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home/home-banner-bot-left.jpg"}}" alt="home banner" /> </a></div>
+				<div class="col-xs-12 col-md-6 banner-middle block  animation-element scroll-zoom-out"><a class="image" href="{{store direct_url="what-is-new/televisions.html "}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home/home-banner-bot-right.jpg"}}" alt="home banner" /> </a></div>
+				</div>
+				</div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home Service 02</title>
+			<identifier>home_service_02</identifier>
+			<content><![CDATA[
+				<section class="services">
+				<div class="wrap-service-41 container">
+				<div class="service-home-2 row">
+				    <div class="col-xs-12 col-sm-3 block block-shipping center-out-nb ">
+				        <div class="info"><i class="icon-truck"> </i>
+				            <div class="box-text"><span> Free Shipping </span>
+				                <br><span> On all orders $199.00 </span>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="col-xs-12 col-sm-3 block block-money center-out-nb">
+				        <div class="info"><i class="icon-money-1"> </i>
+				            <div class="box-text"><span> 90 Day </span>
+				                <br><span> Money Back </span>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="col-xs-12 col-sm-3 block block-lowest center-out-nb">
+				        <div class="info"><i class="fa fa-calendar" aria-hidden="true"> </i>
+				            <div class="box-text"><span> lowest Price </span>
+				                <br><span> Guarantee </span>
+				            </div>
+				        </div>
+				    </div>
+				    <div class="col-xs-12 col-sm-3 block block-safe center-out-nb">
+				        <div class="info"><i class="icon-umbrella"> </i>
+				            <div class="box-text"><span> Safe Shopping </span>
+				                <br><span> Guarantee 100% </span>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				</div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home banner 04</title>
+			<identifier>home_banner_04</identifier>
+			<content><![CDATA[
+				<section class="home-category-banner home-category-banner-2 animation-element slide-left">
+				<div class="container">
+				    <div class="row">
+				        <div class="col-md-4 col-xs-4 block banner-left animation-element scroll-zoom-out">
+				            <div class="left-top block">
+				                <a class="image" href="{{store direct_url="infant-toys.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-2/home-1-9.jpg"}}" alt="home banner" /> <span>Laptop</span> </a>
+				            </div>
+				            <div class="left-bottom block">
+				                <a class="image" href="{{store direct_url="beauty-health.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-2/home-1-3.jpg"}}" alt="home banner" /> <span>Fashion</span> </a>
+				            </div>
+				        </div>
+				        <div class="col-md-4 col-xs-4 banner-middle  animation-element scroll-zoom-out">
+				            <a class="image" href="{{store direct_url="fashion.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-2/home-1-2.jpg"}}" alt="home banner" /> <span>Fashion</span> </a>
+				        </div>
+				        <div class="col-md-4 col-xs-4 block banner-left animation-element scroll-zoom-out">
+				            <div class="right-top block">
+				                <a class="image" href="{{store direct_url="infant-toys.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-2/home-1-1.jpg"}}" alt="home banner" /> <span>Beauty</span> </a>
+				            </div>
+				            <div class="right-bottom block">
+				                <a class="image" href="{{store direct_url="beauty-health.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-2/home-1-4.jpg"}}" alt="home banner" /> <span>Food</span> </a>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home  banner 06</title>
+			<identifier>home_banner_06</identifier>
+			<content><![CDATA[
+				<section class="home-collection-banner-3 home-collection-banner container home-banner-06">
+				    <div class="row">
+				        <div class="col-xs-12 col-md-4 banner-left  block   animation-element scroll-zoom-out">
+				            <a class="image" href="{{store direct_url="fashion.html"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-4/home-3-4.png"}}" alt="home banner" /> </a>
+				        </div>
+				        <div class="col-xs-12 col-md-8 banner-right animation-element scroll-zoom-out">
+				            <div class="row">
+				                <div class="col-md-6 col-xs-12 banner-right-tr block">
+				                    <a class="image" href="{{store direct_url="what-is-new/televisions.html"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-4/home-3-5.png"}}" alt="home banner" /> </a>
+				                </div>
+				                <div class="col-md-6 col-xs-12 banner-right-tl block">
+				                    <a class="image" href="{{store direct_url="what-is-new/televisions.html"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-4/home-3-6.png"}}" alt="home banner" /> </a>
+				                </div>
+				                <div class="col-md-12 col-xs-12 banner-right-tb block">
+				                    <a class="image" href="{{store direct_url="what-is-new/televisions.html"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-4/home-3-7.png"}}" alt="home banner" /> </a>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Home banner 07</title>
+			<identifier>home_banner_07</identifier>
+			<content><![CDATA[
+				<section class="home-promotion-banner-4 home-promotion-banner container">
+				    <div class="row">
+				        <div class="col-xs-12 col-md-12 banner-left block  animation-element scroll-zoom-out">
+				            <a class="image" href="{{store direct_url="food.phtml"}}" target="_blank"> <img src="{{media url="wysiwyg/sun/home-4/home-3-8.png"}}" alt="home banner" /> </a>
+				        </div>
+				    </div>
+				</section>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>block-1</title>
+			<identifier>block-1</identifier>
+			<content><![CDATA[
+				<img src="{{media url="wysiwyg/abfb5c76ff4b47b1a41d2a44153acccc_o_400.jpg"}}" alt="" />
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Block Slider Home Type 1</title>
+			<identifier>block_slider_home_type1</identifier>
+			<content><![CDATA[
+				
+				<div id="banner-slider-demo-1" class="banner-slider-demo-1">
+				<div class="inner">
+				<div class="item"><img src="{{media url="multistore/slider/baner2.jpg"}}" alt="" /></div>
+				<div class="item"><img src="{{media url="multistore/slider/1.jpg"}}" alt="" />
+				<div class="info"><span class="top">top sellers of week</span> <span class="iphone">iPhone 6s</span> <span class="last">Last chance to buy extra 25% off</span> <a class="shop-now" href="#">Shop Now</a></div>
+				</div>
+				<div class="item"><img src="{{media url="multistore/slider/baner3.jpg"}}" alt="" /></div>
+				<div class="item"><img src="{{media url="multistore/slider/baner1.jpg"}}" alt="" /></div>
+				</div>
+				</div>
+				<script type="text/javascript" xml="space">
+				       require(['jquery','owlCarousel'], function($) {
+				 $(document).ready(function($) {
+								            $('.block-slider div.inner').owlCarousel({
+								        items: 4,
+								        itemsCustom: [ 
+								          [0, 1], 
+								          [480, 1], 
+								          [768, 1], 
+								          [992, 1], 
+								          [1200,1] 
+								        ],
+								        pagination: true,
+								        slideSpeed : 200,
+								        addClassActive: true,
+								autoPlay:true,
+								        scrollPerPage: false,
+								        touchDrag: false,
+								        afterAction: function (e) {
+								          if(this.$owlItems.length > this.options.items){
+								            $('.new-product .navslider').show();
+								          }else{
+								            $('.new-product .navslider').hide();
+								          }
+								        }
+								      });
+								        }); 
+				    }); 
+								</script>
+							
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Our History About</title>
+			<identifier>our-history-about</identifier>
+			<content><![CDATA[
+				<div class="container-time">
+				<div class="page-header-time">
+				<h1 id="timeline">Our history</h1>
+				</div>
+				<ul class="timeline">
+				<li class="timeline-year-li">
+				<div class="timeline-year">2014</div>
+				</li>
+				<li class="count-li">
+				<div class="timeline-badge"></div>
+				<div class="timeline-panel animation-element banner-nb-bottom">
+				<div class="img-text"><img src="{{media url="multistore/banner/Untitled-1-01.png"}}" alt="" /></div>
+				<div class="timeline-body">
+				<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+				</div>
+				</div>
+				</li>
+				<li class="timeline-inverted count-li">
+				<div class="timeline-badge"></div>
+				<div class="timeline-panel  animation-element banner-nb-bottom">
+				<div class="img-text"><img src="{{media url="multistore/banner/Untitled-1-02.png"}}" alt="" /></div>
+				<div class="timeline-body">
+				<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+				</div>
+				</div>
+				</li>
+				<li class="timeline-year-li">
+				<div class="timeline-year">2015</div>
+				</li>
+				<li class="count-li">
+				<div class="timeline-badge"></div>
+				<div class="timeline-panel  animation-element banner-nb-bottom">
+				<div class="img-text"><img src="{{media url="multistore/banner/Untitled-1-03.png"}}" alt="" /></div>
+				<div class="timeline-body">
+				<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+				</div>
+				</div>
+				</li>
+				<li class="timeline-inverted count-li">
+				<div class="timeline-badge"></div>
+				<div class="timeline-panel  animation-element banner-nb-bottom">
+				<div class="img-text"><img src="{{media url="multistore/banner/Untitled-1-04.png"}}" alt="" /></div>
+				<div class="timeline-body">
+				<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+				</div>
+				</div>
+				</li>
+				<li class="count-li">
+				<div class="timeline-badge"></div>
+				<div class="timeline-panel  animation-element banner-nb-bottom">
+				<div class="img-text"><img src="{{media url="multistore/banner/Untitled-1-05.png"}}" alt="" /></div>
+				<div class="timeline-body">
+				<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+				</div>
+				</div>
+				</li>
+				<li class="timeline-year-li">
+				<div class="timeline-year">2016</div>
+				</li>
+				<li class="timeline-inverted count-li">
+				<div class="timeline-badge"></div>
+				<div class="timeline-panel  animation-element banner-nb-bottom">
+				<div class="img-text"><img src="{{media url="multistore/banner/Untitled-1-06.png"}}" alt="" /></div>
+				<div class="timeline-body">
+				<h4 class="timeline-title">Mussum ipsum cacilds</h4>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</p>
+				</div>
+				</div>
+				</li>
+				</ul>
+				</div>
+				<script type="text/javascript" xml="space"> 
+				require(['jquery'], function ($) {
+				  $(document).ready(function($) {
+				  var _width = $(window).width();
+				  var _lengthli = $( ".timeline .count-li" ).size()
+				  $( ".timeline .count-li" ).each(function( index ) {
+				      var _conditionI = index%2;
+				    if (_width <1200) {
+				        if (_conditionI == 1) {
+				          $(this).removeClass('timeline-inverted');
+				        }
+				    } else {
+				        if (_conditionI == 1) {
+				          $(this).addClass('timeline-inverted');
+				        }
+				    }
+				  });
+				});
+				});
+				 </script>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Block Banner category</title>
+			<identifier>block-banner-category</identifier>
+			<content><![CDATA[
+				<div class="men-smbanner row">
+				<div class="col-sm-12 col-md-4 animation-element scroll-zoom-out"><img src="{{media url="multistore/banner/category_117.png "}}" alt="" /> <a href="{{store url="computers.html"}}"></a></div>
+				<div class="col-sm-12 col-md-4 animation-element scroll-zoom-out"><img src="{{media url="multistore/banner/category_119.png "}}" alt="" /> <a href="{{store url="electronis.html"}}"></a></div>
+				<div class="col-sm-12 col-md-4 animation-element scroll-zoom-out"><img src="{{media url="multistore/banner/category_121.png "}}" alt="" /> <a href="{{store url="computers/accessories.html"}}"></a></div>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Men Block</title>
+			<identifier>men-block</identifier>
+			<content><![CDATA[
+				<p>{{block class="Cmsmart\Categoryicon\Block\Categoryicon" template="Cmsmart_Categoryicon::show_custom_category.phtml"}}</p>
+				<script type="text/javascript" xml="space">
+				require([
+				    'jquery'
+				], function ($) {
+								  $(document).ready(function($) {
+								      var $animation_elements = $('.animation-element');
+								    var $window = $(window);
+
+								    function check_if_in_view() {
+								      var window_height = $window.height();
+								      var window_top_position = $window.scrollTop();
+								      var window_bottom_position = (window_top_position + window_height);
+								     
+								      $.each($animation_elements, function() {
+								        var $element = $(this);
+								        var element_height = $element.outerHeight();
+								        var element_top_position = $element.offset().top;
+								        var element_bottom_position = (element_top_position + element_height);
+								     
+
+								        if ((element_top_position <= window_bottom_position)) {
+								          $element.addClass('in-view');
+								        } else {
+								          $element.removeClass('in-view');
+								        }
+								      });
+								    }
+
+								    $window.on('scroll resize', check_if_in_view);
+								    $window.trigger('scroll');
+								  });
+				});
+								</script>		
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-middle-3</title>
+			<identifier>footer-middle-3</identifier>
+			<content><![CDATA[
+				<div><strong></strong> <i class="icon-mail-1"></i> <a>contact@yourdomain.com<br />Support@yourdomain.com</a></div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Footer Middle Five</title>
+			<identifier>footer-middle-5</identifier>
+			<content><![CDATA[
+				<p><a class="title-a">FOLLOW US</a></p>
+				<ul>
+				<li><a href="https://www.facebook.com/"> <i class="icon-facebook-1"></i> </a></li>
+				<li><a href="https://twitter.com/"> <i class="icon-twitter"></i> </a></li>
+				<li><a href="https://plus.google.com/"> <i class="icon-gplus"></i> </a></li>
+				<li><a href="https://www.pinterest.com/"> <i class="icon-pinterest"></i> </a></li>
+				<li><a href="http://www.linkercreative.com/"> <i class="icon-linkedin-1"></i> </a></li>
+				</ul>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Block Service Home</title>
+			<identifier>block_service</identifier>
+			<content><![CDATA[
+				
+				<div class="service">
+				<div class="col-lg-3 col-md-offset-3 col-md-4 col-xs-4 block block-shipping "><img src="{{media url="multistore/servive/shipping.jpg"}}" alt="" />
+				<div class="info"><i class="icon-truck-1"> </i>
+				<div class="box-text"><span> Free Shipping </span><br /><span> On all orders $199.00 </span></div>
+				</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-xs-4 block block-money"><img src="{{media url="multistore/servive/money.jpg"}}" alt="" />
+				<div class="info"><i class="icon-money-1"> </i>
+				<div class="box-text"><span> 90 Day </span><br /><span> Money Back </span></div>
+				</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-xs-4 block block-safe"><img src="{{media url="multistore/servive/safe.jpg"}}" alt="" />
+				<div class="info"><i class="icon-umbrella"> </i>
+				<div class="box-text"><span> Safe Shopping </span><br /><span> Guarantee 100% </span></div>
+				</div>
+				</div>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Our About</title>
+			<identifier>our-about</identifier>
+			<content><![CDATA[
+				<div class="row our-team">
+				<h2>Our Team</h2>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				<div class="col-xs-6 col-md-3 ot-content animation-element scroll-zoom-out"><a href="#"> <img src="{{media url="multistore/banner/about_team_1.png"}}" alt="" /></a>
+				<div class="our-team-detail">
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				<a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a> <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a> <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+				<div class="our-text center-nb"><strong>Andrew Flintoft</strong> <span>Co-Founder</span></div>
+				</div>
+				<div class="col-xs-6 col-md-3 ot-content  animation-element scroll-zoom-out"><a href="#"> <img src="{{media url="multistore/banner/about_team_2.png"}}" alt="" /></a>
+				<div class="our-team-detail">
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				<a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a> <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a> <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+				<div class="our-text center-nb"><strong>Chris Root</strong> <span>Managing Director</span></div>
+				</div>
+				<div class="col-xs-6 col-md-3 ot-content  animation-element scroll-zoom-out"><a href="#"> <img src="{{media url="multistore/banner/about_team_3.png"}}" alt="" /></a>
+				<div class="our-team-detail">
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				<a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a> <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a> <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+				<div class="our-text center-nb"><strong>Panlope Stark</strong> <span>SEO Specialist</span></div>
+				</div>
+				<div class="col-xs-6 col-md-3 ot-content  animation-element scroll-zoom-out"><a href="#"> <img src="{{media url="multistore/banner/about_team_4.png"}}" alt="" /></a>
+				<div class="our-team-detail">
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				<a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a> <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a> <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></div>
+				<div class="our-text center-nb"><strong>Philip Demarco</strong> <span>Business Analyst</span></div>
+				</div>
+				</div>
+				<script type="text/javascript" xml="space">
+				require(['jquery'], function ($) {
+				// 
+				// 
+				// 
+				equalheight = function(container){
+
+				var currentTallest = 0,
+				     currentRowStart = 0,
+				     rowDivs = new Array(),
+				     $el,
+				     topPosition = 0;
+				 $(container).each(function() {
+
+				   $el = jQuery(this);
+				   jQuery($el).height('auto')
+				   topPostion = $el.position().top;
+
+				   if (currentRowStart != topPostion) {
+				     for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+				       rowDivs[currentDiv].height(currentTallest);
+				     }
+				     rowDivs.length = 0; // empty the array
+				     currentRowStart = topPostion;
+				     currentTallest = $el.height();
+				     rowDivs.push($el);
+				   } else {
+				     rowDivs.push($el);
+				     currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
+				  }
+				   for (currentDiv = 0 ; currentDiv < rowDivs.length ; currentDiv++) {
+				     rowDivs[currentDiv].height(currentTallest);
+				   }
+				 });
+				}
+
+				$(window).load(function() {
+				  equalheight('.our-team .ot-content');
+				});
+
+
+				$(window).resize(function(){
+				  equalheight('.our-team .ot-content');
+				});
+
+
+
+				$(window).load(function() {
+				  equalheight('.each-icon strong');
+				});
+
+
+				$(window).resize(function(){
+				  equalheight('.each-icon strong');
+				});
+				});
+				// 
+				// 
+				// 
+				// </script>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Banner Slider Right</title>
+			<identifier>baner-slider-right</identifier>
+			<content><![CDATA[
+				<div class="baner-slider-right"><a title="banner" href="#"><img src="{{media url="multistore/banner/banner-slider-right.png"}}" alt="" /></a></div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Footer Bottom</title>
+			<identifier>footer_bottom</identifier>
+			<content><![CDATA[
+				<div class="footer-bottom">
+				<div class="container">
+				<div class="row">
+				<div class="col-sm-12 col-md-6">
+				<p><i class="fa fa-copyright"></i>2016 Demo MultiStore. All Rights Reserved. Designed by Netbase JSC</p>
+				</div>
+				<div class="col-sm-12 col-md-6"><a href="#"><img src="{{media url="multistore/icon/icon-footer.png"}}" alt="" /></a></div>
+				</div>
+				</div>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Banner contact</title>
+			<identifier>banner-contact-out</identifier>
+			<content><![CDATA[	
+				<div class="banner-contact">
+				<h1 class="title-banner-about"><span>Contact</span></h1>
+				<img src="{{media url="multistore/banner/banner_contact.jpg"}}" alt="" /></div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Get To About</title>
+			<identifier>get-to-about</identifier>
+			<content><![CDATA[
+				<div class="get-to-mul">
+					<div class="row">
+					<h2>Get to know Multistore</h2>
+					<p class="gtm-p">Multistore vision is to create India's most reliable and frictionless commerce ecosystem that creates life-changing experiences for buyers and sellers.</p>
+					<div class="col-xs-4 col-md-4 each-icon animation-element scroll-zoom-out"><span class="ab-icon circle spin"><i class="icon-inbox"></i></span> <strong> 35 Million+ </strong> <span class="ab-text">Products</span></div>
+					<div class="col-xs-4 col-md-4 each-icon animation-element scroll-zoom-out"><span class="ab-icon circle spin"><i class="fa fa-shopping-cart"></i></span> <strong> 250,000 </strong> <span class="ab-text">Sellers</span></div>
+					<div class="col-xs-4 col-md-4 each-icon animation-element scroll-zoom-out"><span class="ab-icon circle spin"><i class="fa fa-globe"></i></span> <strong> 6000+ </strong> <span class="ab-text">Cities</span></div>
+					<p class="gtm-content animation-element banner-nb-bottom">In February 2010, Kunal Bahl along with Rohit Bansal, started Multistore.com - India's largest online marketplace, with the widest assortment of 30 million plus products across 800 plus diverse categories from over 125,000 regional, national, and international brands and retailers. With millions of users and more than 300,000 sellers, Multistore is the shopping destination for Internet users across the country, delivering to 6000+ cities and towns in India. In its journey till now, Multistore has partnered with several global marquee investors and individuals such as SoftBank, BlackRock, Temasek, Foxconn, Alibaba, eBay Inc., Premji Invest, Intel Capital, Bessemer Venture Partners, Mr. Ratan Tata, among others.</p>
+					</div>
+					</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Block Sevice Detail Product</title>
+			<identifier>block_sevice_detail_product</identifier>
+			<content><![CDATA[
+				
+				<div class="service">
+				<div class="block block-shipping col-lg-4 col-md-4 col-xs-4"><img src="{{media url="multistore/servive/shipping_detail.jpg"}}" alt="" />
+				<div class="info"><i class="icon-truck-1"> </i>
+				<div class="box-text"><span> Free Shipping </span> <span> On all orders $199.00 </span></div>
+				</div>
+				</div>
+				<div class="block block-money col-lg-4 col-md-4 col-xs-4"><img src="{{media url="multistore/servive/money_detail.jpg"}}" alt="" />
+				<div class="info"><i class="icon-money-1"> </i>
+				<div class="box-text"><span> 90 Day </span> <span> Money Come Black </span></div>
+				</div>
+				</div>
+				<div class="block block-safe col-lg-4 col-md-4 col-xs-4"><img src="{{media url="multistore/servive/safe_detail.jpg"}}" alt="" />
+				<div class="info"><i class="icon-umbrella"> </i>
+				<div class="box-text"><span> Safe Shopping </span> <span> Guarantee 100% </span></div>
+				</div>
+				</div>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Banner Cart</title>
+			<identifier>banner-cart</identifier>
+			<content><![CDATA[
+				
+				<div class="content-banner-cart"><img src="{{media url="multistore/banner/cart.png"}}" alt="" />
+				<h1 class="title-banner-cart">MY SHOPPING CART</h1>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Banner About</title>
+			<identifier>banner-about</identifier>
+			<content><![CDATA[
+				
+				<div class="content-banner-about"><img src="{{media url="multistore/banner/about_baner.png"}}" alt="" />
+				<h1 class="title-banner-about">ABOUT US</h1>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Mul About</title>
+			<identifier>mul-about</identifier>
+			<content><![CDATA[
+				<div class="row know-content">
+					<div class="kc-all col-xs-12 col-md-6 kc-left animation-element banner-nb-left"><img src="{{media url="multistore/banner/about_mul_left.png"}}" alt="" />
+					<div class="kc-left-text kc-text draw-nb"><strong>Who We Are</strong>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+					<a href="#"> Learn more </a> <i class="fa fa-arrow-right"></i></div>
+					</div>
+					<div class="kc-all col-xs-12 col-md-6 kc-right animation-element banner-nb-right"><img src="{{media url="multistore/banner/about_mul_right.png"}}" alt="" />
+					<div class="kc-left-right kc-text draw-nb"><strong>Connected Commerce</strong>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+					<a href="#"> Learn more </a> <i class="fa fa-arrow-right"></i></div>
+					</div>
+					</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Footer Middle</title>
+			<identifier>footer_middle</identifier>
+			<content><![CDATA[
+				
+				<div class="footer-middle">
+				<div class="container">
+				<div class="row">
+				<div class="col-sm-12 col-md-5 fm-left"><a class="title-a"><img src="http://localhost/m2multistore/pub/static/frontend/netbase/multistore/en_US/images/home_v1.png" /> </a>
+				<ul>
+				<li>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p>
+				</li>
+				<li><i class="icon-location-outline"></i> <a>PO Box CT16122 Collins Street West, <br />Victoria 8007, Australia.</a></li>
+				<li><i class="icon-phone-outline"></i> <a>Phone: +1 (2) 345 6789 <br />Fax: +1 (2) 345 6789</a></li>
+				<li><i class="icon-mail"></i> <a> Contact@yourdomain.com <br />Support@yourdomain.com </a></li>
+				</ul>
+				</div>
+				<div class="col-sm-12 col-md-7 fm-right">
+				<div class="row">
+				<div class="col-sm-4 col-md-4 fmr-4"><a class="title-a">MY ACCOUNT</a>
+				<ul>
+				<li><a>My orders</a></li>
+				<li><a>My credit slips</a></li>
+				<li><a>My addresses</a></li>
+				<li><a>My personal info</a></li>
+				</ul>
+				</div>
+				<div class="col-sm-4 col-md-4 fmr-4"><a class="title-a">INFORMATION</a>
+				<ul>
+				<li><a>Specials</a></li>
+				<li><a>New Products</a></li>
+				<li><a>Best Sellers</a></li>
+				<li><a>Our Stores</a></li>
+				</ul>
+				</div>
+				<div class="col-sm-4 col-md-4 fmr-4"><a class="title-a">HELP</a>
+				<ul>
+				<li><a>Where&amp;rsquo;s my order?</a></li>
+				<li><a>Payments</a></li>
+				<li><a>Redeem a gift voucher</a></li>
+				<li><a>Delivery &amp; returns</a></li>
+				</ul>
+				</div>
+				<div class="col-sm-6 fmr-new">{{block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-" template="subscribe_footer.phtml"}}</div>
+				<div class="col-sm-6 fmr-flw"><a class="title-a">FOLLOW US</a>
+				<ul>
+				<li><a> <i class="icon-facebook-1"></i> </a></li>
+				<li><a> <i class="icon-twitter"></i> </a></li>
+				<li><a> <i class="icon-gplus"></i> </a></li>
+				<li><a> <i class="icon-pinterest"></i> </a></li>
+				<li><a> <i class="icon-linkedin-1"></i> </a></li>
+				</ul>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-middle-4</title>
+			<identifier>footer-middle-4</identifier>
+			<content><![CDATA[
+				
+				 <div class="follow-us"><strong>FOLLOW US</strong>
+				<ul>
+				<li><a class="circle spin" href="https://www.facebook.com/"> <i class="icon-facebook-1"></i> </a></li>
+				<li><a class="circle spin" href="https://twitter.com/"> <i class="icon-twitter"></i> </a></li>
+				<li><a class="circle spin" href="https://plus.google.com/"> <i class="icon-gplus"></i> </a></li>
+				<li><a class="circle spin" href="https://www.pinterest.com/"> <i class="icon-pinterest"></i> </a></li>
+				<li><a class="circle spin" href="http://www.linkercreative.com/"> <i class="icon-linkedin-1"></i> </a></li>
+				</ul>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Block Link Menu</title>
+			<identifier>block_link_menu</identifier>
+			<content><![CDATA[
+				
+				<ul>
+				<li><span>hot</span> <a href="#">Daniel Wellington watch - Hot trend 2016</a></li>
+				<li><span>hot</span> <a href="#">Haki Women Fashion 50% OFF</a></li>
+				<li><span>hot</span> <a href="#">Hot deal from Printer</a></li>
+				<li><span>hot</span> <a href="#">Samsung Smart phone 20% OFF</a></li>
+				</ul>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Block Slider Category</title>
+			<identifier>category_1</identifier>
+			<content><![CDATA[
+				<div id="category-baner-slider">
+					<div class="inner">
+						<div class="item"><img src="{{media url="multistore/banner/category/category.png"}}" alt="" /></div>
+						<div class="item"><img src="{{media url="multistore/banner/category/category.png"}}" alt="" /></div>
+						<div class="item"><img src="{{media url="multistore/banner/category/category.png"}}" alt="" /></div>
+					</div>
+				</div>
+					<script type="text/javascript" xml="space">// 
+						require([ 'jquery','owlCarousel'], function ($) {
+								$(document).ready(function($) {
+									$("#category-baner-slider .inner").owlCarousel({
+									   items: 6,
+										itemsCustom: [ 
+											[320, 1], 
+											[480, 1], 
+											[768, 1], 
+											[1024, 1], 
+											[1200, 1]
+										],
+										pagination: false,
+										slideSpeed : 800,
+										addClassActive: true,
+										scrollPerPage: false,
+										touchDrag: true, 
+
+										   });
+								});
+				});
+				</script>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Block Header Top Right</title>
+			<identifier>block_header_top_right</identifier>
+			<content><![CDATA[
+				
+				<ul class="links">
+				<li class="get-app"><a href="#"> Get the app </a></li>
+				<li class="sell"><a href="#"> Sell on Multistore </a></li>
+				<li class="custom"><a href="#"> Customer Care </a></li>
+				<li class="track"><a href="#"> Track my order </a></li>
+				</ul>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-middle-1</title>
+			<identifier>footer-middle-1</identifier>
+			<content><![CDATA[
+				
+				<div><strong>Contacts</strong> <i class="fa fa-map-marker"></i> <a>PO Box CT16122 Collins Street<br /> West,  Victoria 8007, Australia.</a></div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>FooterTop</title>
+			<identifier>footer_top</identifier>
+			<content><![CDATA[	
+				<div class="footer-top">
+				<div class="container">
+				<div class="row">
+				<div class="col-md-4"><i class="icon-truck"></i>
+				<div class="text-area">
+				<h3>FREE SHIPPING &amp; RETURN</h3>
+				<p>Free shipping on all orders over $99.</p>
+				</div>
+				</div>
+				<div class="col-md-4"><i class="icon-money"></i>
+				<div class="text-area">
+				<h3>MONEY BACK GUARANTEE</h3>
+				<p>100% money back guarantee.</p>
+				</div>
+				</div>
+				<div class="col-md-4"><i class="icon-umbrella-1"></i>
+				<div class="text-area">      
+				<h3>ONLINE SUPPORT 24/7</h3>
+				<p>Lorem ipsum dolor sit amet.</p>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-top-1</title>
+			<identifier>footer-top-1</identifier>
+			<content><![CDATA[
+				<div><strong>About Market</strong>
+				<ul>
+				<li><a href="{{store url="about-us"}}">About Us</a></li>
+				<li><a href="{{store url="contact-us"}}">Contact</a></li>
+				<li><a href="{{store url="faq"}}">FAQ</a></li>
+				<li><a href="#">Privacy Policy</a></li>
+				<li><a href="#">Site Map</a></li>
+				</ul>
+				</div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-top-2</title>
+			<identifier>footer-top-2</identifier>
+			<content><![CDATA[
+				
+				<div><strong>Make Money with Us</strong>
+				<ul>
+				<li><a href="#">Shipping Policy</a></li>
+				<li><a href="#">Compensation First</a></li>
+				<li><a href="#">My Account</a></li>
+				<li><a href="#">Return Policy</a></li>
+				<li><a href="#">Contact Us</a></li>
+				</ul>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-top-3</title>
+			<identifier>footer-top-3</identifier>
+			<content><![CDATA[
+				
+				<div><strong>Payment &amp; Shipping</strong>
+				<ul>
+				<li><a href="#">Terms of Use</a></li>
+				<li><a href="#">Payment Methods</a></li>
+				<li><a href="#">Shipping Guide</a></li>
+				<li><a href="#">Locations We Ship To</a></li>
+				<li><a href="#">Estimated Delivery Time</a></li>
+				</ul>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-top-4</title>
+			<identifier>footer-top-4</identifier>
+			<content><![CDATA[
+				
+				<div><strong>Let Us Help You</strong>
+				<ul>
+				<li><a href="#">Your Account</a></li>
+				<li><a href="#">Your Orders</a></li>
+				<li><a href="#">Shipping Rates &amp; Policies</a></li>
+				<li><a href="#">Manage Your Content and Devices</a></li>
+				<li><a href="#">Help</a></li>
+				</ul>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-bottom-2</title>
+			<identifier>footer-bottom-2</identifier>
+			<content><![CDATA[
+				
+				<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis malesuada nisl. Morbi blandit enim sem, eget ullamcorper nibh commodo vitae. In hac habitasse platea dictumst. Nullam ut turpis tellus. Donec nisl augue, congue eu nunc eget, semper feugiat enim. Vestibulum volutpat ante sapien.</p>
+				<strong>Multistore - ONLINE REVOLUTION 11/11 -12/12</strong>
+				<p>, et facilisis nisl molestie a. Integer vestibulum et ipsum ac suscipit. In ac aliquet ligula. Nulla sed tellus vestibulum, lobortis ex ut, suscipit sem. Suspendisse dictum luctus lacus eu placerat. Sed et mi vitae odio pellentesque pharetra vel eu enim. Quisque ullamcorper nisi vel felis auctor convallis.</p>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-bottom-4</title>
+			<identifier>footer-bottom-4</identifier>
+			<content><![CDATA[
+				
+				<div><span>CAMERAS</span>
+				<p>Canon, Nikon, Sony, Fujifilm, Bridge Cameras, DSLR Sets, Video &amp; Action Camcorders...</p>
+				<span>AIR CONDITIONERS</span>
+				<p>Daikin, Electrolux, LG, Mitsubishi, Panasonic, Samsung, Sharp, Toshiba, Gree...</p>
+				<span>WASHING MACHINES</span>
+				<p>Electrolux, Sanyo, Toshiba, Sanyo, Hitachi, Panasonic, Samsung, LG...</p>
+				<span>MICROWAVES</span>
+				<p>Sharp, Electrolux, Bluestone, Samsung, Sanyo, Goldsun, Panasonic...</p>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer_bottom_payment</title>
+			<identifier>footer_bottom_payment</identifier>
+			<content><![CDATA[
+				
+				<div class="col-sm-12 col-md-6">
+				<p><i class="fa fa-copyright"></i>2016 Demo MultiStore. All Rights Reserved. Designed by Netbase JSC</p>
+				</div>
+				<div class="col-sm-12 col-md-6"><a href="#"><img src="http://demo8.cmsmart.net/mag2-multistore/pub/media/multistore/icon/icon-footer.png" alt="" /></a></div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-middle-2</title>
+			<identifier>footer-middle-2</identifier>
+			<content><![CDATA[
+				<div><strong></strong> <i class="icon-phone-outline"></i> <a>Phone: +1 (2) 345 6789<br />Fax: +1 (2) 345 6789</a></div>
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-bottom-3</title>
+			<identifier>footer-bottom-3</identifier>
+			<content><![CDATA[
+				
+				<div><strong>TOP CATEGORIES &amp; BRANDS</strong> <span>MOBILES &amp; TABLETS</span>
+				<p>Nokia, Samsung, Sony, Blackberry, Asus, HTC, Oppo, Lenovo, Alcatel, iPhone 4s, iPhone 5s, iPhone 6, Apple iPhone 6s, iPad, Samsung Tablet, Acer Tablet, Lenovo Tablet...</p>
+				<span>COMPUTERS &amp; LAPTOPS</span>
+				<p>Dell, Asus, Macbook, Sony, Lenovo, Acer...</p>
+				<span>TELEVISIONS</span>
+				<p>Sony TV, LG TV, Toshiba TV, Samsung TV, Panasonic TV, Sharp TV, LCD TV, Samsung LCD TV, LG LCD TV, Sharp LCD TV, LED TV, Sony LED TV, Samsung LED TV...</p>
+				<span>REFRIGERATORS</span>
+				<p>Mini Refrigerators, Sanyo, Electrolux, Panasonic, Toshiba, Samsung...</p>
+				<span>HEALTH &amp; BEAUTY</span>
+				<p>Bourjois, L'oreal, The Body Shop, Maybeline, Shiseido...</p>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>footer-bottom-1</title>
+			<identifier>footer-bottom-1</identifier>
+			<content><![CDATA[
+				
+				<div><strong>Multistore - LEADING ONLINE SHOPPING CHANNEL!</strong>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis malesuada nisl. Morbi blandit enim sem, eget ullamcorper nibh commodo vitae. In hac habitasse platea dictumst. Nullam ut turpis tellus. Donec nisl augue, congue eu nunc eget, semper feugiat enim. Vestibulum volutpat ante sapien, et facilisis nisl molestie a. Integer vestibulum et ipsum ac suscipit. In ac aliquet ligula. Nulla sed tellus vestibulum, lobortis ex ut, suscipit sem. Suspendisse dictum luctus lacus eu placerat. Sed et mi vitae odio pellentesque pharetra vel eu enim. Quisque ullamcorper nisi vel felis auctor convallis. Integer vestibulum et ipsum ac suscipit. In ac aliquet ligula. Nulla sed tellus vestibulum, lobortis ex ut, suscipit sem. Suspendisse dictum luctus lacus eu placerat. Sed et mi vitae odio pellentesque pharetra vel eu enim. Quisque ullamcorper nisi vel felis auctor convallis. Suspendisse dictum luctus lacus eu placerat. Sed et mi vitae odio pellentesque pharetra vel eu enim. Quisque ullamcorper nisi vel felis auctor convallis.</p>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+		<cms_item>
+			<title>Block Banner Menu Computers</title>
+			<identifier>block_banner_menu_computer</identifier>
+			<content><![CDATA[
+				
+				<div class="megamenu-banner">
+				<div class="col-lg-3 col-md-3 col-xs-3"><img src="{{media url="multistore/menu/banner/categorie01.jpg"}}" alt="" /></div>
+				<div class="col-lg-3 col-md-3 col-xs-3"><img src="{{media url="multistore/menu/banner/categorie02.jpg"}}" alt="" /></div>
+				<div class="col-lg-3 col-md-3 col-xs-3"><img src="{{media url="multistore/menu/banner/categorie03.jpg"}}" alt="" /></div>
+				<div class="col-lg-3 col-md-3 col-xs-3"><img src="{{media url="multistore/menu/banner/categorie04.jpg"}}" alt="" /></div>
+				<div class="col-lg-12 col-md-12 col-xs-12"><img src="{{media url="multistore/menu/banner/categorie05.jpg"}}" alt="" /></div>
+				</div>
+			
+			]]></content>
+			<is_active>1</is_active>
+		</cms_item>
+	</blocks>
+</root>

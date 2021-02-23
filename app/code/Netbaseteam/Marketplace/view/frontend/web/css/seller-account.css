@@ -1,0 +1,65 @@
+.account-nav .nav li:before {
+	z-index: 9999;
+	font-family: 'FontAwesome';
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	transform: translate(0%, -50%);
+	padding-left: 15px;
+	color: #575757;;
+}
+.account-nav .nav li {
+	position: relative;
+}
+.account-nav .nav li a,.account-nav .nav li strong {
+	padding-left: 35px;
+}
+.account-nav .nav li:nth-child(1):before {
+	content: "\f200";
+}
+.account-nav .nav li:nth-child(2):before {
+	content: "\f015";
+}
+.account-nav .nav li:nth-child(3):before {
+	content: "\f007";
+}
+.account-nav .nav li:nth-child(4):before {
+	content: "\f019";
+}
+.account-nav .nav li:nth-child(5):before {
+	content: "\f044";
+}
+.account-nav .nav li:nth-child(6):before {
+	content: "\f0ec";
+}
+.account-nav .nav li:nth-child(7):before {
+	content: "\f0ea";
+}
+.account-nav .nav li:nth-child(8):before {
+	content: "\f080";
+}
+.account-nav .nav li.addon-vacation:before {
+	content: "\f27d";
+}
+.account-nav .nav li.current:before {
+	color: red;
+}
+/* css edit 3/5 */
+.netbaseteam-marketplace  .mp-title strong {
+	font-size: 18px;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.netbaseteammp_body td:nth-child(1) {
+	padding-left: 0;
+}
+
+@media (max-width: 767px) {
+	.netbaseteam-marketplace >.mp-title{
+		display:none;
+	}
+	.sidebar-main .netbaseteam-marketplace{
+		top:20px;
+	}
+}

@@ -1,0 +1,155 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+	$commentCount = $block->countNumComment();
+	$commentData = $block->getCommentData();
+	$showAuthorBox = $block->showAuthorInfoBox();
+	$accountInfo = $block->getCustomerLoginInfo();
+	$customerAvatar = $helper->getCustomerAvatar();
+	$adminAvatar = $helper->getAdminAvatar();
+
+?>
+
+<h3 class="count-comment">
+	<span><?php echo __($commentCount); ?></span>
+	<?php echo __("Comments"); ?>
+</h3>
+
+<?php if ($commentCount>0): ?>
+	<div class="comment-list">
+		<ul>	
+			<?php foreach ($commentData as $comment): ?>
+				<li class="comment">
+					<?php if ($customerAvatar): ?>
+						<div class="avatar">
+							<img src="<?php echo $customerAvatar; ?>" title="avatar" />
+						</div>
+					<?php endif ?>
+					<?php if ($comment['author_name']): ?>
+						<span class="author-comment">
+							<?php echo __($comment['author_name']); ?>
+						</span>
+						<br>
+					<?php endif ?>
+
+					<?php if ($comment['create_time']): ?>
+						<span class="comment-time">
+							<i class="fa fa-clock-o"></i>
+							<?php echo __($block->formatDateTime($comment['create_time'])); ?>
+						</span>
+					<?php endif ?>
+					<?php if ($comment['content']): ?>
+						<div class="comment-content">
+							<?php echo __($comment['content']); ?>
+						</div>
+					<?php endif ?>
+					<?php if ($comment['reply_content']): ?>
+						<div class="reply-comment">
+							<?php if ($adminAvatar): ?>
+								<div class="reply-avatar">
+									<img src="<?php echo $adminAvatar; ?>" title="avatar" />
+								</div>
+							<?php endif ?>
+						
+							<?php if ($comment['reply_author']): ?>
+								<span class="reply-author">
+									<?php echo __($comment['reply_author']); ?>
+								</span>
+								<br>
+							<?php endif ?>
+
+							<?php if ($comment['reply_createtime']): ?>
+								<span class="reply-time">
+									<i class="fa fa-clock-o"></i>
+									<?php echo __($block->formatDateTime($comment['reply_createtime'])); ?>
+								</span>
+							<?php endif ?>
+
+							<?php if ($comment['reply_content']): ?>
+								<div class="reply-content">
+									<?php echo __($comment['reply_content']); ?>
+								</div>
+							<?php endif ?>
+						</div>
+					<?php endif ?>
+				</li>
+			<?php endforeach ?>
+		</ul>
+		
+	</div>
+
+<?php endif ?>
+<?php if ($block->getEnableComment() == 1): ?>
+	<div class="comment-form">
+		<h2 class="form-title">
+			<strong>
+				<?php echo __('LEAVE A REPLY'); ?>
+			</strong>
+		</h2>
+		<form method="post" action="<?php echo $block->getFormCommentUrl(); ?>" id="form-content">
+			<div class="hidden-fields">
+				<input type="hidden" name="post_id" value="<?php echo $block->getPostId(); ?>" />
+				<input type="hidden" name="post_title" value="<?php echo $block->getPostTitle(); ?>" />
+				<input type="hidden" name="store_ids" value="<?php echo $block->getStoreId(); ?>" />
+				<input type="hidden" name="post_url" value="<?php echo $block->getPostIdentifier(); ?>" />
+				<?php if (!$showAuthorBox): ?>
+					<input type="hidden" name="author_name" value="<?php echo $accountInfo['cutomer_name']; ?>" />
+					<input type="hidden" name="author_email" value="<?php echo $accountInfo['cutomer_email']; ?>" />
+				<?php endif ?>
+			</div>
+			<div class="form-fluid">
+				<div class="form-note">
+					<?php 
+						echo __('Make sure you enter the (*) required information where indicated. HTML code is not allowed.'); 
+					?>
+				</div>
+				<div class="textarea-input form-input">
+					<div class="input-box">
+						<textarea  class="input-text required-entry" name="content" title="Comment" placeholder="Your Comment"></textarea>
+					</div>
+				</div>
+				<?php if ($showAuthorBox): ?>
+					<div class="input-list">
+						<ul >
+							<li class="fields author-name">
+								<div class="input-box form-input">
+									<input type="text" name="author_name" class="input-text required-entry" placeholder="Name*">
+								</div>
+							</li>
+
+							<li class="fields author-email">
+								<div class="input-box form-input">
+									<input type="text" name="author_email" class="input-text required-entry validate-email" placeholder="Mail*">
+								</div>
+							</li>
+						</ul>
+					</div>
+				<?php endif ?>
+				<div class="input-box form-input">
+					<input type="text" name="website_name" class="input-text" placeholder="Website: ">
+				</div>
+				<?php if ($helper->getEnableCaptchaValidate()): ?>
+					<div class="captcha-validate">
+						<?php echo $block->getChildHtml('post.comment.captcha'); ?>
+					</div>
+				<?php endif ?>
+				<div class="submit-comment">
+					<button class="submit-btn primary" type="submit">
+						<span>
+							<span ><?php echo __('post comment'); ?></span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+<?php endif ?>
+
+<script type="text/javascript">
+	require([
+	    'jquery',
+	    'mage/mage'
+	], function($){
+	   var dataForm = $('#form-content');
+	   dataForm.mage('validation', {});
+	});
+</script>

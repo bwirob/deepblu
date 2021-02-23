@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		 <add id="Cmsmart_Categoryicon::categoryicon" title="Categoryicon" module="Cmsmart_Brandcategory" sortOrder="30" parent="Netbase_Sun::nb_all" resource="Cmsmart_Categoryicon::categoryicon"/>
+        <add id="Cmsmart_Categoryicon::categoryicon_manage" title="Manage Categoryicon" module="Cmsmart_Categoryicon" sortOrder="10" parent="Cmsmart_Categoryicon::categoryicon" action="categoryicon/index/" resource="Cmsmart_Categoryicon::manage"/> 
+    </menu>
+</config>

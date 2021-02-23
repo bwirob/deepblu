@@ -1,0 +1,10 @@
+<root>
+    <config>
+        <web>
+            <default>
+                <cms_home_page>home-ebay</cms_home_page>
+                <cms_no_route>no-route-2</cms_no_route>
+            </default>
+        </web> 
+    </config>
+</root>

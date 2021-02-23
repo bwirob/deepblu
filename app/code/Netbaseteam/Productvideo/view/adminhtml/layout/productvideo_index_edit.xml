@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+		<css src="Netbaseteam_Productvideo/css/style.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+		<referenceContainer name="before.body.end">
+			<block class="Magento\Framework\View\Element\Template" template="Netbaseteam_Productvideo::js.phtml" />
+		</referenceContainer>
+		
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Productvideo\Block\Adminhtml\Productvideo\Edit" name="productvideo_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Netbaseteam\Productvideo\Block\Adminhtml\Productvideo\Edit\Tabs" name="productvideo_edit_tabs">
+                <block class="Netbaseteam\Productvideo\Block\Adminhtml\Productvideo\Edit\Tab\Main" name="productvideo_edit_tab_main"/>
+                <block class="Netbaseteam\Productvideo\Block\Adminhtml\Productvideo\Edit\Tab\Content" name="productvideo_edit_tab_content"/>
+                <block class="Netbaseteam\Productvideo\Block\Adminhtml\Productvideo\Edit\Tab\Products" name="productvideo_edit_tab_products"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">productvideo_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">content_section</argument>
+                    <argument name="block" xsi:type="string">productvideo_edit_tab_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">products_section</argument>
+                    <argument name="block" xsi:type="string">productvideo_edit_tab_products</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

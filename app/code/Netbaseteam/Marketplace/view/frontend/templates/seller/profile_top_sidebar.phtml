@@ -1,0 +1,19 @@
+<?php
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$shopData = $block->getShopData();
+?>
+
+<div class="netbaseteam-shop-banner">
+    <img
+        src="<?php echo $helper->getMediaUrl().'marketplace/'.(isset($shopData['shop_banner']) ? $shopData['shop_banner'] : 'no-banner.gif'); ?>"
+        alt="<?php echo __('Shop Banner') ?>"
+    />
+</div>
+
+<div>
+    <?php echo $block->getFacebookButton();?>
+    <?php echo $block->getTwitterButton();?>
+    <?php echo $block->getGooglePlusButton();?>
+</div>
+
+

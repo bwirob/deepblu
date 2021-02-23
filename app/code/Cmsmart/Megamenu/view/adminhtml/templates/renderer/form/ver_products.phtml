@@ -1,0 +1,46 @@
+<?php
+	$id = $this->getRequest()->getParam('megamenu_id');
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$model = $objectManager->create('Cmsmart\Megamenu\Model\Megamenu');
+	$catalogSession = $objectManager->create('Magento\Catalog\Model\Session');
+	$model->load($id);	
+	
+	$catalogSession->setVerSelectedProducts($model->getLeftPgridProducts());
+?>
+		
+<div data-ui-id="megamenu-edit-tab-image-fieldset-element-form-field-left-pgrid-box-title" class="admin__field field field-left_pgrid_products">
+	<label data-ui-id="megamenu-edit-tab-image-fieldset-element-text-left-pgrid-box-title-label" for="megamenu_main_top_pgrid_products" class="label admin__field-label"><span>Products IDs</span></label>
+	<div class="admin_field-control control">
+		<input type="text" class=" input-text admin__control-text" value="<?php echo $model->getLeftPgridProducts(); ?>" name="left_pgrid_products" id="left_pgrid_products">                            
+		<img id="my_ver_select" class="v-middle rule-chooser-trigger" src="<?php echo $this->getViewFileUrl('Cmsmart_Megamenu/images/select.gif'); ?>">
+	</div>
+	<!-- *** grid select product in checkbox *** -->
+	<div id="nb_top_select_pids">
+		<div id="vermenu_Grid" style="display: none;">
+		<?php
+		echo $this->getLayout()->createBlock('Cmsmart\Megamenu\Block\Adminhtml\Pgrid\Vergrid')
+					->toHtml(); 
+		?>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	Event.observe('my_ver_select', 'click', function() {	
+		$('vermenu_Grid').toggle();
+	}); 
+	
+	function myVerFunctionSelect(myEl){
+		var vfind = myEl.value;
+		var pid_arr = $('left_pgrid_products').value.split(",");
+		if(!myEl.checked){
+			var aryWithoutFound = pid_arr.filter(function(value) { return value != vfind });
+			str = aryWithoutFound.toString();
+			str = str.replace(/(^[,\s]+)|([,\s]+$)/g, '');
+		} else {
+			str = $('left_pgrid_products').value + "," + vfind;
+			str = str.replace(/(^[,\s]+)|([,\s]+$)/g, '');
+		}
+		$('left_pgrid_products').value = str;
+	}
+</script>

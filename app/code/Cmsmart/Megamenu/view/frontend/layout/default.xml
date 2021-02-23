@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="megamenu-link">
+                <arguments>
+                    <argument name="label" xsi:type="string">Megamenu</argument>
+                    <argument name="path" xsi:type="string">megamenu</argument>
+                </arguments>
+            </block>
+        </referenceBlock> 
+		<referenceBlock name="catalog.topnav">
+			<action method="setTemplate">
+				<argument name="template" xsi:type="string">Cmsmart_Megamenu::main_menu.phtml</argument>
+			</action>
+		</referenceBlock> 
+	 
+	</body>
+</page>

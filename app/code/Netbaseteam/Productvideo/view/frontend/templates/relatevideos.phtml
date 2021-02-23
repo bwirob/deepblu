@@ -1,0 +1,223 @@
+<?php
+	$get_rate_url = $this->getUrl('productvideo/index/getrate', ['_current' => true]);
+	
+	$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+	$helper = $objectManagerr->get('\Netbaseteam\Productvideo\Helper\Data');
+	
+	$catalogSession = $objectManagerr->create('Magento\Catalog\Model\Session');
+	
+	$relate_data = $catalogSession->getVidRelate();
+	$relate_arr = explode(",", $relate_data);
+		
+	$collections = $this->getCollection();  /* getCollection videos */
+
+	$video_array = array();
+	$item = array();
+	$count = 0; 
+	$firstProductVideoId = "";
+	$first_url = "";
+	$first_title = "";
+	$first_published_at = "";
+	$first_vid = "";
+	$first_author = "";
+	$first_rate = "";
+	$type = ""; $url = ""; $ifr_src = "";
+	
+	$currentStoreId = $helper->getCurrentStoreId();
+	
+	$local = \Netbaseteam\Productvideo\Model\Productvideo::local;
+	$youtube = \Netbaseteam\Productvideo\Model\Productvideo::youtube;
+	$vimeo = \Netbaseteam\Productvideo\Model\Productvideo::vimeo;
+	$dailymotion = \Netbaseteam\Productvideo\Model\Productvideo::dailymotion;
+	$twitch = \Netbaseteam\Productvideo\Model\Productvideo::twitch;
+	
+	foreach($collections as $c){
+		if(in_array($c->getId(), $relate_arr)) {
+			$item['productvideo_id'] = $c->getId();
+			$item['title'] = $c->getTitle();
+			$item['url'] = $c->getUrl();
+			$item['store_view'] = $c->getStoreView();
+			$item['thumb'] = $c->getThumb();
+			$item['published_at'] = $c->getPublishedAt();
+			$item['rate_video'] = $c->getRateVideo();
+			$item['vid'] = $c->getVid();
+			$item['thumb'] = $c->getThumb();
+			$item['author_name'] = $c->getAuthorName();
+			$item['content'] = $c->getContent();
+			
+			if($item['author_name'] == "") {
+				$item['author_name'] = __('Author: Manager'); 
+			} else { 
+				$item['author_name'] = __('Author: ') . $c->getAuthorName();
+			} 
+			
+			$url = $item['url'];
+			
+			if($helper->videoType($url) == $youtube){
+				$type = $youtube;
+				$ifr_src = "//www.youtube.com/embed/";
+			} elseif($helper->videoType($url) == $vimeo){
+				$type = $vimeo;
+				$ifr_src = "//player.vimeo.com/video/";
+			} elseif($helper->videoType($url) == $dailymotion){ 
+				$type = $dailymotion;
+				$ifr_src = "//www.dailymotion.com/embed/video/";
+			} elseif($helper->videoType($url) == $twitch){ 
+				$type = $twitch;
+				$ifr_src = "http://www.twitch.tv/";
+			} else {
+				$type = $local;
+				$ifr_src = $url;
+			}
+			
+			$item['type'] = $type;
+			$item['ifr_src'] = $ifr_src;
+			
+			$video_array[] = $item; 
+
+			$count++;
+		}
+	}
+?>
+
+<?php if($count > 0) { ?>
+
+<div class="tab-content">
+	<div class="nb-productvideo-collateral-box collateral-box">
+		<div class="nb-productvideo-scroll-box">
+			<div class="nb-productvideo-scroll-panel">
+				<div class="counter">
+					<span>
+					<?php echo sprintf(__('%s Relate Video(s)'), $count); ?>
+					</span>
+				</div>
+			</div>
+			<div class="nb-productvideo-scroller">
+				<div id="owl-example-relate" class="owl-carousel owl-theme" style="opacity: 1; display: block;">					
+					<?php
+						foreach($video_array as $v) {
+							if($v["thumb"] == "") {
+								$v["thumb"] = $this->getViewFileUrl('Netbaseteam_Productvideo/images/1.jpg');
+							} elseif (strpos($v["thumb"], 'http') === false) {
+								$v["thumb"] = $helper->getBaseUrl().'/'.$v["thumb"];
+							}
+							
+							if (strpos($v["url"], 'http') === false) {
+								$v["url"] = $helper->getBaseUrl().'/'.$v["url"];
+							}
+							
+							if($v["type"] == $local){
+								$v["vid"] = $v["url"];
+							}
+					?>
+					
+						<div class="nb-productvideo-videoitem">
+							<div class="border">
+								<a href="#" onclick="nb_playVideo1(this); return false;" 
+									data-rev="<?php echo $v["type"].";".$v["vid"].";".$v["title"].";".date("F j, Y", strtotime($v["published_at"])).";".$v["author_name"].";".$v["productvideo_id"].";".$v["rate_video"].";".$v["ifr_src"].";".$v["content"] ?>"> <!-- type|vid|title|pub-date|author|productvideo_id|rate|ifr_src|content -->
+									<img height="90px" src="<?php echo $v["thumb"]; ?>" class="image<?php echo $v["productvideo_id"]?>">
+									<p class="video-title"><?php echo $v["title"] ?></p>
+								</a>
+							</div>
+
+							<div class="title">
+								
+								<?php echo $first_author; ?>                   
+							</div>
+						</div>
+					<?php
+						}
+					?>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<script type="text/javascript">
+    require([
+    'jquery', 
+	'owl_carousel'
+    ], function($){
+		jQuery(document).ready(function() {
+			
+			jQuery("#owl-example-relate").owlCarousel({
+				// Most important owl features
+				items : 5,
+				itemsCustom : false,
+				itemsDesktop : [1199,4],
+				itemsDesktopSmall : [980,3],
+				itemsTablet: [768,2],
+				itemsTabletSmall: false,
+				itemsMobile : [479,1],
+				singleItem : false,
+				itemsScaleUp : false,
+
+				// Navigation
+				navigation : true,
+				navigationText : ["&lt;","&gt;"],
+				rewindNav : false,
+				scrollPerPage : false,
+
+				//Pagination
+				pagination : true,
+				paginationNumbers: true,
+
+				//autoHeight : true,
+			});
+			
+		});
+	});
+	
+	function nb_playVideo1(e){
+		require(['jquery'], function($){ 
+			"use strict";
+			/* type|vid|title|pub-date|author|productvideo_id */
+			var element = $(e);
+			var current_rev = element.attr("data-rev");
+			var data = current_rev.split(";"); 
+			
+			var ifr_src_value = "";
+			
+			if(data[0] == "<?php echo $local; ?>") {
+				ifr_src_value = "<?php echo $helper->getBaseUrl().'/'?>" + data[7] + "?autoplay=0&controls=1&showinfo=1";
+			} else if(data[0] == "<?php echo $twitch; ?>"){
+				ifr_src_value = data[7] + data[1]+"/embed?autoplay=0&controls=1&showinfo=1"
+			} else {
+				ifr_src_value = data[7] + data[1]+"?autoplay=0&controls=1&showinfo=1";
+			}
+			
+			if ($('#pvideo-browser').val() == "ie" && data[0] == "<?php echo $local; ?>") { /* ie browser */
+				$('#player-content').html('<video id="nb-ifame-detail" width="100%" height="100%" controls><source src="" type="video/mp4"></video>');
+			} else {
+				$('#player-content').html('<iframe id="nb-ifame-detail" src="" frameborder="0"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+			}
+			
+			$('#details-content').html('<a id="nb-video-detail" href="#" target="_blank">'+ data[2] +'</a> &mdash; '+ data[3] +'<br>'+ data[4] +'<br>'+ data[8]);
+			$('#nb-ifame-detail').attr("src", ifr_src_value);
+			$('#current_video_id').val(data[5]);
+			$('#starUser0').html(data[6]+"%");
+			
+			$.ajax({
+				url: '<?php echo $get_rate_url; ?>',
+				type: 'POST',
+				data: {
+					id_video: $('#current_video_id').val()
+				},
+				dataType: 'json',                  
+				success: function(res) { 
+					$('#starCur0').css("width", res.rate_video*84/100+"px");	
+				},
+				error: function (response) {
+					console.log(response);
+				}
+			});
+			$('html, body').animate({scrollTop: $("#nb-productvideo-player").offset().top}, 'slow');
+			$('#nb-rate-notice').hide();
+		});
+	}
+	
+</script>
+
+<?php } ?>

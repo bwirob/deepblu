@@ -1,0 +1,139 @@
+<?php 
+	$helper = $this->helper('Netbaseteam\Locator\Helper\Data');
+	$storeInfo = $block->getStoreInfo();
+	$cheduleData = $block->getScheduleData();
+?>
+
+<div class="col-md-4 col-sm-12 col-xs-12 pull-left sidebar-wrap">
+	<div class="direction-box col-md-12 col-sm-6 col-xs-12 pull-right">
+		<h2 class="title-box"><?php echo __('Find Direction') ?></h2>
+		<div class="detail-box col-xs-12">
+			<div class="tab_content col-full">
+				<p>
+					<strong><?php echo __('Address :'); ?></strong>
+					<span><?php echo __($storeInfo['address']) ?></span>
+				</p>
+				<div class="option-direction custom-popup col-xs-12" position-data = '<?php echo $block->toStoreInfoJson(); ?>'>
+					<ul class="vertical text-center travel-list" >
+						<li class="travel car travel-active" travel-data="DRIVING" title="<?php echo __('Driving'); ?>">
+							<i class="fa fa-car" aria-hidden="true"></i>
+						</li>
+						<li class="travel bus" travel-data="TRANSIT"
+								title="<?php echo __('Transit'); ?>">
+							<i class="fa fa-subway" aria-hidden="true"></i>
+						</li>
+						<li class="travel walk" travel-data="WALKING" title="<?php echo __('Walking'); ?>">
+							<i class="fa fa-male" aria-hidden="true"></i>
+						</li>
+						<li class="travel bicycle" travel-data="BICYCLING" title="<?php echo __('Bicycle'); ?>">
+							<i class="fa fa-bicycle"  aria-hidden="true"></i>
+						</li>
+					</ul>
+					<div class="directions-box">
+						<div class="widget-directions-searchbox-handle">
+							<div class="widget-directions-icon waypoint-handle"></div>
+							<div class="widget-directions-icon waypoint-to"></div>
+							<div class="widget-directions-icon waypoint-bullet"></div>
+						</div>
+						<div class="form-inputs">
+							<input class="form-control origin originA start" type="text" name="originA" isstart="true" autocomplete="off" placeholder="Enter a location" id="director-input">
+							<input class="form-control origin originB end" readonly="true" type="text" name="originB" autocomplete="off" value="<?php echo __($storeInfo['address']);?>">
+						</div>
+						<div class="widget-directions-right-overlay">
+							<button type="button" onclick="" class="swap-locations" title="Swap locations A-B"><?php echo __('Swap locations A-B')?></button>
+						</div>
+						<div id="direction-panel"></div>
+					</div>
+							
+					<div class="box-input col-xs-12">
+						<button class="get-direction action primary pull-right"  title="Get Directions" type="submit">
+						    <span><?php echo __('Go') ?></span>
+						</button>
+
+						<button class="street-view action primary pull-left"  title="Street View" type="submit">
+						    <span><?php echo __('Street View') ?></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php if ($cheduleData): ?>
+		<div class="chedule-box open  col-md-12 col-sm-6 col-xs-12 pull-left">
+			<div id="open-hour" class="open-hour">
+	            <h2 class="open-hour-title"><span class="glyphicon glyphicon-time"></span><span><?php echo __('Opening Hours') ?></span>
+	            </h2>
+
+	            <div class="table-responsive">
+	                <table class="table table-hover table-striped">
+	                    <tbody>
+	                        <tr>
+	                            <td class="time-label" style="text-align: center; width: 20%;">Sun:</td>
+	                            <td></td>
+	                            <?php if ($cheduleData['d6_status']): ?>
+	                            	<td><?php echo __('Closed'); ?></td>
+	                            <?php else: ?>
+	                            	<td><?php echo __($block->toWorkTimeHtml($cheduleData['d6_open'],$cheduleData['d6_close'])); ?></td>
+	                            <?php endif ?>    
+	                        </tr>
+	                        <tr>
+	                            <td class="time-label" style="text-align: center; width: 20%;">Mon:</td>
+	                            <td></td>
+	                            <?php if ($cheduleData['d0_status']): ?>
+	                            	<td ><?php echo __('Closed'); ?></td>
+	                            <?php else: ?>
+	                            	<td><?php echo __($block->toWorkTimeHtml($cheduleData['d0_open'],$cheduleData['d0_close'])); ?></td>
+	                            <?php endif ?>
+	                        </tr>
+	                        <tr>
+	                            <td class="time-label" style="text-align: center; width: 20%;">Tue:</td>
+	                            <td></td>
+	                            <?php if ($cheduleData['d1_status']): ?>
+	                            	<td><?php echo __('Closed'); ?></td>
+	                            <?php else: ?>
+	                            	<td><?php echo __($block->toWorkTimeHtml($cheduleData['d1_open'],$cheduleData['d1_close'])); ?></td>
+	                            <?php endif ?>
+	                        </tr>
+	                        <tr>
+	                            <td class="time-label" style="text-align: center; width: 20%;">Wed:</td>
+	                            <td></td>
+	                            <?php if ($cheduleData['d2_status']): ?>
+	                            	<td><?php echo __('Closed'); ?></td>
+	                            <?php else: ?>
+	                            	<td><?php echo __($block->toWorkTimeHtml($cheduleData['d2_open'],$cheduleData['d2_close'])); ?></td>
+	                            <?php endif ?>
+	                        </tr>
+	                        <tr>
+	                            <td class="time-label" style="text-align: center; width: 20%;">Thur:</td>
+	                            <td></td>
+	                            <?php if ($cheduleData['d3_status']): ?>
+	                            	<td><?php echo __('Closed'); ?></td>
+	                            <?php else: ?>
+	                            	<td><?php echo __($block->toWorkTimeHtml($cheduleData['d3_open'],$cheduleData['d3_close'])); ?></td>
+	                            <?php endif ?>
+	                        </tr>
+	                        <tr>
+	                            <td class="time-label" style="text-align: center; width: 20%;">Fri:</td>
+	                            <td></td>
+	                            <?php if ($cheduleData['d4_status']): ?>
+	                            	<td><?php echo __('Closed'); ?></td>
+	                            <?php else: ?>
+	                            	<td><?php echo __($block->toWorkTimeHtml($cheduleData['d4_open'],$cheduleData['d4_close'])); ?></td>
+	                            <?php endif ?>
+	                        </tr>
+	                        <tr>
+	                            <td class="time-label" style="text-align: center; width: 20%;">Sat:</td>
+	                            <td></td>
+	                            <?php if ($cheduleData['d5_status']): ?>
+	                            	<td><?php echo __('Closed'); ?></td>
+	                            <?php else: ?>
+	                            	<td><?php echo __($block->toWorkTimeHtml($cheduleData['d5_open'],$cheduleData['d5_close'])); ?></td>
+	                            <?php endif ?>
+	                        </tr>
+	                    </tbody>
+	                </table>
+	            </div>
+	        </div>
+		</div>
+	<?php endif ?>
+</div>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <css src="Netbaseteam_Shopbybrand::css/view.css"/>
+	</head>
+    <body>
+        <attribute name="class" value="Netbaseteam_Shopbybrand_view"/>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Shopbybrand\Block\View" name="brand.view"  template="view.phtml" cacheable="false" ifconfig="shopbybrand/general/Enabled">
+             </block>
+        </referenceContainer>
+    </body>
+</page>

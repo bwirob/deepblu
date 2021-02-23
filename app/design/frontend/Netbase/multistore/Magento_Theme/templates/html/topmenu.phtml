@@ -1,0 +1,68 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?php /* @escapeNotVerified */ echo $_menu; ?>
+        <?php /* @escapeNotVerified */ echo $block->getChildHtml(); ?>
+    </ul>
+</nav>
+<script type="text/javascript">
+	require([
+			'jquery'
+			], function ($) {
+				$(document).ready(function(){
+					$('#nb_mn_mobile ul li.parent >a.level-top').click(function(e){
+					if ($(this).hasClass("opened")){
+						$(this).removeClass("opened");
+					} else {
+						$(this).addClass("opened");
+					}
+					 if ($(this).next().hasClass("active")){
+						 $(this).next().removeClass("active");
+					} else {
+						$(this).next().addClass("active");
+					}
+					e.preventDefault();
+					});
+
+				});
+			});
+</script>
+
+
+
+<style type="text/css">
+	#nb_mn_mobile ul li.parent > ul.active {
+		display: block!important;
+	}
+	#nb_mn_mobile ul li.parent > ul.active ul {
+		display: block!important;
+	}
+	#nb_mn_mobile ul li.parent > ul {
+		display: none!important;
+	}
+	#nb_mn_mobile ul li.parent > ul ul {
+		display: none!important;
+		left:0 !important;
+	}
+    .block-minicart .block-content > .actions .viewcart:hover {
+        background: #282e31!important;
+    }
+</style>

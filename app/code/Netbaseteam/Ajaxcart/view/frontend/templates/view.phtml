@@ -1,0 +1,30 @@
+<?php
+/**
+ * Ajaxcart template for separate item
+ *
+ */
+
+/**
+ * @var $this Netbaseteam\Ajaxcart\Block\View
+ * @see Netbaseteam\Ajaxcart\Block\View
+ */
+?>
+<?php $_ajaxcartItem = $this->getAjaxcart(); ?>
+    <div class="ajaxcart_item_subtitle">
+        <?php echo $this->formatDate($_ajaxcartItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_ajaxcartItem->getAuthor()) ?>
+    </div>
+
+<div class="ajaxcart_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_ajaxcartItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_ajaxcartItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="ajaxcart_item_content"><?php echo $_ajaxcartItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

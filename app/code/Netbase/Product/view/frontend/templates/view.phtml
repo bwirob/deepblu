@@ -1,0 +1,30 @@
+<?php
+/**
+ * Product template for separate item
+ *
+ */
+
+/**
+ * @var $this Netbase\Product\Block\View
+ * @see Netbase\Product\Block\View
+ */
+?>
+<?php $_productItem = $this->getProduct(); ?>
+    <div class="product_item_subtitle">
+        <?php echo $this->formatDate($_productItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_productItem->getAuthor()) ?>
+    </div>
+
+<div class="product_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_productItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_productItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="product_item_content"><?php echo $_productItem->getContent() ?></div>
+
+    <div class="pager">
+        <a title=" <?php echo __('Return to list') ?>" href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

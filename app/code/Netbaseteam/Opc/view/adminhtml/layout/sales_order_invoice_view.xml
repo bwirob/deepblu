@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <referenceBlock name="invoice_totals">
+            <block class="Netbaseteam\Opc\Block\Adminhtml\Order\Invoice\GiftWrap" name="giftwrap"/>
+        </referenceBlock>
+    </body>
+</page>

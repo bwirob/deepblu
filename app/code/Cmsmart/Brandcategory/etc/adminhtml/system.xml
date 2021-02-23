@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+		<tab id="cmsmart" translate="label" sortOrder="1000">
+			<label>Cms-Mart</label>
+		</tab>
+		
+        <section id="brandcategory" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Brands</label>
+            <tab>cmsmart</tab>
+            <resource>Cmsmart_Brandcategory::config_brandcategory</resource>
+            <group id="view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Brandcategory View Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+				
+				<field id="categories" translate="label comment" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select category</label>
+                    <source_model>Cmsmart\Brandcategory\Model\Config\Featured\Categories</source_model>
+                    <comment>Please select category you want to show products.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,55 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Locator\Helper\Data');
+	$storeInfo = $block->getStoreInfo();
+?>
+<div class="store-info">
+	<div class="store-name">
+		<h2 ><?php echo __($block->getStoreName()); ?></h2>
+	</div>
+	<div class="info-content">
+		<?php if ($block->getStoreImage()): ?>
+			<div class="store-img col-md-4 col-sm-12 col-xs-12 pull-left">
+				<img src="<?php echo $block->getStoreImage(); ?>" />
+			</div>
+		<?php endif ?>
+		<div class="info col-md-8 col-sm-12 col-xs-12 pull-left">
+			<?php if ($storeInfo['description']): ?>
+				<div class="description ">
+					<?php echo __($storeInfo['description']); ?>
+				</div>
+			<?php endif ?>
+
+			<?php if ($storeInfo['store_link']): ?>
+				<div class="store-link info-item">
+					<a href="<?php echo __($storeInfo['store_link']); ?>" title="<?php echo __($storeInfo['store_link']); ?>"><?php echo __($storeInfo['store_link']); ?></a>
+				</div>
+			<?php endif ?>
+
+			<?php if ($storeInfo['address']): ?>
+				<div class="address info-item">
+					<label class="label"><?php echo __('Address : '); ?></label><?php echo __($storeInfo['address']); ?>
+				</div>
+			<?php endif ?>	
+
+			<?php if ($storeInfo['email']): ?>
+				<div class="email info-item">
+					<label class="label"><?php echo __('Email : '); ?></label>
+					<a class="group-info" href="mailto:<?php echo $storeInfo['email'] ?>"><?php echo __($storeInfo['email']); ?></a>
+				</div>
+			<?php endif ?>			
+
+			<?php if ($storeInfo['phone_number']): ?>
+				<div class="phone info-item">
+					<label class="label"><?php echo __('Phone Number : '); ?></label><?php echo __($storeInfo['phone_number']); ?>
+				</div>
+			<?php endif ?>
+
+			<?php if ($storeInfo['fax_number']): ?>
+				<div class="fax info-item">
+					<label class="label"><?php echo __('Fax Number : '); ?></label><?php echo __($storeInfo['phone_number']); ?>
+				</div>
+			<?php endif ?>
+
+		</div>
+	</div>
+</div>

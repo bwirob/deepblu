@@ -1,0 +1,75 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$isOrderApproval = $helper->getIsOrderApproval();
+$_order = $block->getOrder();
+$mpProductIds = $block->getMpProducts();
+
+$items = $_order->getAllVisibleItems();
+//product ids
+$productIds = array();
+foreach($items as $item) {
+    $productIds[]= $item->getProductId();
+}
+
+$permission = true;
+foreach ($productIds as $productId) {
+    if(!in_array($productId, $mpProductIds)) {
+        $permission = false;
+    }
+}
+
+?>
+<div class="actions">
+    <a class="action back" href="<?php /* @escapeNotVerified */ echo $block->getBackUrl() ?>">
+        <span><?php /* @escapeNotVerified */ echo __('« Back') ?></span>
+    </a>
+    <?php if (!$isOrderApproval):?>
+        <?php if (!$_order->isCanceled()):?>
+            <a class="action email" href="<?php /* @escapeNotVerified */ echo $block->getSendMailUrl($_order) ?>">
+                <span><?php /* @escapeNotVerified */ echo __('Send Email') ?></span>
+            </a>
+        <?php endif;?>
+        <?php if($_order->canUnhold() && $permission == true):?>
+            <a class="action unhold" href="<?php /* @escapeNotVerified */ echo $block->getUnHoldUrl($_order) ?>">
+                <span><?php /* @escapeNotVerified */ echo __('Unhold') ?></span>
+            </a>
+        <?php endif;?>
+        <?php if($_order->canHold() && $permission == true):?>
+            <a class="action hold" href="<?php /* @escapeNotVerified */ echo $block->getHoldUrl($_order) ?>">
+                <span><?php /* @escapeNotVerified */ echo __('Hold') ?></span>
+            </a>
+        <?php endif;?>
+        <?php if($_order->canCreditmemo()):?>
+            <a class="action creditmemo" href="<?php /* @escapeNotVerified */ echo $block->getCreditMemoUrl($_order) ?>">
+                <span><?php /* @escapeNotVerified */ echo __('Credit Memo') ?></span>
+            </a>
+        <?php endif;?>
+        <?php if($_order->canInvoice()):?>
+            <a class="action invoice" href="<?php /* @escapeNotVerified */ echo $block->getInvoiceUrl($_order) ?>">
+                <span><?php /* @escapeNotVerified */ echo $_order->getForcedShipmentWithInvoice() ? __('Invoice and Ship') : __('Invoice') ?></span>
+            </a>
+        <?php endif;?>
+        <?php if($_order->canShip() && !$_order->getForcedShipmentWithInvoice()):?>
+            <a class="action ship" href="<?php /* @escapeNotVerified */ echo $block->getShipUrl($_order) ?>">
+                <span><?php /* @escapeNotVerified */ echo __('Ship') ?></span>
+            </a>
+        <?php endif;?>
+        <?php if($_order->canCancel() && $permission == true):?>
+            <a class="action cancel" href="<?php /* @escapeNotVerified */ echo $block->getCancelUrl($_order) ?>">
+                <span><?php /* @escapeNotVerified */ echo __('Cancel') ?></span>
+            </a>
+        <?php endif;?>   
+    <?php endif;?>
+    <a class="action print"
+       href="<?php /* @escapeNotVerified */ echo $block->getPrintUrl($_order) ?>"
+       onclick="this.target='_blank';">
+        <span><?php /* @escapeNotVerified */ echo __('Print Order') ?></span>
+    </a>
+    <?php echo $block->getChildHtml(); ?>
+</div>

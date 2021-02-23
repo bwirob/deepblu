@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    
+    <update handle="editor"/>
+
+    <body>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Faq\Block\Adminhtml\Faq\Edit" name="faq_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Netbaseteam\Faq\Block\Adminhtml\Faq\Edit\Tabs" name="faq_edit_tabs">
+                <block class="Netbaseteam\Faq\Block\Adminhtml\Faq\Edit\Tab\Main" name="faq_edit_tab_main"/>
+
+                <block class="Netbaseteam\Faq\Block\Adminhtml\Faq\Edit\Tab\Answer" name="faq_edit_tab_answer"/>
+
+                <block class="Netbaseteam\Faq\Block\Adminhtml\Faq\Edit\Tab\Author" name="faq_edit_tab_author"/>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">faq_edit_tab_main</argument>
+                </action>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">answer_section</argument>
+                    <argument name="block" xsi:type="string">faq_edit_tab_answer</argument>
+                </action>
+
+                 <action method="addTab">
+                    <argument name="name" xsi:type="string">author_section</argument>
+                    <argument name="block" xsi:type="string">faq_edit_tab_author</argument>
+                </action>
+               
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">attachment_products</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Select Product</item>
+                        <item name="title" xsi:type="string">Select Product</item>
+                        <item name="url" xsi:type="helper" helper="Netbaseteam\Faq\Helper\Data::getProductGridUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

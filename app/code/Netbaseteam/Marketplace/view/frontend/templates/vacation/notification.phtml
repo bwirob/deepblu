@@ -1,0 +1,111 @@
+<?php
+$vacation = $block->getVacation();
+$dateNow = date_create(date('m/d/Y h:i:s a', time()));
+$dateFrom = date_create($vacation['date_from']);
+$dateTo = date_create($vacation['date_to']);
+
+$diff = (int)date_diff($dateFrom, $dateNow)->format("%R%h%i%s%a");
+
+if ($diff < 0) {
+    $dateCompare = (int)date_diff($dateFrom, $dateTo)->format("%R%h%i%s%a");
+} else {
+    $dateCompare = (int)date_diff($dateNow, $dateTo)->format("%R%h%i%s%a");
+}
+
+if ($vacation && !$dateFrom && !$dateTo) {
+    $dateCompare = 1;
+}
+
+?>
+
+<?php if ($vacation): ?>
+        <div class="vacation-notification">
+            <p><?php echo $vacation['vacation_message'] ? $vacation['vacation_message'] : '' ?></p>
+        </div>
+        <div id="DateCountdown" data-date="<?php echo $vacation['date_to'] ?>" style="width: 100%;"></div>
+
+    <script>
+        require(['jquery', 'textillate', 'timecircles'], function ($) {
+            var checkWidth = jQuery(window).width();
+            if(checkWidth > 568) {
+                $('.vacation-notification').textillate({
+                    loop: true,
+                    type: 'word',
+                    minDisplayTime: 2000,
+                    initialDelay: 0,
+                    autoStart: true,
+                    inEffects: [],
+                    outEffects: ['hinge'],
+                    in: {
+                        effect: 'fadeInLeftBig',
+                        delayScale: 1.5,
+                        delay: 50,
+                        sync: false,
+                        shuffle: true
+                    },
+
+                    // out animation settings.
+                    out: {
+                        effect: 'hinge',
+                        delayScale: 1.5,
+                        delay: 50,
+                        sync: false,
+                        shuffle: false
+                    }
+                });
+            }
+
+            $("#DateCountdown").TimeCircles({
+                "animation": "smooth",
+                "bg_width": 0.2,
+                "fg_width": 0.03,
+                "circle_bg_color": "#90989F",
+                "time": {
+                    "Days": {
+                        "text": "Days",
+                        "color": "#40484F",
+                        "show": true
+                    },
+                    "Hours": {
+                        "text": "Hours",
+                        "color": "#40484F",
+                        "show": true
+                    },
+                    "Minutes": {
+                        "text": "Minutes",
+                        "color": "#40484F",
+                        "show": true
+                    },
+                    "Seconds": {
+                        "text": "Seconds",
+                        "color": "#40484F",
+                        "show": true
+                    }
+                }
+            });
+
+            window.onresize = function (event) {
+                $("#DateCountdown").TimeCircles().rebuild();
+            };
+
+            var data_compare = "<?php echo $dateCompare?>";
+
+            var delete_vacation = "<?php echo $this->getUrl('marketplace/vacation/delete', array('_current'=>true))?>";
+
+            if (data_compare && data_compare <= 0) {
+                $.ajax({
+                    url: delete_vacation,
+                    data: '',
+                    type: 'post',
+                    success: function () {
+                        window.location.reload();
+                    },
+                    error: function () {
+                        alert('Error!');
+                    }
+                });
+            }
+        });
+    </script>
+<?php endif; ?>
+

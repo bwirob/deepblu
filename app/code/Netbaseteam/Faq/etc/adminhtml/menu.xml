@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Netbaseteam_Faq::faq" title="FAQ Extension" module="Netbaseteam_Faq" parent="Netbase_Sun::nb_all" sortOrder="30" resource="Netbaseteam_Faq::faq"/>
+    	<add id="Netbaseteam_Faq::faq_manage" title="Manage FAQ" module="Netbaseteam_Faq" sortOrder="10" parent="Netbaseteam_Faq::faq" action="faq/index/index" resource="Netbaseteam_Faq::manage_faq"/>
+
+        <add id="Netbaseteam_Faq::faq_manage_category" title="Manage FAQ Category" module="Netbaseteam_Faq" sortOrder="20" parent="Netbaseteam_Faq::faq" action="faq/category/index" resource="Netbaseteam_Faq::manage_category"/>
+        
+        <add id="Netbaseteam_Faq::faq_setting" title="Settings" module="Netbaseteam_Faq" sortOrder="30" parent="Netbaseteam_Faq::faq" action="adminhtml/system_config/edit/section/faq" resource="Netbaseteam_Faq::faq_setting"/>
+    </menu>
+</config>

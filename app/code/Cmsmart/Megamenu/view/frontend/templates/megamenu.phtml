@@ -1,0 +1,26 @@
+<?php $_megamenu = $this->getCollection(); ?>
+<?php if ($_megamenu->getSize()): ?>
+<div class="megamenu_list_view">
+    <?php foreach ($_megamenu as $megamenuItem): ?>
+        <div id="item_<?php echo $megamenuItem->getId() ?>" class="megamenu_list_item">
+            <h2>
+                <a href="<?php echo $this->getItemUrl($megamenuItem) ?>">
+                    <?php echo $this->escapeHtml($megamenuItem->getTitle()) ?>
+                </a>
+            </h2>
+
+            <div class="megamenu_item_subtitle">
+                <?php echo $this->formatDate($megamenuItem->getPublishedAt()) ?> |
+                <?php echo $this->escapeHtml($megamenuItem->getAuthor()) ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($megamenuItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($megamenuItem->getTitle()); ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php echo $this->getPager() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Megamenu.'); ?></span></div>
+<?php endif ?>

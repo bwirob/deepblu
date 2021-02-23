@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Backend/etc/system_file.xsd">
+    <system>
+        <tab id="cmsmart" class="cmsmart-config-tab" translate="label" sortOrder="9000">
+            <label>Extensions</label>
+        </tab>
+        <section id="cmsmart_opc" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>One Step Checkout</label>
+            <tab>cmsmart</tab>
+            <resource>Netbaseteam_Opc::system_config</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enable_in_frontend" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="opc_title" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Title</label>
+                    <depends>
+                        <field id="enable_in_frontend">1</field>
+                    </depends>
+                </field>
+                <field id="font_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Color</label>
+                    <depends>
+                        <field id="enable_in_frontend">1</field>
+                    </depends>
+                    <comment>Default as #8ed105</comment>
+                    <frontend_model>Netbaseteam\Opc\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+                <field id="hover_color" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hover Color</label>
+                    <depends>
+                        <field id="enable_in_frontend">1</field>
+                    </depends>
+                    <comment>Default as #f47e25</comment>
+                    <frontend_model>Netbaseteam\Opc\Block\Color</frontend_model> <!-- Our block for attaching color picker to text box -->
+                </field>
+                <field id="opc_discount_enable" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Display Discount Field</label>
+                    <depends>
+                        <field id="enable_in_frontend">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="onepage_checkout_comments_enabled" translate="label" type="select" sortOrder="99" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Order Comments?</label>
+                    <depends>
+                        <field id="enable_in_frontend">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="delivery_date" translate="label" showInDefault="1" showInWebsite="1" showInStore="20" sortOrder="20">
+                <label>Delivery Date</label>
+                <field id="active" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="format" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Date Format:</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                    <comment>yy-mm-dd</comment>
+                </field>
+                <field id="disabled" translate="label" type="multiselect" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Disabled Delivery Date</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                    <source_model>Netbaseteam\Opc\Model\Config\Source\Disabled</source_model>
+                </field>
+                <field id="hourMin" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Delivery Hour Start:</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                    <comment>Should be 8=>8AM, 9=>9AM </comment>
+                </field>
+                <field id="hourMax" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Delivery Hour End:</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                    <comment>Should be 20=>7PM, 21=>8PM because Minutes cover 1hr </comment>
+                </field>
+            </group>
+
+            <group id="gift_wrap" translate="label" showInDefault="1" showInWebsite="1" showInStore="20" sortOrder="30">
+                <label>Gift Wrap</label>
+                <field id="enable" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="type" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gift Wrap Type</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <source_model>Netbaseteam\Opc\Model\Config\Source\GiftWrapType</source_model>
+                </field>
+                <field id="amount" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Gift Wrap Amount</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="google_suggest_address" translate="label" showInDefault="1" showInWebsite="1" showInStore="20" sortOrder="40">
+                <label>Google Suggest Address</label>
+                <field id="enable" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="api_key" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Google API Key</label>
+                    <comment><![CDATA[Click <a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform" target="_blank">here</a> to get Google API Key]]></comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

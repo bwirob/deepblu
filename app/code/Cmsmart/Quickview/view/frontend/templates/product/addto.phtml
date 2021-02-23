@@ -1,0 +1,10 @@
+<?php
+$helper = $this->helper('Cmsmart\Quickview\Helper\Data');
+$showAddto = $helper->showAddto();
+?>
+<?php if($showAddto) {
+    echo $this->getLayout()
+        ->createBlock("Magento\Catalog\Block\Product\View")
+        ->setTemplate("Magento_Catalog::product/view/addto.phtml")->toHtml();
+}
+?>

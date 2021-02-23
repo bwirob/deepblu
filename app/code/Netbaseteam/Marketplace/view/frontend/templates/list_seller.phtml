@@ -1,0 +1,61 @@
+<?php
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$sellerCollection = $block->getAllSeller();
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+?>
+
+<div class="netbaseteam-seller-list-wrapper banner-seller">
+	<h3 class="label">Shop Form</h3>
+    <ul class="mp_all_sellers_container" border="0" cellspacing="0" cellpadding="0">
+        <li>
+		<a class="mp_all_sellers_view" target="_blank"
+               href="<?php echo $this->getUrl("marketplace/seller/profile/shop/927[!L'+8ba7A;g", ['_secure' => $this->getRequest()->isSecure()]); ?>"
+               title="Test Shop"> <img
+                    src="<?php echo $helper->getMediaUrl() . 'marketplace/' . ('banner_clothes.jpg'); ?>"
+                    alt="Shop Logo" class="shop-banner"> <span
+                    style="clear: both; text-transform: uppercase;">Test</span>
+            </a>
+        </li>
+		<li>
+		<a class="mp_all_sellers_view" target="_blank"
+               href="<?php echo $this->getUrl("marketplace/seller/profile/shop/927[!L'+8ba7A;g", ['_secure' => $this->getRequest()->isSecure()]); ?>"
+               title="Test Shop"> <img
+                    src="<?php echo $helper->getMediaUrl() . 'marketplace/' . ('banner_clock.jpg'); ?>"
+                    alt="Shop Logo" class="shop-banner"> <span
+                    style="clear: both; text-transform: uppercase;">Test</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="netbaseteam-seller-list-wrapper wrapper-seller">
+<h3 class="label">All Seller</h3>
+    <ul class="mp_all_sellers_container" border="0" cellspacing="0" cellpadding="0">
+        <?php if ($sellerCollection && count($sellerCollection)): ?>
+            <?php foreach ($sellerCollection as $seller) : ?>
+                <?php $shopID = $seller->getShopId() ?>
+                <li>
+                    <div class="nb-equal">
+                        <a class="mp_all_sellers_view"
+                           href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>"
+                           title="<?php echo $seller->getShopTitle(); ?>">
+                            <img
+                                src="<?php echo $helper->getMediaUrl() . 'marketplace/' . ($seller->getShopLogo() ? $seller->getShopLogo() : 'no-images.png'); ?>"
+                                alt="Shop Logo" class="shop-logo" />
+                            <span style="clear: both; text-transform: uppercase;"><?php echo $seller->getShopTitle() ? $seller->getShopTitle() : 'No Name'; ?> </span>
+                        </a>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+            <div class="clearfix"></div>
+        <?php else : ?>
+            <div class="message info empty"><span><?php echo __('Seller records not available.'); ?></span>
+            </div>
+        <?php endif; ?>
+    </ul>
+</div>
+
+
+

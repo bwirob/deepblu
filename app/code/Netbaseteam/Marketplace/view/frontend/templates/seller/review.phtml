@@ -1,0 +1,161 @@
+<?php
+/** @var $block Netbaseteam\Marketplace\Block\Seller\Profile\Review */
+
+$shopData = $block->getShopData();
+$reviews = $block->getReview();
+$shopID = $this->getRequest()->getParam('shop');
+?>
+<div id="seller-profile-content">
+    <?php if ($reviews): ?>
+        <div class="block review-list" id="customer-reviews">
+            <div class="block-title">
+                <strong>Customer Reviews</strong>
+            </div>
+            <div class="block-content">
+                <ol class="items review-items">
+                    <?php foreach ($reviews as $_review): ?>
+                    <li class="item review-item" itemscope="" itemprop="review" itemtype="http://schema.org/Review">
+                        <div class="review-title" itemprop="name"><?php echo $_review['title'] ?></div>
+                        <div class="review-ratings">
+                            <div class="rating-summary item" itemprop="reviewRating" itemscope=""
+                                 itemtype="http://schema.org/Rating">
+                                <span class="label rating-label"><span>Rating</span></span>
+
+                                <div class="rating-result" title="<?php echo $_review['rating'] ?>%">
+                                    <meta itemprop="worstRating" content="1">
+                                    <meta itemprop="bestRating" content="100">
+                            <span style="width:<?php echo $_review['rating'] ?>%">
+                                <span itemprop="ratingValue"><?php echo $_review['rating'] ?>%</span>
+                            </span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content" itemprop="description">
+                            <?php echo $_review['detail'] ?>
+                        </div>
+                        <div class="review-details">
+                            <p class="review-author">
+                                <span class="review-details-label">Review by</span>
+                                <strong class="review-details-value"
+                                        itemprop="author"><?php echo $_review['nickname'] ?></strong>
+                            </p>
+
+                            <p class="review-date">
+                                <span class="review-details-label">Posted on</span>
+                                <time class="review-details-value" itemprop="datePublished"
+                                      datetime="<?php echo $_review['updated_at'] ? $_review['updated_at'] : $_review['created_at']; ?>"><?php echo $_review['updated_at'] ? $_review['updated_at'] : $_review['created_at']; ?></time>
+                            </p>
+                        </div>
+                    </li>
+                </ol>
+                <?php endforeach; ?>
+                <?php if ($block->getPagerHtml()): ?>
+                    <div class="toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+                <?php endif ?>
+            </div>
+        </div>
+    <?php endif; ?>
+    <div class="block-content">
+        <form
+            action="<?php echo $this->getUrl("marketplace/seller/reviewPost/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]) ?>"
+            class="review-form" method="post"
+            id="review-form" data-role="shop-review-form" data-bind="scope: 'review-form'" novalidate="novalidate">
+            <input name="form_key" type="hidden" value="rwHNVEOAsVWkuewG">
+            <fieldset class="fieldset review-fieldset" data-hasrequired="">
+                <legend class="legend review-legend">
+                    <span>You're reviewing:</span><strong><?php echo $shopData['shop_title'] ?></strong>
+                </legend>
+                <br>
+                <span id="input-message-box"></span>
+                <fieldset class="field required review-field-ratings">
+                    <legend class="label"><span>Your Rating<span></span></span></legend>
+                    <br>
+
+                    <div class="control">
+                        <div class="nested" id="shop-review-table">
+                            <div class="field choice review-field-rating">
+                                <label class="label" id="Rating_rating_label"><span>Rating</span></label>
+
+                                <div class="control review-control-vote">
+                                    <input type="radio" name="rating" id="Rating_1" value="20" class="radio"
+                                           data-validate="{required:true, messages:{required:'Please select one of each of the ratings above.'}}"
+                                           aria-labelledby="Rating_rating_label Rating_1_label" aria-required="true">
+                                    <label class="rating-1" for="Rating_1" title="1 star" id="Rating_1_label">
+                                        <span>1 star</span>
+                                    </label>
+                                    <input type="radio" name="rating" id="Rating_2" value="40" class="radio"
+                                           data-validate="{required:true, messages:{required:'Please select one of each of the ratings above.'}}"
+                                           aria-labelledby="Rating_rating_label Rating_2_label" aria-required="true">
+                                    <label class="rating-2" for="Rating_2" title="2 stars" id="Rating_2_label">
+                                        <span>2 stars</span>
+                                    </label>
+                                    <input type="radio" name="rating" id="Rating_3" value="60" class="radio"
+                                           data-validate="{required:true, messages:{required:'Please select one of each of the ratings above.'}}"
+                                           aria-labelledby="Rating_rating_label Rating_3_label" aria-required="true">
+                                    <label class="rating-3" for="Rating_3" title="3 stars" id="Rating_3_label">
+                                        <span>3 stars</span>
+                                    </label>
+                                    <input type="radio" name="rating" id="Rating_4" value="80" class="radio"
+                                           data-validate="{required:true, messages:{required:'Please select one of each of the ratings above.'}}"
+                                           aria-labelledby="Rating_rating_label Rating_4_label" aria-required="true">
+                                    <label class="rating-4" for="Rating_4" title="4 stars" id="Rating_4_label">
+                                        <span>4 stars</span>
+                                    </label>
+                                    <input type="radio" name="rating" id="Rating_5" value="100" class="radio"
+                                           data-validate="{required:true, messages:{required:'Please select one of each of the ratings above.'}}"
+                                           aria-labelledby="Rating_rating_label Rating_5_label" aria-required="true">
+                                    <label class="rating-5" for="Rating_5" title="5 stars" id="Rating_5_label">
+                                        <span>5 stars</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="validate_rating" class="validate-rating" value=""
+                               aria-required="true">
+                    </div>
+                </fieldset>
+                <div class="field review-field-nickname required">
+                    <label for="nickname_field" class="label"><span>Nickname</span></label>
+
+                    <div class="control">
+                        <input type="text" name="nickname" id="nickname_field" class="input-text"
+                               data-validate="{required:true}" aria-required="true"
+                               value="<?php echo $block->getCustomer(); ?>">
+                    </div>
+                </div>
+                <div class="field review-field-summary required">
+                    <label for="summary_field" class="label"><span>Summary</span></label>
+
+                    <div class="control">
+                        <input type="text" name="title" id="summary_field" class="input-text"
+                               data-validate="{required:true}" data-bind="value: review().title" aria-required="true">
+                    </div>
+                </div>
+                <div class="field review-field-text required">
+                    <label for="review_field" class="label"><span>Review</span></label>
+
+                    <div class="control">
+                    <textarea name="detail" id="review_field" cols="5" rows="3" data-validate="{required:true}"
+                              data-bind="value: review().detail" aria-required="true"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="actions-toolbar review-form-actions">
+                <div class="primary actions-primary">
+                    <button type="submit" class="action submit primary"><span>Submit Review</span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function ($) {
+        var dataForm = $('#review-form');
+        dataForm.mage('validation', {});
+    });
+</script>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Netbaseteam\Ajaxcart\Controller\AbstractController\AjaxcartLoaderInterface" type="\Netbaseteam\Ajaxcart\Controller\AbstractController\AjaxcartLoader" />
+
+	<preference for="Magento\Checkout\Controller\Cart\Add" type="Netbaseteam\Ajaxcart\Controller\Cart\Add" /> 
+</config>

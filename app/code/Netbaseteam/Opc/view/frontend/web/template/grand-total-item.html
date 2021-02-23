@@ -1,0 +1,17 @@
+<!--
+/**
+ * Copyright � 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko if: isDisplayed() -->
+<div class="cmsmart-grand-total-item">
+
+    <span class="cmsmart-grand-total-item-label" data-bind="i18n: 'Order Total'"></span>
+    <span class="cmsmart-grand-total-item-price" data-bind="text: getValue(), attr:{'data-label': title}"></span>
+
+    <!-- ko foreach: elems() -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+</div>
+<!-- /ko -->

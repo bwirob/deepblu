@@ -1,0 +1,153 @@
+<?php
+	$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+	$request = $objectManagerr->get('Magento\Framework\App\Action\Context')->getRequest();
+	$helper = $objectManagerr->get('\Cmsmart\Brandcategory\Helper\Data');
+	$helper_icon = $objectManagerr->get('\Cmsmart\Categoryicon\Helper\Data');
+	$icon_cat = "";
+	$cat_selected_arr = explode(",", $helper->getBrandCategories());
+?>
+<div class="brand-module animation-element slide-left">   
+	<?php if ($request->getFullActionName() == 'cms_index_index') { ?>   
+		 <div class="container"> 
+	<?php } ?>
+			<div class="brand">
+				<div class="navslider">
+					<a class="prev" href="#"><i class='icon-left-open-4'></i></a>
+					<a class="next" href="#"><i class='icon-right-open-4'></i></a>
+				</div>
+				<div id="owl-demo-brand" class="inner">
+					<?php 
+						for($i=0; $i<count($cat_selected_arr); $i++){  
+						$cat_id = $cat_selected_arr[$i];
+						$category = $this->_loadCat($cat_id);
+						$icon_cat = $helper_icon->getClassJson($cat_id);
+						$url = $this->getUrl('brandcategory/index/loadbrand', ['cat' => $cat_id]);
+					?>
+					
+					  <div class="item" data-show="1">
+						<div class="item-content" onClick="reloadBrand('<?php echo $url; ?>'); return false;">
+						  <?php if($icon_cat == ""){ ?>
+							<i class="fa fa-laptop" aria-hidden="true"></i>
+						  <?php } else { ?>
+							<i class="icon-<?php echo $icon_cat; ?>"></i>
+						  <?php } ?>
+						  <span><?php echo $category->getName(); ?></span>
+						</div>
+					  </div>
+
+					<?php } ?>
+				</div>
+			</div>
+			<div id="brand-load" class="brand-load">
+				<img alt="" src="<?php echo $this->getViewFileUrl('Cmsmart_Brandcategory::images/loadding.gif'); ?>" title="<?php echo $this->getViewFileUrl('Cmsmart_Brandcategory::images/loadding.gif'); ?>">
+			</div>
+			<div id = "nb_brand_products" class="brand-show data-show" style="display: none;" data-show="1">
+				<!-- call via ajax brand_products.phtml -->
+				<a class="brand_view_all" href="#">VIEW ALL</a>
+			</div> 
+	<?php if ($request->getFullActionName() == 'cms_index_index') { ?>   
+		</div>
+	<?php } ?>
+</div>
+
+<script type="text/javascript">
+  //Home product tab
+  require([
+     'jquery',
+     'jquery/ui',
+	 'owlCarousel'
+    ],
+    function($, tabs) {
+		$(document).ready(function(){
+			$('#owl-demo-brand .item').click(function(){
+				var check = $(this).parents(".owl-item").hasClass('checked-ab');
+				if (check) {
+					$(this).parents(".owl-item").addClass('checked-ab');
+				} else {
+					$(this).parents(".owl-item").toggleClass('checked-ab').siblings().removeClass('checked-ab');
+				}
+			});
+
+
+			$('.bestseller-product ul.tabs li').click(function(){
+				var tab_id = $(this).attr('data-tab');
+
+				$('.bestseller-product ul.tabs li').removeClass('current');
+				$('.bestseller-product .tab-content').removeClass('current');
+
+				$(this).addClass('current');
+				$(".bestseller-product #"+tab_id).addClass('current');
+			})
+			$('.brand-module .inner').owlCarousel({
+			items: 4,
+			itemsCustom: [   
+				[0, 2], 
+				[480, 4], 
+				[768, 4], 
+				[992, 6], 
+				[1200, 7] 
+			], 
+			pagination: false,
+			slideSpeed : 800,
+			scrollPerPage: false,
+			touchDrag: false,
+			afterAction: function (e) {
+				if(this.$owlItems.length > this.options.items){
+					$('.brand-module .navslider').show();
+				}else{
+					$('.brand-module .navslider').hide();  
+				}
+			}
+			//scrollPerPage: true,
+		});
+		$('.brand-module .navslider .prev').on('click', function(e){
+			e.preventDefault();
+			$('.brand-module .inner').trigger('owl.prev');
+		});
+		$('.brand-module .navslider .next').on('click', function(e){
+			e.preventDefault();
+			$('.brand-module .inner').trigger('owl.next');
+		}); 
+		});
+	});
+
+    //Product owl carousel slider
+    require(['jquery'], function($) {
+		"use strict"; 
+        $(document).ready(function(){  
+			$(".brand-module .owl-item").on("click" ,function(){
+				$(this).addClass("active-1").siblings().removeClass("active-1");
+				// alert($(this).children(".item").attr("data-show"));
+				var dataShow = $(this).children(".item").attr("data-show");
+				// alert(dataShow);
+				// console.log(this);
+				$(this).parents(".brand-module").find('.brand-show').filter('[data-show='+dataShow+']').addClass("data-show").siblings().removeClass("data-show");
+				var _this = $(this).parents(".brand-module");
+			});
+			
+			reloadBrand('<?php echo $this->getUrl('brandcategory/index/loadbrand', ['cat' => 0]); ?>');
+			
+        }); 
+    });   
+
+	function reloadBrand(url){
+		require(['jquery'], function($){ 
+			"use strict";
+			
+			$('#brand-load').show();
+			$('#nb_brand_products').html("");
+			$.ajax({
+				url: url,
+				data: {},
+				type: 'post',
+				dataType: 'json',
+
+				success: function(res) {	
+					$('#brand-load').hide();
+					$('#nb_brand_products').html(res["template"]);
+				}
+			});
+			
+		}); 
+	}
+</script>

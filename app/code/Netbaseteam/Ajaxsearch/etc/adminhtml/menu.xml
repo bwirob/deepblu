@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+		<add id="Netbaseteam_Ajaxsearch::ajaxsearch" title="Ajaxsearch" module="Netbaseteam_Ajaxsearch" sortOrder="30" parent="Netbase_Sun::nb_all" resource="Netbaseteam_Ajaxsearch::ajaxsearch"/>
+        <add id="Netbaseteam_Ajaxsearch::ajaxsearch_manage" parent="Netbaseteam_Ajaxsearch::ajaxsearch" title="Settings" module="Netbaseteam_Ajaxsearch" sortOrder="30" action="adminhtml/system_config/edit/section/ajaxsearch" resource="Netbaseteam_Ajaxsearch::config"/>
+    </menu>
+</config>

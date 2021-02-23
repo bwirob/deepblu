@@ -1,0 +1,428 @@
+<?php
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$skuType = $helper->getAllowedSkuTypes();
+$skuPrefix = $helper->getSkuPrefix();
+$productType = $this->getRequest()->getParam('type');
+
+$categoryIds = array();
+$product = $block->getProductModel();
+if ($product) {
+    $productId = $product->getId();
+    $productType = $product->getTypeId();
+    $categoryIds = $product->getData('category_ids');
+}
+
+?>
+<div class="right_col" role="main">
+    <div>
+        <form action="<?php echo isset($productId)? $this->getUrl("marketplace/product/save/id/$productId") :  $this->getUrl('marketplace/product/save')?>" enctype="multipart/form-data"
+              method="post" id="form-customer-product-new">
+            <div class="netbaseteam-marketplace-field" id="netbaseteam-mp-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <button type="reset" class="action submit primary netbaseteammp_btn">
+                                    <span><?php echo __('Reset') ?></span>
+                                </button>
+                                <button class="action submit primary netbaseteammp_btn" title="<?php echo __('Save') ?>" type="submit" id="save_butn">
+                                    <span><?php echo __('Save') ?></span>
+                                </button>
+                                <p class="back-link">
+                                    <a href="javascript:;" onclick="javascript: window.history.back();"
+                                       class="right">&laquo; <?php echo __('Back') ?></a>
+                                </p>
+                            </div>
+                            <div class="x_content">
+                                <div class="netbaseteammp_design">
+                                    <div class="fieldset netbaseteammp_fieldset">
+                                        <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>"/>
+                                        <input type="hidden" name="attribute_set_id" id="attribute_set_id"
+                                               value="<?php echo $this->getRequest()->getParam('set') != '' ? $this->getRequest()->getParam('set') : 4; ?>"/>
+                                        <input type="hidden" name="type" id="producttype"
+                                               value="<?php echo $this->getRequest()->getParam('type') ?>"/>
+                                        <input type="hidden" name="wstoreids" id="wstoreids" value="<?php echo $this->getStoreId(); ?>"
+                                               title="wstoreids" class=""/>
+
+                                        <ul class="form-list" id="netbaseteambodymain">
+                                            <li>
+                                                <label><?php echo __('Enable Product') ?>:</label>
+                                                <label class="switch">
+                                                    <input type="checkbox" name="product[status]" value="1" <?php echo $product && $product->getStatus() == 1 || !($product) ? 'checked' : ''; ?>>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </li>
+                                            <li style="display:none">
+                                                <label class="required"><?php echo __('Attribute Set') ?>:</label>
+
+                                                <div class="input-box">
+                                                    <select name="set" class="required-entry">
+                                                        <?php foreach ($this->getAllowedSets() as $set) { ?>
+                                                            <?php if($this->getRequest()->getParam('id')):?>
+                                                                <option value="<?php echo $set['value'] ?>" <?php echo ($set['value'] == $product->getAttributeSetId()) ? ('selected') : (''); ?>><?php echo $set['label'] ?></option>
+                                                            <?php else:?>
+                                                                <option value="<?php echo $set['value'] ?>" <?php echo ($set['value'] == $this->getRequest()->getParam('set')) ? ('selected') : (''); ?>><?php echo $set['label'] ?></option>
+                                                            <?php endif;?>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label><?php echo __('Product Category') ?>:</label>
+                                                <div class="clever-trigger-content-update" data-mage-init='{"Netbaseteam_Marketplace/js/product/categories-tree":{
+                                                    "imageFolder":"<?php echo $this->getViewFileUrl('Netbaseteam_Marketplace::images') ?>/",
+                                                    "folderImage":"folder-open.gif",
+                                                    "plusImage":"elbow-end-plus.gif",
+                                                    "minusImage":"elbow-end-minus.gif",
+                                                    "initExpandedNodes":"",
+                                                    "timeoutEdit":"20",
+                                                    "editCounter":"-1",
+                                                    "editEl": "false",
+                                                    "categoryIds": ""
+                                                    }}'>
+                                                    <div id="product-categories" class="tree x-tree">
+                                                        <div id="expandCollapse">
+                                                            <a href="#" id="expand-all"><?php echo __('Expand all') ?></a>
+                                                            <a href="#" id="collapse-all"><?php echo __('Collapse all') ?></a>
+                                                        </div>
+                                                        <ul id="dhtmlgoodies_tree">
+                                                            <?php echo $this->getTreeCategory($this->getRootCategory(), 0, [], $categoryIds) ?>
+                                                        </ul>
+                                                        <div id="ajaxMessage"></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><?php echo __('Product Name') ?>:</label>
+                                                <div class="input-box">
+                                                    <input type="text" class="required-entry input-text" name="product[name]" id="name"
+                                                           value="<?php echo isset($product) ? $product->getName() : ''; ?>"/>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><?php echo __('Description') ?>:</label>
+                                                <div class="input-box">
+                                                    <textarea name="product[description]" class="input-text" id="description" rows="5"
+                                                              cols="75"><?php echo isset($product) ? $product->getDescription() : ''; ?></textarea>
+                                                </div>
+                                                <script>
+                                                    require([
+                                                        'jquery',
+                                                        'mage/adminhtml/wysiwyg/tiny_mce/setup'
+                                                    ], function(jQuery){
+                                                        wysiwyg = new wysiwygSetup("description", {
+                                                            "width":"99%",  // defined width of editor
+                                                            "height":"200px", // height of editor
+                                                            "plugins":[{"name":"image"}], // for image
+                                                            "tinymce4":{"toolbar":"formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link table charmap","plugins":"advlist autolink lists link charmap media noneditable table contextmenu paste code help table",
+                                                            }
+                                                        });
+                                                        wysiwyg.setup("exact");
+                                                    });
+                                                </script>
+                                            </li>
+                                            <li>
+                                                <label><?php echo __('Short Description') ?>:</label>
+                                                <div class="input-box">
+                                                <textarea name="product[short_description]" id="short_description" rows="5" cols="75"
+                                                          class="input-text"><?php echo isset($product) ? $product->getShortDescription() : ''; ?></textarea>
+                                                </div>
+
+                                                <script>
+                                                    require([
+                                                        'jquery',
+                                                        'mage/adminhtml/wysiwyg/tiny_mce/setup'
+                                                    ], function(jQuery){
+                                                        wysiwyg = new wysiwygSetup("short_description", {
+                                                            "width":"99%",  // defined width of editor
+                                                            "height":"200px", // height of editor
+                                                            "plugins":[{"name":"image"}], // for image
+                                                            "tinymce4":{"toolbar":"formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link table charmap","plugins":"advlist autolink lists link charmap media noneditable table contextmenu paste code help table",
+                                                            }
+                                                        });
+                                                        wysiwyg.setup("exact");
+                                                    });
+                                                </script>
+                                            </li>
+                                            <li>
+                                                <label class="required"><?php echo __('SKU') ?>:</label>
+                                                <?php if ($skuType == 'dynamic' && $skuPrefix) : ?>
+                                                    <?php echo "(Prefix - " . $skuPrefix . ")";?>
+                                                    <span><?php echo isset($product) ? $product->getSku() : ''; ?></span>
+                                                <?php else: ?>
+                                                    <div class="control">
+                                                        <input name="product[sku]" id="sku" class="required-entry input-text" type="text"
+                                                               value="<?php echo isset($product) ? $product->getSku() : ''; ?>"/>
+                                                    </div>
+                                                    <div id="skuavail">
+                                                        <span class="success-msg skuavailable"><?php echo __('SKU Available') ?></span>
+                                                    </div>
+                                                    <div id="skunotavail">
+                                                        <span class="error-msg skunotavailable"><?php echo __('SKU Already Exist') ?></span>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </li>
+                                            <?php if($productType == 'bundle'):?>
+                                                <li>
+                                                    <label><?php echo __('Dynamic SKU') ?>:</label>
+                                                    <label class="switch switch-bundle">
+                                                        <input type="checkbox" name="product[sku_type]" value="<?php echo $product && $product->getSkuType() == 0 ? '0' : '1'?>" <?php echo $product && $product->getSkuType() == 0 || !($product) ? 'checked' : ''; ?>>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </li>
+                                            <?php endif;?>
+                                            <?php if($productType != 'grouped'):?>
+                                            <li>
+                                                <label class="required"><?php echo __('Price') ?>
+                                                    <b><?php echo " (" . $this->getCurrencySymbol() . ")"; ?></b>:</label>
+                                                <div class="input-box">
+                                                    <input type="text" <?php echo ($productType == 'bundle' && $product && $product->getPriceType() == 0) || ($productType == 'bundle' && !$product) ? 'disabled' : ''; ?> class="required-entry validate-zero-or-greater input-text"
+                                                           name="product[price]"
+                                                           id="price"
+                                                           value="<?php echo isset($product) ? $product->getPrice() : ''; ?>"/>
+                                                </div>
+                                            </li>
+                                            <?php if($productType == 'bundle'):?>
+                                                <li>
+                                                    <label><?php echo __('Dynamic Price') ?>:</label>
+                                                    <label class="switch switch-bundle">
+                                                        <input <?php echo ($productType == 'bundle' && $product) ? 'disabled' : ''; ?> type="checkbox" name="product[price_type]" value="<?php echo ($product && $product->getPriceType() == 0) || (!$product && $productType == 'bundle') ? '0' : '1'?>" <?php echo $product && $product->getPriceType() == 0 || !($product) ? 'checked' : ''; ?>>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </li>
+                                            <?php endif;?>
+                                            <li>
+                                                <label><?php echo __('Special Price') ?>
+                                                    <b><?php echo " (" . $this->getCurrencySymbol() . ")"; ?></b>:</label>
+                                                <div class="input-box">
+                                                    <input type="text" class="widthinput input-text validate-zero-or-greater"
+                                                           name="product[special_price]"
+                                                           id="special_price"
+                                                           value="<?php echo isset($product) ? $product->getSpecialPrice() : ''; ?>"/>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label><?php echo __('Special Price From') ?>:</label>
+                                                <div class="input-box">
+                                                    <input type="text" name="product[special_from_date]" id="special_from_date"
+                                                           class="datepicker input-text"
+                                                           value="<?php echo isset($product) ? $this->formatDate($product->getSpecialFromDate()) : ''; ?>"/>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label><?php echo __('Special Price To') ?>:</label>
+                                                <div class="input-box">
+                                                    <input type="text" name="product[special_to_date]" id="special_to_date"
+                                                           class="datepicker input-text"
+                                                           value="<?php echo isset($product) ? $this->formatDate($product->getSpecialToDate()) : ''; ?>"/>
+                                                </div>
+                                            </li>
+                                            <input id="inventory_manage_stock" type="hidden" name="product[stock_data][manage_stock]" value="1">
+                                            <input type="hidden" value="1" name="product[stock_data][use_config_manage_stock]"
+                                                   id="inventory_use_config_manage_stock">
+                                            <li>
+                                                <label class="required"><?php echo __('Quantity') ?>:</label>
+                                                <div class="control">
+                                                    <input type="text" <?php echo $productType == 'bundle' ? 'disabled' : ''; ?> class="required-entry validate-number input-text"
+                                                           name="product[quantity_and_stock_status][qty]" id="qty"
+                                                           value="<?php echo isset($product) ? $product->getData('quantity_and_stock_status')['qty'] : ''; ?>"/>
+                                                </div>
+                                            </li>
+                                            <?php endif;?>
+                                            <li>
+                                                <label class="required"><?php echo __('Stock Availability') ?>:</label>
+                                                <div class="control">
+                                                    <select class="select" name="product[quantity_and_stock_status][is_in_stock]">
+                                                        <?php if (isset($product)): ?>
+                                                            <option
+                                                                value="1" <?php echo ($product->getData('quantity_and_stock_status')['is_in_stock'] == 1) ? ('selected') : ('') ?>><?php echo __("In Stock"); ?></option>
+                                                            <option
+                                                                value="0" <?php echo !($product->getData('quantity_and_stock_status')['is_in_stock']) ? ('selected') : ('') ?>><?php echo __("Out Stock"); ?></option>
+                                                        <?php else: ?>
+                                                            <option value="1"><?php echo __("In Stock"); ?></option>
+                                                            <option value="0"><?php echo __("Out of Stock"); ?></option>
+                                                        <?php endif; ?>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="required"><?php echo __('Visibility') ?>:</label>
+
+                                                <div class="input-box">
+                                                    <select id="visibility" class=" required-entry required-entry select"
+                                                            name="product[visibility]">
+                                                        <?php
+                                                        $product_visibility = $this->getProductVisibility();
+                                                        foreach ($product_visibility as $key => $value) {
+                                                            ?>
+                                                            <?php if ($product): ?>
+                                                                <option value="<?php echo $key ?>" <?php echo ($product->getVisibility() == $key) ? ('selected') : ('');?>><?php echo $value ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?php echo $key ?>" <?php echo $key == '4' ? 'selected' : ''?>><?php echo $value ?></option>
+                                                            <?php endif; ?>
+                                                            <?php
+                                                        } ?>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <?php if($productType != 'grouped'):?>
+                                            <li>
+                                                <label class="required"><?php echo __('Tax Class') ?>:</label>
+                                                <div class="input-box">
+                                                    <select id="tax_class_id" <?php echo ($productType == 'bundle' && $product && $product->getPriceType() == 0) || ($productType == 'bundle' && !$product) ? 'disabled' : ''; ?> class=" required-entry required-entry select"
+                                                            name="product[tax_class_id]">
+                                                        <option value="0"><?php echo __('None') ?></option>
+                                                        <?php
+                                                        $taxes = $this->getTaxClassCollection()->addFieldToFilter('class_type', array('eq' => 'PRODUCT'));
+                                                        foreach ($taxes as $tax) {
+                                                            ?>
+                                                            <?php if (isset($product)): ?>
+                                                                <option value="<?php echo $tax->getId() ?>" <?php echo ($product->getTaxClassId() == $tax->getId()) ? ('selected') : ('');?>><?php echo $tax->getClassName() ?></option>
+                                                            <?php else : ?>
+                                                                <option value="<?php echo $tax->getId() ?>"><?php echo $tax->getClassName() ?></option>
+                                                            <?php endif; ?>
+                                                            <?php
+                                                        } ?>
+                                                    </select>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="<?php echo $productType == 'simple' || $productType == 'configuration' ? 'required' : ''?>"><?php echo __('Weight') ?>:</label>
+                                                <?php if($productType != 'bundle'):?>
+                                                <div data-role="weight-switcher">
+                                                    <label data-ui-id="product-tabs-attributes-tab-element-radios-product-product-has-weight-label" for="weight-switcher">
+                                                        <span><?php echo __('Does this have a weight?')?></span>
+                                                    </label>
+                                                    <div class="control">
+                                                        <div class="control">
+                                                            <input type="radio" <?php if ($productType =='simple' || ($product && $product->getTypeId()) == 'simple' || ($product && $product->getTypeId()) == 'configuration' ||  ($productType =='configurable' && !empty($product['weight']))) { ?>checked="checked" <?php } ?> class="weight-switcher" id="weight-switcher1" value="1" name="product[product_has_weight]">
+                                                            <label for="weight-switcher1">
+                                                                <span><?php echo __('Yes')?></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="control">
+                                                            <input type="radio" <?php if ($productType =='downloadable' || $productType =='virtual' || ($productType =='configurable' && empty($product['weight']))) { ?>checked="checked" <?php } ?> class="weight-switcher" id="weight-switcher0" value="0" name="product[product_has_weight]">
+                                                            <label for="weight-switcher0">
+                                                                <span><?php echo __('No')?></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php endif;?>
+                                                <div class="input-box product-weight">
+                                                    <input type="text"
+                                                    <?php echo ($productType == 'bundle' && $product && $product->getWeightType() == 0) || ($productType == 'bundle' && !$product) ? 'disabled' : ''; ?>
+                                                           class="validate-number validate-zero-or-greater validate-number-range number-range-0-99999999.9999 input-text <?php echo $productType == 'simple' || $productType == 'configuration' ? 'required-entry' : ''?>"
+                                                           name="product[weight]" id="weight" value="<?php echo isset($product) ? $product->getWeight() : ''; ?>"  <?php if($productType =='downloadable' || $productType == 'virtual'){ ?>disabled="disabled" <?php } ?>/>
+                                                </div>
+                                            </li>
+                                            <?php endif;?>
+                                            <?php if($productType == 'bundle'):?>
+                                                <li>
+                                                    <label><?php echo __('Dynamic Weight') ?>:</label>
+                                                    <label class="switch switch-bundle">
+                                                        <input type="checkbox" name="product[weight_type]" value="<?php echo ($product && $product->getWeightType() == 0) || (!$product && $productType == 'bundle') ? '0' : '1'?>" <?php echo $product && $product->getWeightType() == 0 || !($product) ? 'checked' : ''; ?>>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </li>
+                                            <?php endif;?>
+                                            <li>
+                                                <label><?php echo __('Meta Title') ?>:</label>
+
+                                                <div class="input-box">
+                                                    <input type="text" class="input-text" name="product[meta_title]" id="meta_title" value="<?php echo isset($product) ? $product->getMetaTitle() : ''; ?>"/>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label><?php echo __('Meta Keywords') ?>:</label>
+
+                                                <div class="input-box">
+                                                    <textarea name="product[meta_keyword]" id="meta_keyword" rows="5" cols="75"><?php echo isset($product) ? $product->getMetaKeyword() : ''; ?></textarea>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label><?php echo __('Meta Description') ?>:</label>
+
+                                                <div class="input-box">
+                                                    <textarea name="product[meta_description]" id="meta_description" rows="5" cols="75"><?php echo isset($product) ? $product->getMetaDescription() : ''; ?></textarea>
+                                                </div>
+                                            </li>
+
+                                            <?php 
+                                                echo $this->getChildHtml();
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+
+        <div class="buttons-set">
+            <p class="required"><?php echo __('Required Fields') ?></p>
+
+            <p class="back-link">
+                <a href="javascript:;" onclick="javascript: window.history.back();"
+                   class="left">&laquo; <?php echo __('Back') ?></a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    requirejs([
+        'jquery',
+        'mage/mage',
+        'prototype',
+        'domReady!'
+    ], function ($) {
+        $(function () {
+            var dataForm = $('#form-customer-product-new');
+            dataForm.mage('validation', {});
+
+            var qty = $('#qty'),
+                productType = $('#product_type_id').val(),
+                stockAvailabilityField = $('#quantity_and_stock_status'),
+                manageStockField = $('#inventory_manage_stock'),
+                useConfigManageStockField = $('#inventory_use_config_manage_stock'),
+                fieldsAssociations = {
+                    'qty': 'inventory_qty',
+                    'quantity_and_stock_status': 'inventory_stock_availability'
+                };
+
+            var qtyDefaultValue = qty.val();
+        });
+    });
+</script>
+
+<?php
+$formData = [
+    'checkSkuAjaxUrl' => $block->getUrl('marketplace/product/checksku', ['_secure' => $this->getRequest()->isSecure()])
+];
+$serializedFormData = $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($formData);
+?>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "admin_vendor": {},
+            "Netbaseteam_Marketplace/js/product/weight-handler": {},
+            "Netbaseteam_Marketplace/catalog/apply-to-type-switcher": {},
+            "productEditForm": <?php /* @noEscape */ echo $serializedFormData; ?>
+        }
+    }
+</script>
+
+<script>
+    require([
+        "jquery",
+        "Netbaseteam_Marketplace/catalog/type-events"
+    ], function($, TypeSwitcher){
+        var $form = $('[data-form=edit-product]');
+        $form.data('typeSwitcher', TypeSwitcher.init());
+    });
+</script>

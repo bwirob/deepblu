@@ -1,0 +1,187 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$uploadHelper = $objectManager->get('\Netbaseteam\Orderupload\Helper\Data');
+
+if($uploadHelper->isEnable()) {
+
+$readonly_text = "";
+if($uploadHelper->getPathPage() == "sales/order/view"){$readonly_text = "readonly";}
+
+$session_id = session_id();
+if(empty($session_id)) session_start();
+
+/* block_data: parent_pid|childP_sku|session_file */
+$block_data = explode( "|", $this->getData('block_data'));
+
+$pid = $block_data[0]; /* parent product id */
+
+/* if product is not bundle */
+$_item_sku = $block_data[1];
+$output_dir = $uploadHelper->getBaseDir()."/".$block_data[2];
+$jsonFile = $output_dir.'.json';
+/* echo $jsonFile; */
+if (file_exists($jsonFile)):
+	$str 	= file_get_contents($jsonFile);
+	$rows 	= json_decode($str, true);
+?>
+
+<p><strong><?php echo __('File attached: '); ?></strong></p>
+<div class="ajax-file-upload-container not-detail">
+	<div class="ajax-file-upload-statusbar">
+		<?php
+		for($i=0; $i < count($rows); $i++){
+			foreach($rows[$i] as $row) {
+				if(isset($row["child_sku"]) && $_item_sku == $row["child_sku"]){
+		?>
+		
+		<div class="talbe-upload-files">
+		
+			<div class="upload-info">
+				<?php
+					$name_actual = explode("/", $row["file"])[1];
+					$file_name = explode(".", $name_actual);
+					if(strlen($file_name[0]) >= 30) {
+						$name_actual = substr($file_name[0], 0, 30)." ..."."(.".$file_name[1].")";
+					}
+					
+				?>
+				<div class="ajax-file-upload-filename file-title"><span><?php echo $name_actual; ?><span></div>
+				<?php
+				$mediapath = $uploadHelper->getMediaUrl()."Orderupload/".$row["file"];
+				if(@is_array(getimagesize($mediapath))){
+					$image = true;
+				} else {
+					$image = false;
+					$mediapath = $this->getViewFileUrl('Netbaseteam_Orderupload/images/others_files.png');
+				}
+				?>
+				
+				<img class="ajax-file-upload-preview" src="<?php echo $mediapath; ?>">	
+				<textarea rows="3" cols="36" <?php echo $readonly_text; ?>><?php echo $row["comment"]; ?></textarea> 	
+				
+				<?php if($readonly_text != "readonly"){ ?>
+					<div id="btn-update-comment-<?php echo $i; ?>" data-rev="<?php echo $jsonFile."|".$row["parent_pid"]."|".$row["child_pid"]."|".$row["file"] ?>" onClick = "myUpdComment(this); return false;" class="ajax-file-upload-green"><?php echo __('Update Comment') ?></div>
+					<div class="ajax-file-upload-green" data-rev="<?php echo $row["parent_pid"]."|".explode("/", $row["file"])[1] ?>" onClick = "myDownload(this); return false;" ><?php echo __('Download File') ?></div>
+					<div class="ajax-file-upload-red" data-rev="<?php echo $jsonFile."|".$row["parent_pid"]."|".$row["child_pid"]."|".explode("/", $row["file"])[1] ?>" onClick = "myDelete(this); return false;"><?php echo __('Delete') ?></div>
+				<?php } else { ?>
+					<div class="ajax-file-upload-green" data-rev="<?php echo $row["parent_pid"]."|".explode("/", $row["file"])[1] ?>" onClick = "myDownload(this); return false;" ><?php echo __('Download File') ?></div>
+				<?php } ?>
+			</div>		
+		</div>
+		<?php
+				}
+			}
+		}
+		?>
+		
+	</div>
+</div>
+<?php
+endif;
+?>
+
+<script>
+function myUpdComment(e){
+	require(['jquery'], function($){ 
+		"use strict";
+		
+		var message = $(e).prev().val();
+		$(e).prev().css("background-color", "#f0f0f0");
+		if(message != "") {
+			var data_array = $(e).attr('data-rev').split('|');
+			var json_file = data_array[0];
+			var parent_id = data_array[1];
+			var child_id = data_array[2];
+			var file = data_array[3];
+			
+			$(e).text("Updating...");
+			
+			$.ajax({
+				type: 'POST',
+				url: '<?php echo $this->getUrl('orderupload/index/updcomment') ?>',
+				data: {
+					parent_id: parent_id,
+					child_id: child_id,
+					json_file: json_file,
+					file: file,
+					msg: message,
+					
+				},
+				dataType: 'json',
+				success: function(data) {
+					$(e).text("Update Comment");
+					/* if(data.complate == '1') */
+				},
+				error: function() {
+					console.log("Error...")
+				}
+			});
+		} else {
+			$(e).prev().focus();
+			alert("Please enter you comment message");
+		}
+		return false;
+	
+	});
+}
+
+
+function myDownload(e){
+	require(['jquery'], function($){ 
+		"use strict";
+		
+		var data_array = $(e).attr('data-rev').split('|');
+		var parent_id = data_array[0];
+		var filename = data_array[1];
+		
+		location.href="<?php echo $this->getUrl('orderupload/index/download') ?>?p="+parent_id+"&filename="+filename;
+		return false;
+	});
+}
+
+
+function myDelete(e){
+	require(['jquery'], function($){ 
+		"use strict";
+		
+		if (confirm("Are you sure delete this file?")) {
+			var element = $(e);
+			
+			var data_array = element.attr('data-rev').split('|');
+			var json_file = data_array[0];
+			var parent_id = data_array[1];
+			var child_id = data_array[2];
+			var name_file = data_array[3];
+			
+			element.text("Deleting...");
+			
+			$.ajax({
+				type: 'POST',
+				url: '<?php echo $this->getUrl('orderupload/index/fdelete') ?>',
+				data: {
+					p: parent_id,
+					json_file: json_file,
+					name: name_file,
+					page_delete: "checkout",
+					op: "delete",
+				},
+				dataType: 'json',
+				success: function(data) {
+					if(data["count_items"] == 0) {
+						element.parents(':eq(4)').find('.ajax-file-upload-container.not-detail').html("");
+					} else {
+						element.parents(':eq(1)').find('.upload-info').html("");
+					}
+				},
+				error: function(e) {
+					console.log("Error...");
+				}
+			});
+		}
+		return false;
+	});
+}
+
+</script>
+
+<?php } ?>

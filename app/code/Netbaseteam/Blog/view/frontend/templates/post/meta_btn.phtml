@@ -1,0 +1,44 @@
+<?php
+	$tags = $block->getTagList();
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+?>
+<div class="nb-tabs-share">
+	<ul>
+		<?php if ($helper->showTagPost()): ?>
+			<?php if ($tags): ?>
+				<li class="tag-btn">
+					<span class="tag-title"><?php echo __('Tags:') ?></span>
+					<?php foreach ($tags as $tag): ?>
+						<a href="<?php echo $block->getPreTagUrl().$tag?>" title="<?php echo $tag; ?>" class="tag-item"><?php echo __($tag); ?></a>
+					<?php endforeach ?>
+				</li>
+			<?php endif ?>
+		<?php endif ?>
+
+		<li class="share-btn">
+			<!-- <span class="share-title"><i class="icon-share-1"></i></span> -->
+			<div class="share-list">
+				<span id="share-cta" class="share-title"><i class="icon-share-2"></i></span>
+				<ul>
+					<li class="facebook"> 
+						<a class="" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $block->getPostUrl(); ?>" title="Facebook" target="_blank"><i class="icon-facebook-1"></i>
+						</a>
+					</li>
+					<li class="twitter">
+						<a class="" href="https://twitter.com/home?status=<?php echo $block->getPostUrl(); ?>" title="twitter" target="_blank"><i class="icon-twitter"></i></a>
+					</li>
+					<li class="google"> 
+						<a class="" href="https://plus.google.com/share?url=<?php echo $block->getPostUrl(); ?>" title="Google" target="_blank"><i class="icon-gplus-2"></i></a>
+					</li> 
+					<li class="linke"> 
+						<a class="" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $block->getPostUrl(); ?>&title=&summary=&source=" title="Linkedin" target="_blank"><i class="icon-linkedin-4"></i></a>
+					</li> 
+										
+					<li class="printer">
+						<a class="" href="https://pinterest.com/pin/create/button/?url=<?php echo $block->getPostUrl(); ?>&media=&description=" title="Pinterest" target="_blank"><i class="icon-pinterest-1"></i></a>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,24 @@
+<?php
+/**
+ * @copyright Copyright (c) 2016 www.cmsmart.net
+ */
+?>
+<?php
+$helper = $this->helper('Cmsmart\Quickview\Helper\Data');
+$productUrl = $helper->getProductUrl($this->getData('pid'));
+$isEnable = $helper->isEnable();
+$buttonColor = $helper->getButtonColor();
+$buttonText = $helper->getButtonText();
+if (strlen($buttonText) > 15) {
+    $out = explode("\n", wordwrap($buttonText, 15, "\n"));
+    $out = $out[0] . '...';
+    $buttonText = $out;
+}
+$backgroundColor = $helper->getBackgroundColor();
+?>
+<?php if ($isEnable): ?>
+    <a class="cmsmart-quickview cmsmart_quickview_button" title="Quickview"
+       data-quickview-url=<?php echo $productUrl ?> href="javascript:void(0);"><i class="icon-search"></i>
+    </a>
+<?php endif ?>
+

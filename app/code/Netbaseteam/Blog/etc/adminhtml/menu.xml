@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Netbaseteam_Blog::blog" title="Blog" parent="Netbase_Sun::nb_all" module="Netbaseteam_Blog" sortOrder="30" resource="Netbaseteam_Blog::blog"/>
+
+        <add id="Netbaseteam_Blog::post_manage" title="Manage Post" module="Netbaseteam_Blog" sortOrder="10" parent="Netbaseteam_Blog::blog" action="blog/post/index/" resource="Netbaseteam_Blog::manage"/>
+
+        <add id="Netbaseteam_Blog::comment_manage" title="Manage Comment" module="Netbaseteam_Blog" sortOrder="20" parent="Netbaseteam_Blog::blog" action="blog/comment/index" resource="Netbaseteam_Blog::manage"/>
+        <add id="Netbaseteam_Blog::category_manage" title="Manage Category" module="Netbaseteam_Blog" sortOrder="30" parent="Netbaseteam_Blog::blog" action="blog/category/index" resource="Netbaseteam_Blog::manage"/>
+
+        <add id="Netbaseteam_Blog::blog_setting" title="Settings" module="Netbaseteam_Blog" sortOrder="40" parent="Netbaseteam_Blog::blog" action="adminhtml/system_config/edit/section/blog" resource="Netbaseteam_Blog::manage"/>
+    </menu>
+</config>

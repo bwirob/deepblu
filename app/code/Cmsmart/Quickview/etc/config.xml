@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @copyright Copyright (c) 2016 www.cmsmart.net
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cmsmart_quickview>
+            <general>
+                <enabled>1</enabled>
+            </general>
+            <product_add_form>
+                <show_addtocart>1</show_addtocart>
+                <show_addto>1</show_addto>
+                <show_mailto>1</show_mailto>
+            </product_add_form>
+            <product_info_detailed>
+                <show_productdetail>1</show_productdetail>
+                <show_productattributes>1</show_productattributes>
+                <show_productreview>1</show_productreview>
+            </product_info_detailed>
+            <quickview_style>
+                <button_text>Quick View</button_text>
+            </quickview_style>
+        </cmsmart_quickview>
+    </default>
+</config>

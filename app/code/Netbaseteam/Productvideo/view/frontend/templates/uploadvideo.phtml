@@ -1,0 +1,256 @@
+<?php
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$helper = $objectManager->get('\Netbaseteam\Productvideo\Helper\Data');
+?>
+
+<?php
+$allow_show_upload_video = $helper->showUploadVideo();
+if($allow_show_upload_video) {	
+	$customer_group_array = explode(",", $helper->getAllowCustomerGroup());
+	$allow_show_group = true;
+	
+	if($this->isCustomerLogged()) {
+		$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+		$groupId = $customerSession->getCustomer()->getGroupId();
+		if(!in_array($groupId, $customer_group_array) && !in_array(0, $customer_group_array)) $allow_show_group = false;
+	} else {
+		if(!in_array(0, $customer_group_array)) $allow_show_group = false;
+	}
+	
+?>
+
+<?php if($allow_show_group) { /* check for group */ ?>
+
+<?php
+	$addVideoUrl = $this->getUrl('productvideo/index/upload');
+	$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
+?>
+<div class="upload_wrap">
+	<div id="upload_video" class="title_upload"><span><a><?php echo __('Upload Video') ?></a></span></div>
+
+	<!-- form -->
+	<div id="nb-youtube-uploadform" name="nb-youtube-uploadform" method="post" action="<?php echo $addVideoUrl; ?>" enctype="multipart/form-data">
+		<!-- input upload -->
+		<div id="video_type_upload_file">           
+			<input type="radio" value="upload" name="action-type" id="video_file_field_radio">
+			<label for="video_file_field_radio"><?php echo __('Upload with file input (.mp4)') ?><span class="required"></span></label>
+		</div>
+		
+		<div id="video_file_block" style="display: none;">
+			<input type="file" id="video-file" class="video-input-file" name="video-file" />
+			<span id="vidtest-max-filesize"><?php echo __('Max file size is '.$helper->getMaxVideoSize().' Mb')?></span>
+		</div>
+		
+		<div id="video_type_upload_link"> 
+			<input type="radio" value="add" name="action-type" id="video_link_field_radio">
+			<label for="video_link_field_radio"><?php echo __('URL') ?></label>
+		</div>
+		
+		<div style="display: none;" id="video_url_field">
+			<input type="text" value="" id="video-url" name="video-url" class="input-text required-entry">
+			<p>
+				<?php echo __('http://www.youtube.com/, http://www.dailymotion.com/, http://www.twitch.tv/(chanel), https://vimeo.com') ?>
+			</p>
+		</div>
+		<!-- input upload -->
+		
+		<!-- other fields -->
+		<div id="video_title_field">
+			<label for="video_title_field"><?php echo __('Video Title') ?></span></label><br>
+			<input type="text" value="" id="video-name" name="video-name" class="input-text">
+		</div>
+
+		<div id="video_comment_field">
+			<label for="comment_field"><?php echo __('Comment') ?></label><br>
+			<textarea rows="4" cols="53" id="author_comment" name="author_comment" class="input-text"></textarea>
+		</div>
+
+		<div id="author_name_field">
+			<label for="author_name_field"><?php echo __('Author Name') ?><span class="required">*</span></label><br>
+			<input type="text" value="" id="author_name" name="author_name" class="input-text required-entry">
+		</div>
+		
+		<div id="author_email_field">
+			<label for="author_email_field"><?php echo __('Author Email') ?><span class="required">*</span></label><br>
+			<input type="text" value="" id="author_email" name="author_email" class="input-text validate-email required-entry">
+		</div>
+		<!-- other fields -->
+		
+		<!-- hidden -->
+		<input id="product_id" type="hidden" value="<?php echo $product->getId(); ?>" name="product_id">
+		<input type="hidden" value="up_from_frontend" name="position_upload">
+		<input type="hidden" value="0" id="file_size" name="file_size">
+		<!-- --->
+		
+		<div class="button-set">
+			<button id="btn-send-video" type="submit" class="btn_send_video button"><span><?php echo __('Send') ?></span></button>
+			
+		</div>	
+	</div>
+</div>
+<div style="clear:both"></div>
+
+<script type="text/javascript">
+requirejs(['jquery'], function($){
+	var videoUpload = "";
+	var type = "URL";
+	$(document).ready(function($){
+
+		$('#nb-youtube-uploadform').css('display', 'none');
+		
+		$( "#upload_video" ).click(function(event) {
+			$('#nb-youtube-uploadform').toggle();
+		});
+		
+		$( "#video_link_field_radio" ).click(function(event) {
+			$('#video_url_field').css('display', 'block');
+			$('#video_file_block').css('display', 'none');
+			type = "URL";
+		});
+		
+		$( "#video_file_field_radio" ).click(function(event) {
+			$('#video_url_field').css('display', 'none');
+			$('#video_file_block').css('display', 'block');
+			type = "LOCAL";
+		});
+
+		$( "#btn-send-video" ).click(function(event) {
+			var mCheck = true;
+			if(!$('#video_file_field_radio').is(':checked') &&
+				!$('#video_link_field_radio').is(':checked')
+			) { 
+				$('#video_type_upload_file').css('border', '1px dashed red');
+				$('#video_type_upload_link').css('border', '1px dashed red');
+				mCheck = false;
+			} else {
+				$('#video_type_upload_file').css('border', '');
+				$('#video_type_upload_link').css('border', '');
+			}
+			
+			if($('#video_link_field_radio').is(':checked')) { 
+				if($('#video-url').val() == "") {
+					$('#video_url_field').css('border', '1px dashed red');		
+					mCheck = false;
+				}
+			} else {
+				$('#video_url_field').css('border', '');
+			}
+			
+			if($('#video_file_field_radio').is(':checked')) { 
+				if($('#file_size').val() == 0) {
+					$('#video_file_block').css('border', '1px dashed red');		
+					mCheck = false;
+				}
+			} else {
+				$('#video_url_field').css('border', '');
+				$('#file_size').val(0);
+			}
+			
+			
+			if($('#author_name').val() == "") {
+				$('#author_name').css('border', '1px dashed red');
+				mCheck = false;
+			} else {
+				$('#author_name').css('border', '');	
+			}
+			
+			if($('#author_email').val() == "") {
+				$('#author_email').css('border', '1px dashed red');
+				mCheck = false;
+			} else if(!isValidEmailAddress($('#author_email').val())){
+				$('#author_email').css('border', '1px dashed red');
+				alert("Please enter correct format email");
+				$('#author_email').focus();
+				mCheck = false;
+			} else {
+				$('#author_email').css('border', '');	
+			}
+			
+			if(!mCheck) return mCheck;
+			
+			$("#btn-send-video").text("Sending");
+			
+			var file_data = $("#video-file").prop("files")[0]; // Getting the properties of file from file field
+			var form_data = new FormData(); // Creating object of FormData class
+			form_data.append("file", file_data);
+			
+			$.ajax({
+				url: '<?php echo $addVideoUrl; ?>'
+						+'?author_name='+$('#author_name').val()
+						+'&author_email='+$('#author_email').val()
+						+'&video-name='+$('#video-name').val()
+						+'&author-comment='+$('#author_comment').val()
+						+'&product_id='+$('#product_id').val()
+						+'&url='+$('#video-url').val()
+						+'&type='+type
+						,
+				type: 'POST',
+				data: form_data,
+				contentType: false,
+				processData: false, 
+				cache: false,
+				dataType: 'json',                  
+				success: function(res) { 
+					$("#btn-send-video").text("Send");
+					
+					$('#author_name').val("");
+					$('#author_email').val("");
+					$('#video-name').val("");
+					$('#author_comment').val("");
+					$('#product_id').val("");
+					$('#video-url').val("");
+					$("input:radio").removeAttr("checked");
+					
+					$('#video_url_field').css('display', 'none');
+					$('#video_file_block').css('display', 'none');
+					alert(res.message);
+				},
+				error: function (response) {
+					console.log(response);
+				}
+			});
+		});
+		
+		$( "#video-file" ).change(function(event) {
+			maxSize = '<?php echo $helper->getMaxVideoSize(); ?>';
+			videoSizeConfig = parseFloat(maxSize);
+			videoUpload = this.files[0];
+			videoName = videoUpload.name;
+			videoSize = videoUpload.size;
+			videoType = videoUpload.type;
+			$('#video-name').val(videoName);
+			$('#file_size').val(videoSize);
+			var control = $("#video-file");
+			if(videoSize > (1048576*videoSizeConfig)){
+				alert(videoName+' is to big. Max file size is '+videoSizeConfig+' mb');
+				control.replaceWith(control.val('').clone(true));
+				$('#video-name').val("");
+				$('#file_size').val(0);
+				/* control = control.val('').clone(true); */
+				return false;
+			} else if(videoType != 'video/mp4'){
+				if(videoType === ''){
+					pos = videoName.lastIndexOf('.');
+					if (pos !== -1 && (videoName.substr(pos)==='.flv' || videoName.substr(pos)==='.mp4' || videoName.substr(pos)==='.mpg')){
+						return true;
+					}
+				}
+				alert(videoName+' doesnt match mp4');
+				control.replaceWith(control.val('').clone(true));
+				$('#video-name').val("");
+				$('#file_size').val(0);
+				return false;
+			}
+			return true;
+		});
+		
+		function isValidEmailAddress(emailAddress) {
+			var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+			return pattern.test(emailAddress);
+		};
+	});
+});
+</script>
+
+<?php } ?>
+<?php } ?>

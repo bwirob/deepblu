@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <locator>
+            <view>
+                <enabled>1</enabled>
+                <lat_center_default>21.225882</lat_center_default>
+                <lng_center_default>105.821103</lng_center_default>
+                <zoom_default>2</zoom_default>
+                <distance_unit>mile</distance_unit>
+            </view>
+            <service_api>
+                <enabled_face_comment>1</enabled_face_comment>
+            </service_api>
+        </locator>
+    </default>
+</config>

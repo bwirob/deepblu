@@ -1,0 +1,27 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Netbaseteam_Marketplace::css/feature-block.css"/>
+        <css src="Netbaseteam_Marketplace::css/owl.carousel.css"/>
+    </head>
+    <body>
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Html\Link" name="marketplace">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Marketplace</argument>
+                    <argument name="path" xsi:type="string" translate="true">marketplace</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="locator-link" ifconfig="netbaseteammp/locator/enable" before="-">
+                <arguments>
+                    <argument name="label" xsi:type="string">Seller Store Locator</argument>
+                    <argument name="path" xsi:type="string">marketplace/locator</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="js_l_default" template="Netbaseteam_Marketplace::page/default.phtml" />
+        </referenceContainer>
+    </body>
+</page>

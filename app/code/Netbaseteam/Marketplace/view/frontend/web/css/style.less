@@ -1,0 +1,701 @@
+//========== NOTE ==============//
+/*
+COMON
+I.HEADER
+II.MAIN
+-----COMON-SECTION----
+-----sell-with-us----
+-----setup-customize----
+-----why-to-sell----
+-----open-shop----
+III.FOOTER
+ */
+
+//========== COMON ==============//
+//color and background
+@font-base: 'Roboto',sans-serif;
+@background-fff: #ffffff;
+@background-000:#000000;
+@background-e6e7e8:#e6e7e8;
+@background-ebebeb: #ebebeb;
+@text-color-desc: #666666;
+@main-color: #ff9900;
+@text-color: #333333;
+@text-color__888: #888;
+@text-color__444: #444;
+@border-color__d1: #d1d1d1;
+
+
+@font-size__base:14px;
+@font-size__xl: ceil(1.266 * @font-size__base); // 18px
+@font-size__l: ceil(1.125 * @font-size__base); // 16px
+@font-size__s: ceil(.889 * @font-size__base); // 12px
+@font-size__xs: floor(.79 * @font-size__base); // 11px
+
+// line-height
+@line-height__base : 1.5;
+
+//heading....
+@h2__font-size:24px;
+@h3__font-size:18px;
+
+//font-weight
+@font-weight__light:300;
+@font-weight__regular:400;
+@font-weight__medium:500;
+@font-weight__bold:700;
+
+// distance
+@indent__base : 15px;
+@indent__s: @indent__base;//15px
+@indent__l: @indent__base * 2;//30px
+@indent__xl: @indent__base * 3;//45px
+@indent__xxl: @indent__base * 4;//60px
+
+// mixin
+.transition(@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+.border-radius(@border-radius) {
+    -webkit-border-radius: @border-radius;
+    -moz-border-radius: @border-radius;
+    -o-border-radius: @border-radius;
+    border-radius: @border-radius;
+}
+.background-size (@cover) {
+    -webkit-background-size: @cover;
+    -moz-background-size: @cover;
+    -o-background-size: @cover;
+    background-size: @cover;
+}
+body,
+html {
+    font-family: @font-base;
+    font-size: @font-size__base;
+    color: @text-color;
+    font-weight: @font-weight__regular;
+    line-height: @line-height__base;
+    overflow-x: hidden;
+    background: @background-fff;
+}
+p {
+    font-family: @font-base;
+    font-size: @font-size__base;
+    color: @text-color-desc;
+    font-weight: @font-weight__regular;
+    line-height: @line-height__base;
+    margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-size: inherit;
+}
+a {
+    color: @text-color;
+    font-weight: @font-weight__regular;
+    text-decoration: none;
+}
+a,
+button,
+img {
+    .transition(all 0.3s ease-in-out);
+    text-decoration: none !important;
+}
+a:hover,
+a:focus,
+button:hover {
+    .transition(all 0.3s ease-in-out);
+    text-decoration: none;
+}
+a:hover {
+    color: @main-color;
+}
+button:focus {
+    outline: 0;
+}
+*:focus {
+    outline: 0;
+}
+input:focus {
+    outline: none;
+}
+ul {
+    margin-bottom: 0;
+    padding: 0;
+    li {
+        list-style-type: none;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 1200px;
+    }
+}
+.display-clear {
+    @media(min-width: 1200px) {
+        .col-lg-6:nth-child(2n+1) {
+            clear: left;
+        }
+        .col-lg-4:nth-child(3n+1) {
+            clear: left;
+        }
+        .col-lg-3:nth-child(4n+1) {
+            clear: left;
+        }
+    }
+    @media(min-width: 992px) and (max-width: 1199px) {
+        .col-md-6:nth-child(2n+1) {
+            clear: left;
+        }
+        .col-md-4:nth-child(3n+1) {
+            clear: left;
+        }
+        .col-md-3:nth-child(4n+1) {
+            clear: left;
+        }
+    }
+    @media(min-width: 768px) and (max-width: 991px) {
+        .col-sm-3:nth-child(4n+1) {
+            clear: left;
+        }
+        .col-sm-4:nth-child(3n+1) {
+            clear: left;
+        }
+        .col-sm-6:nth-child(2n+1) {
+            clear: left;
+        }
+    }
+    @media(max-width: 767px) {
+        .col-xs-12:nth-child(n) {
+            clear: left;
+        }
+        .col-xs-6:nth-child(2n+1) {
+            clear: left;
+        }
+        .col-xs-4:nth-child(3n+1) {
+            clear: left;
+        }
+    }
+}
+.display-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: @indent__s;
+}
+/*-------------------------------------
+            BUTTON
+--------------------------------------*/
+
+.button {
+    padding: 8px 22px;
+    color: @background-fff;
+    text-transform: uppercase;
+    font-weight: @font-weight__medium;
+    background: @main-color;
+    .transition(all 0.3s ease-in-out);
+    &:hover {
+        color: @main-color;
+
+    }
+}
+//===========I.HEADER=============//
+
+//============II.MAIN=============//
+// -----COMON-SECTION---- //
+.marketplace {
+    padding-top:@indent__xxl;
+    .section-heading {
+        text-align: center;
+        h2 {
+            font-size: @h2__font-size;
+            color:@text-color;
+            text-transform: uppercase;
+        }
+        .rule {
+            height: 2px;
+            width: 168px;
+            background: @main-color;
+            margin: @indent__s auto;
+        }
+    }
+    .section-content {
+        margin-top: @indent__xxl;
+    }
+}
+
+//============MARKETPLACE_01=============//
+// -----sell-with-us---- //
+.sell-with-us01 {
+    background: url('../images/marketplace01/bg-sell-with-us.jpg') center center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    .sell-left {
+        padding: ceil(2.3 * @indent__xxl) 0 ceil(2.95 * @indent__xxl) 0;
+        h2 {
+            font-size:@h2__font-size;
+            color: @background-fff;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: @font-size__xl;
+            color: @background-fff;
+        } 
+    }
+    .sell-right {
+        padding:@indent__s;
+        background-color:  rgba(0, 0, 0, 0.5);
+        h2 {
+            color: @background-fff;
+            text-transform: capitalize;
+            font-size: @h2__font-size;
+            padding:@indent__s 0 @indent__l 0;
+        }
+        form {
+            .form-creatAccout {
+                .creatAccount-left {
+                    .checkbox {
+                        label {
+                            color:@background-fff;
+                            font-size: @font-size__s;
+                            padding: @indent__s 0  ceil(1.1 *@indent__l) 0;
+                            &:after {
+                            content: '';
+                            display: table;
+                            clear: both;
+                            }
+                        }
+                        .cr {
+                            position: relative;
+                            display: inline-block;
+                            border: 1px solid #a9a9a9;
+                            border-radius: .25em;
+                            width: 1.3em;
+                            height: 1.3em;
+                            float: left;
+                            margin-right: .5em;
+                        .cr-icon {
+                            position: absolute;
+                            font-size: .8em;
+                            line-height: 0;
+                            top: 50%;
+                            left: 20%;
+                            }
+                        }
+                        label input[type="checkbox"] {
+                            display: none;
+                        + .cr > .cr-icon {
+                            transform: scale(3) rotateZ(-20deg);
+                            opacity: 0;
+                            transition: all .3s ease-in;
+                        }
+                        &:checked + .cr > .cr-icon {
+                            transform: scale(1) rotateZ(0deg);
+                            opacity: 1;
+                        }
+                        &:disabled + .cr {
+                            opacity: .5;
+                            }   
+                        }
+                    }
+                }
+                .creatAccount-right{
+                    margin-top:  @indent__s;
+                    .btn-creatAccount {
+                        border-radius: 4px; 
+                        border: 1px solid transparent;  
+                        font-size: 18px;
+                        display: block;
+                        font-weight: @font-weight__bold;
+                        &:hover {
+                            background: none;
+                            border: 1px solid @main-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// -----setup-customize---- //
+.setup {
+    &-customize {
+        &__item {
+            width: 20%;
+            float: left;
+            position: relative;
+            .display-flex {
+                height: 128px;
+            }
+            h3 {
+                font-size: @h3__font-size;
+                font-weight: @font-weight__bold;
+                margin-top:@indent__xl;
+                text-align: center;
+            }
+            &:after {
+                content: "\e258"; 
+                position: absolute;  
+                font-family: 'Glyphicons Halflings';
+                font-size: (2 * (@h2__font-size) );
+                color: #999999;
+                top: 40px;
+                left: -20px;
+            }
+            &:first-child:after { 
+                content: ""; 
+            }
+        }
+    }
+}
+
+// -----why-to-sell---- //
+.why-to-sell {
+    .section-content {
+        .whyToSell-item {
+            background: @background-e6e7e8;
+            margin-bottom: @indent__l;
+            text-align: center;
+            padding:@indent__xl ceil(0.8 * @indent__s) @indent__l ceil(0.8 * @indent__s)    ;
+            .whyToSell-img {
+                .whyToSell-icon {
+                    margin:auto;
+                    height: 100px;
+                    width: 100px;
+                    background: @background-fff;
+                    border-radius: 50%;
+                }
+            }
+            .whyToSell-text {
+                margin-top: @indent__xl;
+                h3 {
+                    font-size: @font-size__xl;
+                    font-weight: @font-weight__bold;
+                    margin-bottom: @indent__l;
+                }
+                p {
+
+                }
+            }
+        }    
+    }
+}
+
+// -----open-shop---- //
+.open-shop {
+    padding:6% 0 9% 0;
+    h2 {
+       color: @text-color-desc;
+       font-size: @h2__font-size;
+       margin-bottom: ceil(1.95 * @indent__s);
+    }
+    .btn-open-shop{
+        border-radius: 5px;
+        font-weight: @font-weight__regular;
+        border: 1px solid transparent;
+        &:hover {
+            background: none;
+            border: 1px solid @main-color;
+        }  
+    }
+} 
+//============MARKETPLACE_02=============//
+// -----sell-with-us02---- //
+.sell-with-us02 {
+    background: url('..//images/marketplace02/bg-staywithus02.jpg') center center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding:10% 0;
+    h2 {
+        font-size: @h2__font-size;
+        color:@background-fff;
+         text-transform: uppercase;
+    }
+    p {
+        color:@background-fff;
+        font-size: @font-size__xl;
+    }
+}
+// -----why to sell 02---- //
+.why-to-sell02 {
+    padding-bottom: @indent__l;
+    .section-content {
+        .whyToSell-item {
+            background: @background-fff;
+            margin-bottom:ceil(1.3 * @indent__l);
+            padding:0 @indent__s;
+            .whyToSell-img {
+                display: table-cell;
+                vertical-align: top;
+
+                .whyToSell-icon {
+                     background: @background-e6e7e8;
+                }
+            }
+            .whyToSell-text {
+                display: table-cell;
+                vertical-align: top;
+            }
+        }
+    }
+}
+.whyToSell-left {
+    .whyToSell-img {
+        float: right;
+        margin-left:@indent__xl;
+    }
+    .whyToSell-text {
+        text-align: right;
+    }
+}
+.whyToSell-right {
+    .whyToSell-img {
+        float: left;
+        margin-right: @indent__xl;
+    }
+    .whyToSell-text {
+        text-align: left;
+    }
+}
+
+// -----section-register---- //
+.section-register {
+    padding:@indent__xxl 0;
+    .sell-left {
+        padding:0;
+        ul {
+            padding-top:ceil(1.2 * @indent__l);
+            li {
+                color:@background-fff;
+                margin-top:ceil(0.9 * @indent__s);
+                i {
+                    margin-right:ceil(0.3* @indent__s);
+                    color:@main-color;
+                }   
+            }
+        }
+    }
+}
+
+
+//============MARKETPLACE_03=============//
+// -----turn-passion---- //
+.turn-passion {
+    .passion {
+        &-item {
+            &__img {
+                margin-bottom: ceil(1.2 * @indent__xl);
+                .passion-icon {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    border: solid 2px @main-color;
+                    margin:auto;
+                }
+            }
+            &__text {
+                text-align: center;
+                h3 {
+                    margin-bottom: @indent__l;
+                    a {
+                        font-size: @h3__font-size;
+                        font-weight: @font-weight__bold;
+                    }
+                }
+                p {
+                    color:@text-color__888;    
+                }
+            }
+        }
+    }
+}
+// -----sellers---- //
+
+
+.sellers {
+    .sellers01 {
+        .seller {
+            margin-bottom: @indent__l;
+            .seller-item {
+                border: solid 1px @border-color__d1;
+                padding:@indent__s;
+                .carousel {
+                    position: inherit;
+                    .seller-item__left {
+                        .carousel-inner {
+                            .item {
+                                border: solid 1px @border-color__d1;
+                                
+                                .transition (transform 0s ease-in-out);
+                                img {
+                                    margin: auto;
+                                    height: 240px;
+                                }
+                            }
+                        }
+                    }
+                    .seller-item__right {
+                        padding-left:0;
+                        .carousel-indicators { 
+                            width: 100%;
+                            top:0;
+                            position: inherit;
+                            margin-left: 0;
+                            left: 0;
+                            text-align: left;
+                            li {
+                                height: 115px;
+                                width: 120px;
+                                text-indent:0;
+                                margin:0;
+                                border-radius: 0;
+                                overflow: hidden;
+                                text-align: center;
+                                border: solid 1px @border-color__d1;
+                                img {
+                                    height: 115px;
+                                    width: auto;
+                                }
+                                margin-left: 11px;
+                            }
+                            &.active {
+                                text-indent:0;
+                                background: none;
+                                img{
+                                    height: 107px;
+                                    width: 72px;
+                                }    
+                            }
+                        }
+                    }         
+                }     
+            }
+            .seller-bottom {
+                border-top: none;
+                .media {
+                    overflow: inherit;
+                    .media-left {
+                        padding-right: @indent__s;
+                        .media-object {                      
+                            border: solid 1px @border-color__d1;
+                            padding: 1px;
+                            width: 100px;
+                            height: 100px;
+                        }
+                    }
+                    .media-body {
+                        overflow: inherit;
+                        h4 {
+                            font-size:@font-size__xl;
+                            margin-bottom: ceil(0.5 * @indent__s);
+                        }
+                        p {
+                            font-size: @font-size__s;
+                            margin-bottom: @indent__s;  
+                        }  
+                        .btn-viewAll {
+                            background: none;
+                            border: 1px solid @main-color;
+                            text-transform: inherit;
+                            border-radius: 18px;
+                            color:@main-color;
+                            padding: ceil(0.5 * @indent__s) ceil(1.1 * @indent__l);
+                            &:hover {
+                                border:solid 1px transparent;
+                                color:@background-fff;
+                                background: @main-color;
+
+                            }
+                        }             
+                    }
+                }
+            }
+        }
+    }
+    .section-bottom {
+        background: @background-ebebeb;
+        padding: ceil(1.5 * @indent__s) 0;
+        p {
+            font-size: 30px;
+            font-weight: 100;
+            text-align: center;
+        }
+        .viewAll {
+            padding-top: ceil(0.7 * @indent__s);
+            .btn-viewMore {
+                border-radius: 23px;
+                padding: ceil(0.9 * @indent__s) ceil(1.5 * @indent__l);
+                font-size: @font-size__xl;
+                &:hover {
+                    color: @text-color;
+                }
+            }
+        }   
+    }
+    .sellers02 {
+        padding-bottom: @indent__xl;
+        h3 {
+            font-size: @h3__font-size;
+            font-weight: @font-weight__bold;
+            color:@text-color__444;
+            text-transform: uppercase;
+            margin-bottom: ceil(0.7 * @indent__l);
+        }
+        p {
+            color: @text-color__888;
+        }
+    }
+}
+// ----setup-----//
+
+// ----open-amarketpalce-----//
+.open-amarketpalce {
+        text-align: center;
+        padding-bottom: ceil(2 * @indent__xxl);
+        padding-top: ceil(2 * @indent__l);
+
+        .btn-amarketpalce {
+            color: @text-color;
+            border-radius: 5px; 
+            font-size: @font-size__xl; 
+            &:hover {
+                color: @background-fff;  
+            }
+        }
+    }   
+//===========III.FOOTER===========//
+
+// back to top
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color:@main-color ;
+    color: #fff;
+    cursor: pointer;
+ 	padding: ceil(0.5 * @indent__s) ceil(0.8 * @indent__s);
+    border-radius: 0px;
+  	&:hover{
+  		background-color: @text-color;
+  	}
+  	i{
+		font-size: @font-size__l;
+  	}
+}

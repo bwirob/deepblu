@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+   $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+   $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');//get current category 
+   $request = $objectManager->get('Magento\Framework\App\Action\Context')->getRequest();  
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
+?>
+<?php if ($block->getCollection()->getSize()): ?>
+    <div class="toolbar toolbar-products" data-mage-init='<?php /* @escapeNotVerified */ echo $block->getWidgetOptionsJson(); ?>'>
+	
+        <!-- category name -->
+		<?php if ($request->getFullActionName() == 'catalog_category_view') { ?> 
+			<div class="each-category-name"> 
+				<strong class="textCapitalize"><?php echo $category->getName() ?></strong>
+			</div>
+		<?php } else { ?>
+			<div class="each-category-name"> 
+				<strong class="textCapitalize"><?php echo __('search') ?></strong>
+			</div> 
+		<?php } ?>
+        <!-- sort by -->
+        <?php if ($block->isExpanded()): ?>
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+        <?php endif; ?>
+
+        <!-- show per page -->
+        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
+
+        <!-- count number product -->
+        <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/amount.phtml')) ?>
+
+        <!-- viewmode --> 
+		<?php if ($block->isExpanded()): ?>
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/viewmode.phtml')) ?>
+        <?php endif; ?>
+		<?php if ($request->getFullActionName() == 'catalog_category_view') { ?>  
+			 <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/amount.phtml')) ?>
+		<?php } ?>
+        <!-- pagination -->
+        <?php echo $block->getPagerHtml() ?>
+
+        
+    </div>
+<?php endif ?>

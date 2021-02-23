@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <css src="Netbaseteam_Shopbybrand::css/product_brand.css"/>
+        <css src="Netbaseteam_Shopbybrand::css/related.css"/> 
+    </head>
+    <body>
+    	<referenceContainer name="product.info.main">
+            <container name="wrap.catalog.product.brand" label="Wrap Product social links container" htmlTag="div" htmlClass="wrap-product-social-links" after="product.info.overview">
+    		      <block class="Netbaseteam\Shopbybrand\Block\ProductBrand" name="catalog.product.brand" template="Netbaseteam_Shopbybrand::cmsmart_shopbybrand/product_brand.phtml" after="page.main.title" ifconfig="shopbybrand/general/Enabled" />
+            </container>
+    	</referenceContainer>
+    </body>
+</page>

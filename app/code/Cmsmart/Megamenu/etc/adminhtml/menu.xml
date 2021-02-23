@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Cmsmart_Megamenu::megamenu" title="Megamenu" module="Cmsmart_Megamenu" sortOrder="30" parent="Netbase_Sun::nb_all" resource="Cmsmart_Megamenu::megamenu"/>
+        <add id="Cmsmart_Megamenu::megamenu_manage" title="Manage Menu" module="Cmsmart_Megamenu" sortOrder="10" parent="Cmsmart_Megamenu::megamenu" action="megamenu/index/" resource="Cmsmart_Megamenu::manage"/>
+		<add id="Cmsmart_Megamenu::config_megamenu" title="Configurations"
+             module="Cmsmart_Megamenu" sortOrder="30" parent="Cmsmart_Megamenu::megamenu"
+             action="adminhtml/system_config/edit/section/megamenu"
+             resource="Cmsmart_Megamenu::config_megamenu" />
+	</menu>
+</config>

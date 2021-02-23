@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="netbaseteammarketplace_checkout_observer" instance="Netbaseteam\Marketplace\Observer\CheckoutObserver" />
+    </event>
+    <event name="sales_order_save_after">
+        <observer name="netbaseteammarketplace_order_state_observer" instance="Netbaseteam\Marketplace\Observer\SalesOrderState" />
+    </event>
+    <event name="controller_action_predispatch_checkout_index_index">
+        <observer name="checkcout_page" instance="Netbaseteam\Marketplace\Observer\CheckShoppingCartObserver" />
+    </event>
+    <event name="controller_action_predispatch">
+        <observer name="check_controller_marketplace" instance="Netbaseteam\Marketplace\Observer\CheckControllerObserver" />
+    </event>
+</config>

@@ -1,0 +1,21 @@
+{
+    "name": "netbaseteam/faq",
+    "description": "Netbasetem Magento 2 extension:Faq",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "homepage":"cmsmart.net",
+    "time":"2016-11-25",
+    "license": [
+       "GPL-3.0"
+    ],
+    "support": {
+        "irc": "irc://cmsmart.net/support_ticket/"
+    },
+
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Netbaseteam\\Faq\\": ""
+        }
+    }
+}

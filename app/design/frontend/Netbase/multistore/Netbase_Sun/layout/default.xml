@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Netbase\Sun\Block\Template" name="sun_custom_head" template="html/head.phtml" before="-"/>
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+            <block class="Netbase\Sun\Block\Template" name="sun_header" template="html/header.phtml" before="main.content">
+                 <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+					<block class="Magento\Wishlist\Block\Link" name="wishlist">
+						<arguments>
+							<argument name="label" xsi:type="string" translate="true">Wishlist</argument>
+							<argument name="class" xsi:type="string">Wishlist</argument>
+						</arguments>
+					</block>
+                </block>
+                <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
+                <block class="Netbase\Sun\Block\Template" name="custom_block" template="html/header_custom_block.phtml" ifconfig="sun_settings/header/static_block" after="-"/>
+            </block>
+        </referenceContainer>
+        <move element="navigation.sections" destination="sun_header"/>
+        <move element="top.search" destination="sun_header"/>
+        <move element="minicart" destination="sun_header"/>
+        <move element="store_language" destination="sun_header"/>
+        <move element="currency" destination="sun_header"/>
+        <move element="skip_to_content" destination="sun_header"/>
+        <move element="page.top" destination="page.wrapper" after="sun_header"/>
+        <referenceContainer name="header.container" remove="1"/>
+        <referenceContainer name="header.panel" remove="1"/>
+        <referenceContainer name="header-wrapper" remove="1"/>
+
+        <referenceContainer name="footer-container">
+            <block class="Netbase\Sun\Block\Template" name="footer_block" template="html/footer.phtml">
+                <block class="Magento\Store\Block\Switcher" name="footer.store_switcher" template="switch/stores.phtml"/>
+                <block class="Magento\Newsletter\Block\Subscribe" name="footer.newsletter" template="subscribe_footer.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

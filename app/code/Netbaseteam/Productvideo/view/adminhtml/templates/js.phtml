@@ -1,0 +1,65 @@
+<?php
+	$parseUrl = $this->getUrl('productvideo/index/parse', ['_current' => true]);
+	$tLocal = \Netbaseteam\Productvideo\Model\Source\Type::local;
+	$tUrl = \Netbaseteam\Productvideo\Model\Source\Type::url;
+?>
+<script type="text/javascript">
+	requirejs(['jquery'], function($){
+		var _type = "";
+		$( document ).ready(function() {
+			show_hide_video();
+			$('#productvideo_main_video_type').click(function(){ 
+				show_hide_video();
+			});
+			
+			pareUrlVideo();
+			
+			$('#productvideo_main_url').keyup(function(){ 
+				pareUrlVideo();
+			});
+		});
+		
+		function show_hide_video(){
+			_type = $('#productvideo_main_video_type :selected').val();
+			if(_type == "<?php echo $tLocal; ?>"){
+				$('.field-url').hide();
+				$('.field-local_video').show();
+			} else if(_type == "<?php echo $tUrl; ?>") {
+				$('.field-url').show();
+				$('.field-local_video').hide();
+			} else {
+				$('.field-url').hide();
+				$('.field-local_video').hide();
+			}
+		}
+		
+		function pareUrlVideo(){
+			$('#productvideo_main_title').attr("readonly", true);
+			$.ajax({
+				url: '<?php echo $parseUrl; ?>',
+				type: 'POST',
+				data: {
+					vurl: $('#productvideo_main_url').val()
+				},
+				dataType: 'json',                  
+				success: function(res) { 
+					$('#productvideo_main_title').val(res.video_title);
+					$('#productvideo_main_title').attr("readonly", false);
+					
+					if(res.video_thumb != "") {
+						$('#img_thumb').val(res.video_thumb);
+						var a_tag = '<a id="preview-image-video" href="'+res.video_thumb+'" data-ui-id="productvideo-edit-tab-image-fieldset-element-file-thumb-link" target="_blank"></a>';
+						$(a_tag).insertBefore( "#productvideo_main_thumb" );
+						var img_html = '<img id="productvideo_main_thumb_image" class="small-image-preview v-middle" src="'+res.video_thumb+'" data-ui-id="productvideo-edit-tab-image-fieldset-element-file-thumb" width="22" height="22">';
+						/* $(img_html).insertBefore( "#productvideo_main_thumb" ); */
+						$("#preview-image-video").html(img_html);
+					}
+				},
+				error: function (response) {
+					console.log(response);
+				}
+			});
+		}
+	}); 
+	
+</script>

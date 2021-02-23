@@ -1,0 +1,10 @@
+<?php
+$helper = $this->helper('Cmsmart\Quickview\Helper\Data');
+$showMailto = $helper->showEmailto();
+?>
+<?php if($showMailto) {
+    echo $this->getLayout()
+        ->createBlock("Magento\Catalog\Block\Product\View")
+        ->setTemplate("Magento_Catalog::product/view/mailto.phtml")->toHtml();
+}
+?>

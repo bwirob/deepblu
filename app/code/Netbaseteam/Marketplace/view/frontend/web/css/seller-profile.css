@@ -1,0 +1,431 @@
+.loading_overlay
+{
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+    url('../images/ajax-loader.gif')
+    50% 50%
+    no-repeat;
+}
+#shop-banner {
+    border: none;
+}
+#shop-logo {
+    border: none;
+}
+.social-button {
+    display:inline-block;
+    vertical-align:top;
+    margin-right:5px;
+}
+
+.shop_location::before {
+    content: "\f041";
+    font-family: FontAwesome;
+}
+
+.contact_number::before {
+    content: "\f095";
+    font-family: FontAwesome;
+}
+
+.shop_email::before {
+    content: "\f003";
+    font-family: FontAwesome;
+}
+
+.shop_facebook::before {
+    content: "\f082";
+    font-family: FontAwesome;
+}
+
+.mp-social-twitter {
+    background-image: url("../images/twitter.png");
+    width: 50px;
+    height:50px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.mp-social-facebook {
+    background-image: url("../images/facebook.png");
+    width: 50px;
+    height:50px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.mp-social-gplus {
+    background-image: url("../images/googleplus.png");
+    width: 50px;
+    height:50px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.mp-social-youtube {
+    background-image: url("../images/youtube.png");
+    width: 50px;
+    height:50px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.mp-social-instagram {
+    background-image: url("../images/instagram.png");
+    width: 45px;
+    height:45px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+}
+
+.reviews-count {
+    float: right;
+    padding-left: 15px;
+}
+
+.required.label::after {
+    content: '*';
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+}
+
+.control-notification {
+    color: #e02b27;
+}
+
+.netbaseteam-shop-banner img{
+    height: 350px;
+    width: auto;
+}
+#shopidavail, #shopidnotavail {
+    display: none;
+    float:left;
+    width: 100%;
+}
+.shopidavailable{
+    background-color: rgba(0, 0, 0, 0);
+    background-position: 10px 0 ;
+    border: medium none ;
+    float: left;
+    min-height: 11px ;
+    padding: 0 3px 0 30px ;
+    text-transform: capitalize;
+    background-size: contain;
+}
+.shopidnotavailable{
+    background-color: rgba(0, 0, 0, 0);
+    background-position: 10px 0 ;
+    border: medium none ;
+    float: left;
+    min-height: 11px ;
+    padding: 0 3px 0 30px ;
+    text-transform: capitalize;
+    background-size: contain;
+}
+
+#mp-form-contact-us {
+    position: relative;
+    padding-left: 40px;
+    text-align: left;
+    color: #777;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    background: #fff;
+    display: inline-block;
+    min-width: 110px;
+    margin-top: 15px;
+    padding: 7px 25px 7px;
+    font: 700 12px/1 'Open Sans', sans-serif;
+    border-radius: 3px;
+    box-shadow:inset 0 -10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+#mp-form-contact-us::before {
+    content: "\f0e0";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 30px;
+    padding: 7px 0 12px;
+    font-family: FontAwesome;
+    text-align: center;
+    border-radius: 3px 0 0 3px;
+}
+
+#mp-form-contact-us:hover {
+    background: #f5f5f5;
+}
+
+#mp-form-contact-us:active {
+    background: #e2e2e2;
+    border: 1px solid #cccccc;
+    color: #333333;
+}
+
+#seller-profile-content .owl-item li.item.product.product-item {
+    width: 100%;
+}
+
+#seller-profile-content .owl-item {
+    padding: 25px 10px 45px 10px;
+}
+
+.netbaseteam-mp-page-title.page-title {
+    padding-bottom: 10px;
+}
+.marketplace-seller-editprofile .control #shop-banner,.marketplace-seller-editprofile .control #shop-logo {
+    margin-bottom: 12px;
+}
+.marketplace-seller-profile .about >div {
+    margin-bottom: 10px;
+}
+.marketplace-seller-profile .about >div >b{
+    margin-right: 10px;
+}
+.marketplace-seller-profile .shop_location:before{
+    margin-right: 10px;
+}
+.marketplace-seller-profile .shop_location > iframe{
+    margin-top: 20px;
+}
+@media (max-width: 992px) {
+    .fb-page >span > iframe{
+        width: 100% !important;
+    }
+    .fb-page,.fb-page > span{
+        float:left;
+        width: 100% !important;
+    }
+    .columns .column.main{
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .fb-page >span > iframe{
+        width: 200px !important;
+    }
+    .fb_iframe_widget_fluid{
+        display: inline;
+        min-width: 100%;
+        overflow-x: auto;
+    }
+}
+@media (max-width: 767px) {
+    .columns .column.main {
+        width: 100%;
+    }
+    .fb-page >span > iframe{
+        width: 100% !important;
+    }
+    .fb-page >span > iframe div{
+        width: 100% !important;
+    }
+    .netbaseteam-shop-banner > img{
+        width: 100%;
+    }
+    .contact-us #mp-form-contact-us{
+        margin-bottom:30px ;
+    }
+    ._2p3a{
+        width: 100% !important;
+    }
+    .marketplace-seller-editprofile .netbaseteam-mp-editform >fieldset{
+        width: 100%;
+    }
+    .marketplace-seller-editprofile .netbaseteam-mp-editform *{
+        box-sizing: border-box;
+    }
+    .defaultSkin table.mceToolbar{
+        margin-left:0 !important;
+    }
+}
+/* on mobile browsers, I set a width of 100% */
+table.mceLayout, textarea.tinyMCE {
+    width: 100% !important;
+}
+
+/* on large screens, I use a different layout, so 600px are sufficient */
+@media only screen and (min-width: 600px) {
+    /*table.mceLayout, textarea.richEditor {*/
+    /*width: 600px !important;*/
+    /*}*/
+}
+@media (max-width: 992px){
+    .marketplace-seller-editprofile .mceEditor{
+        width: 280px;
+        min-width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+}
+@media (max-width: 320px) {
+    .fb_iframe_widget_fluid{
+        display: inline;
+        min-width: 100%;
+        overflow-x: auto;
+    }
+    .vacation-notification >span{
+        margin-left: 0;
+        display: flex;
+        letter-spacing: 5px;
+    }
+    .vacation-notification{
+        text-align: left;
+        display: inline-block;
+    }
+}
+.vacation-notification {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 40px;
+    color: #8a1919;
+}
+
+.search-box .search-auto{
+    width: 30%;
+}
+#page_tabs_map_section_content legend{
+    color: #303030;
+    font-size: 1.7rem;
+    font-weight: 600;
+    padding: 7px 0 10px;
+    display: inline-block;
+    border-bottom: 1px solid #cac3b4;
+    width: 100%;
+}
+
+#map {
+    height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+#map_locator {
+    height: 400px;
+    width: 100%;
+    padding-bottom: 150px;
+}
+#description {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+#infowindow-content .title {
+    font-weight: bold;
+}
+
+#infowindow-content {
+    display: none;
+}
+
+#map #infowindow-content {
+    display: inline;
+}
+
+.pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+}
+
+#pac-container {
+    padding-bottom: 12px;
+    margin-right: 12px;
+}
+
+.pac-controls {
+    display: inline-block;
+    padding: 5px 11px;
+}
+
+.pac-controls label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+#pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+}
+
+#pac-input:focus {
+    border-color: #4d90fe;
+}
+
+#title {
+    color: #fff;
+    background-color: #4d90fe;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 6px 12px;
+}
+#refinementForm{margin-top: 45px}
+.filter-current .action.remove{
+    position: static;
+    float: left;
+    padding-right: 10px;
+}
+.filter-current ol{list-style: none;padding-left: 10px;margin-top: 10px}
+.block-subtitle.filter-subtitle,.filter-options-title{
+    border-bottom: 1px solid #cccccc;
+    padding: 10px 0;
+}
+.filter-options-title .item-filter{padding: 0 5px}
+.filter-options-title .item-filter a{
+    padding: 10px 0;
+    color: #494949;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: normal;
+}
+.filter-options-title .item-filter #price-slider a{padding: 0}
+.filter-options-title .item-filter a:hover{text-decoration: none}
+.filter-options-title .item-filter{padding-top: 10px}
+@media (max-width: 320px) {
+    .fb_iframe_widget_fluid{
+        display: inline;
+        min-width: 100%;
+        overflow-x: auto;
+    }
+    .vacation-notification >span{
+        margin-left: 0;
+        display: flex;
+        letter-spacing: 5px;
+    }
+    .vacation-notification{
+        text-align: left;
+        display: inline-block;
+    }
+}
+li.item-filter {
+    display: none;
+}

@@ -1,0 +1,573 @@
+<?php 
+	$_shopbybrand = $this->getCollection(); 
+	$_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of\Magento\Framework\App\ObjectManager
+	$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+	$currentStore = $storeManager->getStore();
+	$mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+	$Show_Brand_Name = $this->getShow_Brand_Name();
+	$Show_Featured_Brands = $this->getShow_Featured_Brands();
+	$Show_Product_Count = $this->getShow_Product_Count();
+	$currentUrl  = $storeManager->getStore()->getCurrentUrl();
+	$store_id = $storeManager->getStore()->getId();
+	$count2 = 0;
+	$logopath = $this->getViewFileUrl('Netbaseteam_Shopbybrand::images/logo.png');
+	$brandpath = $this->getViewFileUrl('Netbaseteam_Shopbybrand::images/search.png');
+	$dell = 1;
+	$dell1 = 1;
+	$dem = 0;
+	if ($this->getLogo_Width()>10 )  {
+		$imagewidth = $this->getLogo_Width();# code...
+	}else{
+		$imagewidth = 170;
+	}
+	if ($this->getLogo_Height()>10 )  {
+		$imageheight = $this->getLogo_Height();# code...
+	}else{
+		$imageheight = 150;
+	}
+?>
+
+<?php if (isset($_GET['viewall'])): ?>
+	<div>
+		<h3 class="fbrand-title">Featured Brands</h3>
+		<div class="Featured-Brands">
+		<div class="Featured-Brands-ul featured-carousel">
+		<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+			<?php
+				$store_view = $shopbybrandItem->getStore_ids();
+				$store_view = explode(',', $store_view);	
+			?>
+			<?php if($shopbybrandItem->getStatus() == 1):?>
+				<?php if (in_array(0,$store_view) || in_array($store_id,$store_view)):?>
+					<?php	
+						$path = $mediaUrl.'//Shopbybrand'.'//'.$shopbybrandItem->getLogo(); 
+						if ($shopbybrandItem->getproduct_ids() == '') {
+							$count = 0;# code...
+						}else{
+							$count = count(explode('&', $shopbybrandItem->getproduct_ids()));
+						}
+					?>
+					<?php if($shopbybrandItem->getFeatured() == 1):?>
+						<div class="Featured-Brands-ul-di">
+							<div class="Featured-Brands-list">
+								<div class="Featured-Brands-items">
+									<div class="Featured-Brands-item">
+										<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+											<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+													<?php if ($shopbybrandItem->getLogo() == ''): ?>
+														<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+													<?php else: ?>
+														<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+													<?php endif ?>	 
+											</a>
+										<?php else: ?>
+											<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+												<?php if ($shopbybrandItem->getLogo() == ''): ?>
+													<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+												<?php else: ?>
+													<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+												<?php endif ?>	 
+											</a>
+										<?php endif ?>				
+									</div>
+									<div class="Featured-Brands-h3">
+										<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+											<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+													<?php if($Show_Brand_Name == 1):?>
+														<?php echo $shopbybrandItem->getBrand_title();?>
+													<?php endif;?>
+													<?php if($Show_Product_Count == 1):?>
+														<?php echo '('.$count.')';?>
+													<?php endif;?>	 
+											</a>
+										<?php else: ?>
+											<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+												<?php if($Show_Brand_Name == 1):?>
+													<?php echo $shopbybrandItem->getBrand_title();?>
+												<?php endif;?>
+												<?php if($Show_Product_Count == 1):?>
+													<?php echo '('.$count.')';?>
+												<?php endif;?>	 
+											</a>
+										<?php endif ?>
+									</div>
+								</div>	
+							</div>
+						</div>
+						<?php $count2++;?>
+					<?php endif;?>
+				<?php endif;?>
+			<?php endif;?>
+		<?php endforeach; ?> 
+		</div>	
+		</div>
+		<?php if ($count2 == 0): ?>
+			<div>                You have no featured brand</div>
+		<?php endif;?>
+	</div>
+<?php else: ?>
+	<div class="seachbox">
+		  <form class="seachboxform" action="<?php echo $this->getUrl('shopbybrand/index/search/')?>">
+		  	<span class="seachboxspan"> 
+		  	<?php if(isset($_GET['brandname'])):?>
+		  		<input class="seachboxinput" type="text" id="bname" value="<?php echo $_GET['brandname']?>" name="brandname"  required>
+		  	<?php else: ?>
+		  		<input class="seachboxinput" type="text" id="bname" name="brandname" placeholder="Brand name.." required>
+		  	<?php endif ?>
+		  		
+		  	</span>
+		  	<span>
+		  		 <BUTTON class='seachboxbutton' type="submit" value="Filter"><i class="icon-search"></i></BUTTON> 
+		  	</span>   
+		  </form>
+	</div>
+	<?php if(isset($_GET['brandname'])):?>
+			
+		<h2>Filter Results for: "<?php echo $_GET['brandname'];?>"</h2>
+		<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+			<?php 
+				$store_view = $shopbybrandItem->getStore_ids();
+					$store_view = explode(',', $store_view);
+				?>
+			<?php if($shopbybrandItem->getStatus() == 1):?>
+				<?php if (in_array(0,$store_view) || in_array($store_id,$store_view)):?>
+					<?php if ($shopbybrandItem->getproduct_ids() == '') {
+							$count = 0;# code...
+						}else{
+							$count = count(explode('&', $shopbybrandItem->getproduct_ids()));
+					}?>
+					<?php if(strpos(strtolower($shopbybrandItem->getBrand_title()),strtolower($_GET['brandname'])) !== false  ):?>
+						<?php $dell1++; ?>
+						<li name='' class =' abc ALL-Brands-2-li'>
+							<div class="nb-brands-items">
+								<div class="all-brands-items">
+									<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+										<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+												<?php if ($shopbybrandItem->getLogo() == ''): ?>
+													<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+												<?php else: ?>
+													<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+												<?php endif ?>	 
+										</a>
+									<?php else: ?>
+										<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+											<?php if ($shopbybrandItem->getLogo() == ''): ?>
+												<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+											<?php else: ?>
+												<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+											<?php endif ?>	 
+										</a>
+									<?php endif ?>
+								</div>
+								<div class="nb-brands-items-h3">
+									<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+										<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+												<?php if($Show_Brand_Name == 1):?>
+													<?php echo $shopbybrandItem->getBrand_title();?>
+												<?php endif;?>
+												<?php if($Show_Product_Count == 1):?>
+													<?php echo '('.$count.')';?>
+												<?php endif;?>	 
+										</a>
+									<?php else: ?>
+										<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+											<?php if($Show_Brand_Name == 1):?>
+												<?php echo $shopbybrandItem->getBrand_title();?>
+											<?php endif;?>
+											<?php if($Show_Product_Count == 1):?>
+												<?php echo '('.$count.')';?>
+											<?php endif;?>	 
+										</a>
+									<?php endif ?> 
+								</div>
+							</div>	
+						</li>
+					<?php endif;?>
+				<?php endif;?>	
+			<?php endif;?>	
+		<?php endforeach;?>
+		<?php if ($dell1 == 1): ?>
+			<div class="message notice">
+				<div>
+					Your search returned no results.
+				</div>
+			</div>
+			
+		<?php endif ?>
+	<?php else: ?>
+	<?php if($Show_Featured_Brands == 1):?>
+		<h3 class="txt-feature">Featured Brands</h3>
+		<div class="Featured-Brands">
+		<div class="Featured-Brands-ul featured-carousel">
+				<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+					<?php
+						$store_view = $shopbybrandItem->getStore_ids();
+						$store_view = explode(',', $store_view);	
+					?>
+					<?php if($shopbybrandItem->getStatus() == 1):?>
+						<?php if (in_array(0,$store_view) || in_array($store_id,$store_view)):?>
+							<?php	
+								$path = $mediaUrl.'//Shopbybrand'.'//'.$shopbybrandItem->getLogo(); 
+								if ($shopbybrandItem->getproduct_ids() == '') {
+									$count = 0;# code...
+								}else{
+									$count = count(explode('&', $shopbybrandItem->getproduct_ids()));
+								}
+							?>
+			    				<?php if($shopbybrandItem->getFeatured() == 1):?>
+			    					<div class="mySlides">
+										<div class="Featured-Brands-ul-di">
+											<div class="Featured-Brands-list">
+												<div class="Featured-Brands-items">
+													<div class="Featured-Brands-item">
+														<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+															<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																	<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																		<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																	<?php else: ?>
+																		<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																	<?php endif ?>	 
+															</a>
+														<?php else: ?>
+															<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																	<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php else: ?>
+																	<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php endif ?>	 
+															</a>
+														<?php endif ?>					
+													</div>
+													<div class="Featured-Brands-h3">
+														
+														<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+															<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																	<?php if($Show_Brand_Name == 1):?>
+																		<?php echo $shopbybrandItem->getBrand_title();?>
+																	<?php endif;?>
+																	<?php if($Show_Product_Count == 1):?>
+																		<?php echo '('.$count.')';?>
+																	<?php endif;?>	 
+															</a>
+														<?php else: ?>
+															<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if($Show_Brand_Name == 1):?>
+																	<?php echo $shopbybrandItem->getBrand_title();?>
+																<?php endif;?>
+																<?php if($Show_Product_Count == 1):?>
+																	<?php echo '('.$count.')';?>
+																<?php endif;?>	 
+															</a>
+														<?php endif ?> 
+													</div>
+												</div>	
+											</div>
+										</div>
+									</div>
+									<?php $count2++;?>
+								<?php endif;?>	 
+						<?php endif;?>
+					<?php endif;?>
+				<?php endforeach; ?>   
+		</div>	
+		</div>
+		<?php if ($count2 == 0): ?>
+			<div>                You have no featured brand</div>
+		<?php endif;?>
+	<?php endif;?>
+
+	<div style="clear: both;"></div>
+	<h3 class="fbrand-title">Shop By Brand Filter</h3>
+	<div class="ALL-Brands">
+		<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+			<?php if (count($shopbybrandItem->getBrand_title()) == 0): ?>
+				<?php $dell=0; ?>
+			<?php endif ?>
+		<?php endforeach;?>
+		<?php if ($dell != 0): ?>
+			<ul class="ALL-Brands-ul">
+				<li class="ALL-Brands-ul-li">
+					<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+						<?php if (47<ord(strtoupper($shopbybrandItem->getBrand_title())) && ord(strtoupper($shopbybrandItem->getBrand_title())) < 58 ): ?>
+							<button type="" name="Filter" id="0-9" value="0-9" onClick="numble()">0-9</button>
+							<?php break;?>
+						<?php else: ?>
+							
+						<?php endif ?>
+					<?php endforeach;?>
+				</li>
+				
+				<?php foreach (range('A', 'Z') as $letter): ?>
+					<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+						<?php if (ord(strtoupper($shopbybrandItem->getBrand_title())) == ord($letter)): ?>
+							<li class="ALL-Brands-ul-li">
+								<button type="" id="<?php echo $letter?>" name="Filter" value="<?php echo $letter?>" onClick="reply_click(this)">
+									<?php echo $letter?>
+								</button>
+							</li>
+							<?php break;?>
+						<?php else: ?>
+							
+						<?php endif ?>
+					<?php endforeach;?>
+				<?php endforeach;?>
+				<li class="ALL-Brands-ul-li">
+					<button onClick='viewall()'>View All</button>
+				</li>
+				
+			</ul>
+		<?php else: ?>
+			<div>You have no brand</div>
+		<?php endif ?>
+		
+		
+		<div style="clear:both"></div>
+		<ul class="ALL-Brands-2">
+
+		<?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+				<?php
+					$store_view = $shopbybrandItem->getStore_ids();
+					$store_view = explode(',', $store_view);
+				?>
+				<?php if (in_array(0,$store_view) || in_array($store_id,$store_view)):?>
+					<?php if($shopbybrandItem->getStatus() == 1):?>
+						<?php 
+							$path = $mediaUrl.'/Shopbybrand'.'/'.$shopbybrandItem->getLogo(); 
+							if ($shopbybrandItem->getproduct_ids() == '') {
+								$count = 0;# code...
+							}else{
+								$count = count(explode('&', $shopbybrandItem->getproduct_ids()));
+							}
+						?>
+							<?php foreach (range('A', 'Z') as $letter): ?>
+								<?php if(ord (strtoupper($shopbybrandItem->getBrand_title())) == ord($letter)):?>
+									<?php $dem++;?>
+									<?php if ($dem < 13): ?>
+										<li name='<?php echo $letter;?>' class ='<?php echo $letter;?> abc ALL-Brands-2-li'>
+											<div class="nb-brands-items">
+												<div class="all-brands-items">
+													<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																	<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php else: ?>
+																	<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php endif ?>	 
+														</a>
+													<?php else: ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+															<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+															<?php else: ?>
+																<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+															<?php endif ?>	 
+														</a>
+													<?php endif ?>
+												</div>
+												<div class="nb-brands-items-h3">
+													<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if($Show_Brand_Name == 1):?>
+																	<?php echo $shopbybrandItem->getBrand_title();?>
+																<?php endif;?>
+																<?php if($Show_Product_Count == 1):?>
+																	<?php echo '('.$count.')';?>
+																<?php endif;?>	 
+														</a>
+													<?php else: ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+															<?php if($Show_Brand_Name == 1):?>
+																<?php echo $shopbybrandItem->getBrand_title();?>
+															<?php endif;?>
+															<?php if($Show_Product_Count == 1):?>
+																<?php echo '('.$count.')';?>
+															<?php endif;?>	 
+														</a>
+													<?php endif ?>  
+												</div>
+											</div>	
+										</li>
+									<?php else: ?>
+										<li name='<?php echo $letter;?>' class ='<?php echo $letter;?> abc ALL-Brands-2-li' style='display: none;'>
+											<div class="nb-brands-items">
+												<div class="all-brands-items">
+													<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																	<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php else: ?>
+																	<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php endif ?>	 
+														</a>
+													<?php else: ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+															<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+															<?php else: ?>
+																<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+															<?php endif ?>	 
+														</a>
+													<?php endif ?>
+												</div>
+												<div class="nb-brands-items-h3">
+													<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if($Show_Brand_Name == 1):?>
+																	<?php echo $shopbybrandItem->getBrand_title();?>
+																<?php endif;?>
+																<?php if($Show_Product_Count == 1):?>
+																	<?php echo '('.$count.')';?>
+																<?php endif;?>	 
+														</a>
+													<?php else: ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+															<?php if($Show_Brand_Name == 1):?>
+																<?php echo $shopbybrandItem->getBrand_title();?>
+															<?php endif;?>
+															<?php if($Show_Product_Count == 1):?>
+																<?php echo '('.$count.')';?>
+															<?php endif;?>	 
+														</a>
+													<?php endif ?> 
+												</div>
+											</div>	
+										</li>
+									<?php endif ?>
+								<?php endif;?>
+							<?php endforeach;?>
+							<?php foreach (range('0', '9') as $letter): ?>
+								<?php if(ord (strtoupper($shopbybrandItem->getBrand_title())) == ord($letter)):?>
+									
+									<?php if ($dem < 12): ?>
+									<?php $dem++;?>
+										<li name='<?php echo $letter;?>' class ='<?php echo $letter;?> abc ALL-Brands-2-li numble'>
+											<div class="nb-brands-items">
+												<div class="all-brands-items">
+													<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																	<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php else: ?>
+																	<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php endif ?>	 
+														</a>
+													<?php else: ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+															<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+															<?php else: ?>
+																<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+															<?php endif ?>	 
+														</a>
+													<?php endif ?>
+												</div>
+												<div class="nb-brands-items-h3">
+													<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if($Show_Brand_Name == 1):?>
+																	<?php echo $shopbybrandItem->getBrand_title();?>
+																<?php endif;?>
+																<?php if($Show_Product_Count == 1):?>
+																	<?php echo '('.$count.')';?>
+																<?php endif;?>	 
+														</a>
+													<?php else: ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+															<?php if($Show_Brand_Name == 1):?>
+																<?php echo $shopbybrandItem->getBrand_title();?>
+															<?php endif;?>
+															<?php if($Show_Product_Count == 1):?>
+																<?php echo '('.$count.')';?>
+															<?php endif;?>	 
+														</a>
+													<?php endif ?> 
+												</div>
+											</div>	
+										</li>
+									<?php else: ?>
+										<li name='<?php echo $letter;?>' class ='<?php echo $letter;?>  numble abc ALL-Brands-2-li' style='display: none;'>
+											<div class="nb-brands-items">
+												<div class="all-brands-items">
+													<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																	<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php else: ?>
+																	<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+																<?php endif ?>	 
+														</a>
+													<?php else: ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+															<?php if ($shopbybrandItem->getLogo() == ''): ?>
+																<img src="<?php echo  $logopath;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+															<?php else: ?>
+																<img src="<?php echo $path;?>" class='Featured-Brands-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+															<?php endif ?>	 
+														</a>
+													<?php endif ?>
+												</div>
+												<div class="nb-brands-items-h3">
+													<?php if ($shopbybrandItem->geturlkey() == ''): ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+																<?php if($Show_Brand_Name == 1):?>
+																	<?php echo $shopbybrandItem->getBrand_title();?>
+																<?php endif;?>
+																<?php if($Show_Product_Count == 1):?>
+																	<?php echo '('.$count.')';?>
+																<?php endif;?>	 
+														</a>
+													<?php else: ?>
+														<a href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>" class="Featured-Brands-item-a">
+															<?php if($Show_Brand_Name == 1):?>
+																<?php echo $shopbybrandItem->getBrand_title();?>
+															<?php endif;?>
+															<?php if($Show_Product_Count == 1):?>
+																<?php echo '('.$count.')';?>
+															<?php endif;?>	 
+														</a>
+													<?php endif ?>  
+												</div>
+											</div>	
+										</li>
+									<?php endif ?>
+								<?php endif;?>
+							<?php endforeach;?>
+					<?php endif;?>
+				<?php endif;?>	
+		<?php endforeach; ?>
+		<?php if ($dem>12): ?>
+			<div class="loadmore" style="clear: both;text-align: center;">
+				<button class="btn-more" onClick="loadmore()">More</button>
+			</div>
+		<?php endif ?>
+		
+		</ul>
+	</div>
+	<?php endif;?>
+<?php endif ?>
+<script type="text/javascript">
+    require(['jquery', 'owl_carousel'], function($){
+       	jQuery(document).ready(function() {	
+			$('.featured-carousel').owlCarousel({
+				items: 4,
+				itemsCustom: [ 
+					[320, 2], 
+					[480, 2], 
+					[768, 3], 
+					[1024, 4], 
+					[1200, 4]
+				],
+				autoPlay: true,
+				loop: true,
+				responsive: true,
+				navigation : true,
+    			navigationText : ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+    			pagination: false
+			});
+
+			if ($('.Featured-Brands-list').length){
+				$('.sidebar .nb-brand').addClass('reset-padding');
+			}
+		});
+    });
+</script>

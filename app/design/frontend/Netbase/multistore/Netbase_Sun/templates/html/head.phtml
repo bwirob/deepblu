@@ -1,0 +1,247 @@
+<?php 
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$request = $objectManager->get('Magento\Framework\App\Action\Context')->getRequest();  
+	$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+    $_helper = $this->helper('Netbase\Sun\Helper\Cssconfig');
+    $sun_helper = $this->helper('Netbase\Sun\Helper\Data');
+    $page_layout = $this->getConfig('sun_settings/general/layout');
+    if($page_layout == "full_width") {
+        $page_layout = "layout-fullwidth";
+    } else if($page_layout == "1170") {
+        $page_layout = "layout-1170";
+    } else if($page_layout == "1280") {
+        $page_layout = "layout-1280";
+    }
+    $boxed = $this->getConfig('sun_settings/general/boxed');
+   	$storeid = $storeManager->getStore()->getCode();  
+   	if($storeid == "default"){
+   		$storeid = "ebay";
+   	}else if ($storeid == "france") {
+   		$storeid = "amazon";
+   	}
+   	else if ($storeid == "spain") {
+   		$storeid = "lazada";
+   	}
+?>
+<?php //Include Google fonts character subsets (such as extended latin, cyrillic)
+    $d = $this->getConfig('sun_design');
+    $charSubset = "";
+    if (isset($d['font']['char_latin_ext']) && $d['font']['char_latin_ext']==1 )
+        $charSubset .= ',latin-ext';
+    if (isset($d['font']['char_subset']) && $d['font']['char_subset'])
+        $charSubset .= ','.$d['font']['char_subset'];
+    $font_sizes = "%3A300%2C300italic%2C400%2C400italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic";
+?>
+<?php if (isset($d['font']['custom']) && $d['font']['custom'] && $d['font']['font_family'] == 'google'): ?>
+<link rel="stylesheet" href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $d['font']['google_font_family']).$font_sizes; echo $charSubset; ?>' type='text/css' />
+<?php else: ?>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" type="text/css" media="screen"/>
+<?php endif;?>
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_helper->getDesignFile()?>">
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo $_helper->getSettingsFile()?>">
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+    $("body").addClass("<?php echo $page_layout; ?>");
+    $("body").addClass("<?php echo $boxed; ?>");
+    $("body").addClass("<?php echo $storeid; ?>");
+<?php if ($this->getConfig('sun_settings/header/mobile_sticky_header')): ?>
+    $("body").addClass("mobile-sticky");
+<?php endif; ?>    
+<?php if ($this->getConfig('sun_settings/header/sticky_header')): ?>
+    var scrolled = false;
+    $(window).scroll(function(){
+        if($(window).width()>=1200){
+            if(140<$(window).scrollTop() && !scrolled){
+                $('.page-header').addClass("sticky-header");
+                scrolled = true;
+                $('.page-header .minicart-wrapper').after('<div class="minicart-place hide"></div>');
+                var minicart = $('.page-header .minicart-wrapper').detach();
+                $('.page-header .navigation').append(minicart);
+                <?php if ($this->getConfig('sun_settings/header/sticky_header_logo')): ?>
+                var logo_image = $('<div>').append($('.page-header .header > .logo').clone()).html();
+                $('.page-header .navigation').prepend('<div class="sticky-logo">'+logo_image+'</div>');
+                <?php
+                if($logo_src = $this->getConfig('sun_settings/header/sticky_header_logo_src')){
+                    $folderName = \Netbase\Sun\Model\Config\Backend\Image\Stickylogo::UPLOAD_DIR;
+                    $path = $folderName . '/' . $logo_src;
+                    $imageUrl = $sun_helper->getBaseUrl() . $path;
+                ?>
+                $(".sticky-logo img").attr("src","<?php echo $imageUrl; ?>");
+                <?php
+                }
+                ?>
+                <?php endif; ?>
+            }
+            if(140>=$(window).scrollTop() && scrolled){
+                $('.page-header').removeClass("sticky-header");
+                scrolled = false;
+                var minicart = $('.page-header .navigation .minicart-wrapper').detach();
+                $('.minicart-place').after(minicart);
+                $('.minicart-place').remove();
+                $('.page-header .minicart-wrapper-moved').addClass("minicart-wrapper").removeClass("minicart-wrapper-moved").removeClass("hide");
+                <?php if ($this->getConfig('sun_settings/header/sticky_header_logo')): ?>
+                $('.page-header .navigation > .sticky-logo').remove();
+                <?php endif; ?>
+            }
+        }
+    });
+<?php endif; ?>
+});
+</script>
+<script type="text/javascript">
+require([
+    'jquery'
+], function ($) {
+	$('#close').click(function() {  
+	   if ($('.menu-right').hasClass('show')) {  
+			$('.page-wrapper').removeClass('blur');
+			$('.menu-right').removeClass('show'); 
+	   }else{ 
+			$('.menu-right').addClass('show');
+			$('.page-wrapper').addClass('blur'); 
+		} 
+	}); 
+	$(document).ready(function() { 
+		var $check_w = $(window).width();
+		if($check_w <= 992){
+			$('.navigation .wrap-menu').addClass('nb_mobile');
+		}
+		$('.wrap-menu .btn-menu').on('click',function(){
+			if($('.wrap-menu .vertical-menu').hasClass('show')){
+				$(".wrap-menu .vertical-menu").removeClass('show');
+			}else{
+				$(".wrap-menu .vertical-menu").addClass('show');
+			}
+		});
+		$('.ajaxsearch_ext .toggle-search').on('click',function(){
+			if($('.ajaxsearch_ext .minisearch').hasClass('show')){
+				$(".ajaxsearch_ext .minisearch").removeClass('show');
+			}else{
+				$(".ajaxsearch_ext .minisearch").addClass('show');
+			}
+		});
+		var uA = navigator.userAgent;
+		if(uA.indexOf('Trident') != -1 && uA.indexOf('rv:11') != -1){	  
+			$('body').addClass('ie');
+		} 
+		else if(navigator.userAgent.indexOf("Firefox")!=-1){
+		   $('body').addClass('firefox');
+		}
+		else if(navigator.userAgent.indexOf("Opera")!=-1){
+		   $('body').addClass('Opera');
+		}
+		else if(navigator.userAgent.indexOf("Chrome") != -1){ 
+		   $('body').addClass('chrome');
+		}
+		else if(navigator.userAgent.indexOf("Safari")!=-1){
+			$('body').addClass('safari');
+		}
+		
+
+		var $window = $(window); 
+		function check_if_in_view() {
+			var $animation_elements = $('.animation-element');	
+		  	var window_height = $(window).height();
+		  	var window_top_position =  $(window).scrollTop();
+		  	var window_bottom_position = (window_top_position + window_height);
+		  	$.each($animation_elements, function(key,item) {
+				var $element = $(item);
+				var element_height = $element.outerHeight();
+				var element_top_position = $element.offset().top;
+				var element_bottom_position = (element_top_position + element_height);
+				if (element_top_position <= window_bottom_position) {
+				  $element.addClass('in-view');
+				} else {
+				  // $element.removeClass('in-view');
+				}
+		  	});
+		} 
+		
+		setTimeout(function(){ check_if_in_view(); }, 1000);
+		$window.on('scroll resize', check_if_in_view);
+		
+		$('.bestseller-product .tabs li').each(function(index){
+			$(this).removeClass('current');
+			if (index == 1) {
+				$(this).addClass('current');
+			}
+		});
+
+		$('.bestseller-product .tab-content').each(function(index){
+			$(this).removeClass('current');
+			if (index == 1) {
+				$(this).addClass('current');
+			}
+		});
+		$('.deal-product .tabs li').each(function(index){
+				$(this).removeClass('current');
+				if (index == 2) {
+					$(this).addClass('current');
+				}
+			}); 
+		$('.deal-product .tab-content').each(function(index){
+			$(this).removeClass('current');
+			if (index == 2) {
+				$(this).addClass('current');
+			}
+		});
+		$('.featured-product .tabs li').each(function(index){
+			$(this).removeClass('current');
+			if (index == 4) {
+				$(this).addClass('current');
+			}
+		}); 
+		$('.featured-product .tab-content').each(function(index){
+			$(this).removeClass('current');
+			if (index == 4) {
+				$(this).addClass('current');
+			}
+		}); 
+	}); 
+});
+	
+</script>  
+<?php if ($request->getFullActionName() == 'checkout_index_index') { ?>  
+	<script type="text/javascript">
+	require([
+		'jquery'
+	], function ($) {
+		jQuery(document).ready(function($) {
+		var $animation_elements = $('.animation-element');
+		var $window = $(window); 
+		function check_if_in_view() {
+		  var window_height = $window.height();
+		  var window_top_position = $window.scrollTop();
+		  var window_bottom_position = (window_top_position + window_height);
+		 
+		  $.each($animation_elements, function() {
+			var $element = $(this);
+			var element_height = $element.outerHeight();
+			var element_top_position = $element.offset().top;
+			var element_bottom_position = (element_top_position + element_height);
+		 
+			//check to see if this current container is within viewport
+			if (element_top_position <= window_bottom_position) {
+			  $element.addClass('in-view');
+			} else {
+			  //$element.removeClass('in-view');
+			}
+		  });
+		}
+		
+		$window.on('scroll resize', check_if_in_view);
+		$window.trigger('scroll');
+			});	
+			$( "header:first-child" ).addClass('header-first');
+			var movenav = $(".header-first .content .nav-toggle").remove();
+			var movelogo = $(".header-first .content .logo").remove(); 
+			$(".header-container .wrapper-header-bottom .content .inner-logo").append(movenav);
+			$(".header-container .wrapper-header-bottom .content .inner-logo").append(movelogo); 
+			$('.header-first').remove();  
+		});
+	</script> 
+ 
+	 
+<?php } ?>

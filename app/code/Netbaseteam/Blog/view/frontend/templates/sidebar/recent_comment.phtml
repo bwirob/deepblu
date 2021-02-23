@@ -1,0 +1,55 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+
+	$recentComData = $block->getRecentCommentData();
+	$preUrl = $helper->getPreBlogUrl();
+?>
+<?php if ($block->hasRecentComment()): ?>
+	<div class="recent-comment sidebar-item">
+		<div class="rc-content">
+			<div class="block-title">
+				<strong>Recent Comments</strong>
+			</div>
+			<div class="block-content">
+				<ul class="rc-list">
+					<?php foreach ($recentComData as $comment): ?>
+
+						<?php //var_dump($helper->getCustomerAvatar());die; ?>
+
+						<li class="item">
+							<?php if ($helper->getCustomerAvatar()): ?>
+								<div class="avartar-customer">
+									<img src="<?php echo $helper->getCustomerAvatar()?>" alt="<?php echo 'Not Found'; ?>">
+								</div>
+							<?php endif ?>
+							
+							<div class="info-art">
+								<a href="<?php echo $preUrl.'/'.$comment['post_url']?>" class="post-title" title="<?php echo $comment['post_title']; ?>">
+								<?php echo $comment['post_title']; ?>
+								</a>
+								<div class="comment-info">
+
+									<div class="content">
+										<?php echo $comment['content']; ?>
+									</div>
+									
+									<div class="meta-info">
+										<i class="fa fa-clock-o"></i>
+										<span>
+											<?php echo $helper->getFormatDate($comment['create_time']); ?>
+										</span>
+										<i class="fa fa-user"></i>
+										<span>
+											<?php echo $comment['author_name']; ?>
+										</span>
+									</div>
+								</div>
+							</div>
+						</li>
+					<?php endforeach ?>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+<?php endif ?>

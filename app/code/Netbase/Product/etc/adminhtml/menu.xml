@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu> 
+        <add id="Netbase_Product::nb_homepage" title="Homepage Setting" module="Netbase_Product" sortOrder="20" parent="Netbase_Sun::nb_all" resource="Netbase_Product::product"/>
+        <add id="Netbase_Product::product_manage" title="Manage Section" module="Netbase_Product" sortOrder="0" parent="Netbase_Product::nb_homepage" action="product/index/" resource="Netbase_Product::manage"/>
+        <add id="Netbase_Product::product_manage1" title="Manage Content" module="Netbase_Product" sortOrder="10" parent="Netbase_Product::nb_homepage" action="product/typevalue/" resource="Netbase_Product::manage"/>
+        <add id="Netbase_Product::product_manage2" title="Homepage Config" module="Netbase_Product" sortOrder="10" parent="Netbase_Product::nb_homepage" action="product/homecontent/" resource="Netbase_Product::manage"/>
+    </menu>
+</config>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="empty" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <!-- Bootstrap -->
+        <css src="Netbaseteam_Marketplace::vendors/bootstrap/css/bootstrap.min.css"/>
+        <!-- Font Awesome -->
+        <css src="Netbaseteam_Marketplace::vendors/font-awesome/css/font-awesome.min.css"/>
+        <!-- NProgress -->
+        <css src="Netbaseteam_Marketplace::vendors/nprogress/nprogress.css"/>
+        <!-- bootstrap-daterangepicker -->
+        <css src="Netbaseteam_Marketplace::vendors/bootstrap-daterangepicker/daterangepicker.css"/>
+
+        <!-- Custom Theme Style -->
+        <css src="Netbaseteam_Marketplace::build/css/admin_vendor.min.css"/>
+    </head>
+    <body>
+	    <attribute name="class" value="nav-md"/>
+        <referenceContainer name="content">
+            <container name="vendor.panel.wrapper" htmlClass="vendor-panel" htmlTag="div" before="-">
+                <block class="Netbaseteam\Marketplace\Block\Vendor" name="marketplace.vendor.admin" template="Netbaseteam_Marketplace::vendor/index.phtml">
+                    <block class="Netbaseteam\Marketplace\Block\Vendor\Dashboard" name="marketplace.vendor.content" template="Netbaseteam_Marketplace::vendor/dashboard.phtml" cacheable="false"/>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

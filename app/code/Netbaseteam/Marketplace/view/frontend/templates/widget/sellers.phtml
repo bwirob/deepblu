@@ -1,0 +1,30 @@
+<?php $helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');?>
+<div class="hp-mod-card card-official-stores J_OfficialStores">
+    <div class="hp-mod-card-header" style="height: 70px;">
+        <h3 class="hp-mod-card-title" style="color: daily"><?=$this->getData('widget_title')?></h3>
+        <a href="<?=$this->getUrl('marketplace/listseller/index')?>" style="color: daily" class="hp-mod-card-shop-all J_ShopMore">
+            <span class="text">Shop More</span>
+            <i class="lazada-icon lazada-ic-IOS-Next-copy"></i>
+        </a>
+    </div>
+    <div class="card-official-stores-content J_OfficialStoresItems">
+        <section class="banner-slider" id="officialSlide">
+            <div class="card-official-stores-wrapper">
+              <?php foreach($this->getSellers() as $seller):?>
+                <?php $shopID = $seller->getShopId()?>
+                <a class="card-official-stores-box hp-mod-card-hover align-left" href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>">
+                    <div class="card-official-stores-brand-overlay"></div>
+                    <div class="card-official-stores-brand-img">
+                        <img src="<?php echo $this->getImageProduct($seller->getSellerId()); ?>" class="image" alt="<=$seller->getShopTitle()?>">
+                    </div>
+                    <div class="card-official-stores-shop-img">
+                        <img src="<?php echo $helper->getMediaUrl().'marketplace/'.($seller->getShopLogo() ? $seller->getShopLogo() : 'no-images.png'); ?>" class="image" alt="<=$seller->getShopTitle()?>">
+                    </div>
+                    <div class="card-official-stores-h1"> <?=$seller->getShopTitle()?> </div>
+                    <p class="card-official-stores-p"> <?=$seller->getShopLocation()?> </p>
+                </a>
+              <?php endforeach;?>
+            </div>
+        </section>
+    </div>
+</div>

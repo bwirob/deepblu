@@ -1,0 +1,16 @@
+<?php
+
+/* @var $block Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\NewVideo */
+?>
+
+<div id="new-attribute" style="display:none">
+    <?= $block->getChildHtml(); ?>
+    <script>
+        require(["jquery","mage/mage"],function($) {
+            $(function(){
+                $('#new-attribute').mage('newAttributeDialog');
+            });
+        });
+    </script>
+</div>
+

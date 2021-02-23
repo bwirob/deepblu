@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+       <!--  <link src="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" src_type="url" />
+        <link src="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet" src_type="url" />
+        <link src="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" src_type="url" /> -->
+        <link src="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" src_type="url" />
+
+        <link src="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" src_type="url" />
+        
+        <css src="Netbaseteam_Marketplace::vendors/fontello/css/fontello.css"/>
+        <css src="Netbaseteam_Marketplace::css/landingpage.css"/>
+        <css src="Netbaseteam_Marketplace::css/responsive.css"/>
+        <css src="Netbaseteam_Marketplace::vendors/font-awesome/css/font-awesome.min.css"/>
+        <css src="Netbaseteam_Marketplace::vendors/bootstrap/css/bootstrap.min.css"/>
+    
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Netbaseteam\Marketplace\Block\LandingPage" name="marketplace.landing.page1" template="layout1.phtml" />
+            <block class="Netbaseteam\Marketplace\Block\LandingPage" name="marketplace.landing.page2" template="layout2.phtml" />
+            <block class="Netbaseteam\Marketplace\Block\LandingPage" name="marketplace.landing.page3" template="layout3.phtml" />
+        </referenceContainer>
+    </body>
+</page>

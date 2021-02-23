@@ -1,0 +1,30 @@
+<?php
+/**
+ * Brandcategory template for separate item
+ *
+ */
+
+/**
+ * @var $this Cmsmart\Brandcategory\Block\View
+ * @see Cmsmart\Brandcategory\Block\View
+ */
+?>
+<?php $_brandcategoryItem = $this->getBrandcategory(); ?>
+    <div class="brandcategory_item_subtitle">
+        <?php echo $this->formatDate($_brandcategoryItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_brandcategoryItem->getAuthor()) ?>
+    </div>
+
+<div class="brandcategory_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_brandcategoryItem, 400)): ?>
+       <p><img alt="" src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_brandcategoryItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="brandcategory_item_content"><?php echo $_brandcategoryItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

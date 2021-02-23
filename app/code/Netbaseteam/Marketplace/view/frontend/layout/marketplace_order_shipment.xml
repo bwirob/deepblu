@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="empty" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="sales_order_item_renderers"/>
+    <update handle="sales_order_item_price"/>
+    <body>
+        <referenceContainer name="page.main.title">
+            <block class="Magento\Sales\Block\Order\Info" name="order.status" template="order/order_status.phtml"/>
+            <block class="Magento\Sales\Block\Order\Info" name="order.date" template="order/order_date.phtml"/>
+            <container name="order.actions.container" htmlTag="div" htmlClass="actions-toolbar order-actions-toolbar">
+                <block class="Netbaseteam\Marketplace\Block\Sale\Order\Info\Buttons" as="buttons" name="marketplace.order.info.buttons" />
+            </container>
+        </referenceContainer>
+        <referenceContainer name="sales.order.info.buttons">
+            <block class="Magento\Sales\Block\Order\Info\Buttons\Rss" as="buttons.rss" name="sales.order.info.buttons.rss" cacheable="false"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Magento\Sales\Block\Order\View" name="order.comments" template="order/order_comments.phtml" before="marketplace.order.info.links" cacheable="false"/>
+            <block class="Magento\Sales\Block\Order\View" name="sales.order.view"  after="marketplace.order.info.links" cacheable="false">
+                <block class="Netbaseteam\Marketplace\Block\Sale\Order\Items" name="order_items" template="Netbaseteam_Marketplace::sale/order/shipment/new.phtml">
+                    <block class="Magento\Framework\View\Element\RendererList" name="sales.order.items.renderers" as="renderer.list"/>
+                </block>
+            </block>
+            <block class="Magento\Sales\Block\Order\Info" as="info" name="sales.order.info" after="sales.order.view"/>
+        </referenceContainer>
+        <block class="Magento\Framework\View\Element\Template" name="additional.product.info" template="Magento_Theme::template.phtml"/>
+    </body>
+</page>

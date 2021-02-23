@@ -1,0 +1,131 @@
+<style>
+.level-1 {
+	margin-left: 25px;
+}
+.level-2, .level-3, .level-4, .level-5 {
+	margin-left: 30px;
+}
+#top_sidetree ul li {
+	list-style: none;
+}
+
+#top_sidetree ul li span {
+	color: #000;
+}
+
+#mexpandTop {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+</style>
+<?php
+function top_get_categories() {
+	$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+	$category = $objectManagerr->create('Magento\Catalog\Model\Category');
+    $tree = $category->getTreeModel();
+    $tree->load();
+    $ids = $tree->getCollection()->getAllIds();
+    $arr = array();
+    $arrayCategories = array();
+    if ($ids) {
+        foreach ($ids as $id) {
+            $cat = $objectManagerr->create('Magento\Catalog\Model\Category');
+            $cat->load($id);
+ 
+          //  if($id!=1){
+ 
+                $arrayCategories[$id] =
+                        array("parent_id" => $cat->getParentId(),
+                            "name" => $cat->getName(),
+                            "cat_id" => $cat->getId(),
+                            "cat_level" => $cat->getLevel(),
+                            "cat_url" => $cat->getUrl()
+                );
+          //  }
+        }// for each ends
+        return $arrayCategories;
+        /*
+          echo 'PK<pre>';
+          print_r($arrayCategories);
+          echo '</pre>';
+         */
+    }//if ids present
+}
+$arrayCategories = top_get_categories();
+/* \zend_debug::dump($arrayCategories); */
+	
+function top_createTree($array, $currentParent, $currLevel = 0, $prevLevel = -1) {
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$catalogSession = $objectManager->create('Magento\Catalog\Model\Session');
+	$selected_arr = explode(",", $catalogSession->getTopCatIds());
+	$objBlock = $objectManager->get('\Cmsmart\Megamenu\Block\Navigation');
+	foreach ($array as $categoryId => $category) {
+        if ($currentParent == $category['parent_id']) {
+            if ($currLevel > $prevLevel){
+				if($category['cat_level'] >= 3){
+					$style = "style='display: none;'";
+				} else {
+					$style = "";
+				}
+                echo "<ul id='ul_".$categoryId."' class='level-".$category['cat_level']."' ".$style." >";
+            }
+			if ($currLevel == $prevLevel)
+                echo " </li> ";
+ 
+                    $cat_id_hidden = array('1','2');//set category id hidden
+                    if(in_array($categoryId,$cat_id_hidden)){
+                       // $display = 'none';
+                    }
+                    else{
+                       // $display = 'block';
+                    }
+ 
+            /* class="level_'.$category['cat_level'].' " */
+			$chk = "";
+			if(in_array($categoryId, $selected_arr)){
+				$chk = ' checked="true"';
+			}
+			
+            echo '
+				<li id="li_'.$categoryId.'">
+					<img id="ext-cus-'.$categoryId.'" class="my_folder" alt="">';
+				if($categoryId > 1){
+					$msgEpand = '<span style="margin-right: 20px;"></span>';
+					$childrens = $objBlock->getSubCategories($categoryId);
+					if(count($childrens) && $category['cat_level'] > 1) $msgEpand = '<span id="mexpandTop" onClick="expandItemTop(this); return false;">+</span>';
+					echo $msgEpand.'<input type="checkbox" class="mytree-l-tcb" id="ext-gen'.$categoryId.'" '.$chk.' value="'.$categoryId.'" onClick="myCatSelect(this)">';
+				}
+            
+			echo '<a id="a_'.$categoryId.'" target="_blank" >';
+                echo '<span id="span_'.$categoryId.'">'.$category['name'].'</span>';
+            echo '</a>';
+            //echo '<input type="text" id="m_cat_id_'.$category['cat_id'].'" name="m_cat_id_'.$category['cat_id'].'" value="id = '.$category['cat_id'].' : level = '.$category['cat_level'].' "/>';
+            if ($currLevel > $prevLevel) {
+                $prevLevel = $currLevel;
+            }
+            $currLevel++;
+            top_createTree($array, $categoryId, $currLevel, $prevLevel);
+            $currLevel--;
+        }
+    }
+    if ($currLevel == $prevLevel)
+        echo " </li></ul> ";
+}
+?>
+
+<script type="text/javascript"> 
+	function expandItemTop(el){
+		$(el).next().next().next().toggle();
+		if($(el).next().next().next().getStyle('display') == "block") { $(el).innerHTML = "-"; }
+		if($(el).next().next().next().getStyle('display') == "none") { $(el).innerHTML = "+"; }
+	}
+</script>
+
+<div id="top_sidetree">
+	<!-- <div class="sidetreecontrol"><a href="?#">Expand All</a> | <a href="?#">Collapse All</a></div> -->
+	<div id="top_tree">
+		<?php top_createTree($arrayCategories, 0); ?>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+<?php 
+	$objectManagerr = \Magento\Framework\App\ObjectManager::getInstance();
+	$helper = $objectManagerr->get('\Cmsmart\Brandcategory\Helper\Data');
+	
+	$cat_id = $this->getRequest()->getParam('cat');
+	$brands = $this->_getBrands($cat_id);
+	if(count($brands)) {
+?>
+		<div class="brander-item">
+			<?php 
+				for($i=0; $i<count($brands); $i++) { 
+			?>
+				<div class=" each-brand-show">
+					<a href="" title="<?php echo $brands[$i][2]; ?>">
+						<img alt="" src="<?php echo $helper->getBaseUrl()."/".$brands[$i][1]; ?>">
+					</a>
+				</div>
+				<?php } ?>
+		</div>
+	
+	<?php } else { ?>
+		<div class="no-brand-result">
+			<?php echo __('No brands in this cateogry'); ?>
+		</div>
+	<?php } ?>
+	
+<script type="text/javascript">  
+    //Product owl carousel slider
+    require(['jquery','owlCarousel'], function($) {
+       	$(document).ready(function(){  
+			$('#nb_brand_products .brander-item').owlCarousel({
+				items: 4,
+				itemsCustom: [ 
+					[0, 2], 
+					[480, 3], 
+					[768, 3], 
+					[992, 4], 
+					[1200, 6] 
+				], 
+				pagination: false,
+				slideSpeed : 800,
+				addClassActive: true,
+				scrollPerPage: false,
+				touchDrag: false, 
+				//scrollPerPage: true,
+			});
+        }); 
+    });                 
+</script>	
+

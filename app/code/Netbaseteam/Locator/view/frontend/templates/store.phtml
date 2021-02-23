@@ -1,0 +1,35 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Locator\Helper\Data');
+?>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+        
+            "Cmsmart_Store": {
+	            "enableModule" : "<?php echo $helper->getConfigEnabled(); ?>",
+	            "lat": "<?php echo $block->getLatitude(); ?>",
+	            "lng": "<?php echo $block->getLongitude(); ?>",
+	            "zoomLv" : "<?php echo $block->getZoomLevel(); ?>",
+	            "distanceUnit":"<?php echo $helper->getDistanceUnit(); ?>" 
+            }
+        }
+    }
+</script>
+
+
+<div class="store-wrapper">
+	<?php echo $block->getChildHtml('localtor.store.info'); ?>
+	<div class="store-view clear-fix">
+		<?php echo $block->getChildHtml('localtor.store.sidebar'); ?>
+		<?php echo $block->getChildHtml('localtor.store.map'); ?>
+	</div>
+	<div class="comment-box">
+		<?php echo $block->getChildHtml('localtor.store.comment'); ?>
+	</div>
+</div>
+
+<div id="page-loading" class="hide"></div>
+
+
+

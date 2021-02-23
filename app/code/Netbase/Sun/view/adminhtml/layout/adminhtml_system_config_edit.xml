@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+	       <css src="Netbase_Sun::css/bootstrap.css"/>
+	       <css src="Netbase_Sun::css/bootstrap-theme.min.css"/>
+	       <css src="Netbase_Sun::css/sun.css"/>
+	</head>
+	<referenceContainer name="left">
+		<container name="div_live_preview" as="div_live_preview" label="Page LivePreview" htmlTag="div" htmlClass="div_live_preview content">
+            <block class="Magento\Config\Block\System\Config\Tabs" name="live_preview" before="-" template="Netbase_Sun::live_preview/live_preview.phtml" />
+        </container>
+    </referenceContainer>
+</page>

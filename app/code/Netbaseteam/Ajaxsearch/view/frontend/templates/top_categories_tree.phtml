@@ -1,0 +1,57 @@
+<?php
+$helper = $this->helper('Netbaseteam\Ajaxsearch\Helper\Data');
+$arrayCategories = $helper->top_get_categories();
+/* \zend_debug::dump($arrayCategories); */
+?>
+
+<script>
+
+    require(['jquery', 'cmsmartTreeviewajs'], function($){
+        $(document).ready( function() {
+            setTimeout(function(){
+                $(function() {
+                    $(".ajaxsearch_ext #top_tree").treeview({
+                        collapsed: true,
+                        animated: "medium",
+                        control:".sidetreecontrol",
+                        persist: "location"
+                    });
+                    $(".sidetreecontrol a:eq(1)").trigger( "click" );
+                });
+                }, 1000);
+            jQuery(document).ready(function() {
+                jQuery('#nb_button_cate').attr('data-bind', "");
+                jQuery("#span_1").html('');
+                jQuery("#span_1").html('All Categories');
+                jQuery("#a_1").removeAttr("href");
+                jQuery("#a_1").removeAttr("target");
+                jQuery("#a_2").removeAttr("href");
+                jQuery("#a_2").removeAttr("target");
+            });
+        });
+    });
+	function myCatSelect(myEl){
+		require(['jquery'], function($){
+			"use strict";
+			var vfind = myEl.value;
+			var str = "";
+			var cid_arr = jQuery('#nb_button_cate').attr('data-bind').split(",");
+			if(!myEl.checked){
+				var aryCatFound = cid_arr.filter(function(value) { return value != vfind });
+				str = aryCatFound.toString();
+				str = str.replace(/(^[,\s]+)|([,\s]+$)/g, '');
+			} else {
+				str = jQuery('#nb_button_cate').attr('data-bind') + "," + vfind;
+				str = str.replace(/(^[,\s]+)|([,\s]+$)/g, '');
+			}
+			jQuery('#nb_button_cate').attr('data-bind', str);
+		});
+	}
+</script>
+
+<div id="top_sidetree">
+	<div class="sidetreecontrol"><a href="?#"><?php echo __('Expand All') ?></a> | <a href="?#"><?php echo __('Collapse All') ?></a></div>
+	<div id="top_tree">
+		<?php echo $helper->top_createTree($arrayCategories, 2); ?>
+	</div>
+</div>

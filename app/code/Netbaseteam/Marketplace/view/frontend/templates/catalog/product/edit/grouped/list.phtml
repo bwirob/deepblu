@@ -1,0 +1,15 @@
+<?php
+/* @var $block Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\NewVideo */
+?>
+
+<div id="group-to-product-list" style="display:none">
+    <?= $block->getChildHtml(); ?>
+    <script>
+        require(["jquery","mage/mage"],function($) {
+            $(function(){
+                $('#group-to-product-list').mage('newGroupedProductDialog');
+            });
+        });
+    </script>
+</div>
+

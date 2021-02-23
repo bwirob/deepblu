@@ -1,0 +1,93 @@
+<?php 
+    $_shopbybrand = $this->getCollection(); 
+    $_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of\Magento\Framework\App\ObjectManager
+    $storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 
+    $currentStore = $storeManager->getStore();
+    $mediaUrl = $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+    $Show_Brand_Name = $this->getShow_Brand_Name();
+    $Show_Featured_Brands = $this->getShow_Featured_Brands();
+    $Show_Product_Count = $this->getShow_Product_Count();
+    $currentUrl  = $storeManager->getStore()->getCurrentUrl();
+    $store_id = $storeManager->getStore()->getId();
+    $count2 = 0;
+    $logopath = $this->getViewFileUrl('Netbaseteam_Shopbybrand::images/logo.png');
+    $brandpath = $this->getViewFileUrl('Netbaseteam_Shopbybrand::images/search.png');
+    $dell = 1;
+    $dell1 = 1;
+    $dem = 0;
+    if ($this->getLogo_Width()>10 )  {
+        $imagewidth = $this->getLogo_Width();# code...
+    }else{
+        $imagewidth = 170;
+    }
+    if ($this->getLogo_Height()>10 )  {
+        $imageheight = $this->getLogo_Height();# code...
+    }else{
+        $imageheight = 150;
+    }
+?>
+<div class="seachbox">
+    <form class="seachboxform" action="<?php echo $this->getUrl('shopbybrand/index/search/');?>">
+        <span class="seachboxspan"> 
+        <?php if(isset($_GET['brandname'])):?>
+            <input class="seachboxinput" type="text" id="bname" value="<?php echo $_GET['brandname']?>" name="brandname"  required>
+        <?php else: ?>
+            <input class="seachboxinput" type="text" id="bname" name="brandname" placeholder="Brand name.." required>
+        <?php endif ?>
+            
+        </span>
+        <span>
+            <BUTTON class='seachboxbutton' type="submit" value="Filter"><i class="icon-search"></i></BUTTON>
+        </span>   
+    </form>
+</div>
+    <?php if(isset($_GET['brandname'])):?>
+        <?php foreach ($_shopbybrand as $shopbybrandItem): ?>
+            <?php 
+                $store_view = $shopbybrandItem->getStore_ids();
+                    $store_view = explode(',', $store_view);
+                ?>
+            <?php if($shopbybrandItem->getStatus() == 1):?>
+                <?php if (in_array(0,$store_view) || in_array($store_id,$store_view)):?>
+                    <?php if ($shopbybrandItem->getproduct_ids() == '') {
+                            $count = 0;# code...
+                        }else{
+                            $count = count(explode('&', $shopbybrandItem->getproduct_ids()));
+                    }?>
+                    <?php if(strpos(strtolower($shopbybrandItem->getBrand_title()),strtolower($_GET['brandname'])) !== false  ):?>
+                        <?php $dell1++; ?>
+                        <li name='' class =' abc ALL-Brands-2-li'>
+                            <div class="ALL-Brands-2-li-div">
+                                <div class="ALL-Brands-2-li-div-div">
+                                    <a class='ALL-Brands-2-li-div-div-a' href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>">
+                                        <?php if ($shopbybrandItem->getLogo() == ''): ?>
+                                            <img src="<?php echo  $logopath;?>" class='ALL-Brands-2-li-div-div-a-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'> 
+                                        <?php else: ?>
+                                            <img src="<?php echo  $mediaUrl.'/Shopbybrand'.'/'.$shopbybrandItem->getLogo();?>" class='ALL-Brands-2-li-div-div-a-img' style='width:<?php echo $imagewidth.'px';?>;height:<?php echo $imageheight.'px';?>'>
+                                        <?php endif ?>   
+                                    </a>
+                                </div>
+                                <div class="ALL-Brands-2-li-div-h3">
+                                    <a class="ALL-Brands-2-li-div-h3-a" href="<?php echo $this->getUrl('shopbybrand/index/view/',array('id'=>$shopbybrandItem->getbrand_id()));?>">
+                                        <?php if($Show_Brand_Name == 1):?>
+                                            <?php echo $shopbybrandItem->getBrand_title();?>
+                                        <?php endif;?>
+                                        <?php if($Show_Product_Count == 1):?>
+                                                <?php echo '('.$count.')';?>
+                                        <?php endif;?>
+                                    </a> 
+                                </div>
+                            </div>  
+                        </li>
+                    <?php endif;?>
+                <?php endif;?>  
+            <?php endif;?>  
+        <?php endforeach;?>
+        <?php if ($dell1 == 1): ?>
+            <div class="message notice">
+                <div>
+                    Your search returned no results.
+                </div>
+            </div>
+        <?php endif ?>
+    <?php endif ?>

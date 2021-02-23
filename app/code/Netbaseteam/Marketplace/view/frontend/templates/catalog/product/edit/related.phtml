@@ -1,0 +1,163 @@
+<?php
+// @codingStandardsIgnoreFile
+/**
+ * @var $block \Netbaseteam\Marketplace\Block\Catalog\Product\EditProductForm
+ */
+
+?>
+<li class="field">
+  <label><?php echo __('Related Products') ?>:</label>
+    <div class="row">
+        <div style="float: left;width: 60%" class="note">
+            Related products are shown to customers in addition to the item the customer is looking at.
+        </div>
+        <div style="float: right;" class="add-product-to-relate-button-container">
+            <button id="add_product_to_relate_button"
+                    title="<?php echo $block->escapeHtml(__('Add Related Products'));?>"
+                    data-role="add-product-to-relate"
+                    type="button"
+                    class="action-secondary"
+                    data-mage-init='{"openRelatedProductDialog" : {}}'
+                    data-ui-id="widget-button-1">
+                <span><?php /* @escapeNotVerified */ echo __('Add Related Products') ?></span>
+            </button>
+        </div>
+    </div>
+    <?php echo $block->getChildHtml('related_product_list'); ?>
+    <?php 
+        $childRelatedIds = '';
+        $currentProductId = '';
+        if ($block->getProductModel()) {
+            $currentProductId = $block->getProductModel()->getId();
+            $childRelatedIds = $block->getChildRelatedIds();
+        }
+    ?>
+    <?php if($childRelatedIds):?>
+        <div class="related_products">
+            <table class="admin__dynamic-rows data-grid" data-role="grid">
+                <thead>
+                    <tr>
+                        <th class="data-grid-draggable-row-cell"></th>
+
+                        <th class="data-grid-th">
+                            <span>ID</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Thumbnail</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Name</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Attribute Set</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Status</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>SKU</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Price</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Position</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Action</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php echo $this->getLayout()->createBlock("Netbaseteam\Marketplace\Block\Catalog\Product\Edit\Tab\Associated")->setData('child_related_ids',$childRelatedIds)->setTemplate("Netbaseteam_Marketplace::catalog/product/edit/related/selected.phtml")->toHtml();?>
+                </tbody>
+            </table>
+        </div>
+    <?php else:?>
+        <div class="related_products" style="display: none;">
+            <table class="admin__dynamic-rows data-grid" data-role="grid">
+                <thead>
+                    <tr>
+                        <th class="data-grid-draggable-row-cell"></th>
+
+                        <th class="data-grid-th">
+                            <span>ID</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Thumbnail</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Name</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Attribute Set</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Status</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>SKU</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Price</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Position</span>
+                        </th>
+                        <th class="data-grid-th">
+                            <span>Action</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    <?php endif;?>
+</li>
+
+<script type="text/javascript">
+    require(['jquery', 'jquery/ui', 'reloadGrid', 'uiRegistry'], function($, ui, reloadGrid, registry){
+        $(function() {
+            $('.related_products tbody').sortable({
+                placeholder: 'sort-placeholder',
+                forcePlaceholderSize: true,
+                start: function(e, ui) {
+                    ui.item.data('start-pos', ui.item.index() + 1);
+                },
+                change: function(e, ui) {
+                    var seq, startPos = ui.item.data('start-pos'),
+                        $index, correction;
+
+                    correction = startPos <= ui.placeholder.index() ? 0 : 1;
+
+                    ui.item.parent().find('tr.data-row').each(function(idx, el) {
+                        var $this = $(el),
+                            $index = $this.index();
+
+                        if (($index + 1 >= startPos && correction === 0) || ($index + 1 <= startPos && correction === 1)) {
+                            $index = $index + correction;
+                            $this.find('input[name="related_position"]').val($index - 1);
+                        }
+
+                    });
+
+                    seq = ui.item.parent().find('tr.sort-placeholder').index() + correction;
+                    ui.item.find('input[name="related_position"]').val(seq - 1);
+                }
+            });
+            $(document).on('click', '.data-grid-relatedproduct .action-delete', function() {
+                $(this).parents('tr').remove();
+                if($('.related_products table tr').length == 1) {
+                    $('.related_products').append('<input id="empty_related_product" type="hidden" name="links[related][][id]" value="">');
+                }
+            });
+        });
+        $('#add_product_to_relate_button').click(function(){
+            var relatedProducts = [<?=$currentProductId?>];
+            $('input[name="links[related][][id]"]').each(function() {
+                relatedProducts.push($(this).val());
+            });
+            reloadGrid.reloadUIComponent("marketplace_relatedproduct_listing.marketplace_relatedproduct_listing_grid_data_source",relatedProducts, "relatedproduct_ids");
+        });
+    });
+</script>

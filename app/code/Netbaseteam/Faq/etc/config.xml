@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <faq>
+            <view>
+                <enabled>1</enabled>
+                <catalog_sidebar_faq>1</catalog_sidebar_faq>
+                <product_view_faq>1</product_view_faq>
+            </view>
+            <faq_page>
+                <sidebar_faq>1</sidebar_faq>
+                <number_sidebar_question>8</number_sidebar_question>
+                <faq_tag_list>1</faq_tag_list>
+                <faq_number_tag>5</faq_number_tag>
+                <faq_main_most_faq>1</faq_main_most_faq>
+                <faq_number_most_faq>8</faq_number_most_faq>
+                <show_faq_author>1</show_faq_author>
+                <show_faq_created_time>1</show_faq_created_time>
+            </faq_page>
+            <product_view_faq>
+                <captcha_contact_form>1</captcha_contact_form>
+                <number_related_faq>8</number_related_faq>
+            </product_view_faq>
+        </faq>
+
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <product_faq_form>1</product_faq_form>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <product_faq_form>1</product_faq_form>
+                </always_for>
+            </captcha>
+        </customer>
+
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <product_faq_form>
+                        <label>FAQ Contact Form</label>
+                    </product_faq_form>
+                </areas>
+            </frontend>
+        </captcha>
+    
+    </default>
+</config>

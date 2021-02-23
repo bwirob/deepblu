@@ -1,0 +1,41 @@
+<?php
+$helper = $this->helper('Netbaseteam\Marketplace\Helper\Data');
+$mainPro = $block->getCurrentProduct();
+$mainSeller = $block->getSellerData();
+
+$shopID = $mainSeller['shop_id'];
+?>
+<?php if($mainPro) : ?>
+    <div class="main-item">
+        <div>
+            <div class="items-offers">
+                <div class="main-pic col-md-2 col-sm-6 col-xs-12 column">
+                    <div class="main_picture">
+                        <?php $productImage = $block->getLayout()->createBlock('Magento\Catalog\Block\Product\ListProduct')->getImage($mainPro, 'product_page_image_small');?>
+                        <a href="<?php echo $mainPro->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                            <?php echo $productImage->toHtml(); ?>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-6 col-xs-12 column">
+                    <div class="moreOfferFor">
+                        <h3>More offers for <?php echo $mainPro->getName();?></h3>
+
+                        <span>by&nbsp;
+                        <a href="<?php echo $this->getUrl("marketplace/seller/profile/shop/$shopID", ['_secure' => $this->getRequest()->isSecure()]); ?>" class="action"><span><?php echo $mainSeller['shop_title'] ?></span></a>
+                                        </span></div>
+                    <div class="backTo">
+                    <a href="<?php echo $mainPro->getProductUrl() ?>"
+                    class="left">&laquo; <?php echo __('Back to product information') ?></a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12 column">
+                    <div class="sell">
+                        Have one to sell ? <a
+                                href="<?php echo $this->getUrl('marketplace/account/registry', ['_secure' => $this->getRequest()->isSecure()]); ?>">Sell
+                            yours here</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif;?>

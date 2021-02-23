@@ -1,0 +1,24 @@
+<?php
+	$tagData = $block->getTagData();
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+?>
+<?php if ($block->hasTag()): ?>
+	<div class="tag sidebar-item">
+		<div class="tag-content">
+			<div class="block-title">
+				<strong>Tags</strong>
+			</div>
+			<div class="block-content">
+				<ul class="tag-list">
+					<?php foreach ($tagData as $tag): ?>
+						<li class="item">
+							<a href="<?php echo $helper->getPreBlogUrl().'/tag/?tag='.$tag; ?>" title="<?php echo $tag; ?>">
+								<?php echo $tag;?>
+							</a>
+						</li>
+					<?php endforeach ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+<?php endif ?>

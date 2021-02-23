@@ -1,0 +1,24 @@
+{
+    "name": "netbaseteam/optimizesite",
+    "description": "Netbaseteam Magento 2 Navigation extension",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "GPL-3.0"
+    ],
+
+    "authors": [
+        {
+            "name": "Netbaseteam",
+            "email": "huan.hn@netbasejsc.com"
+        }
+    ],
+
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Netbaseteam\\Optimizesite\\": ""
+        }
+    }
+}
+

@@ -1,0 +1,60 @@
+<?php
+	$helper = $this->helper('Netbaseteam\Blog\Helper\Data');
+	$postData = $block->getRecentPostData();
+
+?>
+<?php if ($block->hasRecentPost()): ?>
+	<div class="recent-post sidebar-item">
+		<div class="rencent-content">
+			<div class="block-title">
+				<strong>Recent Post</strong>
+			</div>
+			<div class="block-content">
+				<ul class="recent-list">
+					<?php foreach ($postData as $post): ?>
+						<li class="item">
+							<div class="post-thumbnail">
+								<?php if (!empty($post['thumbnail'])): ?>
+									<a href="<?php echo $helper->getPreBlogUrl().'/'.$post['identifier']?>">
+										<span class="fa overlay-icon"></span>
+										<img src="<?php echo $helper->getPrePostThumbUrl().$post['thumbnail'] ?>" alt="<?php $post['thumbnail'] ?>"/>
+									</a>
+								<?php endif ?>
+							</div>
+							<div class="meta-info">
+								<?php if (!empty($post['title'])): ?>
+									<div class="post-title">
+										<a href="<?php echo $helper->getPreBlogUrl().'/'.$post['identifier']?>" title="<?php echo $post['title']; ?>">
+											<?php echo $post['title']; ?>
+										</a>
+									</div>
+								<?php endif ?>
+
+								<?php if (!empty($post['creation_time'])): ?>
+									<div class="post-date">
+										<span>
+											<i class="fa fa-clock-o"></i>
+											<?php echo $helper->getFormatDate($post['creation_time']); ?>
+										</span>
+									</div>
+								<?php endif ?>
+
+								<?php if (!empty($post['author_name'])): ?>
+									<div class="post-author">
+										<span>
+											<i class="fa fa-user"></i>
+											<?php echo $post['author_name']; ?>
+										</span>
+									</div>
+								<?php endif ?>
+
+								
+							</div>
+						</li>
+					<?php endforeach ?>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+<?php endif ?>
